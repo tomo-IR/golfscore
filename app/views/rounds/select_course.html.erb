@@ -1,0 +1,7 @@
+<h2>ゴルフ場選択</h2>
+
+<%= form_tag("/search", method: :post) do %>
+    <%= text_field_tag :keyword %><br>
+    <%= select_tag :todoufuken, options_for_select(@todoufukens.invert.to_a, 102) %><br> 
+    <%= submit_tag '検索' %>
+  <% end %>

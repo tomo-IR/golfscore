@@ -1,0 +1,15 @@
+<h1>ゴルフ場選択</h1>
+
+<p>検索結果</p>
+<% if @json.nil? %>
+<p>検索結果がここに表示されます</p>
+<% elsif @json['error'] == "not_found" %>
+<p>該当データなし！</p>
+<% else %>
+
+
+
+<% @json["Items"].each do|item| %>
+<%= link_to item["Item"]["golfCourseName"] , test_path(golfCourseName: item["Item"]["golfCourseName"]) %> <br>
+<% end %>
+<% end %>
