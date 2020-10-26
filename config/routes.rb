@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get '/home/index',to: 'home#index'
   get 'home/authentication'
 
+
+  
   #◇「ラウンドする」まわりのルーティング
   get '/rounds/select_course', to: 'rounds#select_course' ,as: "select_course"
     #フォームを表示するview
