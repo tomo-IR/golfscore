@@ -17,11 +17,16 @@ Rails.application.routes.draw do
   get "/archives",to: 'archives#index' ,as: "archives_index"
 
 
+  get "/messages/index",to: 'messages#index'
 
-
-
-  devise_for :users
-  
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions'   
+  } 
+  devise_scope :user do
+    get "sign_in", :to => "users/sessions#new"
+    get "/users/sign_out", :to => "users/sessions#destroy" 
+  end
 end
 
 # get "/search/:golfCourseName",to: 'coursenames#show' ,as: "test"

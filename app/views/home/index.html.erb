@@ -1,9 +1,15 @@
 <h1>Live Score</h1>
 <div class="grid-6">
-  <%= link_to "ログイン", new_user_session_path, class: 'post' %>
-  <%= link_to "サインアップ", new_user_registration_path, class: 'post' %>
+  <% if user_signed_in? %>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :get %><br />
+    <div>あなたのメールアドレス:<%= current_user.name %></div><br />
+  <% else %>
+    <%= link_to "ログイン", new_user_session_path, class: 'post' %><br />
+    <%= link_to "サインアップ", new_user_registration_path, class: 'post' %><br />
+  <% end %>
 </div>
-<%= link_to "ラウンドする", select_course_path %>
-<%= link_to "過去のスコアを見る", archives_index_path %>
+<%= link_to "ラウンドする", select_course_path %><br />
+<%= link_to "掲示板を覗く", messages_index_path %><br />
+<%= link_to "過去のスコアを見る", archives_index_path %><br />
 
-<time><%=  @day %></time>
+<time>今日は<%=  @day %>です</time>
