@@ -1,0 +1,9 @@
+
+<h1> <%= @message_course %>の掲示板</h1>
+
+
+<% @messages.each do |m| %>
+<span> <%= m.content %> </span>
+<span> <%= m.created_at %> </span><br>
+<% end %>
+

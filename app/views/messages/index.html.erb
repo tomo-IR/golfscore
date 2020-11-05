@@ -4,14 +4,16 @@
 <div>
 <% @messages.each do |m| %>
   <span><%= m.content %> </span>
-  <span>@<%= m.course %> </span><br>
+  <span>@<%= m.course %> </span>
+  <span>投稿日時：<%= m.updated_at %> </span><br>
   <% end %>
   </div>
-
 
   <h2>コース毎のメッセージ</h2>
 <div>
 <% @every_course.each do |c| %>
-  <span><%= link_to c, root_path %> </span><br>
+  <span><%= link_to c, every_course_message_path(course: c) %> </span><br>
   <% end %>
 </div>
+
+

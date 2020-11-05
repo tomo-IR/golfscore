@@ -110,9 +110,4 @@ class CoursenamesController < ApplicationController
 
     end
 
-    def new
-        @coursename = Coursename.new
-
-        
-    end
 end

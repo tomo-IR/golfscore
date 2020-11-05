@@ -16,8 +16,12 @@ Rails.application.routes.draw do
   #◇「過去のスコアを見る」まわりのルーティング
   get "/archives",to: 'archives#index' ,as: "archives_index"
 
-
+  #◇「掲示板を覗く」まわりのルーティング
   get "/messages/index",to: 'messages#index'
+  get '/messages/show/:course', to: 'messages#show' ,as: "every_course_message"
+
+
+  #◇deviseまわりのルーティング
 
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
