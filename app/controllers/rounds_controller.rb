@@ -1,7 +1,7 @@
 class RoundsController < ApplicationController
+    require 'securerandom'
     def index
-       
-
+      
     end
     def select_course
         @todoufukens = {
@@ -163,8 +163,9 @@ class RoundsController < ApplicationController
     end
     def show #　1〜18H分ゴルフ場の名前をpostし、レコードを生成する処理（hole_scoreはNull）
       @coursename = params[:golfCourseName]
+      round_id = SecureRandom.hex(8)
       [*1..18].each do|num|
-        Score.create!(course: @coursename,hole_number: num)
+        Score.create!(course: @coursename,hole_number: num,user_id: 2,round_id: round_id)
       end
     end
 

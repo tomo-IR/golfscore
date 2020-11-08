@@ -1,7 +1,9 @@
 <h1>過去のスコアをみれます。</h1>
 
 
-<% @scores.each do |score| %>
-  <p> <%= score.course %></p>
-  <p> <%= score.hole_score %></p>
-  <% end %>  
+<% @score_round.each do |c| %>
+  <span><%= link_to c[0] ,score_card_path(round_id: c[2]) %> </span>
+  <span><%= c[1] %>さん</span>
+  <span>ラウンドID:<%= c[2] %></span> <br>
+  <% end %>
+</div>

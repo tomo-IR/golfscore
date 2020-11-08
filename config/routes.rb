@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   #◇「過去のスコアを見る」まわりのルーティング
   get "/archives",to: 'archives#index' ,as: "archives_index"
+  get "archives/show/:round_id",to: 'archives#show' ,as: 'score_card'
 
   #◇「掲示板を覗く」まわりのルーティング
   get "/messages/index",to: 'messages#index'

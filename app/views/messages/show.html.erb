@@ -4,6 +4,7 @@
 
 <% @messages.each do |m| %>
 <span> <%= m.content %> </span>
-<span> <%= m.created_at %> </span><br>
+<span> <%= m.created_at %> </span>
+<span>投稿者 <%= m.user.name %> さん</span><br>
 <% end %>
 
