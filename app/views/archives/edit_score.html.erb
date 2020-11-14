@@ -1,0 +1,14 @@
+<h1>個別スコア編集</h1>
+
+<p> <%= @hole_number %></p>
+<p> <%= @round_id %></p>
+<p> <%= @score.hole_score %></p>
+
+<%= form_with url:hole_score_update_path do |f| %>
+  <%= f.label :hoge, 'スコア' %>
+  <%= f.number_field :hoge %>
+  <%= f.submit "編集する" %>
+<% end %>
+
+<%= link_to "トップにもどる", root_path %>
+

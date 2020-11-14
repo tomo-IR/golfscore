@@ -1,0 +1,31 @@
+<h1> <%= @score_card_course.course%> をラウンド中です。</h1>
+<p>ラウンドID： <%= @coursename %></p>
+<p> <%= @score_card_score %></p>
+<p>プレイ中のコース： <%= @score_card_course.course %></p>
+<p>プレイヤー名： <%= @score_card_course.user.name %></p>
+<p>プレイ日時： <%= @score_card_course.created_at.strftime('%Y/%m/%d') %></p>
+<p>トータルスコア： <%= format('%+d', @score_sum) %></p>
+
+<% @score_card_score.each do |m| %>
+<span> <%= m.hole_number %>H: </span>
+
+    <span> <%= m.hole_score %> </span>
+
+
+
+<span> <%= link_to "編集", edit_hole_score_path(round_id: m.round_id, hole_number: m.hole_number) %> </span><br>
+<% end %>
+
+
+<%= link_to "トップにもどる", root_path %>
+
+
+
+<h1>リーダーボード</h1>
+<% @over_under.each do |(round_id, course, user_id),score| %>
+<span><%= format('%+d', score) %> </span>
+<span><%= user_id %> さん</span><br>
+
+<% end %>
+
+

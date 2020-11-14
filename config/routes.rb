@@ -10,20 +10,25 @@ Rails.application.routes.draw do
     #フォームを表示するview
     # @todoufukens はselect_courseアクションで定義
   post "/rounds/search", to: 'rounds#search'
-  get '/rounds/search/:golfCourseName', to: 'rounds#show' ,as: "round_start"
-  
+    #ゴルフ場検索結果を表示するページ
+  get '/rounds/search/:course', to: 'rounds#show' ,as: "round_start"
+  get '/rounds/play/:course/:round_id', to: 'rounds#play' ,as: "round_play"
+  #/rounds/play/:courseでいい、URLは無駄に長くならないように、（TODAYはデータベースから引っ張るデータを変える）
 
   #◇「過去のスコアを見る」まわりのルーティング
   get "/archives",to: 'archives#index' ,as: "archives_index"
   get "archives/show/:round_id",to: 'archives#show' ,as: 'score_card'
+  get "archives/edit/:round_id",to: 'archives#edit' ,as: 'scorecard_edit'
+  get "archives/edit/:round_id/:hole_number",to: 'archives#edit_score' ,as: 'edit_hole_score'
+  get "archives/edit_score/:round_id/:hole_number",to: 'archives#hole_score_edit' ,as: 'score_update'  
+  post "archives/edit/:round_id/:hole_number",to: 'archives#update' ,as: 'hole_score_update'
+  get "/archives/:round_id",to: 'archives#destroy_score_card' ,as: "hole_score_delete"
 
   #◇「掲示板を覗く」まわりのルーティング
   get "/messages/index",to: 'messages#index'
   get '/messages/show/:course', to: 'messages#show' ,as: "every_course_message"
 
-
   #◇deviseまわりのルーティング
-
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'   

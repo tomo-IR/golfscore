@@ -1,9 +1,11 @@
 class RoundsController < ApplicationController
     require 'securerandom'
+    
     def index
       
     end
     def select_course
+      
         @todoufukens = {
             0	=> "全地域",
             101	=> "北海道・東北のすべて",
@@ -69,6 +71,7 @@ class RoundsController < ApplicationController
         require 'net/http'
         require 'json'
         require 'uri'
+        @round_id = params[:golfCourseName]
          @todoufukens = {
           0	=> "全地域",
           101	=> "北海道・東北のすべて",
@@ -163,10 +166,34 @@ class RoundsController < ApplicationController
     end
     def show #　1〜18H分ゴルフ場の名前をpostし、レコードを生成する処理（hole_scoreはNull）
       @coursename = params[:golfCourseName]
+      @round_id = Message.where(course: params[:course])
       round_id = SecureRandom.hex(8)
+      # hoge = params[:round_id]
       [*1..18].each do|num|
-        Score.create!(course: @coursename,hole_number: num,user_id: 2,round_id: round_id)
-      end
+        Score.create!(course: params[:course],hole_number: num,user_id: 1,round_id: round_id,hole_score: 0)    
+      end      
+      @round_id = round_id
+      redirect_to round_play_path(course: params[:course], round_id: @round_id)
+      
+    end
+    def play
+      @coursename = params[:round_id]
+      @score_card_score = Score.where(round_id: params[:round_id]) #ホールごとのスコアを取得
+      @score_card_course = Score.where(round_id: params[:round_id]).first #ラウンドしたコース、日付を取得
+      @score_sum = Score.where(round_id: params[:round_id]).sum(:hole_score)
+     
+      #ランキング関係
+      today_same_course = Score.where("created_at >= ?", Date.today).where(course: params[:course])
+      @over_under = today_same_course
+        .group(:round_id)
+        .group(:course)
+        .group(:user_id)
+        .sum(:hole_score)
+        
+
+        # .select("user_id,sum(hole_score - par) as overunder").order("overunder")
+    # 　@sum_score = Score.group(:round_id).select("round_id,sum(hole_score) as sum_score ").order("sum_score")
+
     end
 
 end

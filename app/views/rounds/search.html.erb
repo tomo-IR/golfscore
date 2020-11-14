@@ -7,9 +7,11 @@
 <p>該当データなし！</p>
 <% else %>
 
+    <% @json["Items"].each do|item| %>
+        <%= link_to item["Item"]["golfCourseName"], round_start_path(course: item["Item"]["golfCourseName"]) %> <br>
+    <% end %>
+<% end %>
 
 
-<% @json["Items"].each do|item| %>
-<%= link_to item["Item"]["golfCourseName"] , round_start_path(golfCourseName: item["Item"]["golfCourseName"]) %> <br>
-<% end %>
-<% end %>
+<%# <%= link_to item["Item"]["golfCourseName"] , round_start_path(golfCourseName: item["Item"]["golfCourseName"]) %> <br> 
+  

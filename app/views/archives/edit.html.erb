@@ -6,15 +6,14 @@
 <p>プレイヤー名： <%= @score_card_course.user.name %></p>
 <p>プレイ日時： <%= @score_card_course.created_at.strftime('%Y/%m/%d') %></p>
 <p>トータルスコア： <%= format('%+d', @score_sum + 72) %></p>
- 
+
 <% @score_card_score.each do |m| %>
 <span> <%= m.hole_number %>H: </span>
 
-    <span> <%= m.hole_score %> </span><br>
+    <span> <%= m.hole_score %> </span>
 
+<span> <%= link_to "編集", edit_hole_score_path(round_id: m.round_id, hole_number: m.hole_number) %> </span><br>
 <% end %>
 
-  <span><%= link_to "このラウンドのスコアを編集する", scorecard_edit_path %> </span><br>
-  <span><%= link_to "このラウンドのスコアを削除する", hole_score_delete_path %> </span><br>
 
 <%= link_to "トップにもどる", root_path %>
