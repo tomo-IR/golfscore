@@ -32,7 +32,7 @@ class ArchivesController < ApplicationController
         @score = Score.find_by(round_id: params[:round_id], hole_number: params[:hole_number])
         if @score.update(hole_score: params[:hoge])
             flash[:edit_success] = 'スコアが編集されました'
-            redirect_to score_card_path
+            redirect_to round_play_path(round_id: params[:round_id])
         else
             flash.now[:danger] = 'スコアが編集されませんでした'
             render 'archives/show'
@@ -43,7 +43,5 @@ class ArchivesController < ApplicationController
         @score.delete_all
         flash[:delete_success] = 'スコアが削除されました'
         redirect_to archives_index_path
-
-
     end
 end

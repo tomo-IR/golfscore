@@ -195,5 +195,20 @@ class RoundsController < ApplicationController
     # 　@sum_score = Score.group(:round_id).select("round_id,sum(hole_score) as sum_score ").order("sum_score")
 
     end
+    def input
+      @hole_number = params[:hole_number]
+      @round_id = params[:round_id]
+      @score = Score.find_by(round_id: params[:round_id], hole_number: params[:hole_number])
+  end
+    def update
+      @score = Score.find_by(round_id: params[:round_id], hole_number: params[:hole_number])
+      if @score.update(hole_score: params[:hoge])
+          flash[:edit_success] = 'スコアが編集されました'
+          redirect_to round_play_path(course: @score.course, round_id: params[:round_id])
 
+      else
+          flash.now[:danger] = 'スコアが編集されませんでした'
+          render 'archives/show'
+      end
+  end
 end

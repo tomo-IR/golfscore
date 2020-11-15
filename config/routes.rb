@@ -13,7 +13,10 @@ Rails.application.routes.draw do
     #ゴルフ場検索結果を表示するページ
   get '/rounds/search/:course', to: 'rounds#show' ,as: "round_start"
   get '/rounds/play/:course/:round_id', to: 'rounds#play' ,as: "round_play"
-  #/rounds/play/:courseでいい、URLは無駄に長くならないように、（TODAYはデータベースから引っ張るデータを変える）
+    #URLは無駄に長くならないように、（TODAYはデータベースから引っ張るデータを変える）
+  get "rounds/input/:round_id/:hole_number",to: 'rounds#input' ,as: 'hole_score_input'
+  post "rounds/input/:round_id/:hole_number",to: 'rounds#update' ,as: 'hole_score_new'
+
 
   #◇「過去のスコアを見る」まわりのルーティング
   get "/archives",to: 'archives#index' ,as: "archives_index"
