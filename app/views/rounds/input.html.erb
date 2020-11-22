@@ -8,7 +8,7 @@
 
 <%= form_with url:hole_score_new_path do |f| %>
   <%= f.label :hoge, 'スコア' %>
-  <%= f.number_field :hoge %>
+  <%= f.number_field :hoge, value: @par  %>
   <%= f.submit "入力する" %>
 <% end %>
 

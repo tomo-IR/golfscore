@@ -9,8 +9,11 @@
 <% @score_card_score.each do |m| %>
 <span> <%= m.hole_number %>H: </span>
 
-    <span> <%= m.hole_score %> </span>
-
+<% if m.hole_score == nil %>
+    <span> 未 </span>
+<% else %>
+    <span> <%= format('%+d', m.hole_score) %> </span>
+<% end %>
 
 
 <span> <%= link_to "編集", hole_score_input_path(round_id: m.round_id, hole_number: m.hole_number) %> </span><br>
@@ -21,11 +24,59 @@
 
 
 
-<h1>リーダーボード</h1>
-<% @over_under.each do |(round_id, course, user_id),score| %>
+<h2>リーダーボード</h2>
+<% @over_under.each do |(round_id, user_id),score| %>
 <span><%= format('%+d', score) %> </span>
 <span><%= user_id %> さん</span><br>
-
 <% end %>
 
+<table>
+  <% order = 1 %>
+        <tr>
+          <th>Rank</th>
+          <th>score</th>
+          <th>name</th>
+          <th>THRU</th>
+        </tr>
+      <% @ou.each.with_index do |score,i| %>
 
+      <% if score.overunder == @ou[i - 1].overunder || score.overunder == @ou[(i + 1)%@ou.size].overunder  %> 
+        <% post_fix = "T" %>
+      <% else %>
+        <% post_fix = "" %>
+      <% end %>
+      <% order = i + 1 unless score.overunder == @ou[i - 1].overunder %>
+      <tr>
+       <th><%= format('%d位%s', order,post_fix) %></th>  
+      <th><%= format('%+d', score.overunder) %></th>  
+      
+      </tr>
+  <% end %>
+</table>
+
+    <% @thru_1h_start.each do|(a,b)| %>
+      <%= b %><br>
+    <% end %>
+    <br>
+    <br>
+    <% @thru_10h_start.each do|(a,b)| %>
+      <%= b %><br>
+    <% end %>
+    <br>
+    <br>
+
+
+
+<h2><%= @score_card_course.course %>のメッセージボード</h2>
+
+<%= form_with url:round_message_post_path do |f| %>
+  <%= f.label :content, 'メッセージ' %>
+  <%= f.text_field :content %>
+  <%= f.submit "投稿する" %>
+<% end %>
+
+<% @messages.each do |m| %>
+<span> <%= m.content %> </span>
+<span> <%= m.created_at %> </span>
+<span>投稿者 <%= m.user.name %> さん</span><br>
+<% end %>

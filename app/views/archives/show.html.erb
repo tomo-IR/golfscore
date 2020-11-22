@@ -15,6 +15,6 @@
 <% end %>
 
   <span><%= link_to "このラウンドのスコアを編集する", scorecard_edit_path %> </span><br>
-  <span><%= link_to "このラウンドのスコアを削除する", hole_score_delete_path %> </span><br>
+  <span><%= link_to "このラウンドのスコアを削除する", hole_score_delete_path, data: { confirm: '本当に削除してよろしいですか？' } %> </span><br>
 
 <%= link_to "トップにもどる", root_path %>

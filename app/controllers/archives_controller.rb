@@ -1,7 +1,8 @@
 class ArchivesController < ApplicationController
     def index
         @scores = Score.all
-        @score_round = Score.distinct.pluck(:course, :user_id, :round_id)
+        @score_round = Score.where(user_id: current_user.id).distinct.pluck(:course, :user_id, :round_id)
+
 
     end
     def show
@@ -32,7 +33,7 @@ class ArchivesController < ApplicationController
         @score = Score.find_by(round_id: params[:round_id], hole_number: params[:hole_number])
         if @score.update(hole_score: params[:hoge])
             flash[:edit_success] = 'スコアが編集されました'
-            redirect_to round_play_path(round_id: params[:round_id])
+            redirect_to scorecard_edit_path(round_id: params[:round_id])
         else
             flash.now[:danger] = 'スコアが編集されませんでした'
             render 'archives/show'

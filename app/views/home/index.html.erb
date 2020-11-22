@@ -2,7 +2,7 @@
 <div class="grid-6">
   <% if user_signed_in? %>
     <%= link_to "ログアウト", destroy_user_session_path, method: :get %><br />
-    <div>あなたのメールアドレス:<%= current_user.name %></div><br />
+    <div>あなたのニックネーム:<%= current_user.name %></div><br />
   <% else %>
     <%= link_to "ログイン", new_user_session_path, class: 'post' %><br />
     <%= link_to "サインアップ", new_user_registration_path, class: 'post' %><br />
@@ -13,3 +13,9 @@
 <%= link_to "過去のスコアを見る", archives_index_path %><br />
 
 <time>今日は<%=  @day %>です</time>
+
+<h2>プレイ中のラウンド</h2>
+<% @playing_course.each do|a| %>
+  <%= a.round_id %>
+  <%= link_to a.course, round_play_path(course: a.course, round_id: a.round_id) %><br>
+<% end %>

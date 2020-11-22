@@ -1,10 +1,10 @@
 class RoundsController < ApplicationController
-    require 'securerandom'
+  require 'securerandom'
     
-    def index
+  def index
       
-    end
-    def select_course
+  end
+  def select_course
       
         @todoufukens = {
             0	=> "全地域",
@@ -65,9 +65,9 @@ class RoundsController < ApplicationController
             47	=> "沖縄県",
             109	=> "海外"
           }
-    end
+  end
 
-    def search
+  def search
         require 'net/http'
         require 'json'
         require 'uri'
@@ -163,44 +163,52 @@ class RoundsController < ApplicationController
         #   Rails.logger.error(e.message)
         #   raise e
         # end
-    end
-    def show #　1〜18H分ゴルフ場の名前をpostし、レコードを生成する処理（hole_scoreはNull）
-      @coursename = params[:golfCourseName]
-      @round_id = Message.where(course: params[:course])
-      round_id = SecureRandom.hex(8)
-      # hoge = params[:round_id]
-      [*1..18].each do|num|
-        Score.create!(course: params[:course],hole_number: num,user_id: 1,round_id: round_id,hole_score: 0)    
-      end      
-      @round_id = round_id
-      redirect_to round_play_path(course: params[:course], round_id: @round_id)
+  end
+  def show #　1〜18H分ゴルフ場の名前をpostし、レコードを生成する処理（hole_scoreはNull）
+    @coursename = params[:golfCourseName]
+    @round_id = Message.where(course: params[:course])
+    round_id = SecureRandom.hex(8)
+    # hoge = params[:round_id]
+    [*1..18].each do|num|
+      Score.create!(course: params[:course],hole_number: num, user_id: current_user.id, round_id: round_id, hole_score: nil)    
+    end      
+    @round_id = round_id
+    redirect_to round_play_path(course: params[:course], round_id: @round_id)
       
-    end
-    def play
+  end
+  def play
       @coursename = params[:round_id]
       @score_card_score = Score.where(round_id: params[:round_id]) #ホールごとのスコアを取得
       @score_card_course = Score.where(round_id: params[:round_id]).first #ラウンドしたコース、日付を取得
       @score_sum = Score.where(round_id: params[:round_id]).sum(:hole_score)
      
       #ランキング関係
-      today_same_course = Score.where("created_at >= ?", Date.today).where(course: params[:course])
-      @over_under = today_same_course
-        .group(:round_id)
-        .group(:course)
-        .group(:user_id)
-        .sum(:hole_score)
-        
+      # today_same_course = Score.where("created_at >= ?", Date.today).where(course: params[:course])
+      @over_under = Score
+      .where("created_at >= ?", Date.today)
+      .where(course: params[:course])
+      .group(:round_id)
+      .group(:user_id)
+      .sum(:hole_score)
 
-        # .select("user_id,sum(hole_score - par) as overunder").order("overunder")
-    # 　@sum_score = Score.group(:round_id).select("round_id,sum(hole_score) as sum_score ").order("sum_score")
-
-    end
-    def input
+      @ou = Score.where(created_at: Time.now.all_day).where(course: params[:course]).where.not(hole_score: nil).group(:round_id).select("round_id,sum(hole_score) as overunder").order("overunder")
+      @thru_all = Score.where("created_at >= ?", Date.today).where(course: params[:course]).where.not(hole_score: nil).group(:round_id).maximum(:hole_number)
+      @thru_1h_start = Score.where("created_at >= ?", Date.today).where(course: params[:course]).where(hole_number: 1..9).where.not(hole_score: nil).group(:round_id).maximum(:hole_number)
+      @thru_10h_start = Score.where("created_at >= ?", Date.today).where(course: params[:course]).where(hole_number: 10..18).where.not(hole_score: nil).group(:round_id).maximum(:hole_number)
+      
+    #メッセージ関係
+    @message_course = params[:course]
+    @course_params = params[:course]
+    # @mmm = Message.find_by("course: course_params")
+    @messages = Message.where(course: params[:course]).order(created_at: "DESC")
+  end
+  def input
+      @par = 0 #フォーム初期値用
       @hole_number = params[:hole_number]
       @round_id = params[:round_id]
       @score = Score.find_by(round_id: params[:round_id], hole_number: params[:hole_number])
-  end
-    def update
+    end
+  def update
       @score = Score.find_by(round_id: params[:round_id], hole_number: params[:hole_number])
       if @score.update(hole_score: params[:hoge])
           flash[:edit_success] = 'スコアが編集されました'
@@ -211,4 +219,23 @@ class RoundsController < ApplicationController
           render 'archives/show'
       end
   end
+  def message_post
+    @message = Message.new(content: params[:content], course: params[:course], user_id: 1)
+    
+    if @message.save  #(cotent: params[:cotent], course: params[:course], user_id: 1)
+      flash[:message_post_success] = 'メッセージが投稿されました'
+      redirect_to round_play_path(course: params[:course], round_id: params[:round_id])
+       
+    else
+      flash.now[:danger] = 'スコアが編集されませんでした'
+      
+    end
+  end
+
+  private
+  # Strong Parameter
+  def message_params
+    params.require(:@message).permit(:content, :user_id, :course)
+  end
+
 end
