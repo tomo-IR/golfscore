@@ -4,6 +4,18 @@ class ApplicationController < ActionController::Base
     # Rails.application.config.action_controller.raise_on_unfiltered_parameters = true
     protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  def following
+    @user  = User.find(params[:id])
+    @users = @user.followings
+    render 'show_follow'
+end
+
+def followers
+  @user  = User.find(params[:id])
+  @users = @user.followers
+  render 'show_follower'
+end
+
 
   protected
 
@@ -13,4 +25,5 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
   end
+  
 end

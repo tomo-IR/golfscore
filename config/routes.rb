@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   root to:'home#index'
   get '/home/index',to: 'home#index'
   get 'home/authentication'
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
   get '/messages/show/:course', to: 'messages#show' ,as: "every_course_message"
 
   #◇deviseまわりのルーティング
+  get '/users/index',to: 'users#index' ,as: "user_search"
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'   
@@ -40,6 +42,12 @@ Rails.application.routes.draw do
     get "sign_in", :to => "users/sessions#new"
     get "/users/sign_out", :to => "users/sessions#destroy" 
   end
+  resources :users do
+    member do
+     get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
 end
 
 # get "/search/:golfCourseName",to: 'coursenames#show' ,as: "test"

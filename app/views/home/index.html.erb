@@ -11,11 +11,17 @@
 <%= link_to "ラウンドする", select_course_path %><br />
 <%= link_to "掲示板を覗く", messages_index_path %><br />
 <%= link_to "過去のスコアを見る", archives_index_path %><br />
+<%= link_to "プレイヤー検索", user_search_path %><br />
+
+
 
 <time>今日は<%=  @day %>です</time>
 
+
+
 <h2>プレイ中のラウンド</h2>
-<% @playing_course.each do|a| %>
-  <%= a.round_id %>
-  <%= link_to a.course, round_play_path(course: a.course, round_id: a.round_id) %><br>
+<% @now_playing.each do|a| %>
+
+  <%= link_to a, round_play_path(course: a, round_id: a) %><br>
 <% end %>
+

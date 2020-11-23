@@ -1,0 +1,4 @@
+<h1>ユーザ検索</h1>
+<% @user.each do|u| %>
+<%= link_to u.name, user_path(id: u.id) %><br>
+<% end %>

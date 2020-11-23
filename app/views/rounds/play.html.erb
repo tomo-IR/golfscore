@@ -25,6 +25,8 @@
 
 
 <h2>リーダーボード</h2>
+<p>プレイ日時： <%= @score_card_course.created_at.strftime('%Y/%m/%d') %></p>
+<p>プレイ中のコース： <%= @score_card_course.course %></p>
 <% @over_under.each do |(round_id, user_id),score| %>
 <span><%= format('%+d', score) %> </span>
 <span><%= user_id %> さん</span><br>
