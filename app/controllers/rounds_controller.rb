@@ -170,7 +170,7 @@ class RoundsController < ApplicationController
     round_id = SecureRandom.hex(8)
     # hoge = params[:round_id]
     [*1..18].each do|num|
-      Score.create!(course: params[:course],hole_number: num, user_id: current_user.id, round_id: round_id, hole_score: nil)    
+      Score.create!(course: params[:course],hole_number: num, user_id: current_user.id, round_id: round_id, hole_score: '未プレイ')    
     end      
     @round_id = round_id
     redirect_to round_play_path(course: params[:course], round_id: @round_id)
@@ -190,13 +190,14 @@ class RoundsController < ApplicationController
       .group(:round_id)
       .group(:user_id)
       .sum(:hole_score)
-
-      @ou = Score.where(created_at: Time.now.all_day).where(course: params[:course]).where.not(hole_score: nil).group(:round_id).select("round_id,sum(hole_score) as overunder").order("overunder")
-      @thru_all = Score.where("created_at >= ?", Date.today).where(course: params[:course]).where.not(hole_score: nil).group(:round_id).maximum(:hole_number)
-      @thru_1h_start = Score.where("created_at >= ?", Date.today).where(course: params[:course]).where(hole_number: 1..9).where.not(hole_score: nil).group(:round_id).maximum(:hole_number)
-      @thru_10h_start = Score.where("created_at >= ?", Date.today).where(course: params[:course]).where(hole_number: 10..18).where.not(hole_score: nil).group(:round_id).maximum(:hole_number)
       
-    #メッセージ関係
+      play_date = Score.where(round_id: params[:round_id]).first
+      @ou = Score.where(created_at: play_date.created_at.in_time_zone.all_day).where(course: params[:course]).where.not(hole_score: nil).group(:round_id).select("round_id,sum(hole_score) as overunder").order("overunder")
+      @thru_all = Score.where(created_at: play_date.created_at.in_time_zone.all_day).where(course: params[:course]).where.not(hole_score: nil).group(:round_id).maximum(:hole_number)
+      @thru_1h_start = Score.where(created_at: play_date.created_at.in_time_zone.all_day).where(course: params[:course]).where(hole_number: 1..9).where("hole_score is NULL").group(:round_id).minimum(:hole_number)
+      @thru_10h_start = Score.where(created_at: play_date.created_at.in_time_zone.all_day).where(course: params[:course]).where(hole_number: 10..18).where("hole_score is NULL").group(:round_id).minimum(:hole_number)       
+    
+      #メッセージ関係
     @message_course = params[:course]
     @course_params = params[:course]
     # @mmm = Message.find_by("course: course_params")
@@ -220,7 +221,7 @@ class RoundsController < ApplicationController
       end
   end
   def message_post
-    @message = Message.new(content: params[:content], course: params[:course], user_id: 1)
+    @message = Message.new(content: params[:content], course: params[:course], user_id: current_user.id)
     
     if @message.save  #(cotent: params[:cotent], course: params[:course], user_id: 1)
       flash[:message_post_success] = 'メッセージが投稿されました'

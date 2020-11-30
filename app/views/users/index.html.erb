@@ -1,4 +1,13 @@
 <h1>ユーザ検索</h1>
-<% @user.each do|u| %>
-<%= link_to u.name, user_path(id: u.id) %><br>
+
+
+
+
+<p>検索</p>
+<%= form_tag(user_index_path,:method => 'get') do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search', :name => nil %>
+<% end %>
+<% @users.each do |user| %>
+	<%= user.name %><br>
 <% end %>

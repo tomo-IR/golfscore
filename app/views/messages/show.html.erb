@@ -3,8 +3,10 @@
 
 
 <% @messages.each do |m| %>
-<span> <%= m.content %> </span>
+<span> <%= link_to m.content, message_show_path(id: m.id) %> </span>
 <span> <%= m.created_at %> </span>
+
+<span> いいねの数<%= m.liked_users.count %>個</span>
 <span>投稿者 <%= m.user.name %> さん</span><br>
 <% end %>
 

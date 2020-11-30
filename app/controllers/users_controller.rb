@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
   def index
-    @user  = User.all
+    # @user  = User.where.not(name: "ゲストプレイヤー").where.not(id: current_user.id)
+    @users = User.search(params[:search]).where.not(name: "ゲストプレイヤー").where.not(id: current_user.id)
+    
   end
   def show
     @user  = User.find(params[:id])
   end
+
   def following
     @user  = User.find(params[:id])
     @users = @user.followings

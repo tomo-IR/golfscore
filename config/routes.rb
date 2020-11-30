@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to:'home#index'
   get '/home/index',to: 'home#index'
   get 'home/authentication'
+  post '/home/guest_sign_in', to: 'homes#new_guest'
 
 
   
@@ -31,16 +32,20 @@ Rails.application.routes.draw do
   #◇「掲示板を覗く」まわりのルーティング
   get "/messages/index",to: 'messages#index'
   get '/messages/show/:course', to: 'messages#show' ,as: "every_course_message"
+  get '/messages/show/:course/:id', to: 'messages#show_message' ,as: "message_show"
+  resources :likes, only: [:create, :destroy]
 
   #◇deviseまわりのルーティング
-  get '/users/index',to: 'users#index' ,as: "user_search"
+  get '/users/index',to: 'users#index' ,as: "user_index"
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'   
   } 
+
   devise_scope :user do
     get "sign_in", :to => "users/sessions#new"
     get "/users/sign_out", :to => "users/sessions#destroy" 
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
   resources :users do
     member do
@@ -49,6 +54,3 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
 end
-
-# get "/search/:golfCourseName",to: 'coursenames#show' ,as: "test"
-# post "/search", to: 'coursenames#search'

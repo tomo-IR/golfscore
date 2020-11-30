@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # validates :email, presence: true, length: { maximum: 255 },
   #                   format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
   #                   uniqueness: { case_sensitive: false }
-  has_secure_password
+  # has_secure_password
 
   has_many :messages, dependent: :destroy
   has_many :scores
@@ -34,4 +34,21 @@ class User < ApplicationRecord
   def unfollow!(other_user)
     following_relationships.find_by(following_id: other_user.id).destroy
   end
+
+  #いいね関係
+  has_many :likes, dependent: :destroy
+  has_many :liked_messages, through: :likes, source: :message
+  def already_liked?(message)
+    self.likes.exists?(message_id: message.id)
+  end
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+    end
+  end
+  def self.search(search)
+      return User.all unless search
+      User.where(['name LIKE ?', "%#{search}%"])
+    end
 end

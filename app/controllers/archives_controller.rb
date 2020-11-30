@@ -1,7 +1,7 @@
 class ArchivesController < ApplicationController
     def index
         @scores = Score.all
-        @score_round = Score.where(user_id: current_user.id).distinct.pluck(:course, :user_id, :round_id)
+        @score_round = Score.where(user_id: current_user).distinct.pluck(:course, :user_id, :round_id)
 
 
     end

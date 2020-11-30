@@ -13,6 +13,11 @@ class MessagesController < ApplicationController
         @course_params = params[:course]
         # @mmm = Message.find_by("course: course_params")
         @messages = Message.where(course: params[:course])
-        
+        @like = Like.new
+    end
+    def show_message
+        @message = Message.find(params[:id])
+        @like = Like.new
+    
     end
 end

@@ -4,7 +4,7 @@
 <% @score_round.each do |c| %>
   <span><%= link_to c[0] ,score_card_path(round_id: c[2]) %> </span>
   <span><%= c[1] %>さん</span>
-  <span>ラウンドID:<%= c[2] %></span> <br>
+  <br>
   <% end %>
 </div>
 

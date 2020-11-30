@@ -3,7 +3,7 @@
 <p> <%= @score_card_score %></p>
 <p>プレイ中のコース： <%= @score_card_course.course %></p>
 <p>プレイヤー名： <%= @score_card_course.user.name %></p>
-<p>プレイ日時： <%= @score_card_course.created_at.strftime('%Y/%m/%d') %></p>
+<p>プレイ日時： <%= @score_card_course.created_at.to_s(:datetime_jp) %></p>
 <p>トータルスコア： <%= format('%+d', @score_sum) %></p>
 
 <% @score_card_score.each do |m| %>
@@ -56,16 +56,26 @@
   <% end %>
 </table>
 
-    <% @thru_1h_start.each do|(a,b)| %>
-      <%= b %><br>
-    <% end %>
-    <br>
-    <br>
-    <% @thru_10h_start.each do|(a,b)| %>
-      <%= b %><br>
-    <% end %>
-    <br>
-    <br>
+
+<p>ここからTHRU</p>
+<% ha = Hash[@thru_1h_start] %>
+<% hb = Hash[@thru_10h_start] %>
+<% keys = ha.keys | hb.keys %>
+<% values_a = ha.values_at(*keys) %>
+<% values_b = hb.values %>
+<% keys.zip(values_a, values_b) do |key, a, b| %>
+<span>
+  <% if    a.nil? && b.nil?             %>Finish a=<%=a.inspect%>,b=<%=b.inspect%>,key=<%=key.inspect%>
+  <% elsif a.nil? && b&.between?(11,18) %>アウトスタートで、インプレイ中 a=<%=a.inspect%>,b=<%=b.inspect%>,key=<%=key.inspect%>
+  <% elsif a.nil? && b == 10            %>アウトスタートで、アウト終了 9H  a=<%=a.inspect%>,b=<%=b.inspect%>,key=<%=key.inspect%>
+  <% elsif a == 1 && b.nil?             %>インスタートで、イン終了 18H  a=<%=a.inspect%>,b=<%=b.inspect%>,key=<%=key.inspect%>
+  <% elsif a == 1 && b&.between?(11,18) %>インスタートで、インプレイ中 a=<%=a.inspect%>,b=<%=b.inspect%>,key=<%=key.inspect%>
+  <% elsif a&.between?(2,9) && b == 10  %>アウトスタートで、アウトプレイ中 a=<%=a.inspect%>,b=<%=b.inspect%>,key=<%=key.inspect%>
+  <% elsif a&.between?(2,9) && b.nil?   %>インスタートで、アウトプレイ中 a=<%=a.inspect%>,b=<%=b.inspect%>,key=<%=key.inspect%>
+  <% else %>なんか変なスコアのいれ方です    a=<%=a.inspect%>,b=<%=b.inspect%>,key=<%=key.inspect%>
+  <% end %>
+</span><br>
+ <% end %>
 
 
 
@@ -82,3 +92,7 @@
 <span> <%= m.created_at %> </span>
 <span>投稿者 <%= m.user.name %> さん</span><br>
 <% end %>
+
+<%= 
+# @play_day.created_at.strftime('%Y/%m/%d') 
+%>

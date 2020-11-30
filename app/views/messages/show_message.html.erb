@@ -1,0 +1,18 @@
+<h1>投稿詳細ページ</h1>
+<h3><%= @message.user.name %>さんの投稿</h3>
+<h3><%= @message.content %></h3>
+<h3>いいね件数: <%= @message.likes.count %></h3>
+<% if current_user.already_liked?(@message) %>
+
+  <%= button_to 'いいねを取り消す', {controller: 'likes', action: 'destroy'}, {method: :delete } %>
+  
+<% else %>
+	<%= button_to "いいね", params: { id: @like.id } %>
+	<%= button_to 'いいね', {controller: 'likes', action: 'create', message_id: @message.id }, {method: :post } %>
+<% end %>
+<h2>いいねしたユーザー</h2>
+<% @message.liked_users.each do |user| %>
+  <li><%= user.name %></li>
+<% end %>
+
+<%= link_to "ホームへ戻る", root_path %>

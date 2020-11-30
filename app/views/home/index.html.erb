@@ -1,4 +1,5 @@
 <h1>Live Score</h1>
+<p>お一人様ゴルフを楽しく！</p>
 <div class="grid-6">
   <% if user_signed_in? %>
     <%= link_to "ログアウト", destroy_user_session_path, method: :get %><br />
@@ -6,22 +7,28 @@
   <% else %>
     <%= link_to "ログイン", new_user_session_path, class: 'post' %><br />
     <%= link_to "サインアップ", new_user_registration_path, class: 'post' %><br />
+    <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
   <% end %>
+  
 </div>
 <%= link_to "ラウンドする", select_course_path %><br />
 <%= link_to "掲示板を覗く", messages_index_path %><br />
 <%= link_to "過去のスコアを見る", archives_index_path %><br />
-<%= link_to "プレイヤー検索", user_search_path %><br />
+<%= link_to "プレイヤー検索", user_index_path %><br />
 
 
 
-<time>今日は<%=  @day %>です</time>
+<time>今日は<%=  @day %>です</time><br>
 
 
-
-<h2>プレイ中のラウンド</h2>
-<% @now_playing.each do|a| %>
-
-  <%= link_to a, round_play_path(course: a, round_id: a) %><br>
+<% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
+  <h2>プレイ中のラウンド</h2>
+  <% @now_playing.each do|a| %>
+    <%= link_to a[1], round_play_path(course: a[1], round_id: a[0]) %><br>
+  <% end %>
+<% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
+  <span>ゲストログインだから、何も表示しないよ</span>
+<% else %>
+  <span>ログアウト中だから、何も表示しないよ</span>
 <% end %>
 
