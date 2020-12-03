@@ -169,9 +169,11 @@ class RoundsController < ApplicationController
     @round_id = Message.where(course: params[:course])
     round_id = SecureRandom.hex(8)
     # hoge = params[:round_id]
+    registered_time = Time.now
     [*1..18].each do|num|
-      Score.create!(course: params[:course],hole_number: num, user_id: current_user.id, round_id: round_id, hole_score: '未プレイ')    
-    end      
+      Score.create!(course: params[:course],hole_number: num, user_id: current_user.id, round_id: round_id, hole_score: nil, created_at: registered_time)    
+    end
+ 
     @round_id = round_id
     redirect_to round_play_path(course: params[:course], round_id: @round_id)
       

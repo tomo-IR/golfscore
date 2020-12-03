@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'   
   } 
-
+  get '/users/show/:id/:round_id', to: 'users#scorecard' ,as: 'user_scorecard'
   devise_scope :user do
     get "sign_in", :to => "users/sessions#new"
     get "/users/sign_out", :to => "users/sessions#destroy" 

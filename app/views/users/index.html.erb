@@ -9,5 +9,13 @@
   <%= submit_tag 'Search', :name => nil %>
 <% end %>
 <% @users.each do |user| %>
+	<%= link_to user.name, user_path(id: user.id) %><br>
+<% end %>
+
+<p>全ユーザー</p>
+
+<% @user_all .each do |user| %>
 	<%= user.name %><br>
 <% end %>
+
+ 
