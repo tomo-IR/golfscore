@@ -11,11 +11,12 @@
 <% @users.each do |user| %>
 	<%= link_to user.name, user_path(id: user.id) %><br>
 <% end %>
-
+<%= paginate @users %>
 <p>全ユーザー</p>
 
 <% @user_all .each do |user| %>
 	<%= user.name %><br>
 <% end %>
+<%= paginate @user_all %>
 
- 
+ <%= link_to "トップにもどる", root_path %>

@@ -42,7 +42,7 @@
         </tr>
       <% @ou.each.with_index do |score,i| %>
 
-      <% if score.overunder == @ou[i - 1].overunder || score.overunder == @ou[(i + 1)%@ou.size].overunder  %> 
+      <% if score.overunder == @ou[i - 1].overunder || score.overunder == @ou[(i + 1)%@ou.size].overunder %> 
         <% post_fix = "T" %>
       <% else %>
         <% post_fix = "" %>
@@ -52,10 +52,15 @@
        <th><%= format('%d位%s', order,post_fix) %></th>  
       <th><%= format('%+d', score.overunder) %></th>  
       
+      
       </tr>
   <% end %>
 </table>
 
+<% @ou.each do |(round_id, user_id),score| %>
+
+<span><%= user_id %> さん</span><br>
+<% end %>
 
 <p>ここからTHRU</p>
 <% ha = Hash[@thru_1h_start] %>

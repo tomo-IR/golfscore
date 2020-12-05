@@ -1,8 +1,10 @@
 class ArchivesController < ApplicationController
     def index
         @scores = Score.all
-        @score_round = Score.where(user_id: current_user).distinct.pluck(:course, :user_id, :round_id)
-
+        @score = Score.where(user_id: current_user).distinct.pluck(:course, :user_id, :round_id, :created_at )
+        @score_sum = Score.where(user_id: current_user).group(:round_id).sum(:hole_score)
+        @score_ave = Score.where(user_id: current_user).average(:hole_score)
+        # .select("round_id,sum(hole_score) as overunder")
 
     end
     def show
@@ -11,6 +13,11 @@ class ArchivesController < ApplicationController
         @score_card_score = Score.where(round_id: params[:round_id]) #ホールごとのスコアを取得
         @score_card_course = Score.where(round_id: params[:round_id]).first #ラウンドしたコース、日付を取得
         @score_sum = Score.where(round_id: params[:round_id]).sum(:hole_score)
+        @score_ave = Score.where(user_id: params[:id]).average(:hole_score)
+
+
+
+        
     end
     def edit
         # @score_card = Score.

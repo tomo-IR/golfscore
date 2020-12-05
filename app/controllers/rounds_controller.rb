@@ -194,7 +194,7 @@ class RoundsController < ApplicationController
       .sum(:hole_score)
       
       play_date = Score.where(round_id: params[:round_id]).first
-      @ou = Score.where(created_at: play_date.created_at.in_time_zone.all_day).where(course: params[:course]).where.not(hole_score: nil).group(:round_id).select("round_id,sum(hole_score) as overunder").order("overunder")
+      @ou = Score.where(created_at: play_date.created_at.in_time_zone.all_day).where(course: params[:course]).where.not(hole_score: nil).group(:round_id).group(:user_id).select("round_id,sum(hole_score) as overunder").order("overunder")
       @thru_all = Score.where(created_at: play_date.created_at.in_time_zone.all_day).where(course: params[:course]).where.not(hole_score: nil).group(:round_id).maximum(:hole_number)
       @thru_1h_start = Score.where(created_at: play_date.created_at.in_time_zone.all_day).where(course: params[:course]).where(hole_number: 1..9).where("hole_score is NULL").group(:round_id).minimum(:hole_number)
       @thru_10h_start = Score.where(created_at: play_date.created_at.in_time_zone.all_day).where(course: params[:course]).where(hole_number: 10..18).where("hole_score is NULL").group(:round_id).minimum(:hole_number)       
