@@ -1,0 +1,34 @@
+
+<h1> マイページ編集</h1>
+<p>お名前</p>
+<%= @user.name %>
+<p>メールアドレス</p>
+<%= @user.email %>
+<p>自己紹介</p>
+<%= @user.introduction %>
+
+<% if @user.avatar? %>  <!-- アップロード画像がある場合に実行する -->
+  <p>
+    <strong>Avatar:</strong>
+    <%= image_tag @user.avatar.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
+  </p>
+<% end %>
+
+
+<%= form_with(model: @user, local: true) do |f| %>
+  <%= f.label :name, 'ニックネーム' %>
+  <%= f.text_field :name %><br>
+
+
+  <%= f.label :introduction, '自己紹介文' %>
+  <%= f.text_area :introduction %><br>
+
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar %>
+
+
+  <%= f.submit "編集する" %>
+
+<% end %>
+
+<%= link_to "トップにもどる", root_path %>

@@ -31,4 +31,16 @@ class UsersController < ApplicationController
     @users = @user.followers
     render 'show_follower'
   end
+
+  def update
+    @user = User.find(current_user.id)
+    if @user.update!(name: params[:user][:name], avatar: params[:user][:avatar])
+        flash[:edit_success] = '編集されました'
+        redirect_to mypage_edit_path
+
+    else
+        flash.now[:danger] = 'スコアが編集されませんでした'
+        render 'mypages/index'
+    end
+  end
 end

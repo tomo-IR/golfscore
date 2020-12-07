@@ -34,6 +34,13 @@ Rails.application.routes.draw do
   get '/messages/show/:course', to: 'messages#show' ,as: "every_course_message"
   get '/messages/show/:course/:id', to: 'messages#show_message' ,as: "message_show"
   resources :likes, only: [:create, :destroy]
+  
+  #◇mypageまわりのルーティング
+  get "/mypages/index",to: 'mypages#index' ,as: "mypage"
+  get "/mypages/edit",to: 'mypages#edit' ,as: "mypage_edit"
+  put "/mypages" ,to: 'messages#update' ,as: "mypage_update"
+  
+
 
   #◇deviseまわりのルーティング
   get '/users/index',to: 'users#index' ,as: "user_index"
@@ -53,4 +60,6 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: [:create, :destroy]
+
+
 end

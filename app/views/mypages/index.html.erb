@@ -1,0 +1,17 @@
+
+<h1> マイページ</h1>
+<p>お名前</p>
+<%= @user.name %>
+<p>メールアドレス</p>
+<%= @user.email %>
+<p>自己紹介</p>
+<%= @user.introduction %>
+
+<%= link_to "編集する", mypage_edit_path %>
+<% if @user.avatar? %>  <!-- アップロード画像がある場合に実行する -->
+  <p>
+    <strong>Avatar:</strong>
+    <%= image_tag @user.avatar.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
+  </p>
+<% end %>
+<%= link_to "トップにもどる", root_path %>
