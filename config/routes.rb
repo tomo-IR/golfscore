@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get "/messages/index",to: 'messages#index'
   get '/messages/show/:course', to: 'messages#show' ,as: "every_course_message"
   get '/messages/show/:course/:id', to: 'messages#show_message' ,as: "message_show"
+  
   resources :likes, only: [:create, :destroy]
   
   #◇mypageまわりのルーティング

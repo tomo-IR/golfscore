@@ -89,6 +89,10 @@
 <%= form_with url:round_message_post_path do |f| %>
   <%= f.label :content, 'メッセージ' %>
   <%= f.text_field :content %>
+
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+
   <%= f.submit "投稿する" %>
 <% end %>
 
@@ -96,6 +100,13 @@
 <span> <%= m.content %> </span>
 <span> <%= m.created_at %> </span>
 <span>投稿者 <%= m.user.name %> さん</span><br>
+<% if m.image? %>  <!-- アップロード画像がある場合に実行する -->
+  <p>
+    <%= image_tag m.image.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
+  </p>
+<% end %>
+
+<br>
 <% end %>
 
 <%= 

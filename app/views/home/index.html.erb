@@ -9,13 +9,23 @@
     <%= link_to "サインアップ", new_user_registration_path, class: 'post' %><br />
     <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
   <% end %>
-  
 </div>
-<%= link_to "ラウンドする", select_course_path %><br />
-<%= link_to "掲示板を覗く", messages_index_path %><br />
-<%= link_to "過去のスコアを見る", archives_index_path %><br />
-<%= link_to "プレイヤー検索", user_index_path %><br />
-<%= link_to "マイページ", mypage_path %><br />
+
+<% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
+  <%= link_to "ラウンドする", select_course_path %><br />
+  <%= link_to "掲示板を覗く", messages_index_path %><br />
+  <%= link_to "過去のスコアを見る", archives_index_path %><br />
+  <%= link_to "プレイヤー検索", user_index_path %><br />
+  <%= link_to "マイページ", mypage_path %><br />
+<% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
+  <%= link_to "ラウンドする", select_course_path %><br />
+  <%= link_to "掲示板を覗く", messages_index_path %><br />
+  <%= link_to "プレイヤー検索", user_index_path %><br />
+<% else %>
+
+
+  <% end %>
+
 
 
 

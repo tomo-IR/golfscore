@@ -223,9 +223,9 @@ class RoundsController < ApplicationController
       end
   end
   def message_post
-    @message = Message.new(content: params[:content], course: params[:course], user_id: current_user.id)
+    @message = Message.new(content: params[:content], course: params[:course], user_id: current_user.id, image: params[:image])
     
-    if @message.save  #(cotent: params[:cotent], course: params[:course], user_id: 1)
+    if @message.save 
       flash[:message_post_success] = 'メッセージが投稿されました'
       redirect_to round_play_path(course: params[:course], round_id: params[:round_id])
        
@@ -238,7 +238,7 @@ class RoundsController < ApplicationController
   private
   # Strong Parameter
   def message_params
-    params.require(:@message).permit(:content, :user_id, :course)
+    params.require(:@message).permit(:content, :user_id, :course, :image)
   end
 
 end

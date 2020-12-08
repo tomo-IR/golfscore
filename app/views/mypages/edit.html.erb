@@ -1,6 +1,6 @@
 
 <h1> マイページ編集</h1>
-<p>お名前</p>
+<p>ニックネーム</p>
 <%= @user.name %>
 <p>メールアドレス</p>
 <%= @user.email %>
@@ -9,7 +9,7 @@
 
 <% if @user.avatar? %>  <!-- アップロード画像がある場合に実行する -->
   <p>
-    <strong>Avatar:</strong>
+    <strong>プロフィール画像</strong>
     <%= image_tag @user.avatar.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
   </p>
 <% end %>

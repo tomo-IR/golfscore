@@ -7,8 +7,8 @@
   <%= button_to 'いいねを取り消す', {controller: 'likes', action: 'destroy'}, {method: :delete } %>
   
 <% else %>
-	<%= button_to "いいね", params: { id: @like.id } %>
-	<%= button_to 'いいね', {controller: 'likes', action: 'create', message_id: @message.id }, {method: :post } %>
+<%= button_to 'いいね', likes_path(@post) %>
+
 <% end %>
 <h2>いいねしたユーザー</h2>
 <% @message.liked_users.each do |user| %>
