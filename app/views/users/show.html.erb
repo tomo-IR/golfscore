@@ -1,6 +1,5 @@
 <h1><%= @user.name %>さんのページ</h1>
 <p><%= @user.introduction  %></p>
-
 <% if @user.avatar? %>  <!-- アップロード画像がある場合に実行する -->
   <p>
     <strong>Avatar:</strong>
@@ -13,7 +12,7 @@
     <%= render 'stats' %>
 <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
     <%= render 'stats' %>
-    <span>ゲストログインだから、フォロー機能使えません。</span>
+    <span>※ゲストユーザーは、フォロー機能を使用できません。</span>
 <% end %>
 
 
