@@ -86,7 +86,7 @@
 
 <h2><%= @score_card_course.course %>のメッセージボード</h2>
 
-<%= form_with url:round_message_post_path do |f| %>
+<%= form_with(url:round_message_post_path, remote: true) do |f| %>
   <%= f.label :content, 'メッセージ' %>
   <%= f.text_field :content %>
 
@@ -99,6 +99,7 @@
 <% @messages.each do |m| %>
 <span> <%= m.content %> </span>
 <span> <%= m.created_at %> </span>
+<span> Posted <%= time_ago_in_words(m.created_at) %> ago.</span>
 <span>投稿者 <%= m.user.name %> さん</span><br>
 <% if m.image? %>  <!-- アップロード画像がある場合に実行する -->
   <p>
