@@ -5,6 +5,7 @@
 <% @messages.each do |m| %>
   <span><%= m.content %> </span>
   <span>@<%= m.course %> </span>
+  <span>@<%= m.user.name %> </span>
   <span>投稿日時：<%= m.updated_at %> </span><br>
   <% end %>
   </div>
