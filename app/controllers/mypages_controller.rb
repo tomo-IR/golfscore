@@ -7,7 +7,7 @@ class MypagesController < ApplicationController
     end
     def update
         @user = User.find(current_user.id)
-        if @user.update!(name: params[:name], introduction: params[:introduction])
+        if @user.update!(:name => params[:name], :introduction => params[:introduction])
             flash[:edit_success] = '編集されました'
             redirect_to mypage_edit_path
         else

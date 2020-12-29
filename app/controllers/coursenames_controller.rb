@@ -80,11 +80,11 @@ class CoursenamesController < ApplicationController
           'hits'          => 30
         }
           
-        uri = URI(base_url + '?' + params.map{|k,v| "#{k}=#{v}"}.join('&'))
+        uri = URI(base_url + '?' + params.map { |k,v| "#{k}=#{v}" }.join('&'))
         puts uri
         
         # begin
-        response = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
+        response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
           http.open_timeout = 5
           http.read_timeout = 10
           http.get(uri.request_uri)
@@ -103,7 +103,7 @@ class CoursenamesController < ApplicationController
     def show #　1〜18H分ゴルフ場の名前をpostし、レコードを生成する処理（hole_scoreはNull）
       @coursename = params[:golfCourseName]
       [*1..18].each do|num|
-        Score.create!(course: @coursename,hole_number: num)
+        Score.create!(:course => @coursename,:hole_number => num)
       end
     end
     def select_course

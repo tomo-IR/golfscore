@@ -2,12 +2,12 @@ class MessagesController < ApplicationController
     def index
         @messages = Message.all.includes(:user)
         @every_course = Message.distinct
-                                .pluck(:course)
+                               .pluck(:course)
     end
     def show
         @message_course = params[:course]
         @course_params = params[:course]
-        @messages = Message.where(course: params[:course]).includes(:user)
+        @messages = Message.where(:course => params[:course]).includes(:user)
         @like = Like.new
     end
     def show_message
