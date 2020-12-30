@@ -1,0 +1,2 @@
+class Golfcourse < ApplicationRecord
+end

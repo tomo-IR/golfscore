@@ -9,6 +9,8 @@
 
     <% @json["Items"].each do|item| %>
         <%= link_to item["Item"]["golfCourseName"], round_start_path(course: item["Item"]["golfCourseName"]), data: { confirm: item["Item"]["golfCourseName"] + 'でラウンドを開始します。よろしいですか？' }  %> <br>
+        <%= link_to item["Item"]["golfCourseId"], round_start_path(course: item["Item"]["golfCourseName"]), data: { confirm: item["Item"]["golfCourseName"] + 'でラウンドを開始します。よろしいですか？' }  %> <br>
+        <%= link_to item["areaCode"], round_start_path(course: item["Item"]["golfCourseName"]), data: { confirm: item["Item"]["golfCourseName"] + 'でラウンドを開始します。よろしいですか？' }  %> <br>
     <% end %>
 <% end %>
 
