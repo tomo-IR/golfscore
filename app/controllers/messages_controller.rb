@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
         @like = Like.new
     end
     def show_message
-        @message = Message.find(params[:id]).includes(:user)
+        @message = Message.find(params[:id])
         @like = Like.new
     end
 end

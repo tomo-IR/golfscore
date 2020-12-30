@@ -144,11 +144,11 @@ class RoundsController < ApplicationController
           'hits'          => 30
         }
           
-        uri = URI(base_url + '?' + params.map{|k,v| "#{k}=#{v}"}.join('&'))
+        uri = URI(base_url + '?' + params.map { |k,v| "#{k}=#{v}" }.join('&'))
         puts uri
         
         # begin
-        response = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
+        response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
           http.open_timeout = 5
           http.read_timeout = 10
           http.get(uri.request_uri)
@@ -166,56 +166,56 @@ class RoundsController < ApplicationController
   end
   def show #　1〜18H分ゴルフ場の名前をpostし、レコードを生成する処理（hole_scoreはNull）
     @coursename = params[:golfCourseName]
-    @round_id = Message.where(course: params[:course])
+    @round_id = Message.where(:course => params[:course])
     round_id = SecureRandom.hex(8)
     # hoge = params[:round_id]
     registered_time = Time.now
     [*1..18].each do|num|
-      Score.create!(course: params[:course],hole_number: num, user_id: current_user.id, round_id: round_id, hole_score: nil, created_at: registered_time)    
+      Score.create!(:course => params[:course],:hole_number => num, :user_id => current_user.id, :round_id => round_id, :hole_score => nil, :created_at => registered_time)    
     end
  
     @round_id = round_id
-    redirect_to round_play_path(course: params[:course], round_id: @round_id)
+    redirect_to round_play_path(:course => params[:course], :round_id => @round_id)
       
   end
   def play
       @coursename = params[:round_id]
-      @score_card_score = Score.where(round_id: params[:round_id]) #ホールごとのスコアを取得
-      @score_card_course = Score.where(round_id: params[:round_id]).first #ラウンドしたコース、日付を取得
-      @score_sum = Score.where(round_id: params[:round_id]).sum(:hole_score)
+      @score_card_score = Score.where(:round_id => params[:round_id]) #ホールごとのスコアを取得
+      @score_card_course = Score.where(:round_id => params[:round_id]).first #ラウンドしたコース、日付を取得
+      @score_sum = Score.where(:round_id => params[:round_id]).sum(:hole_score)
      
       #ランキング関係
       # today_same_course = Score.where("created_at >= ?", Date.today).where(course: params[:course])
       @over_under = Score
       .where("created_at >= ?", Date.today)
-      .where(course: params[:course])
+      .where(:course => params[:course])
       .group(:round_id)
       .group(:user_id)
       .sum(:hole_score)
       
-      play_date = Score.where(round_id: params[:round_id]).first
-      @ou = Score.where(created_at: play_date.created_at.in_time_zone.all_day).where(course: params[:course]).where.not(hole_score: nil).group(:round_id).group(:user_id).select("round_id,sum(hole_score) as overunder").order("overunder")
-      @thru_all = Score.where(created_at: play_date.created_at.in_time_zone.all_day).where(course: params[:course]).where.not(hole_score: nil).group(:round_id).maximum(:hole_number)
-      @thru_1h_start = Score.where(created_at: play_date.created_at.in_time_zone.all_day).where(course: params[:course]).where(hole_number: 1..9).where("hole_score is NULL").group(:round_id).minimum(:hole_number)
-      @thru_10h_start = Score.where(created_at: play_date.created_at.in_time_zone.all_day).where(course: params[:course]).where(hole_number: 10..18).where("hole_score is NULL").group(:round_id).minimum(:hole_number)       
+      play_date = Score.where(:round_id => params[:round_id]).first
+      @ou = Score.where(:created_at => play_date.created_at.in_time_zone.all_day).where(:course => params[:course]).where.not(:hole_score => nil).group(:round_id).group(:user_id).select("round_id,sum(hole_score) as overunder").order("overunder")
+      @thru_all = Score.where(:created_at => play_date.created_at.in_time_zone.all_day).where(:course => params[:course]).where.not(:hole_score => nil).group(:round_id).maximum(:hole_number)
+      @thru_1h_start = Score.where(:created_at => play_date.created_at.in_time_zone.all_day).where(:course => params[:course]).where(:hole_number => 1..9).where("hole_score is NULL").group(:round_id).minimum(:hole_number)
+      @thru_10h_start = Score.where(:created_at => play_date.created_at.in_time_zone.all_day).where(:course => params[:course]).where(:hole_number => 10..18).where("hole_score is NULL").group(:round_id).minimum(:hole_number)       
     
       #メッセージ関係
     @message_course = params[:course]
     @course_params = params[:course]
     # @mmm = Message.find_by("course: course_params")
-    @messages = Message.where(course: params[:course]).order(created_at: "DESC")
+    @messages = Message.where(:course => params[:course]).order(:created_at => "DESC")
   end
   def input
       @par = 0 #フォーム初期値用
       @hole_number = params[:hole_number]
       @round_id = params[:round_id]
-      @score = Score.find_by(round_id: params[:round_id], hole_number: params[:hole_number])
+      @score = Score.find_by(:round_id => params[:round_id], :hole_number => params[:hole_number])
     end
   def update
-      @score = Score.find_by(round_id: params[:round_id], hole_number: params[:hole_number])
-      if @score.update(hole_score: params[:hoge])
+      @score = Score.find_by(:round_id => params[:round_id], :hole_number => params[:hole_number])
+      if @score.update(:hole_score => params[:hoge])
           flash[:edit_success] = 'スコアが編集されました'
-          redirect_to round_play_path(course: @score.course, round_id: params[:round_id])
+          redirect_to round_play_path(:course => @score.course, :round_id => params[:round_id])
 
       else
           flash.now[:danger] = 'スコアが編集されませんでした'
@@ -223,11 +223,11 @@ class RoundsController < ApplicationController
       end
   end
   def message_post
-    @message = Message.new(content: params[:content], course: params[:course], user_id: current_user.id, image: params[:image])
+    @message = Message.new(:content => params[:content], :course => params[:course], :user_id => current_user.id, :image => params[:image])
     
     if @message.save 
       flash[:message_post_success] = 'メッセージが投稿されました'
-      redirect_to round_play_path(course: params[:course], round_id: params[:round_id])
+      redirect_to round_play_path(:course => params[:course], :round_id => params[:round_id])
        
     else
       flash.now[:danger] = 'スコアが編集されませんでした'

@@ -1,1 +1,15 @@
 inherit_from: .rubocop_todo.yml
+AllCops:
+  Exclude:
+    - bin/*
+    - config/**/*
+    - db/schema.rb
+    - vendor/**/*
+    - Gemfile
+  NewCops: enable
+Style/Documentation:
+  Enabled: false
+Style/EmptyMethod:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false

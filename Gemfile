@@ -22,10 +22,8 @@ gem 'tzinfo-data', :platforms => [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'carrierwave'
 gem 'kaminari'
-
 gem 'bullet', :group => :development
-
-
+gem 'parser', '~> 2.6', '>= 2.6.2.1'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
