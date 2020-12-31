@@ -145,7 +145,7 @@ class RoundsController < ApplicationController
         }
           
         uri = URI(base_url + '?' + params.map { |k,v| "#{k}=#{v}" }.join('&'))
-        puts uri
+        puts 'URLは' + uri.to_s
         
         # begin
         response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|

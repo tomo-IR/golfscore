@@ -1,2 +1,3 @@
-<h1>Golfcourses#get</h1>
-<p>Find me in app/views/golfcourses/get.html.erb</p>
+<% @json["Items"].each do|c| %>
+<%= c["Item"]["golfCourseName"] %><br>
+<% end %>

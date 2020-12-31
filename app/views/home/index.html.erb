@@ -7,7 +7,8 @@
   <% else %>
     <%= link_to "ログイン", new_user_session_path, class: 'post' %><br />
     <%= link_to "サインアップ", new_user_registration_path, class: 'post' %><br />
-    <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+    <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %><br />
+    <%= link_to "ゴルフ場検索", golfcourses_get_path %>
   <% end %>
 </div>
 
