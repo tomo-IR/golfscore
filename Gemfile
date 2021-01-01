@@ -24,6 +24,7 @@ gem 'carrierwave'
 gem 'kaminari'
 gem 'bullet', :group => :development
 gem 'parser', '~> 2.6', '>= 2.6.2.1'
+gem 'whenever', require: false
 
 group :development do
   gem 'web-console', '>= 3.3.0'
