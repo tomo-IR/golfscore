@@ -23,7 +23,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'kaminari'
 gem 'bullet', :group => :development
-gem 'parser', '~> 2.6', '>= 2.6.2.1'
+gem 'parser', '>= 2.7.1.5'
 gem 'whenever', require: false
 
 group :development do
