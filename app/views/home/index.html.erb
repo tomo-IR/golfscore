@@ -36,9 +36,7 @@
 
 <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
   <h2>プレイ中のラウンド</h2>
-  <% @now_playing.each do|a| %>
-    <%= link_to a[1], round_play_path(course: a[1], round_id: a[0]) %><br>
-  <% end %>
+
 <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
   <span>ゲストログインだから、何も表示しないよ</span>
 <% else %>

@@ -3,8 +3,10 @@ class CreateGolfcourses < ActiveRecord::Migration[6.0]
     create_table :golfcourses do |t|
       t.integer :golfcourseid
       t.string :golfcoursename
-      t.integer :areacode
-      t.integer :prefecture
+      t.string :golfcourseabbr
+      t.string :golfcoursenamekana
+      t.text :golfcoursecaption
+      t.string :address
 
       t.timestamps
     end

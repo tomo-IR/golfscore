@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_secure_password
-  validates :name, :presence => true
+  # has_secure_password
+  # validates :name, :presence => true
   validates :password, :presence => true
   validates :email, :presence => true 
   validates :email, :uniqueness => true
@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_many :messages, :dependent => :destroy
   has_many :scores
+
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -47,6 +48,7 @@ class User < ApplicationRecord
       # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
   end
+
   def self.search(search)
       return User.all unless search
       User.where(['name LIKE ?', "%#{search}%"])

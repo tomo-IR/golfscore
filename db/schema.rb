@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_081235) do
+ActiveRecord::Schema.define(version: 2021_01_04_053232) do
 
   create_table "golfcourses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "golfcourseid"
     t.string "golfcoursename"
-    t.integer "areacode"
-    t.integer "prefecture"
+    t.string "golfcourseabbr"
+    t.string "golfcoursenamekana"
+    t.text "golfcoursecaption"
+    t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -32,11 +34,12 @@ ActiveRecord::Schema.define(version: 2020_12_30_081235) do
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "content"
-    t.string "course"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
-    t.string "image"
+    t.bigint "golfcourse_id"
+    t.bigint "user_id"
+    t.index ["golfcourse_id"], name: "index_messages_on_golfcourse_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -51,13 +54,32 @@ ActiveRecord::Schema.define(version: 2020_12_30_081235) do
   end
 
   create_table "scores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "hole_score"
-    t.string "course"
+    t.integer "hole1_score"
+    t.integer "hole2_score"
+    t.integer "hole3_score"
+    t.integer "hole4_score"
+    t.integer "hole5_score"
+    t.integer "hole6_score"
+    t.integer "hole7_score"
+    t.integer "hole8_score"
+    t.integer "hole9_score"
+    t.integer "hole10_score"
+    t.integer "hole11_score"
+    t.integer "hole12_score"
+    t.integer "hole13_score"
+    t.integer "hole14_score"
+    t.integer "hole15_score"
+    t.integer "hole16_score"
+    t.integer "hole17_score"
+    t.integer "hole18_score"
+    t.integer "published"
+    t.integer "status"
+    t.date "played_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "hole_number"
-    t.bigint "user_id", null: false
-    t.string "round_id"
+    t.bigint "user_id"
+    t.bigint "golfcourse_id"
+    t.index ["golfcourse_id"], name: "index_scores_on_golfcourse_id"
     t.index ["user_id"], name: "index_scores_on_user_id"
   end
 
@@ -78,6 +100,8 @@ ActiveRecord::Schema.define(version: 2020_12_30_081235) do
 
   add_foreign_key "likes", "messages"
   add_foreign_key "likes", "users"
+  add_foreign_key "messages", "golfcourses"
   add_foreign_key "messages", "users"
+  add_foreign_key "scores", "golfcourses"
   add_foreign_key "scores", "users"
 end
