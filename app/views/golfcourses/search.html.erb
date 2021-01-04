@@ -1,0 +1,19 @@
+<h1>ラウンドするゴルフ場を選択</h1>
+
+
+
+<p>検索</p>
+<%= form_tag(golfcourses_search_path,:method => 'get', local: true) do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search', :golfcoursename => nil %>
+<% end %>
+<% @search_golfcoursename.each do |name| %><br>
+	<%= name.golfcoursename %>
+<% end %>
+<%= paginate @search_golfcoursename %>
+
+
+<% @golfcoursename_all.each do |n| %>
+	<%= n.golfcoursename %><br>
+<% end %>
+<%= paginate @golfcoursename_all %>

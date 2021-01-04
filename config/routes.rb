@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'golfcourses/get', :to => 'golfcourses#get'
+  get 'golfcourses/search', :to => 'golfcourses#search'
   get 'users/show'
   root :to => 'home#index'
   get '/home/index',:to => 'home#index'

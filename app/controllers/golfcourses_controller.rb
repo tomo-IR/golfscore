@@ -1,4 +1,13 @@
 class GolfcoursesController < ApplicationController
+
+  def search
+    @golfcoursename_all  = Golfcourse.all
+                                         .page(params[:page]).per(100) #ページネーション
+    @search_golfcoursename = Golfcourse.search(params[:search])
+                                     .page(params[:page]).per(100) #ページネーション
+  end
+
+
   def get
     require 'net/http'
     require 'json'
