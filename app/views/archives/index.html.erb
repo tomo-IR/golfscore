@@ -1,19 +1,28 @@
 <h1>過去のスコアをみれます。</h1>
 
+<% @finished_round_score.each do|score|%>
+  <%= score.user.name %><br>
+  <%= score.golfcourse.golfcoursename %><br>
+  <%= score.played_date %><br>
+
+<% end %>
+<% @sum_score.each do|score|%>
+  <%= score %><br>
+<% end %>
 
 
 <%# link_to c[0] ,score_card_path(round_id: c[2]) %>
 
-<h2>平均スコア</h2>
-<% x = @score_sum %>
-平均スコア：<%= sprintf("%.2f", x.values.inject(:+) / x.values.length.to_f) %><br>
-ベストスコア：<%=  x.values.min %><br>
+<%# <h2>平均スコア</h2> %>
+<%# x = @score_sum %>
+<%# 平均スコア：= sprintf("%.2f", x.values.inject(:+) / x.values.length.to_f)<br> %>
+<%# ベストスコア：=  x.values.min<br> %>
 
-<% @score.zip(@score_sum) do |a,b| %>
-	<%= link_to a[0], score_card_path(round_id: a[2]) %>	
-	<%= a[3].strftime('%Y年%-m月%-d日(%a)') %>
-	<%= format('%+d', b[1] ) %><br>
-<% end %>
-<%= link_to "トップにもどる", root_path %>
+<%# @score.zip(@score_sum) do |a,b| %>
+	<%#= link_to a[0], score_card_path(round_id: a[2]) %>	
+	<%#= a[3].strftime('%Y年%-m月%-d日(%a)') %>
+	<%#= format('%+d', b[1] ) %><br>
+<%# end %>
+<%#= link_to "トップにもどる", root_path %>
 <br>
 

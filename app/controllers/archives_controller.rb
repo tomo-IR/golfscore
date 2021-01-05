@@ -1,12 +1,17 @@
 class ArchivesController < ApplicationController
   def index
-    @scores = Score.all
-    @score = Score.where(:user_id => current_user).distinct
-                  .pluck(:course, :user_id, :round_id, :created_at )
-    @score_sum = Score.where(:user_id => current_user)
-                      .group(:round_id).sum(:hole_score)
-    @score_ave = Score.where(:user_id => current_user)
-                      .average(:hole_score)
+    @finished_round_score =  Score.where(user_id: current_user.id)
+    @sum_score = Score.where(user_id: current_user.id)
+                      .group(:id)
+                      .select (:hole1_score.to_s + :hole2_score.to_s)
+
+    # @scores = Score.all
+    # @score = Score.where(:user_id => current_user).distinct
+    #               .pluck(:course, :user_id, :created_at )
+    # @score_sum = Score.where(:user_id => current_user)
+    #                   .sum(:hole_score)
+    # @score_ave = Score.where(:user_id => current_user)
+    #                   .average(:hole_score)
   end
 
   def show
