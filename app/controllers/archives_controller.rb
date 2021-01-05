@@ -1,38 +1,54 @@
 class ArchivesController < ApplicationController
   def index
-    @finished_round_score =  Score.where(user_id: current_user.id)
-    @sum_score = Score.where(user_id: current_user.id)
-                      .group(:id)
-                      .select (:hole1_score.to_s + :hole2_score.to_s)
-
-    # @scores = Score.all
-    # @score = Score.where(:user_id => current_user).distinct
-    #               .pluck(:course, :user_id, :created_at )
-    # @score_sum = Score.where(:user_id => current_user)
-    #                   .sum(:hole_score)
-    # @score_ave = Score.where(:user_id => current_user)
-    #                   .average(:hole_score)
+    @scores =  Score.where(user_id: current_user.id).includes([:user]).includes([:golfcourse])
   end
 
   def show
-    @coursename = params[:round_id]
-    @score_card_score = Score.where(:round_id => params[:round_id]) #ホールごとのスコアを取得
-    @score_card_course = Score.where(:round_id => params[:round_id]).first #ラウンドしたコース、日付を取得
-    @score_sum = Score.where(:round_id => params[:round_id]).sum(:hole_score)
-    @score_ave = Score.where(:user_id => params[:id]).average(:hole_score)
+    @score = Score.find(params[:id])
   end
 
   def edit
-    @coursename = params[:round_id]
-    @score_card_score = Score.where(:round_id => params[:round_id]) #ホールごとのスコアを取得
-    @score_card_course = Score.where(:round_id => params[:round_id]).first #ラウンドしたコース、日付を取得
-    @score_sum = Score.where(:round_id => params[:round_id]).sum(:hole_score)
+    @score = Score.find(params[:id])
   end
 
-  def edit_score
-    @hole_number = params[:hole_number]
-    @round_id = params[:round_id]
-    @score = Score.find_by(:round_id => params[:round_id], :hole_number => params[:hole_number])
+  def update
+    @score = Score.find(params[:id])
+    if @score.update( :hole1_score => params[:hole1_score],
+                      :hole2_score => params[:hole2_score],
+                      :hole3_score => params[:hole3_score],
+                      :hole4_score => params[:hole4_score],
+                      :hole5_score => params[:hole5_score],
+                      :hole6_score => params[:hole6_score],
+                      :hole7_score => params[:hole7_score],
+                      :hole8_score => params[:hole8_score],
+                      :hole9_score => params[:hole9_score],
+                      :hole10_score => params[:hole10_score],
+                      :hole11_score => params[:hole11_score],
+                      :hole12_score => params[:hole12_score],
+                      :hole13_score => params[:hole13_score],
+                      :hole14_score => params[:hole14_score],
+                      :hole15_score => params[:hole15_score],
+                      :hole16_score => params[:hole16_score],
+                      :hole17_score => params[:hole17_score],
+                      :hole18_score => params[:hole18_score],
+                    
+                    
+                    )
+      flash[:edit_success] = 'スコアが編集されました'
+      redirect_to archives_show_path
+    else
+      flash.now[:danger] = 'スコアが編集されませんでした'
+      render 'archives/show'
+    end
+    # @score = Score.find(params[:id])
+
+    # if @score.update(hole1_score: params[:hole1_score])
+    #   flash[:success] = 'score は正常に更新されました'
+    #   redirect_to archives_show_path
+    # else
+    #   flash.now[:danger] = 'score は更新されませんでした'
+    #   render :edit
+    # end
   end
 
   def hole_score_edit
@@ -41,16 +57,16 @@ class ArchivesController < ApplicationController
   def create
   end
 
-  def update
-    @score = Score.find_by(:round_id => params[:round_id], :hole_number => params[:hole_number])
-    if @score.update(:hole_score => params[:hoge])
-      flash[:edit_success] = 'スコアが編集されました'
-      redirect_to scorecard_edit_path(:round_id => params[:round_id])
-    else
-      flash.now[:danger] = 'スコアが編集されませんでした'
-      render 'archives/show'
-    end
-  end
+  # def update
+  #   @score = Score.find_by(:round_id => params[:round_id], :hole_number => params[:hole_number])
+  #   if @score.update(:hole_score => params[:hoge])
+  #     flash[:edit_success] = 'スコアが編集されました'
+  #     redirect_to scorecard_edit_path(:round_id => params[:round_id])
+  #   else
+  #     flash.now[:danger] = 'スコアが編集されませんでした'
+  #     render 'archives/show'
+  #   end
+  # end
 
   def destroy_score_card
     @score = Score.where(:round_id => params[:round_id])

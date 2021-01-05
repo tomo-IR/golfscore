@@ -1,18 +1,50 @@
 <h1>スコアカード</h1>
 
-<p>ラウンドID： <%= @coursename %></p>
-<p> <%= @score_card_score %></p>
-<p>プレイしたコース： <%= @score_card_course.course %></p>
-<p>プレイヤー名： <%= @score_card_course.user.name %></p>
-<p>プレイ日時： <%= @score_card_course.created_at.strftime('%Y/%m/%d') %></p>
-<p>トータルスコア： <%= format('%+d', @score_sum + 72) %></p>
 
-<% @score_card_score.each do |m| %>
-<span> <%= m.hole_number %>H: </span>
+<%#= form_with(model: @score, remote: true) do |f| %>
+  <%#= f.label :hole1_score, '1Hスコア' %>
+  <%#= f.number_field :hole1_score %>
+  <%#= f.submit "編集する" %>
+<%# end %>
+<%= form_with url:archives_update_path do |f| %>
+  <%= f.label :hole1_score, '1H' %>
+  <%= f.number_field :hole1_score, value: @score.hole1_score %><br>
+  <%= f.label :hole2_score, '2H' %>
+  <%= f.number_field :hole2_score, value: @score.hole2_score %><br>
+  <%= f.label :hole3_score, '3H' %>
+  <%= f.number_field :hole3_score, value: @score.hole3_score %><br>
+  <%= f.label :hole4_score, '4H' %>
+  <%= f.number_field :hole4_score, value: @score.hole4_score %><br>
+  <%= f.label :hole5_score, '5H' %>
+  <%= f.number_field :hole5_score, value: @score.hole5_score %><br>
+  <%= f.label :hole6_score, '6H' %>
+  <%= f.number_field :hole6_score, value: @score.hole6_score %><br>
 
-    <span> <%= m.hole_score %> </span>
-
-<span> <%= link_to "編集", edit_hole_score_path(round_id: m.round_id, hole_number: m.hole_number) %> </span><br>
+  <%= f.label :hole7_score, '7H' %>
+  <%= f.number_field :hole7_score, value: @score.hole7_score %><br>
+  <%= f.label :hole8_score, '8H' %>
+  <%= f.number_field :hole8_score, value: @score.hole8_score %><br>
+  <%= f.label :hole9_score, '9H' %>
+  <%= f.number_field :hole9_score, value: @score.hole9_score %><br>
+  <%= f.label :hole10_score, '10H' %>
+  <%= f.number_field :hole10_score, value: @score.hole10_score %><br>
+  <%= f.label :hole11_score, '11H' %>
+  <%= f.number_field :hole11_score, value: @score.hole11_score %><br>
+  <%= f.label :hole12_score, '12H' %>
+  <%= f.number_field :hole12_score, value: @score.hole12_score %><br>
+    <%= f.label :hole13_score, '13H' %>
+  <%= f.number_field :hole13_score, value: @score.hole13_score %><br>
+  <%= f.label :hole14_score, '14H' %>
+  <%= f.number_field :hole14_score, value: @score.hole14_score %><br>
+  <%= f.label :hole15_score, '15H' %>
+  <%= f.number_field :hole15_score, value: @score.hole15_score %><br>
+  <%= f.label :hole16_score, '16H' %>
+  <%= f.number_field :hole16_score, value: @score.hole16_score %><br>
+  <%= f.label :hole17_score, '17H' %>
+  <%= f.number_field :hole17_score, value: @score.hole17_score %><br>
+  <%= f.label :hole18_score, '18H' %>
+  <%= f.number_field :hole18_score, value: @score.hole18_score %><br>
+  <%= f.submit "編集する" %>
 <% end %>
 
 

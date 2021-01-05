@@ -11,18 +11,9 @@ class UsersController < ApplicationController
 
   def show
     @user  = User.find(params[:id])
-    @score = Score.where(:user_id => params[:id])
-                  .distinct
-                  .pluck(:course, :user_id, :round_id, :created_at)
-    @score_course = Score.where(:user_id => params[:id])
-                         .distinct
-                         .pluck(:course, :user_id, :round_id, :created_at)
-                         .first
-    @score_sum = Score.where(:user_id => params[:id])
-                      .group(:round_id)
-                      .sum(:hole_score)
-    @score_ave = Score.where(:user_id => params[:id])
-                      .average(:hole_score)
+
+
+
 
   end
   def scorecard

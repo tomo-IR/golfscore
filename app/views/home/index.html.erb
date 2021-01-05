@@ -13,15 +13,15 @@
 </div>
 
 <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
-  <%= link_to "ラウンドする", select_course_path %><br />
+  <%#= link_to "ラウンドする", select_course_path %><br />
   <%= link_to "掲示板を覗く", messages_index_path %><br />
   <%= link_to "過去のスコアを見る", archives_index_path %><br />
   <%= link_to "プレイヤー検索", user_index_path %><br />
   <%= link_to "マイページ", mypage_path %><br />
-  <%= link_to "ゴルフ場検索", golfcourses_search_path %>
+  <%= link_to "ゴルフ場検索", golfcourses_search_path %><br />
 
 <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
-  <%= link_to "ラウンドする", select_course_path %><br />
+  <%#= link_to "ラウンドする", select_course_path %><br />
   <%= link_to "掲示板を覗く", messages_index_path %><br />
   <%= link_to "プレイヤー検索", user_index_path %><br />
   <%= link_to "ゴルフ場検索", golfcourses_search_path %><br />
@@ -47,4 +47,4 @@
   <span>ログアウト中だから、何も表示しないよ</span>
 <% end %>
 
-<%= render 'layouts/hoge' %>
+<%#= render 'layouts/hoge' %>

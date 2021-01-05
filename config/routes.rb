@@ -24,8 +24,12 @@ Rails.application.routes.draw do
 
   #◇「過去のスコアを見る」まわりのルーティング
   get "/archives",:to => 'archives#index' ,:as => "archives_index"
-  get "archives/show/:round_id",:to => 'archives#show' ,:as => 'score_card'
-  get "archives/edit/:round_id",:to => 'archives#edit' ,:as => 'scorecard_edit'
+  get 'archives/:id', to: 'archives#show' ,:as => "archives_show"
+  get 'archives/:id/edit', to: 'archives#edit' ,:as => "archives_edit"
+  post 'archives/:id', to: 'archives#update' ,:as => "archives_update"
+  # get "archives/show/:round_id",:to => 'archives#show' ,:as => 'score_card'
+  # get "archives/edit/:round_id",:to => 'archives#edit' ,:as => 'scorecard_edit'
+
   get "archives/edit/:round_id/:hole_number",:to => 'archives#edit_score' ,:as => 'edit_hole_score'
   get "archives/edit_score/:round_id/:hole_number",:to => 'archives#hole_score_edit' ,:as => 'score_update'  
   post "archives/edit/:round_id/:hole_number",:to => 'archives#update' ,:as => 'hole_score_update'

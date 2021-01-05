@@ -18,11 +18,6 @@
 
 <h2>ラウンド結果</h2>
 
-<% @score.zip(@score_sum) do |a,b| %>
-	<%= link_to a[0], user_scorecard_path(round_id: a[2], id: params[:id]) %>	
-	<%= a[3].strftime('%Y年%-m月%-d日(%a)') %>
-	<%= format('%+d', b[1] ) %><br>
 
-<% end %>
 
 <%= link_to "トップにもどる", root_path %>

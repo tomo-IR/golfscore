@@ -1,20 +1,46 @@
 <h1>スコアカード</h1>
 
-<p>ラウンドID： <%= @coursename %></p>
-<p> <%= @score_card_score %></p>
-<p>プレイしたコース： <%= @score_card_course.course %></p>
-<p>プレイヤー名： <%= @score_card_course.user.name %></p>
-<p>プレイ日時： <%= @score_card_course.created_at.strftime('%Y/%m/%d') %></p>
-<p>トータルスコア： <%= format('%+d', @score_sum + 72) %></p>
- 
-<% @score_card_score.each do |m| %>
-<span> <%= m.hole_number %>H: </span>
+<p>プレイしたコース： <%= @score.golfcourse.golfcoursename %></p>
+<p>プレイ日時： <%= @score.played_date %></p>
+<p>トータルスコア： <%= format('%+d', @score.hole1_score + 
+                                    @score.hole2_score +
+                                    @score.hole3_score +
+                                    @score.hole4_score +
+                                    @score.hole5_score +
+                                    @score.hole6_score +
+                                    @score.hole7_score +
+                                    @score.hole8_score +
+                                    @score.hole9_score +
+                                    @score.hole10_score +
+                                    @score.hole11_score +
+                                    @score.hole12_score +
+                                    @score.hole13_score +
+                                    @score.hole14_score +
+                                    @score.hole15_score +
+                                    @score.hole16_score +
+                                    @score.hole17_score +
+                                    @score.hole18_score )%>
 
-    <span> <%= m.hole_score %> </span><br>
+<p>1H： <%= format('%+d', @score.hole1_score) %></p>
+<p>2H： <%= format('%+d', @score.hole2_score) %></p>
+<p>3H： <%= format('%+d', @score.hole3_score) %></p>
+<p>4H： <%= format('%+d', @score.hole4_score) %></p>
+<p>5H： <%= format('%+d', @score.hole5_score) %></p>
+<p>6H： <%= format('%+d', @score.hole6_score) %></p>
+<p>7H： <%= format('%+d', @score.hole7_score) %></p>
+<p>8H： <%= format('%+d', @score.hole8_score) %></p>
+<p>9H： <%= format('%+d', @score.hole9_score) %></p>
+<p>10H： <%= format('%+d', @score.hole10_score) %></p>
+<p>11H： <%= format('%+d', @score.hole11_score) %></p>
+<p>12H： <%= format('%+d', @score.hole12_score) %></p>
+<p>13H： <%= format('%+d', @score.hole13_score) %></p>
+<p>14H： <%= format('%+d', @score.hole14_score) %></p>
+<p>15H： <%= format('%+d', @score.hole15_score) %></p>
+<p>16H： <%= format('%+d', @score.hole16_score) %></p>
+<p>17H： <%= format('%+d', @score.hole17_score) %></p>
+<p>18H： <%= format('%+d', @score.hole18_score) %></p>
 
-<% end %>
+  <span><%= link_to "このラウンドのスコアを編集する", archives_edit_path %> </span><br>
+  <span><%#= link_to "このラウンドのスコアを削除する", hole_score_delete_path, data: { confirm: '本当に削除してよろしいですか？' } %> </span><br>
 
-  <span><%= link_to "このラウンドのスコアを編集する", scorecard_edit_path %> </span><br>
-  <span><%= link_to "このラウンドのスコアを削除する", hole_score_delete_path, data: { confirm: '本当に削除してよろしいですか？' } %> </span><br>
-
-<%= link_to "トップにもどる", root_path %>
+<%#= link_to "トップにもどる", root_path %>

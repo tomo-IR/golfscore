@@ -1,14 +1,34 @@
 <h1>過去のスコアをみれます。</h1>
-
-<% @finished_round_score.each do|score|%>
+<div>
+<% @scores.each do|score|%>
+<div>
   <%= score.user.name %><br>
   <%= score.golfcourse.golfcoursename %><br>
   <%= score.played_date %><br>
+  <%= format('%+d', score.hole1_score + 
+                    score.hole2_score +
+                    score.hole3_score +
+                    score.hole4_score +
+                    score.hole5_score +
+                    score.hole6_score +
+                    score.hole7_score +
+                    score.hole8_score +
+                    score.hole9_score +
+                    score.hole10_score +
+                    score.hole11_score +
+                    score.hole12_score +
+                    score.hole13_score +
+                    score.hole14_score +
+                    score.hole15_score +
+                    score.hole16_score +
+                    score.hole17_score +
+                    score.hole18_score )
+  %><br>
+  <%= link_to "スコア詳細", archives_show_path(id: score.id) %>
+  </div>
 
-<% end %>
-<% @sum_score.each do|score|%>
-  <%= score %><br>
-<% end %>
+  <% end %>
+</div>
 
 
 <%# link_to c[0] ,score_card_path(round_id: c[2]) %>
