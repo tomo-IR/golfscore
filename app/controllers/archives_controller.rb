@@ -30,25 +30,13 @@ class ArchivesController < ApplicationController
                       :hole15_score => params[:hole15_score],
                       :hole16_score => params[:hole16_score],
                       :hole17_score => params[:hole17_score],
-                      :hole18_score => params[:hole18_score],
-                    
-                    
-                    )
+                      :hole18_score => params[:hole18_score],)
       flash[:edit_success] = 'スコアが編集されました'
       redirect_to archives_show_path
     else
       flash.now[:danger] = 'スコアが編集されませんでした'
       render 'archives/show'
     end
-    # @score = Score.find(params[:id])
-
-    # if @score.update(hole1_score: params[:hole1_score])
-    #   flash[:success] = 'score は正常に更新されました'
-    #   redirect_to archives_show_path
-    # else
-    #   flash.now[:danger] = 'score は更新されませんでした'
-    #   render :edit
-    # end
   end
 
   def hole_score_edit
@@ -57,21 +45,16 @@ class ArchivesController < ApplicationController
   def create
   end
 
-  # def update
-  #   @score = Score.find_by(:round_id => params[:round_id], :hole_number => params[:hole_number])
-  #   if @score.update(:hole_score => params[:hoge])
-  #     flash[:edit_success] = 'スコアが編集されました'
-  #     redirect_to scorecard_edit_path(:round_id => params[:round_id])
-  #   else
-  #     flash.now[:danger] = 'スコアが編集されませんでした'
-  #     render 'archives/show'
-  #   end
-  # end
+  def destroy
+    @score = Score.find(params[:id])
 
-  def destroy_score_card
-    @score = Score.where(:round_id => params[:round_id])
-    @score.delete_all
-    flash[:delete_success] = 'スコアが削除されました'
-    redirect_to archives_index_path
+    if @score.destroy
+      flash[:delete_success] = 'スコアが削除されました'
+      redirect_to root_path
+    else
+      flash[:delete_success] = 'スコアが削除できませんでした'
+      redirect_to root_path
+    end  
+
   end
 end

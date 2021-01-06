@@ -1,13 +1,19 @@
+<h1>投稿詳細ページ</h1>
+<h3><%= @message.user.name %>さんの投稿</h3>
+<h3><%= @message.content %></h3>
+<h3>いいね件数: <%= @message.likes.count %></h3>
+<% if current_user.already_liked?(@message) %>
 
-<h1> <%= @message_course %>の掲示板</h1>
-
-
-<% @messages.each do |m| %>
-<span> <%= link_to m.content, message_show_path(id: m.id) %> </span>
-<span> <%= m.created_at %> </span>
-
-<span> いいねの数<%= m.liked_users.count %>個</span>
-<span>投稿者 <%= m.user.name %> さん</span><br>
+  <%= button_to 'いいねを取り消す', {controller: 'likes', action: 'destroy'}, {method: :delete } %>
+  
+<% else %>
+<form action="/likes" method="post">
+<%= link_to 'いいね', likes_path(@post) %>
+</form>
+<% end %>
+<h2>いいねしたユーザー</h2>
+<% @message.liked_users.each do |user| %>
+  <li><%= user.name %></li>
 <% end %>
 
-<%= link_to "トップにもどる", root_path %>
+<%= link_to "ホームへ戻る", root_path %>

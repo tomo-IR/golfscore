@@ -1,22 +1,20 @@
 <h1>コースごとの掲示板を覗けます</h1>
 
+
 <h2>全てのメッセージ</h2>
 <div>
 <% @messages.each do |m| %>
   <span><%= m.content %> </span>
-  <span>@<%= m.course %> </span>
-  <span>@<%= m.user.name %> </span>
-  <span>投稿日時：<%= m.updated_at %> </span><br>
+  <span>@<%= m.golfcourse.golfcoursename %> </span>
+  <span>by<%= m.user.name %> </span>
+  <span>投稿日時：<%= m.created_at %> </span><br>
   <% end %>
   </div>
 
   <h2>コース毎のメッセージ</h2>
 <div>
 <% @every_course.each do |c| %>
-  <span><%= link_to c, every_course_message_path(course: c) %> </span><br>
+  <span><%= link_to c, messages_index_course_path(golfcourse_id: c) %> </span><br>
   <% end %>
 </div>
-
-<%= link_to "トップにもどる", root_path %>
-
 

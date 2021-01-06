@@ -23,22 +23,23 @@ Rails.application.routes.draw do
 
 
   #◇「過去のスコアを見る」まわりのルーティング
-  get "/archives",:to => 'archives#index' ,:as => "archives_index"
+  get "archives",:to => 'archives#index' ,:as => "archives_index"
   get 'archives/:id', to: 'archives#show' ,:as => "archives_show"
   get 'archives/:id/edit', to: 'archives#edit' ,:as => "archives_edit"
   post 'archives/:id', to: 'archives#update' ,:as => "archives_update"
+  delete "archives/:id",:to => 'archives#destroy' ,:as => "archives_destroy"
   # get "archives/show/:round_id",:to => 'archives#show' ,:as => 'score_card'
   # get "archives/edit/:round_id",:to => 'archives#edit' ,:as => 'scorecard_edit'
 
-  get "archives/edit/:round_id/:hole_number",:to => 'archives#edit_score' ,:as => 'edit_hole_score'
-  get "archives/edit_score/:round_id/:hole_number",:to => 'archives#hole_score_edit' ,:as => 'score_update'  
-  post "archives/edit/:round_id/:hole_number",:to => 'archives#update' ,:as => 'hole_score_update'
-  get "/archives/:round_id",:to => 'archives#destroy_score_card' ,:as => "hole_score_delete"
+  # get "archives/edit/:round_id/:hole_number",:to => 'archives#edit_score' ,:as => 'edit_hole_score'
+  # get "archives/edit_score/:round_id/:hole_number",:to => 'archives#hole_score_edit' ,:as => 'score_update'  
+  # post "archives/edit/:round_id/:hole_number",:to => 'archives#update' ,:as => 'hole_score_update'
+
 
   #◇「掲示板を覗く」まわりのルーティング
-  get "/messages/index",:to => 'messages#index'
-  get '/messages/show/:course', :to => 'messages#show' ,:as => "every_course_message"
-  get '/messages/show/:course/:id', :to => 'messages#show_message' ,:as => "message_show"
+  get "/messages/index",:to => 'messages#index' ,:as => 'messages_index'
+  get '/messages/index/:golfcourse_id', :to => 'messages#index_course' ,:as => 'messages_index_course'
+  get '/messages/show/:golfcourse_id', :to => 'messages#show' ,:as => 'messages_show'
   
   resources :likes, :only => [:create, :destroy]
   

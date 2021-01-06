@@ -39,8 +39,8 @@
 <p>16H： <%= format('%+d', @score.hole16_score) %></p>
 <p>17H： <%= format('%+d', @score.hole17_score) %></p>
 <p>18H： <%= format('%+d', @score.hole18_score) %></p>
-
+<% if  current_user.id == @score.user.id %>
   <span><%= link_to "このラウンドのスコアを編集する", archives_edit_path %> </span><br>
-  <span><%#= link_to "このラウンドのスコアを削除する", hole_score_delete_path, data: { confirm: '本当に削除してよろしいですか？' } %> </span><br>
-
+  <span><%= link_to "このラウンドのスコアを削除する", archives_destroy_path, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %> </span><br>
+<% end %>
 <%#= link_to "トップにもどる", root_path %>
