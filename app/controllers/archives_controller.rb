@@ -1,18 +1,16 @@
 class ArchivesController < ApplicationController
+  before_action :set_score, only: %i(show edit update destroy)
   def index
     @scores =  Score.where(user_id: current_user.id).includes([:user]).includes([:golfcourse])
   end
 
   def show
-    @score = Score.find(params[:id])
   end
 
   def edit
-    @score = Score.find(params[:id])
   end
 
   def update
-    @score = Score.find(params[:id])
     if @score.update( :hole1_score => params[:hole1_score],
                       :hole2_score => params[:hole2_score],
                       :hole3_score => params[:hole3_score],
@@ -46,15 +44,31 @@ class ArchivesController < ApplicationController
   end
 
   def destroy
-    @score = Score.find(params[:id])
-
     if @score.destroy
       flash[:delete_success] = 'スコアが削除されました'
       redirect_to root_path
     else
       flash[:delete_success] = 'スコアが削除できませんでした'
       redirect_to root_path
-    end  
+    end 
+    def score_published
+      @score = Score.find(params[:id])
+      if @score.published == 1
+        @score.update(:published => 0)
+        flash[:edit_success] = 'このラウンドのスコアを非公開にしました。'
+        redirect_to archives_index_path
 
+      else
+        @score.update(:published => 1)
+        flash[:edit_success] = 'このラウンドのスコアを公開しました。'
+        redirect_to archives_index_path
+
+      end
+    end 
+  end
+  private
+
+  def set_score
+    @score = Score.find(params[:id])
   end
 end

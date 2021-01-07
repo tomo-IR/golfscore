@@ -25,6 +25,7 @@ gem 'kaminari'
 gem 'bullet', :group => :development
 gem 'parser', '>= 2.7.1.5'
 gem 'whenever', require: false
+gem 'active_decorator'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

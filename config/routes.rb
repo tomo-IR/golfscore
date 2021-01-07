@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   get 'archives/:id/edit', to: 'archives#edit' ,:as => "archives_edit"
   post 'archives/:id', to: 'archives#update' ,:as => "archives_update"
   delete "archives/:id",:to => 'archives#destroy' ,:as => "archives_destroy"
+  post 'archives/:score_id', to: 'archives#score_published' ,:as => "archives_score_published"
+  
   # get "archives/show/:round_id",:to => 'archives#show' ,:as => 'score_card'
   # get "archives/edit/:round_id",:to => 'archives#edit' ,:as => 'scorecard_edit'
 

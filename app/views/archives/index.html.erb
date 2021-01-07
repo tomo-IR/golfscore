@@ -1,48 +1,14 @@
 <h1>過去のスコアをみれます。</h1>
 <div>
-<% @scores.each do|score|%>
-<div>
-  <%= score.user.name %><br>
-  <%= score.golfcourse.golfcoursename %><br>
-  <%= score.played_date %><br>
-  <%= format('%+d', score.hole1_score + 
-                    score.hole2_score +
-                    score.hole3_score +
-                    score.hole4_score +
-                    score.hole5_score +
-                    score.hole6_score +
-                    score.hole7_score +
-                    score.hole8_score +
-                    score.hole9_score +
-                    score.hole10_score +
-                    score.hole11_score +
-                    score.hole12_score +
-                    score.hole13_score +
-                    score.hole14_score +
-                    score.hole15_score +
-                    score.hole16_score +
-                    score.hole17_score +
-                    score.hole18_score )
-  %><br>
-  <%= link_to "スコア詳細", archives_show_path(id: score.id) %>
-  </div>
-
+  <% @scores.each do|score|%>
+    <div>
+      <%= score.user.name %><br>
+      <%= score.golfcourse.golfcoursename %><br>
+      <%= score.played_date %><br>
+      <%= score.total_score %><br>
+      <%= link_to "スコア詳細", archives_show_path(id: score.id) %>
+    </div>
   <% end %>
 </div>
 
-
-<%# link_to c[0] ,score_card_path(round_id: c[2]) %>
-
-<%# <h2>平均スコア</h2> %>
-<%# x = @score_sum %>
-<%# 平均スコア：= sprintf("%.2f", x.values.inject(:+) / x.values.length.to_f)<br> %>
-<%# ベストスコア：=  x.values.min<br> %>
-
-<%# @score.zip(@score_sum) do |a,b| %>
-	<%#= link_to a[0], score_card_path(round_id: a[2]) %>	
-	<%#= a[3].strftime('%Y年%-m月%-d日(%a)') %>
-	<%#= format('%+d', b[1] ) %><br>
-<%# end %>
-<%#= link_to "トップにもどる", root_path %>
-<br>
 

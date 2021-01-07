@@ -2,24 +2,9 @@
 
 <p>プレイしたコース： <%= @score.golfcourse.golfcoursename %></p>
 <p>プレイ日時： <%= @score.played_date %></p>
-<p>トータルスコア： <%= format('%+d', @score.hole1_score + 
-                                    @score.hole2_score +
-                                    @score.hole3_score +
-                                    @score.hole4_score +
-                                    @score.hole5_score +
-                                    @score.hole6_score +
-                                    @score.hole7_score +
-                                    @score.hole8_score +
-                                    @score.hole9_score +
-                                    @score.hole10_score +
-                                    @score.hole11_score +
-                                    @score.hole12_score +
-                                    @score.hole13_score +
-                                    @score.hole14_score +
-                                    @score.hole15_score +
-                                    @score.hole16_score +
-                                    @score.hole17_score +
-                                    @score.hole18_score )%>
+<p>トータルスコア： <%= @score.total_score%></p>
+<%= @score.published %><br>
+
 
 <p>1H： <%= format('%+d', @score.hole1_score) %></p>
 <p>2H： <%= format('%+d', @score.hole2_score) %></p>
@@ -39,8 +24,10 @@
 <p>16H： <%= format('%+d', @score.hole16_score) %></p>
 <p>17H： <%= format('%+d', @score.hole17_score) %></p>
 <p>18H： <%= format('%+d', @score.hole18_score) %></p>
+<span><%= link_to "ラウンド一覧に戻る", archives_index_path %> </span><br>
+  <span><%= link_to "このラウンドのスコアを非公開にする", archives_score_published_path(score_id: params[:id]), method: :post %> </span><br>
+
 <% if  current_user.id == @score.user.id %>
   <span><%= link_to "このラウンドのスコアを編集する", archives_edit_path %> </span><br>
   <span><%= link_to "このラウンドのスコアを削除する", archives_destroy_path, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %> </span><br>
 <% end %>
-<%#= link_to "トップにもどる", root_path %>

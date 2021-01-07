@@ -8,45 +8,26 @@
 <% end %>
 
 <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
-    <%= render 'follow_form' %>
-    <%= render 'stats' %>
+  <%= render 'follow_form' %>
+  <%= render 'stats' %>
 <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
-    <%= render 'stats' %>
-    <span>※ゲストユーザーは、フォロー機能を使用できません。</span>
+  <%= render 'stats' %>
+  <span>※ゲストユーザーは、フォロー機能を使用できません。</span>
 <% end %>
 
 
 <h2>ラウンド結果</h2>
 <div>
-<% @score.each do|score|%>
-<div>
-  <%= score.user.name %><br>
-  <%= score.golfcourse.golfcoursename %><br>
-  <%= score.played_date %><br>
-  <%= format('%+d', score.hole1_score + 
-                    score.hole2_score +
-                    score.hole3_score +
-                    score.hole4_score +
-                    score.hole5_score +
-                    score.hole6_score +
-                    score.hole7_score +
-                    score.hole8_score +
-                    score.hole9_score +
-                    score.hole10_score +
-                    score.hole11_score +
-                    score.hole12_score +
-                    score.hole13_score +
-                    score.hole14_score +
-                    score.hole15_score +
-                    score.hole16_score +
-                    score.hole17_score +
-                    score.hole18_score )
-  %><br>
-    <%= link_to "スコア詳細", archives_show_path(id: score.id) %>
-
-  
-  </div>
-
+  <% @score.each do|score|%>
+    <% if score.published == 1 %>
+      <div>
+        <%= score.user.name %><br>
+        <%= score.golfcourse.golfcoursename %><br>
+        <%= score.played_date %><br>
+        <%= score.total_score %><br>
+        <%= link_to "スコア詳細", archives_show_path(id: score.id) %>  
+      </div>
+    <% end %>
   <% end %>
 </div>
 
