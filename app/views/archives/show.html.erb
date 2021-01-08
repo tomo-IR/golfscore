@@ -25,7 +25,7 @@
 <p>17H： <%= format('%+d', @score.hole17_score) %></p>
 <p>18H： <%= format('%+d', @score.hole18_score) %></p>
 <span><%= link_to "ラウンド一覧に戻る", archives_index_path %> </span><br>
-  <span><%= link_to "このラウンドのスコアを非公開にする", archives_score_published_path(score_id: params[:id]), method: :post %> </span><br>
+<span><%= link_to "このラウンドのスコアを非公開にする", archives_score_published_path(score_id: params[:id]), method: :post %> </span><br>
 
 <% if  current_user.id == @score.user.id %>
   <span><%= link_to "このラウンドのスコアを編集する", archives_edit_path %> </span><br>

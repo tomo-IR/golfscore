@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user  = User.find(params[:id])
-    @score = @user.scores.includes([:golfcourse])
+    @score = @user.scores#.includes([:golfcourse])
 
 
 

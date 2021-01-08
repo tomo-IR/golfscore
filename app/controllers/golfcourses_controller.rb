@@ -79,33 +79,23 @@ class GolfcoursesController < ApplicationController
           # ゴルフ場の名前がDBに登録されている名前と異なるので更新
         end
       end
-      # json["Items"].each do|name|
-      #   # golfcourse = Golfcourse.new(:golfcoursename => name["Item"]["golfCourseName"],
-      #                               #  :golfcourseid => name["Item"]["golfCourseId"])
-      #   puts "DB側のgolfcourseIDは" + Golfcourse.find_by(golfcourseid: name["Item"]["golfCourseId"]).golfcourseid.to_s
-      #   puts "API側のgolfcourseIDは" + name["Item"]["golfCourseId"].to_s
-        
-      #   puts "DB側のgolfcourseNameは" + Golfcourse.find_by(golfcourseid: name["Item"]["golfCourseId"]).golfcoursename.to_s
-      #   puts "API側のgolfcourseNameは" + name["Item"]["golfCourseName"].to_s
-        
-      #   if (Golfcourse.find_by(golfcourseid: name["Item"]["golfCourseId"]).golfcourseid.to_s == name["Item"]["golfCourseId"].to_s) && (Golfcourse.find_by(golfcourseid: name["Item"]["golfCourseId"]).golfcoursename.to_s == name["Item"]["golfCourseName"].to_s)
-      #     puts "idも存在していて、nameの変更もないので、なにもしません。"
-      #   elsif (Golfcourse.find_by(golfcourseid: name["Item"]["golfCourseId"]).golfcourseid.to_s == name["Item"]["golfCourseId"].to_s) && (Golfcourse.find_by(golfcourseid: name["Item"]["golfCourseId"]).golfcoursename.to_s != name["Item"]["golfCourseName"].to_s)
-      #       puts "idは存在しているが、nameが変更されているので、更新します"
-      #   elsif Golfcourse.find_by(golfcourseid: name["Item"]["golfCourseId"]).golfcourseid.to_s == name["Item"]["golfCourseId"].to_s
-      #     # .create
-      #     puts "idが存在しなかったので、新規保存します"
-      #   end
-
-
-      #   # 保存の処理
-      #   # if golfcourse.save 
-      #   #     # redirect_to root_path
-      #   # else
-      #   #     flash.now[:danger] = '保存できませんでした'
-      #   # end
-
-      # end
     end
   end 
+  def round_start
+    @score = Score.new(new_score_params)
+    if @score.save
+      flash[:success] = 'ラウンド開始！！'
+      redirect_to root_path
+    else
+      flash.now[:danger] = '何かがおかしいです'
+      render :new
+    end
+  end
+
+  private
+
+  def new_score_params
+    params.require(:score).permit(:published, :played_date, :golfcourse_id)
+  end
+
 end

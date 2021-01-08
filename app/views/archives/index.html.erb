@@ -1,13 +1,29 @@
 <h1>過去のスコアをみれます。</h1>
 <div>
+  <h2>完了したラウンド</h2>
   <% @scores.each do|score|%>
-    <div>
-      <%= score.user.name %><br>
-      <%= score.golfcourse.golfcoursename %><br>
-      <%= score.played_date %><br>
-      <%= score.total_score %><br>
-      <%= link_to "スコア詳細", archives_show_path(id: score.id) %>
-    </div>
+    <% if score.status == 1 %>
+      <div>
+        <%= score.user.name %><br>
+        <%= score.golfcourse.golfcoursename %><br>
+        <%= score.played_date %><br>
+        <%= score.total_score %><br>
+        <%= link_to "スコア詳細", archives_show_path(id: score.id) %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <h2>プレイ中のラウンド</h2>
+  <% @scores.each do|score|%>
+    <% if score.status == 0 %>
+      <div>
+        <%= score.user.name %><br>
+        <%= score.golfcourse.golfcoursename %><br>
+        <%= score.played_date %><br>
+        <%= score.total_score %><br>
+        <%= link_to "スコア詳細", archives_show_path(id: score.id) %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 

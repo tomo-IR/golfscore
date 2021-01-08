@@ -3,16 +3,22 @@
 
 
 <p>検索</p>
-<%= form_tag(golfcourses_search_path,:method => 'get', local: true) do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :golfcoursename => nil %>
-<% end %>
-<% @search_golfcoursename.each do |name| %><br>
-	<%= name.golfcoursename %><br>
-	<%= name.address %><br>
-	<%= name.golfcoursecaption %><br>
+<%= form_for (model: @score, local: true) do |f|  do %>
+	<%= form_tag(golfcourses_search_path,:method => 'get', local: true) do %>
+		<%= text_field_tag :search %>
+		<%= submit_tag 'Search', :golfcoursename => nil %>
+	<% end %>
+
+
+	<% @search_golfcoursename.each do |name| %><br>
+		<%= check_box_tag :golfcoursename %>
+		<%= label_tag :golfcoursename, name.golfcoursename %><br>
+		<%= name.address %><br>
+		<%= name.golfcoursecaption %><br>
+	<% end %>
 <% end %>
 <%= paginate @search_golfcoursename %>
+
 
 
 <%# @golfcoursename_all.each do |n| %>
