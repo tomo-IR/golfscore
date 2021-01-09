@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   get 'golfcourses/search', :to => 'golfcourses#search'
   post 'golfcourses/round_start', :to => 'golfcourses#round_start' ,:as => 'round_start'
   get 'golfcourses/play/:id', :to => 'golfcourses#play' ,:as => 'golfcourse_play'
-  # post 'golfcourses/:id', to: 'golfcourses#update' ,:as => 'golfcourses_update'
-
+  post 'golfcourses/:id', to: 'golfcourses#update' ,:as => 'golfcourses_update'
+  post 'golfcourses/finish/:id', to: 'golfcourses#finish' ,:as => 'golfcourses_finish'
 
   #◇「ラウンドする」まわりのルーティング
   get '/rounds/select_course', :to => 'rounds#select_course' ,:as => 'select_course'

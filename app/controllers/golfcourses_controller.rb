@@ -22,19 +22,31 @@ class GolfcoursesController < ApplicationController
   end
 
   def play
-    @score = Score.find_by(id: params[:id])
+    @score = Score.find(params[:id])
+    
+    if @score.update(hole1_score: params[:hole1_score])
+      # flash[:edit_success] = 'スコアが編集されました'
+      # redirect_to golfcourse_play_path
+    else
+      flash.now[:danger] = 'スコアが編集されませんでした'
+      render golfcourse_play_path
+    end
+      
   end
 
+  def finish
+    @score = Score.find(params[:id])
+    @score.status = 1
+    if @score.save
+      flash[:success] = 'ラウンド完了！！'
+      redirect_to root_path
+    else
+      flash.now[:danger] = '何かがおかしいです'
+      render :root_path
+    end
 
-# def update
-#   if @score.update( :hole1_score => params[:hole1_score])
-#     flash[:edit_success] = 'スコアが編集されました'
-#     redirect_to golfcourse_play_path
-#   else
-#     flash.now[:danger] = 'スコアが編集されませんでした'
-#     render golfcourse_play_path
-  
-# end
+  end
+
 
 
 

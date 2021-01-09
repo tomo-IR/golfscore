@@ -1,5 +1,14 @@
 <h1>スコア入力画面</h1>
-<%= @score.id %>
-<%= @score.golfcourse.golfcoursename %>
+<%= @score.id %><br>
+<%= @score.golfcourse.golfcoursename %><br>
+<%= @score.hole1_score %><br>
 
+<%= form_with url:golfcourses_update_path do |f| %>
+  <%= f.label :hole1_score, '1H' %>
+  <%= f.number_field :hole1_score, value: @score.hole1_score %><br>
+  <%= f.submit "編集する" %>
+<% end %>
 
+<% if @score.hole1_score == nil %>
+  <%= link_to "このラウンドを終了する", golfcourses_finish_path, method: :update, data: { confirm: 'ラウンドを終了してよろしいですか？' }  %>
+<% end %>

@@ -5,25 +5,115 @@
 <p>トータルスコア： <%= @score.total_score%></p>
 <%= @score.published %><br>
 
+<% if @score.hole1_score == nil %>
+  <p>1H： 未プレイ </p>
+<% else %>
+  <p>1H： <%= format('%+d', @score.hole1_score) %></p>
+<% end %>
 
-<p>1H： <%= format('%+d', @score.hole1_score) %></p>
-<p>2H： <%= format('%+d', @score.hole2_score) %></p>
-<p>3H： <%= format('%+d', @score.hole3_score) %></p>
-<p>4H： <%= format('%+d', @score.hole4_score) %></p>
-<p>5H： <%= format('%+d', @score.hole5_score) %></p>
-<p>6H： <%= format('%+d', @score.hole6_score) %></p>
-<p>7H： <%= format('%+d', @score.hole7_score) %></p>
-<p>8H： <%= format('%+d', @score.hole8_score) %></p>
-<p>9H： <%= format('%+d', @score.hole9_score) %></p>
-<p>10H： <%= format('%+d', @score.hole10_score) %></p>
-<p>11H： <%= format('%+d', @score.hole11_score) %></p>
-<p>12H： <%= format('%+d', @score.hole12_score) %></p>
-<p>13H： <%= format('%+d', @score.hole13_score) %></p>
-<p>14H： <%= format('%+d', @score.hole14_score) %></p>
-<p>15H： <%= format('%+d', @score.hole15_score) %></p>
-<p>16H： <%= format('%+d', @score.hole16_score) %></p>
-<p>17H： <%= format('%+d', @score.hole17_score) %></p>
-<p>18H： <%= format('%+d', @score.hole18_score) %></p>
+<% if @score.hole2_score == nil %>
+  <p>2H： 未プレイ </p>
+<% else %>
+  <p>2H： <%= format('%+d', @score.hole2_score) %></p>
+<% end %>
+
+<% if @score.hole3_score == nil %>
+  <p>3H： 未プレイ </p>
+<% else %>
+  <p>3H： <%= format('%+d', @score.hole3_score) %></p>
+<% end %>
+
+<% if @score.hole4_score == nil %>
+  <p>4H： 未プレイ </p>
+<% else %>
+  <p>4H： <%= format('%+d', @score.hole4_score) %></p>
+<% end %>
+
+<% if @score.hole5_score == nil %>
+  <p>5H： 未プレイ </p>
+<% else %>
+  <p>5H： <%= format('%+d', @score.hole5_score) %></p>
+<% end %>
+
+<% if @score.hole6_score == nil %>
+  <p>6H： 未プレイ </p>
+<% else %>
+  <p>6H： <%= format('%+d', @score.hole6_score) %></p>
+<% end %>
+
+<% if @score.hole7_score == nil %>
+  <p>7H： 未プレイ </p>
+<% else %>
+  <p>7H： <%= format('%+d', @score.hole7_score) %></p>
+<% end %>
+
+<% if @score.hole8_score == nil %>
+  <p>8H： 未プレイ </p>
+<% else %>
+  <p>8H： <%= format('%+d', @score.hole8_score) %></p>
+<% end %>
+
+<% if @score.hole9_score == nil %>
+  <p>9H： 未プレイ </p>
+<% else %>
+  <p>9H： <%= format('%+d', @score.hole9_score) %></p>
+<% end %>
+
+<% if @score.hole10_score == nil %>
+  <p>10H： 未プレイ </p>
+<% else %>
+  <p>10H： <%= format('%+d', @score.hole10_score) %></p>
+<% end %>
+
+<% if @score.hole11_score == nil %>
+  <p>11H： 未プレイ </p>
+<% else %>
+  <p>11H： <%= format('%+d', @score.hole11_score) %></p>
+<% end %>
+
+<% if @score.hole12_score == nil %>
+  <p>12H： 未プレイ </p>
+<% else %>
+  <p>12H： <%= format('%+d', @score.hole12_score) %></p>
+<% end %>
+
+<% if @score.hole13_score == nil %>
+  <p>13H： 未プレイ </p>
+<% else %>
+  <p>13H： <%= format('%+d', @score.hole13_score) %></p>
+<% end %>
+
+<% if @score.hole14_score == nil %>
+  <p>14H： 未プレイ </p>
+<% else %>
+  <p>14H： <%= format('%+d', @score.hole14_score) %></p>
+<% end %>
+
+<% if @score.hole15_score == nil %>
+  <p>15H： 未プレイ </p>
+<% else %>
+  <p>15H： <%= format('%+d', @score.hole15_score) %></p>
+<% end %>
+
+<% if @score.hole16_score == nil %>
+  <p>16H： 未プレイ </p>
+<% else %>
+  <p>16H： <%= format('%+d', @score.hole16_score) %></p>
+<% end %>
+
+<% if @score.hole17_score == nil %>
+  <p>17H： 未プレイ </p>
+<% else %>
+  <p>17H： <%= format('%+d', @score.hole17_score) %></p>
+<% end %>
+
+<% if @score.hole18_score == nil %>
+  <p>18H： 未プレイ </p>
+<% else %>
+  <p>18H： <%= format('%+d', @score.hole18_score) %></p>
+<% end %>
+
+
 <span><%= link_to "ラウンド一覧に戻る", archives_index_path %> </span><br>
 <span><%= link_to "このラウンドのスコアを非公開にする", archives_score_published_path(score_id: params[:id]), method: :post %> </span><br>
 
