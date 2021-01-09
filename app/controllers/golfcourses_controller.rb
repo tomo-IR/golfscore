@@ -2,10 +2,41 @@ class GolfcoursesController < ApplicationController
 
   def search
     @golfcoursename_all  = Golfcourse.all
-                                         .page(params[:page]).per(10) #ページネーション
+                                      .page(params[:page]).per(10) #ページネーション
     @search_golfcoursename = Golfcourse.search(params[:search])
-                                     .page(params[:page]).per(10) #ページネーション
+                                        .page(params[:page]).per(10) #ページネーション
   end
+
+  def round_start
+    @score = Score.new(new_score_params)
+    @score.user_id = current_user.id
+    @score.status = 0
+    if @score.save
+      flash[:success] = 'ラウンド開始！！'
+      redirect_to golfcourse_play_path(id: @score.id)
+      puts params[:played_date]
+    else
+      flash.now[:danger] = '何かがおかしいです'
+      render :root_path
+    end
+  end
+
+  def play
+    @score = Score.find_by(id: params[:id])
+  end
+
+
+# def update
+#   if @score.update( :hole1_score => params[:hole1_score])
+#     flash[:edit_success] = 'スコアが編集されました'
+#     redirect_to golfcourse_play_path
+#   else
+#     flash.now[:danger] = 'スコアが編集されませんでした'
+#     render golfcourse_play_path
+  
+# end
+
+
 
 
   def get
@@ -81,21 +112,13 @@ class GolfcoursesController < ApplicationController
       end
     end
   end 
-  def round_start
-    @score = Score.new(new_score_params)
-    if @score.save
-      flash[:success] = 'ラウンド開始！！'
-      redirect_to root_path
-    else
-      flash.now[:danger] = '何かがおかしいです'
-      render :new
-    end
-  end
+
 
   private
 
   def new_score_params
-    params.require(:score).permit(:published, :played_date, :golfcourse_id)
+    params.permit(:golfcourse_id, :published, :played_date)
   end
 
 end
+
