@@ -15,10 +15,11 @@
 
 <h1>リーダーボード</h1>
 
-<% @current_course_score.each do|score| %>
+<% @current_course_scores.each do|score| %>
   <%= score.total_score%>
   <%= score.user.name%>プロ<br>
 <% end %>
+
 
 <h1><%= @score.golfcourse.golfcoursename %>のメッセージボード</h1>
 
@@ -27,3 +28,4 @@
   <%= message.user.name%>
   <%= message.created_at%><br>
 <% end %>
+

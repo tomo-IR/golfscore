@@ -36,9 +36,33 @@ class GolfcoursesController < ApplicationController
 
     # リーダーボード関係
     playing_course = Score.find(params[:id])
-    @current_course_score = Score.where(golfcourse_id: playing_course.golfcourse_id)
-                                  .where(played_date: playing_course.played_date) 
-                                  .includes([:user])
+    # scores = Score.where(golfcourse_id: playing_course.golfcourse_id).where(played_date: playing_course.played_date) 
+    # @current_course_score = Score.where(golfcourse_id: playing_course.golfcourse_id)
+                                  # .where(played_date: playing_course.played_date) 
+                                  # .includes([:user])
+    golfcourse_id = playing_course.golfcourse_id
+    played_date = playing_course.played_date
+    current_course_scores = Score.where(golfcourse_id: golfcourse_id, played_date: played_date) .includes([:user])
+    @current_course_scores = current_course_scores.sort_by do |score|
+      score.hole1_score.to_i + 
+      score.hole2_score.to_i + 
+      score.hole3_score.to_i + 
+      score.hole4_score.to_i + 
+      score.hole5_score.to_i + 
+      score.hole6_score.to_i + 
+      score.hole7_score.to_i + 
+      score.hole8_score.to_i + 
+      score.hole9_score.to_i + 
+      score.hole10_score.to_i +
+      score.hole11_score.to_i +
+      score.hole12_score.to_i +
+      score.hole13_score.to_i +
+      score.hole14_score.to_i +
+      score.hole15_score.to_i +
+      score.hole16_score.to_i +
+      score.hole17_score.to_i +
+      score.hole18_score.to_i
+    end
 
     # play_date = Score.where(:round_id => params[:round_id]).first
     # @ou = Score.where(played_date: playing_course.played_date)
@@ -51,7 +75,6 @@ class GolfcoursesController < ApplicationController
 
     # メッセージボード関係
     @current_course_message = Message.where(golfcourse_id: playing_course.golfcourse_id).includes([:user])
-
 
       
   end

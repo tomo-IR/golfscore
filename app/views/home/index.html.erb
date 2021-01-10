@@ -39,7 +39,14 @@
 
 
 <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
-  <h2>プレイ中のラウンド</h2>
+<h2>プレイ中のラウンド</h2>
+<% @unfinshed_score.each do|score| %>
+  <%= score.played_date%>
+  <%= link_to score.golfcourse.golfcoursename, golfcourse_play_path(id: score.id)%>
+  <%= score.total_score%><br>
+<% end %>
+
+
 
 <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
   <span>ゲストログインだから、何も表示しないよ</span>
