@@ -51,21 +51,32 @@ class ArchivesController < ApplicationController
       flash[:delete_success] = 'スコアが削除できませんでした'
       redirect_to root_path
     end 
-    def score_published
-      @score = Score.find(params[:id])
-      if @score.published == 1
-        @score.update(:published => 0)
-        flash[:edit_success] = 'このラウンドのスコアを非公開にしました。'
-        redirect_to archives_index_path
-
-      else
-        @score.update(:published => 1)
-        flash[:edit_success] = 'このラウンドのスコアを公開しました。'
-        redirect_to archives_index_path
-
-      end
-    end 
   end
+
+  def score_published
+    @score = Score.find(params[:id])
+    @score.published = 1
+    if @score.save
+      flash[:edit_success] = 'このラウンドのスコアを公開しました。'
+      redirect_to archives_index_path
+    else
+      flash[:delete_success] = 'このラウンドのスコアを非公開にできませんでした'
+      redirect_to root_path
+    end
+  end
+  
+  def score_unpublished
+    @score = Score.find(params[:id])
+    @score.published = 0
+    if @score.save
+      flash[:edit_success] = 'このラウンドのスコアを非公開にしました。'
+      redirect_to archives_index_path
+    else
+      flash[:delete_success] = 'このラウンドのスコアを公開できませんでした'
+      redirect_to root_path
+    end
+  end
+  
   private
 
   def set_score

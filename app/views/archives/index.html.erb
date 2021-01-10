@@ -8,6 +8,14 @@
         <%= score.golfcourse.golfcoursename %><br>
         <%= score.played_date %><br>
         <%= score.total_score %><br>
+        <% if score.published == 1%>
+          <span>公開</span><br>
+        <% else %>
+          <span>非公開</span><br>
+        <% end %>
+        
+        <%= score.published %><br>
+
         <%= link_to "スコア詳細", archives_show_path(id: score.id) %>
       </div>
     <% end %>

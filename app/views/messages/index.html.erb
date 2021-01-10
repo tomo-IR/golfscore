@@ -13,8 +13,8 @@
 
   <h2>コース毎のメッセージ</h2>
 <div>
-<% @every_course.each do |c| %>
-  <span><%= link_to c, messages_index_course_path(golfcourse_id: c) %> </span><br>
+  <% @every_course.zip(@golfcoursename) do |id,name| %>
+    <span><%= link_to name.golfcoursename, messages_index_course_path(golfcourse_id: id) %> </span><br>
   <% end %>
 </div>
-<%#= @course %>
+

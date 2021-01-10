@@ -12,3 +12,18 @@
 <% if @score.hole1_score == nil %>
   <%= link_to "このラウンドを終了する", golfcourses_finish_path, method: :update, data: { confirm: 'ラウンドを終了してよろしいですか？' }  %>
 <% end %>
+
+<h1>リーダーボード</h1>
+
+<% @current_course_score.each do|score| %>
+  <%= score.total_score%>
+  <%= score.user.name%>プロ<br>
+<% end %>
+
+<h1><%= @score.golfcourse.golfcoursename %>のメッセージボード</h1>
+
+<% @current_course_message.each do|message| %>
+  <%= message.content%>
+  <%= message.user.name%>
+  <%= message.created_at%><br>
+<% end %>

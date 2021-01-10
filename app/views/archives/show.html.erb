@@ -115,7 +115,12 @@
 
 
 <span><%= link_to "ラウンド一覧に戻る", archives_index_path %> </span><br>
-<span><%= link_to "このラウンドのスコアを非公開にする", archives_score_published_path(score_id: params[:id]), method: :post %> </span><br>
+<% if @score.published == 1 %>
+  <span><%= link_to "このラウンドのスコアを非公開にする", archives_score_unpublished_path(score_id: params[:id]), method: :post %> </span><br>
+<% elsif @score.published == 0 %>
+  <span><%= link_to "このラウンドのスコアを公開する", archives_score_published_path(score_id: params[:id]), method: :post %> </span><br>
+<% end %>
+
 
 <% if  current_user.id == @score.user.id %>
   <span><%= link_to "このラウンドのスコアを編集する", archives_edit_path %> </span><br>

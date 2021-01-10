@@ -31,6 +31,28 @@ class GolfcoursesController < ApplicationController
       flash.now[:danger] = 'スコアが編集されませんでした'
       render golfcourse_play_path
     end
+
+
+
+    # リーダーボード関係
+    playing_course = Score.find(params[:id])
+    @current_course_score = Score.where(golfcourse_id: playing_course.golfcourse_id)
+                                  .where(played_date: playing_course.played_date) 
+                                  .includes([:user])
+
+    # play_date = Score.where(:round_id => params[:round_id]).first
+    # @ou = Score.where(played_date: playing_course.played_date)
+    #             .where(golfcourse_id: playing_course.golfcourse_id)
+                
+    #             .group(:id)
+    #             .select("score.total_score as overunder")
+    #             .order("overunder")
+                              
+
+    # メッセージボード関係
+    @current_course_message = Message.where(golfcourse_id: playing_course.golfcourse_id).includes([:user])
+
+
       
   end
 

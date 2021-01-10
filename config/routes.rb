@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get 'home/authentication'
   post '/home/guest_sign_in', :to => 'homes#new_guest'
   
-  
   get 'golfcourses/get', :to => 'golfcourses#get'
   get 'golfcourses/search', :to => 'golfcourses#search'
   post 'golfcourses/round_start', :to => 'golfcourses#round_start' ,:as => 'round_start'
@@ -32,7 +31,8 @@ Rails.application.routes.draw do
   get 'archives/:id/edit', to: 'archives#edit' ,:as => 'archives_edit'
   post 'archives/:id', to: 'archives#update' ,:as => 'archives_update'
   delete 'archives/:id',:to => 'archives#destroy' ,:as => 'archives_destroy'
-  post 'archives/:id', to: 'archives#score_published' ,:as => 'archives_score_published'
+  post 'archives/published/:id', to: 'archives#score_published' ,:as => 'archives_score_published'
+  post 'archives/unpublished/:id', to: 'archives#score_unpublished' ,:as => 'archives_score_unpublished'
   
   # get 'archives/show/:round_id',:to => 'archives#show' ,:as => 'score_card'
   # get 'archives/edit/:round_id',:to => 'archives#edit' ,:as => 'scorecard_edit'
