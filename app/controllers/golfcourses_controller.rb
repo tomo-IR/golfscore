@@ -36,10 +36,6 @@ class GolfcoursesController < ApplicationController
 
     # リーダーボード関係
     playing_course = Score.find(params[:id])
-    # scores = Score.where(golfcourse_id: playing_course.golfcourse_id).where(played_date: playing_course.played_date) 
-    # @current_course_score = Score.where(golfcourse_id: playing_course.golfcourse_id)
-                                  # .where(played_date: playing_course.played_date) 
-                                  # .includes([:user])
     golfcourse_id = playing_course.golfcourse_id
     played_date = playing_course.played_date
     current_course_scores = Score.where(golfcourse_id: golfcourse_id, played_date: played_date) .includes([:user])
