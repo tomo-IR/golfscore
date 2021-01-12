@@ -10,28 +10,33 @@ class GolfcoursesController < ApplicationController
   def round_start
     @score = Score.new(new_score_params)
     @score.user_id = current_user.id
+    @score.created_at = Time.now.all_day
     @score.status = 0
     if @score.save
       flash[:success] = 'ラウンド開始！！'
       redirect_to golfcourse_play_path(id: @score.id)
-      puts params[:played_date]
     else
       flash.now[:danger] = '何かがおかしいです'
       render :root_path
     end
   end
 
+  # def update
+  
+  # end
+  
   def play
     @score = Score.find(params[:id])
     
-    if @score.update(hole1_score: params[:hole1_score])
-      # flash[:edit_success] = 'スコアが編集されました'
-      # redirect_to golfcourse_play_path
-    else
-      flash.now[:danger] = 'スコアが編集されませんでした'
-      render golfcourse_play_path
-    end
+    # if @score.update(hole1_score: params[:hole1_score])
+    #   # flash[:edit_success] = 'スコアが編集されました'
+    #   # redirect_to golfcourse_play_path
+    # else
+    #   flash.now[:danger] = 'スコアが編集されませんでした'
+    #   render golfcourse_play_path
+    # end
 
+   
 
 
     # リーダーボード関係
@@ -60,15 +65,6 @@ class GolfcoursesController < ApplicationController
       score.hole18_score.to_i
     end
 
-    # play_date = Score.where(:round_id => params[:round_id]).first
-    # @ou = Score.where(played_date: playing_course.played_date)
-    #             .where(golfcourse_id: playing_course.golfcourse_id)
-                
-    #             .group(:id)
-    #             .select("score.total_score as overunder")
-    #             .order("overunder")
-                              
-
     # メッセージボード関係
     @current_course_message = Message.where(golfcourse_id: playing_course.golfcourse_id).includes([:user])
 
@@ -85,12 +81,24 @@ class GolfcoursesController < ApplicationController
       flash.now[:danger] = '何かがおかしいです'
       render :root_path
     end
-
   end
 
+  def message_create
+		@message = Message.new(message_params)
+		
+		playing_course = Score.find(params[:id])
+    golfcourse_id = playing_course.golfcourse_id
+    @message.golfcourse_id = golfcourse_id
+		@message.user_id = current_user.id
 
-
-
+		if @message.save
+			flash[:edit_success] = 'メッサージを投稿しました'
+			redirect_to root_path
+		else
+			flash[:edit_success] = 'メッサージを投稿できませんでした'
+			render root_path
+		end
+	end
 
   def get
     require 'net/http'
@@ -170,7 +178,11 @@ class GolfcoursesController < ApplicationController
   private
 
   def new_score_params
-    params.permit(:golfcourse_id, :published, :played_date)
+    params.permit(:golfcourse_id, :published, :played_date, :start_hole)
+  end
+
+  def message_params
+    params.require(:message).permit(:content)
   end
 
 end

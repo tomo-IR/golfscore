@@ -72,8 +72,8 @@ class ArchivesController < ApplicationController
       flash[:edit_success] = 'このラウンドのスコアを非公開にしました。'
       redirect_to archives_index_path
     else
-      flash[:delete_success] = 'このラウンドのスコアを公開できませんでした'
-      redirect_to root_path
+      flash[:edit_success] = 'このラウンドのスコアを非公開にしました。'
+      render root_path
     end
   end
   

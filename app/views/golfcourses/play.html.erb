@@ -3,24 +3,24 @@
 <%= @score.golfcourse.golfcoursename %><br>
 <%= @score.hole1_score %><br>
 
-<%= form_with url:golfcourses_update_path do |f| %>
-  <%= f.label :hole1_score, '1H' %>
-  <%= f.number_field :hole1_score, value: @score.hole1_score %><br>
-  <%= f.submit "編集する" %>
-<% end %>
+<%#= form_with url:golfcourses_update_path do |f| %>
+  <%#= f.label :hole1_score, '1H' %>
+  <%#= f.number_field :hole1_score, value: @score.hole1_score %><br>
+  <%#= f.submit "編集する" %>
+<%# end %>
 
 <% if @score.hole1_score == nil %>
   <%= link_to "このラウンドを終了する", golfcourses_finish_path, method: :update, data: { confirm: 'ラウンドを終了してよろしいですか？' }  %>
 <% end %>
 
 <h1>リーダーボード</h1>
-
 <table>
   <tr>
     <th>rank</th>
     <th>name</th>
     <th>score</th>
     <th>THRU</th>
+    <th>start_hole</th>
   </tr>
   <% s = 0 %>
   <% j = 1 %>
@@ -34,30 +34,30 @@
         <th><%= j %></th>
         <th><%= score.user.name %></th>
         <th><%= score.total_score %></th>
+        <% if score.start_hole == 10 %>
+          <th>*</th>
+        <% end %>
         <% s = score.total_score %>
       <% else %>
         <% s = score.total_score %>
         <th><%= j %></th>
         <th><%= score.user.name %></th>
         <th><%= score.total_score %></th>
+        <% if score.start_hole == 10 %>
+          <th>*</th>
+        <% end %>
       <% end %>
     </tr>
   <% end %>
 </table>
-
-
-<%# if score.overunder == @ou[i - 1].overunder || score.overunder == @ou[(i + 1)%@ou.size].overunder %> 
-  <%# post_fix = "T" %>
-<%# else %>
-  <%# post_fix = "" %>
-<%# end %>
-
-<%# order = i + 1 unless score.overunder == @ou[i - 1].overunder %>
-
-
+<p>*は10Hスタート</p>
 
 
 <h1><%= @score.golfcourse.golfcoursename %>のメッセージボード</h1>
+
+
+
+
 
 <% @current_course_message.each do|message| %>
   <%= message.content%>
@@ -65,3 +65,9 @@
   <%= message.created_at%><br>
 <% end %>
 
+
+<%= form_with model: @message do |f| %>
+	<%= f.label :content, "メッセージ" %>
+	<%= f.text_field :content %><br>
+	<%= f.submit 'メッセージを送信する' %>
+<% end %>

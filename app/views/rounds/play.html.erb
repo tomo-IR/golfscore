@@ -41,7 +41,6 @@
           <th>THRU</th>
         </tr>
       <% @ou.each.with_index do |score,i| %>
-
       <% if score.overunder == @ou[i - 1].overunder || score.overunder == @ou[(i + 1)%@ou.size].overunder %> 
         <% post_fix = "T" %>
       <% else %>
@@ -49,10 +48,8 @@
       <% end %>
       <% order = i + 1 unless score.overunder == @ou[i - 1].overunder %>
       <tr>
-       <th><%= format('%d位%s', order,post_fix) %></th>  
-      <th><%= format('%+d', score.overunder) %></th>  
-      
-      
+        <th><%= format('%d位%s', order,post_fix) %></th>  
+        <th><%= format('%+d', score.overunder) %></th>  
       </tr>
   <% end %>
 </table>

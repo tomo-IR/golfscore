@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   get 'golfcourses/search', :to => 'golfcourses#search'
   post 'golfcourses/round_start', :to => 'golfcourses#round_start' ,:as => 'round_start'
   get 'golfcourses/play/:id', :to => 'golfcourses#play' ,:as => 'golfcourse_play'
-  post 'golfcourses/:id', to: 'golfcourses#update' ,:as => 'golfcourses_update'
-  post 'golfcourses/finish/:id', to: 'golfcourses#finish' ,:as => 'golfcourses_finish'
+  # post 'golfcourses/:id', :to => 'golfcourses#update' ,:as => 'golfcourses_update'
+  post 'golfcourses/finish/:id', :to => 'golfcourses#finish' ,:as => 'golfcourses_finish'
+  # post '/golfcourses/message_create', :to => 'golfcourses#message_create' ,:as => 'golfcourses_message_create'
+
 
   #◇「ラウンドする」まわりのルーティング
   get '/rounds/select_course', :to => 'rounds#select_course' ,:as => 'select_course'
@@ -46,6 +48,7 @@ Rails.application.routes.draw do
   get '/messages/index',:to => 'messages#index' ,:as => 'messages_index'
   get '/messages/index/:golfcourse_id', :to => 'messages#index_course' ,:as => 'messages_index_course'
   get '/messages/show/:golfcourse_id', :to => 'messages#show' ,:as => 'messages_show'
+  post '/messages', :to => 'messages#create_message' ,:as => 'messages_create'
   
   resources :likes, :only => [:create, :destroy]
   

@@ -11,6 +11,9 @@
 	<%= f.label :played_date, "ラウンドする日" %>
 	<%= f.date_select :played_date, require: true, use_month_numbers: true %><br>
 
+	<%= f.label :start_hole, "スタートホール" %>
+	<%= f.select :start_hole, [['1H', 1], ['10H', 10]]  %><br>
+
 	<%= f.label :published, "このラウンドのスコアの公開/非公開" %>
 	<%= f.select :published, [['公開', 1], ['非公開', 0]] %>
 
