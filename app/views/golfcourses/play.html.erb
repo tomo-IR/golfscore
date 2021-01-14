@@ -54,20 +54,9 @@
 
 
 <h1><%= @score.golfcourse.golfcoursename %>のメッセージボード</h1>
+<%= render 'messages/form' %>
+<div id="messages">
+  <%= render 'messages/messages' %>
+</div>
 
 
-
-
-
-<% @current_course_message.each do|message| %>
-  <%= message.content%>
-  <%= message.user.name%>
-  <%= message.created_at%><br>
-<% end %>
-
-
-<%= form_with model: @message do |f| %>
-	<%= f.label :content, "メッセージ" %>
-	<%= f.text_field :content %><br>
-	<%= f.submit 'メッセージを送信する' %>
-<% end %>

@@ -45,10 +45,12 @@ Rails.application.routes.draw do
 
 
   #◇「掲示板を覗く」まわりのルーティング
+  # resources :messages, only: [:create]
+
   get '/messages/index',:to => 'messages#index' ,:as => 'messages_index'
   get '/messages/index/:golfcourse_id', :to => 'messages#index_course' ,:as => 'messages_index_course'
   get '/messages/show/:golfcourse_id', :to => 'messages#show' ,:as => 'messages_show'
-  post '/messages', :to => 'messages#create_message' ,:as => 'messages_create'
+  post '/messages/:id', :to => 'messages#create' ,:as => 'messages_create'
   
   resources :likes, :only => [:create, :destroy]
   

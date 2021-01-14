@@ -66,7 +66,8 @@ class GolfcoursesController < ApplicationController
     end
 
     # メッセージボード関係
-    @current_course_message = Message.where(golfcourse_id: playing_course.golfcourse_id).includes([:user])
+		@message = Message.new
+    @messages = Message.where(golfcourse_id: playing_course.golfcourse_id).includes([:user]).order(created_at: "DESC")
 
       
   end
@@ -181,9 +182,9 @@ class GolfcoursesController < ApplicationController
     params.permit(:golfcourse_id, :published, :played_date, :start_hole)
   end
 
-  def message_params
-    params.require(:message).permit(:content)
-  end
+  # def message_params
+  #   params.permit(:content)
+  # end
 
 end
 

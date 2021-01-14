@@ -3,14 +3,15 @@ class HomeController < ApplicationController
     require "date"
     @day = DateTime.now
     # ラウンド途中のゴルフ場関係
-    @unfinshed_score = Score.where(user_id: current_user.id)
-                            .where(status: 0)
-                            .includes([:golfcourse])
+    # @unfinshed_score = Score.where(user_id: current_user.id)
+    #                         .where(status: 0)
+    #                         .includes([:golfcourse])
 
 
   end
 
-  def authentication; end
+  def authentication
+  end
 
   #ゲストログイン関係
   def new_guest

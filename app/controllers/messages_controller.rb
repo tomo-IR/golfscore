@@ -17,27 +17,34 @@ class MessagesController < ApplicationController
 		@like = Like.new
 	end
 
-	def create_message
+	def create
 		@message = Message.new(message_params)
-		
-		playing_course = Score.find([:id])
+
+		playing_course = Score.find(params[:id])
     golfcourse_id = playing_course.golfcourse_id
     @message.golfcourse_id = golfcourse_id
 		@message.user_id = current_user.id
 
-		if @message.save
-			flash[:edit_success] = 'メッサージを投稿しました'
-			redirect_to root_path
-		else
-			flash[:edit_success] = 'メッサージを投稿できませんでした'
-			render root_path
-		end
+		@message.save
+		# 	flash[:edit_success] = 'メッサージを投稿しました'
+		# 	redirect_to root_path
+		# else
+		# 	flash[:edit_success] = 'メッサージを投稿できませんでした'
+		# 	render :new
+		# end
+	end
+
+
+
+	def new
+		# @message = Message.new
+	
 	end
 
 	private
 
   def message_params
-    params.require(:message).permit(:content)
+    params.permit(:content)
   end
 
 end

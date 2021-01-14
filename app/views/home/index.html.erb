@@ -19,39 +19,26 @@
   <%= link_to "プレイヤー検索", user_index_path %><br />
   <%= link_to "マイページ", mypage_path %><br />
   <%= link_to "ラウンドする", golfcourses_search_path %><br />
-
 <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
   <%#= link_to "ラウンドする", select_course_path %><br />
   <%= link_to "掲示板を覗く", messages_index_path %><br />
   <%= link_to "プレイヤー検索", user_index_path %><br />
   <%= link_to "ラウンドする", golfcourses_search_path %><br />
 
-<% else %>
-
-
-  <% end %>
-
-
-
-
-
-<time>今日は<%=  @day %>です</time><br>
-
-
-<% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
-<h2>プレイ中のラウンド</h2>
-<% @unfinshed_score.each do|score| %>
-  <%= score.played_date%>
-  <%= link_to score.golfcourse.golfcoursename, golfcourse_play_path(id: score.id)%>
-  <%= score.total_score%><br>
 <% end %>
 
+<time>今日は<%= @day %>です</time><br>
 
 
-<% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
-  <span>ゲストログインだから、何も表示しないよ</span>
-<% else %>
-  <span>ログアウト中だから、何も表示しないよ</span>
-<% end %>
-
-<%#= render 'layouts/hoge' %>
+<%# if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
+  <%# <h2>プレイ中のラウンド</h2> %>
+  <%# @unfinshed_score.each do|score| %>
+    <%#= score.played_date%>
+    <%#= link_to score.golfcourse.golfcoursename, golfcourse_play_path(id: score.id)%>
+    <%#= score.total_score%><br>
+  <%# end %>
+<%# elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
+  <%# <span>ゲストログインだから、何も表示しないよ</span> %>
+<%# else %>
+  <%# <span>ログアウト中だから、何も表示しないよ</span>   %>
+<%# end %>
