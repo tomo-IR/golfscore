@@ -1,4 +1,3 @@
-// メッセージ一覧の一番下に新規メッセージを追加する
-document.getElementById('messages').insertAdjacentHTML('beforeend', '<%= j(render @current_course_message) %>')
-// フォームの文字を空にする
+
+document.getElementById('messages').insertAdjacentHTML('beforeend', '<%= j(render @message) %>')
 document.getElementById('message_content').value = ''

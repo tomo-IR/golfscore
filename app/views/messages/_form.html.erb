@@ -1,5 +1,6 @@
-<%= form_with(url: messages_create_path(id: @score.id), local: true) do |f| %>
+<%= form_with model: message do |f| %>
 	<%= f.label :content, "メッセージ" %>
 	<%= f.text_field :content %><br>
+    <%= hidden_field_tag :score_id, @score.id %>
 	<%= f.submit 'メッセージを送信する' %>
 <% end %>

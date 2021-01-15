@@ -27,6 +27,7 @@ class GolfcoursesController < ApplicationController
   
   def play
     @score = Score.find(params[:id])
+
     
     # if @score.update(hole1_score: params[:hole1_score])
     #   # flash[:edit_success] = 'スコアが編集されました'
@@ -67,7 +68,7 @@ class GolfcoursesController < ApplicationController
 
     # メッセージボード関係
 		@message = Message.new
-    @messages = Message.where(golfcourse_id: playing_course.golfcourse_id).includes([:user]).order(created_at: "DESC")
+    @messages = Message.where(golfcourse_id: playing_course.golfcourse_id).order(created_at: "DESC")#.includes([:user])
 
       
   end

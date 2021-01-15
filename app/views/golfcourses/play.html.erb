@@ -1,7 +1,6 @@
 <h1>スコア入力画面</h1>
 <%= @score.id %><br>
 <%= @score.golfcourse.golfcoursename %><br>
-<%= @score.hole1_score %><br>
 
 <%#= form_with url:golfcourses_update_path do |f| %>
   <%#= f.label :hole1_score, '1H' %>
@@ -52,11 +51,27 @@
 </table>
 <p>*は10Hスタート</p>
 
-
 <h1><%= @score.golfcourse.golfcoursename %>のメッセージボード</h1>
-<%= render 'messages/form' %>
+
+<%= render 'messages/form', message: Message.new, value: '投稿' %>
+<hr>
+
 <div id="messages">
-  <%= render 'messages/messages' %>
+  <%= render @messages %>
 </div>
 
 
+
+<%# @messages.each do|message| %>
+  <%#= message.user.name%>
+  <%#= message.content%>
+  <%# <p>いいね件数: = message.likes.count</p> %>
+  <%# if current_user.already_liked?(message) %>
+  <%# <span>既にイイねしてます</span><br> %>
+  <%#= button_to 'いいねを取り消す', post_like_path(@post), method: :delete %>
+  <%#= button_to 'いいねを取り消す' %>
+<%# else %>
+  <%#= button_to 'いいね', likes_path(@message),method: :post %>
+<%# end %>
+  <%#= link_to "イイね",  %>
+  <%# end %>

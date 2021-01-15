@@ -19,13 +19,12 @@ class MessagesController < ApplicationController
 
 	def create
 		@message = Message.new(message_params)
-
-		playing_course = Score.find(params[:id])
+		playing_course = Score.find(params[:score_id])
     golfcourse_id = playing_course.golfcourse_id
     @message.golfcourse_id = golfcourse_id
 		@message.user_id = current_user.id
-
 		@message.save
+		# if @message.save
 		# 	flash[:edit_success] = 'メッサージを投稿しました'
 		# 	redirect_to root_path
 		# else
@@ -44,7 +43,8 @@ class MessagesController < ApplicationController
 	private
 
   def message_params
-    params.permit(:content)
+    params.require(:message).permit(:content, :score_id)
+    
   end
 
 end

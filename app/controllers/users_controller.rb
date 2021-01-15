@@ -13,8 +13,6 @@ class UsersController < ApplicationController
     @user  = User.find(params[:id])
     @score = @user.scores.includes([:golfcourse])
 
-
-
   end
   def scorecard
     @coursename = params[:round_id]

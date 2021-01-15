@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
     def create
-        @like = Like.new(:message_id => params[:id], :user_id => current_user.id)
+        @like = Like.new#(user_id: current_user.id)
     #   redirect_to root_path
         if @like.save 
             redirect_to root_path

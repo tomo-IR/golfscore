@@ -26,6 +26,7 @@ gem 'bullet', :group => :development
 gem 'parser', '>= 2.7.1.5'
 gem 'whenever', require: false
 gem 'active_decorator'
+gem 'pry-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
