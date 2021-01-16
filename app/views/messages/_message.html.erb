@@ -1,5 +1,13 @@
 <p id="message-<%= message.id %>">
 	<%= message.content %>
 </p>
+	<%#= message.user.name %>
+	<%#= link_to message.likes.count, {controller: "messages", action: "show", message_id: message.id}, method: :get %>
+	<%# if current_user.already_liked?(message) %>
+		<%# <span>既にイイねしてます</span><br> %>
+		<%#= link_to 'いいねを取り消す', {controller: "likes", action: "destroy", message_id: message.id, user_id: current_user.id}, method: :delete %>
+	<%# else %>
+		<%#= link_to 'いいね', {controller: "likes", action: "create", message_id: message.id, user_id: current_user.id}, method: :post %>
+	<%# end %>
 
 

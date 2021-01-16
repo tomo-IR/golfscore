@@ -1,0 +1,38 @@
+
+<table>
+  <tr>
+    <th>rank</th>
+    <th>name</th>
+    <th>score</th>
+    <th>THRU</th>
+    <th>start_hole</th>
+  </tr>
+  <% s = 0 %>
+  <% j = 1 %>
+  <% @current_course_scores.each.with_index(1) do|score,i| %>
+    <tr>
+      <% if i == 1 %>
+        <% s = score.total_score %>
+      <% end %>
+      <% if score.total_score != s %>
+        <% j = i %>
+        <th><%= j %></th>
+        <th><%= score.user.name %></th>
+        <th><%= score.total_score %></th>
+        <% if score.start_hole == 10 %>
+          <th>*</th>
+        <% end %>
+        <% s = score.total_score %>
+      <% else %>
+        <% s = score.total_score %>
+        <th><%= j %></th>
+        <th><%= score.user.name %></th>
+        <th><%= score.total_score %></th>
+        <% if score.start_hole == 10 %>
+          <th>*</th>
+        <% end %>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+<p>*は10Hスタート</p>

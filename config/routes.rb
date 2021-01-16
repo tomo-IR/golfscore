@@ -13,20 +13,6 @@ Rails.application.routes.draw do
   post 'golfcourses/finish/:id', :to => 'golfcourses#finish' ,:as => 'golfcourses_finish'
   # post '/golfcourses/message_create', :to => 'golfcourses#message_create' ,:as => 'golfcourses_message_create'
 
-
-  #◇「ラウンドする」まわりのルーティング
-  get '/rounds/select_course', :to => 'rounds#select_course' ,:as => 'select_course'
-    #フォームを表示するview
-    # @todoufukens はselect_courseアクションで定義
-  post '/rounds/search', :to => 'rounds#search'
-    #ゴルフ場検索結果を表示するページ
-  # get '/rounds/search/:course', :to => 'rounds#show' ,:as => 'round_start'
-  get '/rounds/play/:course/:round_id', :to => 'rounds#play' ,:as => 'round_play'
-  post '/rounds/play/:course/:round_id', :to => 'rounds#message_post' ,:as => 'round_message_post'
-  get 'rounds/input/:round_id/:hole_number',:to => 'rounds#input' ,:as => 'hole_score_input'
-  post 'rounds/input/:round_id/:hole_number',:to => 'rounds#update' ,:as => 'hole_score_new'
-
-
   #◇「過去のスコアを見る」まわりのルーティング
   get 'archives',:to => 'archives#index' ,:as => 'archives_index'
   get 'archives/:id', to: 'archives#show' ,:as => 'archives_show'
@@ -36,30 +22,21 @@ Rails.application.routes.draw do
   post 'archives/published/:id', to: 'archives#score_published' ,:as => 'archives_score_published'
   post 'archives/unpublished/:id', to: 'archives#score_unpublished' ,:as => 'archives_score_unpublished'
   
-  # get 'archives/show/:round_id',:to => 'archives#show' ,:as => 'score_card'
-  # get 'archives/edit/:round_id',:to => 'archives#edit' ,:as => 'scorecard_edit'
-
-  # get 'archives/edit/:round_id/:hole_number',:to => 'archives#edit_score' ,:as => 'edit_hole_score'
-  # get 'archives/edit_score/:round_id/:hole_number',:to => 'archives#hole_score_edit' ,:as => 'score_update'  
-  # post 'archives/edit/:round_id/:hole_number',:to => 'archives#update' ,:as => 'hole_score_update'
-
-
   #◇「掲示板を覗く」まわりのルーティング
   resources :messages, only: [:create]
 
   get '/messages/index',:to => 'messages#index' ,:as => 'messages_index'
   get '/messages/index/:golfcourse_id', :to => 'messages#index_course' ,:as => 'messages_index_course'
-  get '/messages/show/:golfcourse_id', :to => 'messages#show' ,:as => 'messages_show'
+  get '/messages/:id', :to => 'messages#show'
   # post '/messages', :to => 'messages#create' ,:as => 'messages_create'
   
+  #◇いいね機能のルーティング
   resources :likes, :only => [:create, :destroy]
   
   #◇mypageまわりのルーティング
   get '/mypages/index',:to => 'mypages#index' ,:as => 'mypage'
   get '/mypages/edit',:to => 'mypages#edit' ,:as => 'mypage_edit'
   put '/mypages' ,:to => 'messages#update' ,:as => 'mypage_update'
-  
-
 
   #◇deviseまわりのルーティング
   get '/users/index',:to => 'users#index' ,:as => 'user_index'

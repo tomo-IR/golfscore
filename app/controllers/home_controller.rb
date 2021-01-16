@@ -3,11 +3,13 @@ class HomeController < ApplicationController
     require "date"
     @day = DateTime.now
     # ラウンド途中のゴルフ場関係
-    # @unfinshed_score = Score.where(user_id: current_user.id)
-    #                         .where(status: 0)
-    #                         .includes([:golfcourse])
-
-
+    if current_user.nil?
+      puts "ログアウト中です"
+    else
+      @unfinshed_score = Score.where(user_id: current_user.id)
+                              .where(status: 0)
+                              .includes([:golfcourse])
+    end
   end
 
   def authentication

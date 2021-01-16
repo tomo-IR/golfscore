@@ -1,77 +1,25 @@
 <h1>スコア入力画面</h1>
 <%= @score.id %><br>
 <%= @score.golfcourse.golfcoursename %><br>
-
-<%#= form_with url:golfcourses_update_path do |f| %>
-  <%#= f.label :hole1_score, '1H' %>
-  <%#= f.number_field :hole1_score, value: @score.hole1_score %><br>
-  <%#= f.submit "編集する" %>
-<%# end %>
+<p>user.name:<%= @score.user.name %></p>
+<p>user.id:<%= @score.user.id %></p>
 
 <% if @score.hole1_score == nil %>
   <%= link_to "このラウンドを終了する", golfcourses_finish_path, method: :update, data: { confirm: 'ラウンドを終了してよろしいですか？' }  %>
 <% end %>
+<hr>
 
 <h1>リーダーボード</h1>
-<table>
-  <tr>
-    <th>rank</th>
-    <th>name</th>
-    <th>score</th>
-    <th>THRU</th>
-    <th>start_hole</th>
-  </tr>
-  <% s = 0 %>
-  <% j = 1 %>
-  <% @current_course_scores.each.with_index(1) do|score,i| %>
-    <tr>
-      <% if i == 1 %>
-        <% s = score.total_score %>
-      <% end %>
-      <% if score.total_score != s %>
-        <% j = i %>
-        <th><%= j %></th>
-        <th><%= score.user.name %></th>
-        <th><%= score.total_score %></th>
-        <% if score.start_hole == 10 %>
-          <th>*</th>
-        <% end %>
-        <% s = score.total_score %>
-      <% else %>
-        <% s = score.total_score %>
-        <th><%= j %></th>
-        <th><%= score.user.name %></th>
-        <th><%= score.total_score %></th>
-        <% if score.start_hole == 10 %>
-          <th>*</th>
-        <% end %>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
-<p>*は10Hスタート</p>
+<%= render 'leader_board' %>
+<hr>
 
 <h1><%= @score.golfcourse.golfcoursename %>のメッセージボード</h1>
 
 <%= render 'messages/form', message: Message.new, value: '投稿' %>
-<hr>
+
 
 <div id="messages">
   <%= render @messages %>
 </div>
 
 
-
-<%# @messages.each do|message| %>
-  <%#= message.user.name%>
-  <%#= message.content%>
-  <%# <p>いいね件数: = message.likes.count</p> %>
-  <%# if current_user.already_liked?(message) %>
-  <%# <span>既にイイねしてます</span><br> %>
-  <%#= button_to 'いいねを取り消す', post_like_path(@post), method: :delete %>
-  <%#= button_to 'いいねを取り消す' %>
-<%# else %>
-  <%#= button_to 'いいね', likes_path(@message),method: :post %>
-<%# end %>
-  <%#= link_to "イイね",  %>
-  <%# end %>

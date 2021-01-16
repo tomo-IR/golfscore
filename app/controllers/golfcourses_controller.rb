@@ -1,4 +1,6 @@
 class GolfcoursesController < ApplicationController
+  before_action :auth_user, only: %i[play]
+  
 
   def search
     @golfcoursename_all  = Golfcourse.all
@@ -68,9 +70,7 @@ class GolfcoursesController < ApplicationController
 
     # メッセージボード関係
 		@message = Message.new
-    @messages = Message.where(golfcourse_id: playing_course.golfcourse_id).order(created_at: "DESC")#.includes([:user])
-
-      
+    @messages = Message.where(golfcourse_id: playing_course.golfcourse_id)#.includes([:user])#.order(created_at: "DESC")
   end
 
   def finish
@@ -84,23 +84,6 @@ class GolfcoursesController < ApplicationController
       render :root_path
     end
   end
-
-  def message_create
-		@message = Message.new(message_params)
-		
-		playing_course = Score.find(params[:id])
-    golfcourse_id = playing_course.golfcourse_id
-    @message.golfcourse_id = golfcourse_id
-		@message.user_id = current_user.id
-
-		if @message.save
-			flash[:edit_success] = 'メッサージを投稿しました'
-			redirect_to root_path
-		else
-			flash[:edit_success] = 'メッサージを投稿できませんでした'
-			render root_path
-		end
-	end
 
   def get
     require 'net/http'
@@ -183,9 +166,18 @@ class GolfcoursesController < ApplicationController
     params.permit(:golfcourse_id, :published, :played_date, :start_hole)
   end
 
-  # def message_params
-  #   params.permit(:content)
-  # end
+  def auth_user
+    player = Score.find(params[:id])
+    if current_user.nil?
+      flash[:alert] = "ログインしてください"
+      redirect_to sign_in_path
+    elsif player.user_id == current_user.id
+      puts "成功"
+    else
+      flash[:alert] = "ログインしてください"
+      redirect_to sign_in_path
+    end
+  end
 
 end
 

@@ -2,19 +2,22 @@ class ApplicationController < ActionController::Base
     # Prevent CSRF attacks by raising an exception.
     # For APIs, you may want to use :null_session instead.
     # Rails.application.config.action_controller.raise_on_unfiltered_parameters = true
-    protect_from_forgery :with => :exception
+  protect_from_forgery :with => :exception
   before_action :configure_permitted_parameters, :if => :devise_controller?
+
+
   def following
     @user  = User.find(params[:id])
     @users = @user.followings
     render 'show_follow'
   end
 
-def followers
-  @user  = User.find(params[:id])
-  @users = @user.followers
-  render 'show_follower'
-end
+  def followers
+    @user   = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follower'
+  end
+
 
 
   protected

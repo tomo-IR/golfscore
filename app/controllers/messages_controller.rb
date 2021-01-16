@@ -13,8 +13,7 @@ class MessagesController < ApplicationController
 	end
 
 	def show
-		@message = Message.where(params[:golfcourse_id])
-		@like = Like.new
+		@message = Message.find(params[:message_id])
 	end
 
 	def create
