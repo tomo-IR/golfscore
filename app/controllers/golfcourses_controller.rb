@@ -70,7 +70,8 @@ class GolfcoursesController < ApplicationController
 
     # メッセージボード関係
 		@message = Message.new
-    @messages = Message.where(golfcourse_id: playing_course.golfcourse_id)#.includes([:user])#.order(created_at: "DESC")
+    @messages = Message.where(golfcourse_id: playing_course.golfcourse_id).order(created_at: "DESC").page(params[:page]).per(10)
+  
   end
 
   def finish

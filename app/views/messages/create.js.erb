@@ -1,4 +1,4 @@
-document.getElementById('messages').insertAdjacentHTML('beforeend', '<%= j(render @message) %>')
+document.getElementById('messages').insertAdjacentHTML('afterbegin', '<p id="<% @message.id %>"><span><%= @message.content %></span><span><%= @message.user.name %></span></p>')
 console.log("メッセージ更新したよ")
 document.getElementById('message_content').value = ''
 console.log("フォームをカラにしたよ")

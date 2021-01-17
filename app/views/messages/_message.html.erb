@@ -1,7 +1,8 @@
 <p id="message-<%= message.id %>">
-	<%= message.content %>
+	<span><%= message.content %></span>
+	<span><%= message.user.name %></span>
 </p>
-	<%#= message.user.name %>
+
 	<%#= link_to message.likes.count, {controller: "messages", action: "show", message_id: message.id}, method: :get %>
 	<%# if current_user.already_liked?(message) %>
 		<%# <span>既にイイねしてます</span><br> %>
