@@ -1,0 +1,12 @@
+var like_number = document.getElementById("like-" + "<%= params[:message_id] %>").textContent;
+document.getElementById("like-" + "<%= params[:message_id] %>").textContent =  Number(like_number) - 1;
+
+var count = document.getElementById("like-" + "<%= params[:message_id] %>");
+count.id = "unlike-" + "<%= params[:message_id] %>";
+
+
+
+document.getElementById("change-unlike-" + "<%= params[:message_id] %>").innerText = "いいねを取り消す";
+var change_button = document.getElementById("change-unlike-" + "<%= params[:message_id] %>");
+change_button.id = "change-like-" + "<%= params[:message_id] %>";
+change_button.setAttribute('data-method', 'create');
