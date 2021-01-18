@@ -77,6 +77,10 @@ class GolfcoursesController < ApplicationController
   
   end
 
+  def update
+    @score = Score.find(params[:id])
+  end
+
   def finish
     @score = Score.find(params[:id])
     @score.status = 1

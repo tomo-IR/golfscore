@@ -4,6 +4,10 @@
 <p>user.name:<%= @score.user.name %></p>
 <p>user.id:<%= @score.user.id %></p>
 
+<%= render "/golfcourses/form" %>
+<%#= render 'messages/form', message: Message.new, value: '投稿' %>
+
+
 <% if @score.hole1_score == nil %>
   <%= link_to "このラウンドを終了する", golfcourses_finish_path, method: :update, data: { confirm: 'ラウンドを終了してよろしいですか？' }  %>
 <% end %>

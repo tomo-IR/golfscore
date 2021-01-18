@@ -1,0 +1,5 @@
+<%= form_with model: @score do |f| %>
+  <%= f.label :hole1_score, '1Hスコア' %>
+  <%= f.number_field :hole1_score %>
+  <%= f.submit "編集する" %>
+<% end %>

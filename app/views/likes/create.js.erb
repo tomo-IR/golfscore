@@ -10,8 +10,10 @@ document.getElementById("change-like-" + "<%= params[:message_id] %>").innerText
 var change_button = document.getElementById("change-like-" + "<%= params[:message_id] %>");
 change_button.id = "change-unlike-" + "<%= params[:message_id] %>";
 change_button.setAttribute('data-method', 'delete');
-change_button.setAttribute('href', '/likes/' + '<%= params[:score_id] %>' + '?message_id=' + '<%= params[:message_id] %>' + '&amp;score_id=' + '<%= params[:score_id] %>' + '&amp;user_id=' + '<%= params[:user_id] %>' );
-                            //    href="/likes/     76                        ?message_id=151                               &amp;score_id=76                               &amp;user_id=   1">いいねを取り消す</a>
+change_button.setAttribute('href', '/likes/' + '<%= params[:score_id] %>' + '?message_id=' + '<%= params[:message_id] %>' + '&score_id=' + '<%= params[:score_id] %>' + '&user_id=' + '<%= params[:user_id] %>' );
+
+document.getElementById("notheart-" + "<%= params[:message_id] %>").innerText = "❤️";
+document.getElementById("notheart-" + "<%= params[:message_id] %>").id = "heart-" + "<%= params[:message_id] %>"
 
 console.log("<%= params[:message_id] %>")
 console.log("<%= params[:user_id] %>")

@@ -4,12 +4,12 @@
 	<span><%= message.created_at %></span>
 	<% if current_user.already_liked?(message) %>
 		<%= link_to message.likes.count, {controller: "messages", action: "show", message_id: message.id}, method: :get, id: "like-" + message.id.to_s %>
-		<span>❤️</span>
-		<%= link_to 'いいねを取り消す', {controller: "likes", action: "destroy", message_id: message.id, user_id: current_user.id, score_id: @score.id.to_i }, method: :delete, remote: true, id: "change-unlike-" + message.id.to_s %>
-	<% else %>
+		<span id="heart-<%= message.id %>">❤️</span>
+		<%= link_to 'いいねを取り消す', {controller: "likes", action: "destroy", message_id: message.id, user_id: current_user.id, score_id: @score.id }, method: :delete, remote: true, id: "change-unlike-" + message.id.to_s %>
+	<% else %>   
 		<%= link_to message.likes.count, {controller: "messages", action: "show", message_id: message.id}, method: :get, id: "unlike-" + message.id.to_s %>
-		<span>♡</span>
-		<%= link_to 'いいねする', {controller: "likes", action: "create", message_id: message.id, user_id: current_user.id, score_id: @score.id.to_i }, method: :post, remote: true, id: "change-like-" + message.id.to_s %>
+		<span id="notheart-<%= message.id %>">♡</span>
+		<%= link_to 'いいねする', {controller: "likes", action: "create", message_id: message.id, user_id: current_user.id, score_id: @score.id }, method: :post, remote: true, id: "change-like-" + message.id.to_s %>
 	<% end %>
 </p>
 
