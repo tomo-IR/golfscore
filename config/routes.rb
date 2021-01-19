@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'score/index'
   root :to => 'home#index'
   get 'users/show'
   get '/home/index',:to => 'home#index'
@@ -12,6 +13,12 @@ Rails.application.routes.draw do
   # post 'golfcourses/:id', :to => 'golfcourses#update' ,:as => 'golfcourses_update'
   post 'golfcourses/finish/:id', :to => 'golfcourses#finish' ,:as => 'golfcourses_finish'
   # post '/golfcourses/message_create', :to => 'golfcourses#message_create' ,:as => 'golfcourses_message_create'
+
+  resources :scores, only: [:show, :edit, :update]
+
+
+# ゴルフ場を選択し、ラウンドスタートするまではgolfcourses、スコア入力画面はscoresにする
+
 
   #◇「過去のスコアを見る」まわりのルーティング
   get 'archives',:to => 'archives#index' ,:as => 'archives_index'

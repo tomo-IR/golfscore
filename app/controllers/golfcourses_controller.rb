@@ -16,16 +16,20 @@ class GolfcoursesController < ApplicationController
     @score.status = 0
     if @score.save
       flash[:success] = 'ラウンド開始！！'
-      redirect_to golfcourse_play_path(id: @score.id)
+      redirect_to score_path(id: @score.id)    #golfcourse_play_path(id: @score.id)
     else
       flash.now[:danger] = '何かがおかしいです'
       render :root_path
     end
   end
+  def edit
+    @golfcourse = Score.find(params[:id])
+    
+  end
 
-  # def update
-  
-  # end
+  def update
+    @score = Score.find(params[:id])
+  end
   
   def play
     @score = Score.find(params[:id])
@@ -77,10 +81,6 @@ class GolfcoursesController < ApplicationController
   
   end
 
-  def update
-    @score = Score.find(params[:id])
-  end
-
   def finish
     @score = Score.find(params[:id])
     @score.status = 1
@@ -88,7 +88,7 @@ class GolfcoursesController < ApplicationController
       flash[:success] = 'ラウンド完了！！'
       redirect_to root_path
     else
-      flash.now[:danger] = '何かがおかしいです'
+      flash.now[:danger] = '完了出来ませんでした。'
       render :root_path
     end
   end

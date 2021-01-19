@@ -1,0 +1,27 @@
+// まずは計算を先に終わらせて、それからフォーマットを変更しよう
+
+var score_1h = Number(document.getElementById('1H-score').textContent);
+var input_score_1 = <%= params[:score][:hole1_score] %>;
+var total_score = Number(document.getElementById('total_score').textContent);
+
+total_score = Number(total_score);
+console.log(score_1h);
+console.log( typeof score_1h);
+console.log(input_score_1);
+console.log( typeof input_score_1);
+console.log(total_score);
+console.log( typeof total_score);
+total_score = input_score_1 - score_1h + total_score
+if (total_score > 0){
+  document.getElementById('total_score').textContent = '+' + total_score.toString(10);
+}else{
+  document.getElementById('total_score').textContent = total_score;
+}
+
+
+if (input_score_1 > 0){
+  document.getElementById('1H-score').textContent = '+' + input_score_1.toString(10);
+}else{
+  document.getElementById('1H-score').textContent = input_score_1;
+}
+// console.log(total_score.textContent)

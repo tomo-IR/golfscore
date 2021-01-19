@@ -1,10 +1,10 @@
 <h1>スコア入力画面</h1>
-<%= @score.id %><br>
-<%= @score.golfcourse.golfcoursename %><br>
-<p>user.name:<%= @score.user.name %></p>
-<p>user.id:<%= @score.user.id %></p>
-<p>Total score
-<%= @score.total_score %>
+<p>スコアID:<%= @score.id %></p>
+<p>ゴルフ場名:<%= @score.golfcourse.golfcoursename %></p>
+<p>プレイヤー名:<%= @score.user.name %></p>
+<p>ユーザーID:<%= @score.user.id %></p>
+<p>Total score:
+  <span id='total_score'><%= @score.total_score %></span>  
 </p>
 <table>
   <tr>
@@ -15,7 +15,7 @@
   </tr>
   <tr>
     <td>1H</td>
-    <td>
+    <td id="1H-score">
     <% if @score.hole1_score == nil %>
       <span>未プレイ</span>
       <% else %>
@@ -23,13 +23,12 @@
       <% end %>
     </td>
     <td>
-      <%= form_with model: @golfcourse do|f| %>
+      <%= form_with model: @score do|f| %>
         <%#= f.label :hole1_score, '1Hスコア' %>
-        <%= f.number_field :hole1_score %>
-        <%= f.submit "編集する" %>
+        <%= f.number_field :hole1_score, value: @score.hole1_score %>
+        <%= f.submit "入力" %>
       <% end %>
     </td>
-
   </tr>
   <tr>
     <td>2H</td>
