@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'plays/update'
   get 'score/index'
   root :to => 'home#index'
   get 'users/show'
@@ -10,11 +11,14 @@ Rails.application.routes.draw do
   get 'golfcourses/search', :to => 'golfcourses#search'
   post 'golfcourses/round_start', :to => 'golfcourses#round_start' ,:as => 'round_start'
   get 'golfcourses/play/:id', :to => 'golfcourses#play' ,:as => 'golfcourse_play'
-  # post 'golfcourses/:id', :to => 'golfcourses#update' ,:as => 'golfcourses_update'
   post 'golfcourses/finish/:id', :to => 'golfcourses#finish' ,:as => 'golfcourses_finish'
-  # post '/golfcourses/message_create', :to => 'golfcourses#message_create' ,:as => 'golfcourses_message_create'
 
-  resources :scores, only: [:show, :edit, :update]
+  resources :scores, only: [:show]
+  get '/plays/:score_id/:hole_number', :to => 'plays#edit' ,:as => 'plays_edit'
+  resources :plays, only: [:update]
+
+  # patch '/plaies/:score_id/:hole_number', :to => 'plaies#update' ,:as => 'plaies_update'
+
 
 
 # ゴルフ場を選択し、ラウンドスタートするまではgolfcourses、スコア入力画面はscoresにする
@@ -28,7 +32,9 @@ Rails.application.routes.draw do
   delete 'archives/:id',:to => 'archives#destroy' ,:as => 'archives_destroy'
   post 'archives/published/:id', to: 'archives#score_published' ,:as => 'archives_score_published'
   post 'archives/unpublished/:id', to: 'archives#score_unpublished' ,:as => 'archives_score_unpublished'
-  
+  # ↑publishも専用コントローラ作る
+
+
   #◇「掲示板を覗く」まわりのルーティング
   resources :messages, only: [:create]
 

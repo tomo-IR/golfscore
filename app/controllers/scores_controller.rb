@@ -2,23 +2,14 @@ class ScoresController < ApplicationController
   def show
     @score = Score.find(params[:id])
 
-    
-    # if @score.update(hole1_score: params[:hole1_score])
-    #   # flash[:edit_success] = 'スコアが編集されました'
-    #   # redirect_to golfcourse_play_path
-    # else
-    #   flash.now[:danger] = 'スコアが編集されませんでした'
-    #   render golfcourse_play_path
-    # end
-
-   
-
-
     # リーダーボード関係
     playing_course = Score.find(params[:id])
     golfcourse_id = playing_course.golfcourse_id
     played_date = playing_course.played_date
-    current_course_scores = Score.where(golfcourse_id: golfcourse_id, played_date: played_date) .includes([:user])
+    current_course_scores = Score.where(golfcourse_id: golfcourse_id, played_date: played_date) 
+                                  .where.not(thru: nil)
+                                  .where.not(published: 0)
+                                  .includes([:user])
     @current_course_scores = current_course_scores.sort_by do |score|
       score.hole1_score.to_i + 
       score.hole2_score.to_i + 
@@ -48,13 +39,13 @@ class ScoresController < ApplicationController
                         .page(params[:page]).per(10)
   
   end
-  def edit
-    @score = Score.find(params[:id])
-  end
+  # def edit
+  #   @score = Score.find(params[:id])
+  # end
 
-  def update
-      @score = Score.find(params[:id])
-      @score.hole1_score = params[:score][:hole1_score]
-      @score.save
-  end
+  # def update
+  #     @score = Score.find(params[:id])
+  #     @score.hole1_score = params[:score][:hole1_score]
+  #     @score.save
+  # end
 end

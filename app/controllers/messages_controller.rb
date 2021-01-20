@@ -30,7 +30,7 @@ class MessagesController < ApplicationController
 
 
 	def new
-		# @message = Message.new
+		@message = Message.new
 	
 	end
 

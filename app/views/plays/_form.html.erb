@@ -1,0 +1,6 @@
+<%= form_with url: play_path(id: @score.id), method: :patch do|f| %>
+  <%#= f.label :hole1_score, '1Hスコア' %>
+  <%= f.number_field :hole_score, value: 0, id: "form_score" %>
+  <%= hidden_field_tag :hole_number, params[:hole_number] %>
+  <%= f.submit "次のホールへ" %>
+<% end %>

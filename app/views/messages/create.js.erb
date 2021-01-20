@@ -1,6 +1,6 @@
 document.getElementById('messages')
-.insertAdjacentHTML
-('afterbegin', '<p id="<% @message.id %>"><span><%= @message.content %></span><span><%= @message.user.name %></span><span><%= @message.created_at %></span></p>');
+.insertAdjacentHTML('afterbegin',
+ '<p id="<% @message.id %>"><span><%= @message.content %></span><span><%= @message.user.name %></span><span><%= @message.created_at %></span></p>');
 
 
 console.log("メッセージ更新したよ")

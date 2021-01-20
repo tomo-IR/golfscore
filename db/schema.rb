@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_11_045217) do
+ActiveRecord::Schema.define(version: 2021_01_20_090211) do
 
   create_table "golfcourses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "golfcourseid"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2021_01_11_045217) do
     t.bigint "user_id"
     t.bigint "golfcourse_id"
     t.integer "start_hole"
+    t.integer "thru"
     t.index ["golfcourse_id"], name: "index_scores_on_golfcourse_id"
     t.index ["user_id"], name: "index_scores_on_user_id"
   end

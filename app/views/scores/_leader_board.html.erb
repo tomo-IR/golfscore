@@ -10,29 +10,46 @@
   <% s = 0 %>
   <% j = 1 %>
   <% @current_course_scores.each.with_index(1) do|score,i| %>
-    <tr>
-      <% if i == 1 %>
-        <% s = score.total_score %>
-      <% end %>
-      <% if score.total_score != s %>
-        <% j = i %>
-        <th><%= j %></th>
-        <th><%= score.user.name %></th>
-        <th><%= score.total_score %></th>
-        <% if score.start_hole == 10 %>
-          <th>*</th>
+  <tr>
+    <% if i == 1 %>
+      <% s = score.total_score %>
+    <% end %>
+
+    <% if score.total_score != s %>
+      <% j = i %>
+      <td><%= j %></td>
+      <td><%= score.user.name %></td>
+      <td><%= score.total_score %></td>
+      <td>
+        <% if score.status == 1 %>
+          F
+        <% else %>
+          <%= score.thru.to_i %>
         <% end %>
-        <% s = score.total_score %>
+      </td>
+      <% if score.start_hole == 10 %>
+        <td>*</td>
+      <% end %>
+      <% s = score.total_score %>
+    <% else %>
+      <% s = score.total_score %>
+      <td><%= j %></td>
+      <td><%= score.user.name %></td>
+      <td><%= score.total_score %></td>
+      <td>
+        <% if score.status == 1 %>
+          F
+        <% else %>
+          <%= score.thru.to_i %>
+        <% end %>
+      </td>
+      <% if score.start_hole == 10 %>
+        <td>*</td>
       <% else %>
-        <% s = score.total_score %>
-        <th><%= j %></th>
-        <th><%= score.user.name %></th>
-        <th><%= score.total_score %></th>
-        <% if score.start_hole == 10 %>
-          <th>*</th>
-        <% end %>
+        <td></td>
       <% end %>
-    </tr>
+    <% end %>
+  </tr>
   <% end %>
 </table>
 <p>*は10Hスタート</p>
