@@ -18,7 +18,7 @@
 	<%= f.select :published, [['公開', 1], ['非公開', 0]] %>
 
 	<% @search_golfcoursename.each do |name| %><br>
-		<%= f.radio_button :golfcourse_id, name.id %>
+		<%= f.radio_button :golfcourse_id, name.id, require: true %>
 		<%= name.golfcoursename %><br>
 		<%= name.id %><br>
 		<%= name.address %><br>

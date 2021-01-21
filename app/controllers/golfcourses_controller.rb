@@ -4,9 +4,9 @@ class GolfcoursesController < ApplicationController
 
   def search
     @golfcoursename_all  = Golfcourse.all
-                                      .page(params[:page]).per(10) #ページネーション
+                                      .page(params[:page]).per(5) #ページネーション
     @search_golfcoursename = Golfcourse.search(params[:search])
-                                        .page(params[:page]).per(10) #ページネーション
+                                        .page(params[:page]).per(5) #ページネーション
   end
 
   def round_start
@@ -18,10 +18,13 @@ class GolfcoursesController < ApplicationController
       flash[:success] = 'ラウンド開始！！'
       redirect_to plays_edit_path(score_id: @score.id, hole_number: params[:start_hole])  
     else
-      flash.now[:danger] = '何かがおかしいです'
-      render :root_path
+      @golfcoursename_all  = Golfcourse.all.page(params[:page]).per(5) #ページネーション
+      @search_golfcoursename = Golfcourse.search(params[:search]).page(params[:page]).per(5) #ページネーション
+      flash.now[:danger] = 'ゴルフ場を選択してください。'
+      render :search
     end
   end
+
   def edit
     @golfcourse = Score.find(params[:id])
     
