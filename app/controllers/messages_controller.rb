@@ -23,22 +23,18 @@ class MessagesController < ApplicationController
     @message.golfcourse_id = golfcourse_id
 		@message.user_id = current_user.id
 		@message.save
-
-		
 	end
 
 
 
 	def new
 		@message = Message.new
-	
 	end
 
 	private
 
   def message_params
     params.require(:message).permit(:content, :score_id)
-    
   end
 
 end
