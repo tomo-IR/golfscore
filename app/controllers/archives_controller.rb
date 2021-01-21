@@ -9,6 +9,7 @@ class ArchivesController < ApplicationController
   end
 
   def edit
+    
   end
 
   def update
@@ -54,30 +55,6 @@ class ArchivesController < ApplicationController
     end 
   end
 
-  def score_published
-    @score = Score.find(params[:id])
-    @score.published = 1
-    if @score.save
-      flash[:edit_success] = 'このラウンドのスコアを公開しました。'
-      redirect_to archives_index_path
-    else
-      flash[:delete_success] = 'このラウンドのスコアを非公開にできませんでした'
-      redirect_to root_path
-    end
-  end
-  
-  def score_unpublished
-    @score = Score.find(params[:id])
-    @score.published = 0
-    if @score.save
-      flash[:edit_success] = 'このラウンドのスコアを非公開にしました。'
-      redirect_to archives_index_path
-    else
-      flash[:edit_success] = 'このラウンドのスコアを非公開にしました。'
-      render root_path
-    end
-  end
-  
   private
 
   def set_score

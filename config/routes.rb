@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'unpublisheds/update'
+  get 'publisheds/update'
   get 'plays/update'
   get 'score/index'
   root :to => 'home#index'
@@ -16,6 +18,8 @@ Rails.application.routes.draw do
   resources :scores, only: [:show]
   get '/plays/:score_id/:hole_number', :to => 'plays#edit' ,:as => 'plays_edit'
   resources :plays, only: [:update]
+  resources :publisheds, only: [:update]
+  resources :unpublisheds, only: [:update]
 
   # patch '/plaies/:score_id/:hole_number', :to => 'plaies#update' ,:as => 'plaies_update'
 
