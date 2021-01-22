@@ -34,7 +34,7 @@ class MessagesController < ApplicationController
 	private
 
   def message_params
-    params.require(:message).permit(:content, :score_id)
+    params.require(:message).permit(:content, :score_id, :image)
   end
 
 end
