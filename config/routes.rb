@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   get 'golfcourses/get', :to => 'golfcourses#get'
   get 'golfcourses/search', :to => 'golfcourses#search'
   post 'golfcourses/round_start', :to => 'golfcourses#round_start' ,:as => 'round_start'
-  get 'golfcourses/play/:id', :to => 'golfcourses#play' ,:as => 'golfcourse_play'
-  post 'golfcourses/finish/:id', :to => 'golfcourses#finish' ,:as => 'golfcourses_finish'
+  # get 'golfcourses/play/:id', :to => 'golfcourses#play' ,:as => 'golfcourse_play'
+  # post 'golfcourses/finish/:id', :to => 'golfcourses#finish' ,:as => 'golfcourses_finish'
 
   resources :scores, only: [:show]
   get '/plays/:score_id/:hole_number', :to => 'plays#edit' ,:as => 'plays_edit'
