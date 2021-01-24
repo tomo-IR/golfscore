@@ -7,11 +7,13 @@
   <span id='total_score'><%= @score.total_score %></span>  
 </p>
 <%= render 'score_card' %>
-<p>
-<%= link_to "スコア入力に戻る", plays_edit_path(score_id: @score.id, hole_number: @score.thru.to_i + 1)%>
-</p>
+<% if @score.status == 0 %>
+  <p>
+    <%= link_to "スコア入力に戻る", plays_edit_path(score_id: @score.id, hole_number: @score.thru.to_i + 1)%>
+  </p>
+<% end %>
 
-<%= render "/golfcourses/form" %>
+<%= render "/plays/form" %>
 
 <%# if @score.hole1_score == nil %>
   <%#= link_to "このラウンドを終了する", golfcourses_finish_path, method: :update, data: { confirm: 'ラウンドを終了してよろしいですか？' }  %>
