@@ -22,3 +22,11 @@ h1 {
     width: 300px;
     display: block;
 }
+
+.body_bg {
+    /* background-image: url('bg.PNG'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.8);
+    background-blend-mode: lighten;
+}

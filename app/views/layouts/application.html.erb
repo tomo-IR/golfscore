@@ -4,13 +4,20 @@
     <title>Golfscore</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <%#= stylesheet_link_tag "application", media: "all" %>
+    <%#= javascript_include_tag "application" %>
+    <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%#= javascript_include_tag 'application' %>
+    <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_bundle_tag "#{params[:controller]}#{params[:action].capitalize}" %>
+    
+    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#= stylesheet_bundle_tag "#{params[:controller]}#{params[:action].capitalize}" %>
+  
   </head>
 
-  <body>
+  <body class="body_bg">
     <%= render 'layouts/header' %>
     <%= render 'layouts/flash.scores' %>
      
