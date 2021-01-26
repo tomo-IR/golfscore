@@ -8,22 +8,19 @@
     <%= link_to "ログイン", new_user_session_path, class: 'post' %><br />
     <%= link_to "サインアップ", new_user_registration_path, class: 'post' %><br />
     <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %><br />
-    <%= link_to "ラウンドする", golfcourses_search_path %>
   <% end %>
 </div>
 
 <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
-  <%#= link_to "ラウンドする", select_course_path %><br />
   <%= link_to "掲示板を覗く", messages_index_path %><br />
   <%= link_to "過去のスコアを見る", '/archives?played_year=0&commit=%E6%A4%9C%E7%B4%A2', played_year: '0', commit: '検索' %><br />
   <%= link_to "プレイヤー検索", user_index_path %><br />
   <%= link_to "マイページ", mypage_path %><br />
-  <%= link_to "ラウンドする", golfcourses_search_path %><br />
+  <%= link_to "ラウンドする", golfcourses_index_path %><br />
 <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
-  <%#= link_to "ラウンドする", select_course_path %><br />
   <%= link_to "掲示板を覗く", messages_index_path %><br />
   <%= link_to "プレイヤー検索", user_index_path %><br />
-  <%= link_to "ラウンドする", golfcourses_search_path %><br />
+  <%= link_to "ラウンドする", golfcourses_index_path %><br />
 
 <% end %>
 

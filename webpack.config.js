@@ -9,7 +9,7 @@ module.exports = (env, argv) => {
 
     return {
         entry: {
-            main: './frontend/application.js'
+            // main: './frontend/application.js'
         },
         // devtool: IS_DEV ? 'source-map' : 'none',  // HMRが重くなる原因なので外した方がいい。
         output: {

@@ -21,10 +21,11 @@
   <% @score.each do|score|%>
     <% if score.published == 1 %>
       <div>
-        <%= score.user.name %><br>
-        <%= score.golfcourse.golfcoursename %><br>
         <%= score.played_date %><br>
+        <%= score.golfcourse.golfcoursename %><br>
         <%= score.total_score %><br>
+        スタートホール：<%= score.start_hole %>H<br>
+
         <%= link_to "スコア詳細", archives_show_path(id: score.id) %>  
       </div>
     <% end %>
