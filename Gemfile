@@ -29,6 +29,8 @@ gem 'active_decorator'
 gem 'pry-rails'
 gem 'jquery-rails'
 gem "foreman"
+gem "bootstrap-sass", "~>3.3.6"
+gem "jquery-ui-rails"
 
 group :development do
   gem 'web-console', '>= 3.3.0'

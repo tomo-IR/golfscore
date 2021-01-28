@@ -1,26 +1,26 @@
-<h1>Live Score</h1>
-<p>お一人様ゴルフを楽しく！</p>
+<h1>SOLOGOL</h1>
+
 <div class="grid-6">
   <% if user_signed_in? %>
     <%= link_to "ログアウト", destroy_user_session_path, method: :get %><br />
     <div>あなたのニックネーム:<%= current_user.name %></div><br />
   <% else %>
     <%= link_to "ログイン", new_user_session_path, class: 'post' %><br />
-    <%= link_to "サインアップ", new_user_registration_path, class: 'post' %><br />
+    <%= link_to "新規登録", new_user_registration_path, class: 'post' %><br />
     <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %><br />
   <% end %>
 </div>
 
 <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
-  <%= link_to "掲示板を覗く", messages_index_path %><br />
-  <%= link_to "過去のスコアを見る", '/archives?played_year=0&commit=%E6%A4%9C%E7%B4%A2', played_year: '0', commit: '検索' %><br />
+  <%= link_to "ゴルフ場の掲示板をのぞく", messages_index_path %><br />
+  <%= link_to "過去のスコア解析", '/archives?played_year=0&commit=%E6%A4%9C%E7%B4%A2', played_year: '0', commit: '検索' %><br />
   <%= link_to "プレイヤー検索", user_index_path %><br />
-  <%= link_to "マイページ", mypage_path %><br />
-  <%= link_to "ラウンドする", golfcourses_index_path %><br />
+  <%= link_to "MYPAGE", mypage_path %><br />
+  <%= link_to "ラウンドする⛳️", golfcourses_index_path %><br />
 <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
-  <%= link_to "掲示板を覗く", messages_index_path %><br />
+  <%= link_to "ゴルフ場の掲示板をのぞく", messages_index_path %><br />
   <%= link_to "プレイヤー検索", user_index_path %><br />
-  <%= link_to "ラウンドする", golfcourses_index_path %><br />
+  <%= link_to "ラウンドする⛳️", golfcourses_index_path %><br />
 
 <% end %>
 
@@ -35,7 +35,8 @@
     <% @unfinished_score.each do|score| %>
       <%= score.played_date%>
       <%= link_to score.golfcourse.golfcoursename, score_path(id: score.id)%>
-      <%= score.total_score%><br>
+      <%= score.total_score%>
+      <%= score.thru%>H<br>
     <% end %>
   <% end %>
 <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>

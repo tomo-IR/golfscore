@@ -20,7 +20,7 @@
   <% end %>
   <p>ラウンド数：<%= @count = @scores_search.count.to_i %></p>
   <% @ave = @sum.to_f / @count.to_f %>
-  <p>平均：<%= format('%+d', @ave.round(1)) %></p>
+  <p>平均スコア：<%= sprintf("+%.2f", @ave) %></p>
   
   <% @array = [] %>
   <% @scores_search.each do|score| %>
