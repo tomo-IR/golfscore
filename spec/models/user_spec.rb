@@ -15,6 +15,10 @@ RSpec.describe User, :type => :model do
     expect(FactoryBot.build(:user, :email => "")).to_not be_valid
   end
 
+  it "nameがなければ登録できない" do
+    expect(FactoryBot.build(:user, :name => "")).to_not be_valid
+  end
+
   # it "メールアドレスがなければ登録できない" do
   #   expect(FactoryBot.build(:user, email: "")).to_not be_valid
   # end
