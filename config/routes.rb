@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'home/authentication'
   post '/home/guest_sign_in', :to => 'homes#new_guest'
     
-  get 'getapi/create', :to => 'getapi#create'
+  # get 'getapi/create', :to => 'getapi#create'
 
   get 'golfcourses/index', :to => 'golfcourses#index'
   post 'golfcourses/create', :to => 'golfcourses#create' ,:as => 'round_start'
@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   delete 'archives/:id',:to => 'archives#destroy' ,:as => 'archives_destroy'
   post 'archives/published/:id', to: 'archives#score_published' ,:as => 'archives_score_published'
   post 'archives/unpublished/:id', to: 'archives#score_unpublished' ,:as => 'archives_score_unpublished'
-  # ↑publishも専用コントローラ作る
+
 
 
   #◇「掲示板を覗く」まわりのルーティング
