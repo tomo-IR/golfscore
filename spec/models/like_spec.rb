@@ -7,7 +7,7 @@ RSpec.describe Like, :type => :model do
     like.save
     another_like = FactoryBot.build(:like)
     another_like.save
-    expect(another_user).to_not be_valid
+    expect(another_like).to_not be_valid
   end
 
 end
