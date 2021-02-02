@@ -1,49 +1,25 @@
 <h1>SOLOGOL</h1>
 
-<div class="grid-6">
+<div>
   <% if user_signed_in? %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :get %><br />
-    <div>あなたのニックネーム:<%= current_user.name %></div><br />
+    <%= link_to "ログアウト", destroy_user_session_path, method: :get %><br>
+    <div>あなたのニックネーム:<%= current_user.name %></div><br>
   <% else %>
-    <%= link_to "ログイン", new_user_session_path, class: 'post' %><br />
-    <%= link_to "新規登録", new_user_registration_path, class: 'post' %><br />
-    <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %><br />
+    <%= link_to "ログイン", new_user_session_path, class: 'post' %><br>
+    <%= link_to "新規登録", new_user_registration_path, class: 'post' %><br>
+    <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %><br>
   <% end %>
 </div>
 
-<% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
-  <%= link_to "ゴルフ場の掲示板をのぞく", messages_index_path %><br />
-  <%= link_to "過去のスコア解析", '/archives?played_year=0&commit=%E6%A4%9C%E7%B4%A2', played_year: '0', commit: '検索' %><br />
-  <%= link_to "プレイヤー検索", user_index_path %><br />
-  <%= link_to "MYPAGE", mypage_path %><br />
-  <%= link_to "ラウンドする⛳️", golfcourses_index_path %><br />
-<% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
-  <%= link_to "ゴルフ場の掲示板をのぞく", messages_index_path %><br />
-  <%= link_to "プレイヤー検索", user_index_path %><br />
-  <%= link_to "ラウンドする⛳️", golfcourses_index_path %><br />
+<%= render 'top_menu'%>
 
-<% end %>
 
 <time>今日は<%= @day %>です</time><br>
 
-<% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
-  <h2>あなたは、サインイン中でゲストプレイヤーでもないですね。</h2>
-  <% if @unfinished_score.nil? %>
-    <h2>プレイ中のラウンドはありません。</h2>
-  <% else %>
-    <h2>プレイ中のラウンド</h2>
-    <% @unfinished_score.each do|score| %>
-      <%= score.played_date%>
-      <%= link_to score.golfcourse.golfcoursename, score_path(id: score.id)%>
-      <%= score.total_score%>
-      <%= score.thru%>H<br>
-    <% end %>
-  <% end %>
-<% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
-  <h2>あなたは、サインイン中でゲストプレイヤーですね。</h2>
-  <%# <h2>ゲストログインだから、何も表示しないよ</h2> %>
-<% else %>
-  <h2>ログアウト中ですね</h2>  
-<% end %>
+<%= render 'playing_round'%>
+
+<h2>フォローしているプレイヤーのラウンド情報(直近1週間)</h2>  
+<%= render 'following_timeline'%>
+
 
 <%= session.to_hash %>

@@ -1,0 +1,19 @@
+<% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
+  <h2>あなたは、サインイン中でゲストプレイヤーでもないですね。</h2>
+    <h2>プレイ中のラウンド</h2>
+  <% if @unfinished_score == [] %>
+    <p>プレイ中のラウンドはありません。</p>
+  <% else %>
+    <% @unfinished_score.each do|score| %>
+      <%= score.played_date%>
+      <%= link_to score.golfcourse.golfcoursename, score_path(id: score.id)%>
+      <%= score.total_score%>
+      <%= score.thru%>H<br>
+    <% end %>
+  <% end %>
+<% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
+  <h2>あなたは、サインイン中でゲストプレイヤーですね。</h2>
+  <%# <h2>ゲストログインだから、何も表示しないよ</h2> %>
+<% else %>
+  <h2>ログアウト中ですね</h2>  
+<% end %>

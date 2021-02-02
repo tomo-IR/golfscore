@@ -14,4 +14,13 @@
     <%= image_tag @user.avatar.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
   </p>
 <% end %>
+
+<% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
+  <%= render 'users/follow_form' %>
+  <%= render 'users/stats' %>
+<% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
+  <%= render 'stats' %>
+  <span>※ゲストユーザーは、フォロー機能を使用できません。</span>
+<% end %>
+
 <%= link_to "トップにもどる", root_path %>

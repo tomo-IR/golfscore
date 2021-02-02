@@ -1,0 +1,8 @@
+<% if @following_score == [] %>
+  <p>直近1週間フォローしているプレイヤーはラウンドしていません。</p>
+<% else %>
+  <% @following_score.each do|user|%>  
+    <%= user.user.name %>プロが<%= user.played_date.strftime('%-m月%d日(%a)') %>に<%= user.golfcourse.golfcoursename %>でラウンドしました
+    <%= link_to 'スコアを見る', archives_show_path(id: user.id) %><br>
+  <% end %>
+<% end %>
