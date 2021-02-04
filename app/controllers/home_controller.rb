@@ -11,29 +11,21 @@ class HomeController < ApplicationController
                               .includes([:golfcourse])
       @user = User.find(current_user.id)
       @following_user = @user.followings
-      @array = []
+      @following_user_id = []
       @following_user.each do|score|
-      @array.push(score.id)
+        @following_user_id.push(score.id)
+      end
     end
-  end
 
     from  = Time.current.at_beginning_of_day + 1.day
     to    = (from - 7.day).at_end_of_day
 
-    @following_score = Score.where(user_id: @array)
+    @following_score = Score.where(user_id: @following_user_id)
                             .where(published: 1)
                             .where(played_date: to...from) 
                             .order(played_date: :desc)
                             .includes([:user])
                             .includes([:golfcourse])
-
-    
-
-    # @following_score = Score.where(user_id: @following_user.id)
-    
-    
-
-
 
   end
 
