@@ -1,7 +1,4 @@
 <p id="message-<%= message.id %>">
-	<% if message.image != nil %>
-    <img class="thmb" src="<%= "#{message.image}" %>">
-  <% end %>
 	<span><%= message.content %></span>
 	<span><%= message.user.name %></span>
 	<span><%= message.created_at %></span>

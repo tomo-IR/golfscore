@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     if current_user.nil?
       puts "ログアウト中です"
     else
-      @unfinished_score = Score.where(user_id: current_user.id)
+      @unfinshed_score = Score.where(user_id: current_user.id)
                               .where(status: 0)
                               .includes([:golfcourse])
     end

@@ -27,7 +27,6 @@ gem 'parser', '>= 2.7.1.5'
 gem 'whenever', require: false
 gem 'active_decorator'
 gem 'pry-rails'
-gem 'jquery-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -38,8 +37,6 @@ group :development do
   gem 'rubocop-performance', :require => false
   gem 'rubocop-rails', :require => false
   gem 'rubocop-rspec'
-  gem "better_errors"
-  gem "binding_of_caller"
 end
 
 group :test do

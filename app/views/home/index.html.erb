@@ -29,13 +29,15 @@
 
 <time>今日は<%= @day %>です</time><br>
 
+
+
 <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
   <h2>あなたは、サインイン中でゲストプレイヤーでもないですね。</h2>
-  <% if @unfinished_score.nil? %>
+  <% if @unfinshed_score.nil? %>
     <h2>プレイ中のラウンドはありません。</h2>
   <% else %>
     <h2>プレイ中のラウンド</h2>
-    <% @unfinished_score.each do|score| %>
+    <% @unfinshed_score.each do|score| %>
       <%= score.played_date%>
       <%= link_to score.golfcourse.golfcoursename, score_path(id: score.id)%>
       <%= score.total_score%><br>
