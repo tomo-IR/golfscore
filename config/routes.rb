@@ -1,23 +1,26 @@
 Rails.application.routes.draw do
+
+  root :to => 'home#index'
   get 'unpublisheds/update'
   get 'publisheds/update'
   get 'plays/update'
   get 'score/index'
-  root :to => 'home#index'
   get 'users/show'
   get '/home/index',:to => 'home#index'
   get 'home/authentication'
   post '/home/guest_sign_in', :to => 'homes#new_guest'
-  
-  get 'golfcourses/get', :to => 'golfcourses#get'
-  get 'golfcourses/search', :to => 'golfcourses#search'
-  post 'golfcourses/round_start', :to => 'golfcourses#round_start' ,:as => 'round_start'
-  # get 'golfcourses/play/:id', :to => 'golfcourses#play' ,:as => 'golfcourse_play'
-  # post 'golfcourses/finish/:id', :to => 'golfcourses#finish' ,:as => 'golfcourses_finish'
+    
+  # get 'getapi/create', :to => 'getapi#create'
+
+  get 'golfcourses/index', :to => 'golfcourses#index'
+  post 'golfcourses/create', :to => 'golfcourses#create' ,:as => 'round_start'
+
 
   resources :scores, only: [:show]
+
   get '/plays/:score_id/:hole_number', :to => 'plays#edit' ,:as => 'plays_edit'
   resources :plays, only: [:update]
+
   resources :publisheds, only: [:update]
   resources :unpublisheds, only: [:update]
 
@@ -36,7 +39,7 @@ Rails.application.routes.draw do
   delete 'archives/:id',:to => 'archives#destroy' ,:as => 'archives_destroy'
   post 'archives/published/:id', to: 'archives#score_published' ,:as => 'archives_score_published'
   post 'archives/unpublished/:id', to: 'archives#score_unpublished' ,:as => 'archives_score_unpublished'
-  # ↑publishも専用コントローラ作る
+
 
 
   #◇「掲示板を覗く」まわりのルーティング
@@ -60,8 +63,8 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'   
-  } 
-  get '/users/show/:id/:round_id', :to => 'users#scorecard' ,:as => 'user_scorecard'
+  }
+  # get '/users/show/:id/:round_id', :to => 'users#scorecard' ,:as => 'user_scorecard'
   devise_scope :user do
     get 'sign_in', :to => 'users/sessions#new'
     get '/users/sign_out', :to => 'users/sessions#destroy' 
