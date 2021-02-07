@@ -1,11 +1,46 @@
 class ArchivesController < ApplicationController
   before_action :set_score, only: %i(show edit update destroy)
   def index
-    @scores =  Score.where(user_id: current_user.id).includes([:user]).includes([:golfcourse])
+    @scores =  Score.where(user_id: current_user.id)
+                    .where(status: 1)
+                    .includes([:golfcourse])  #.includes([:user]  
+    
+    @scores_search = @scores.search(params[:played_year])
+
+    @played_course_id = Score.where(user_id: current_user.id)
+                          .where(status: 1)
+                          .distinct.pluck(:golfcourse_id)
+
+    @played_course_name = Golfcourse.where(id: @played_course_id)#重複なし
+
+    @played_course_count = @scores_search.group(:golfcourse_id)
+                                  .select("golfcourse_id, user_id, count(scores.id) as score_count")
+                                  .order("score_count desc").preload(:golfcourse)
+                                  .map { |m| [m.golfcourse.golfcoursename, m.score_count] }
+                                  .to_h
   end
 
   def show
-    
+    @current_course_scores = current_course_scores.sort_by do |score|
+      score.hole1_score.to_i + 
+      score.hole2_score.to_i + 
+      score.hole3_score.to_i + 
+      score.hole4_score.to_i + 
+      score.hole5_score.to_i + 
+      score.hole6_score.to_i + 
+      score.hole7_score.to_i + 
+      score.hole8_score.to_i + 
+      score.hole9_score.to_i + 
+      score.hole10_score.to_i +
+      score.hole11_score.to_i +
+      score.hole12_score.to_i +
+      score.hole13_score.to_i +
+      score.hole14_score.to_i +
+      score.hole15_score.to_i +
+      score.hole16_score.to_i +
+      score.hole17_score.to_i +
+      score.hole18_score.to_i
+    end
   end
 
   def edit
