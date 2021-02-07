@@ -1,62 +1,38 @@
 <h1>過去のスコアをみれます。</h1>
 <div>
   <h2>完了したラウンド</h2>
-
-  <%= form_tag(archives_index_path,:method => 'get', local: true) do %>
-    <%= label :played_year, '期間' %>
-    <%= select_tag 'played_year', options_for_select({'全期間': 0, '直近3ヶ月': '直近3ヶ月', '直近6ヶ月': '直近6ヶ月', '2021': 2021, '2020': 2020}, 1) %>
-    <%= submit_tag '検索' %>
-  <% end %>
-
-  <% if params[:played_year] == '' %>
-    <p>対象期間：全期間</p>
-  <% else %>
-    <p>対象期間：<%= params[:played_year] %></p>
-  <% end %>
-
-  <% @sum = 0 %>
-  <% @scores_search.each do |score| %>
-    <% @sum += score.total_score.to_i %>
-  <% end %>
-  <p>ラウンド数：<%= @count = @scores_search.count.to_i %></p>
-  <% @ave = @sum.to_f / @count.to_f %>
-  <p>平均：<%= @ave.round(1) %></p>
-  
-  <% @array = [] %>
-  <% @scores_search.each do|score| %>
-    <% @array.push(score.total_score.to_i) %>
-  <% end %>
-  <p>ベストスコア：<%= @array.min %></p>
-  <p>ワーストスコア：<%= @array.max %></p>
-
-    <% @played_course_count.each do|score| %>
-    <%= score[0] %>
-    <%= score[1] %>回 <br>
-  <% end %>
-
-<hr>
-
-  <% @scores_search.each do|score|%>
+  <% @scores.each do|score|%>
     <% if score.status == 1 %>
       <div>
-        <%= score.played_date %><br>
-        <%= score.played_date.year %><br>
+        <%= score.user.name %><br>
         <%= score.golfcourse.golfcoursename %><br>
-        スタートホール：<%= score.start_hole %>H<br>
+        <%= score.played_date %><br>
         <%= score.total_score %><br>
         <% if score.published == 1%>
           <span>公開</span><br>
         <% else %>
           <span>非公開</span><br>
         <% end %>
+        
         <%= score.published %><br>
-        <%= link_to 'スコア詳細', archives_show_path(id: score.id) %>
+
+        <%= link_to "スコア詳細", archives_show_path(id: score.id) %>
       </div>
     <% end %>
   <% end %>
 
-
-
+  <h2>プレイ中のラウンド</h2>
+  <% @scores.each do|score|%>
+    <% if score.status == 0 %>
+      <div>
+        <%= score.user.name %><br>
+        <%= score.golfcourse.golfcoursename %><br>
+        <%= score.played_date %><br>
+        <%= score.total_score %><br>
+        <%= link_to "スコア詳細", archives_show_path(id: score.id) %>
+      </div>
+    <% end %>
+  <% end %>
 </div>
 
 

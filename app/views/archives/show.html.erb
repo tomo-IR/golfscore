@@ -113,7 +113,6 @@
   <p>18H： <%= format('%+d', @score.hole18_score) %></p>
 <% end %>
 
-<%= render 'scores/leader_board' %>
 
 <span><%= link_to "ラウンド一覧に戻る", archives_index_path %> </span><br>
 <% if @score.published == 1 %>
