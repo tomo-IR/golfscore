@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
 	def index_course
 		@message_course = params[:golfcourse_id]
 		@course_name = Message.find_by(golfcourse_id: params[:golfcourse_id])
-		@messages = Message.where(:golfcourse_id => params[:golfcourse_id]).includes(:user).includes(:golfcourse)
+		@messages = Message.where(:golfcourse_id => params[:golfcourse_id]).includes(:user).page(params[:page]).per(20)
 		@like = Like.new
 	end
 
@@ -25,8 +25,6 @@ class MessagesController < ApplicationController
 		@message.save
 	end
 
-
-
 	def new
 		@message = Message.new
 	end
@@ -34,7 +32,7 @@ class MessagesController < ApplicationController
 	private
 
   def message_params
-    params.require(:message).permit(:content, :score_id)
+    params.require(:message).permit(:content, :score_id, :image)
   end
 
 end
