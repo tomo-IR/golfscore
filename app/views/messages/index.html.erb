@@ -1,5 +1,17 @@
-<h1>掲示板</h1>
-<p>コースごとの口コミや情報が見られます。</p>
+<h1>コースごとの掲示板を覗けます</h1>
+
+
+<h2>全てのメッセージ</h2>
+<div>
+<% @messages.each do |m| %>
+  <span><%= m.content %> </span>
+  <span>@<%= m.golfcourse.golfcoursename %> </span>
+  <span>by<%= m.user.name %> </span>
+  <span>投稿日時：<%= m.created_at %> </span><br>
+  <% end %>
+  </div>
+
+  <h2>コース毎のメッセージ</h2>
 <div>
   <% @every_course.zip(@golfcoursename) do |id,name| %>
     <span><%= link_to name.golfcoursename, messages_index_course_path(golfcourse_id: id) %> </span><br>

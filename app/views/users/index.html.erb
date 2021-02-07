@@ -1,20 +1,22 @@
-<h1>プレイヤー検索</h1>
+<h1>ユーザ検索</h1>
+<p>検索</p>
 
 <%= form_tag(user_index_path,:method => 'get') do %>
   <%= text_field_tag :search %>
   <%= submit_tag 'Search', :name => nil %>
 <% end %>
 
-<% if @users == [] %>
-<p>該当するユーザーはいません。</p>
-<% else %>
-  <% @users.each do |user| %>
-    <%= link_to user.name, user_path(id: user.id) %><br>
-  <% end %>
-<% end %>  
+<% @users.each do |user| %>
+	<%= link_to user.name, user_path(id: user.id) %><br>
+<% end %>
 <%= paginate @users %>
 
 
+<p>全ユーザー</p>
+<% @user_all .each do |user| %>
+	<%= user.name %><br>
+<% end %>
+<%= paginate @user_all %>
 
 
  <%= link_to "トップにもどる", root_path %>

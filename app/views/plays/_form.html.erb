@@ -2,11 +2,5 @@
   <%#= f.label :hole1_score, '1Hスコア' %>
   <%= f.number_field :hole_score, value: 0, id: "form_score" %>
   <%= hidden_field_tag :hole_number, params[:hole_number] %>
-  <% if @score.start_hole == 1 && params[:hole_number].to_i == 18 %>
-    <%= f.submit "入力してラウンドを完了する" %>
-  <% elsif @score.start_hole == 10 && params[:hole_number].to_i == 9 %>
-    <%= f.submit "入力してラウンドを完了する" %>
-  <% else %>  
-    <%= f.submit "次のホールへ" %>
-  <% end %>
+  <%= f.submit "次のホールへ" %>
 <% end %>
