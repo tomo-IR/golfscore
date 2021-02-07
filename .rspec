@@ -1,3 +1,4 @@
 --color
+--warning
 --require spec_helper
 --format d
