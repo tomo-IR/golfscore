@@ -2,11 +2,9 @@ class MypagesController < ApplicationController
   before_action :set_user, only: %i(index edit update)
 
 	def index
-
 	end
-
+	
 	def edit
-
 	end
 
 	def update
@@ -20,7 +18,6 @@ class MypagesController < ApplicationController
 	end
 
 	private
-	
 	def set_user
 		@user = User.find(current_user.id)
 	end

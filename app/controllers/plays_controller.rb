@@ -1,5 +1,4 @@
 class PlaysController < ApplicationController
-  
   def edit
     @score = Score.find(params[:score_id])
   end
@@ -15,7 +14,7 @@ class PlaysController < ApplicationController
     @score.user_id = current_user.id
     @score.thru = hole_number.to_i
     @score.save
-
+    
     if @score.start_hole == 1 && @score.thru == 18
       @score.status = 1
       @score.save
