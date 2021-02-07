@@ -19,7 +19,7 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 
-// console.log("hoge")
+console.log("hoge")
 
 // console.log("hoge");
 // document.getElementById("my-button").onclick = function() {

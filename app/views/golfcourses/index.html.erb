@@ -17,16 +17,17 @@
 	<%= f.label :published, "このラウンドのスコアの公開/非公開" %>
 	<%= f.select :published, [['公開', 1], ['非公開', 0]] %>
 
+	<div id="search_result">
 	<% @search_golfcoursename.each do |name| %><br>
 		<%= f.radio_button :golfcourse_id, name.id, require: true %>
 		<%= name.golfcoursename %><br>
-		<%= name.id %><br>
+
 		<%= name.address %><br>
 		<%= name.golfcoursecaption %><br>
 	<% end %>
 	<%= paginate @search_golfcoursename %>
-
 	<%= submit_tag 'ラウンドを開始する' %>
+	</div>
 
 <% end %>
 
