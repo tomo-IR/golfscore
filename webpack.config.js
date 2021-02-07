@@ -27,26 +27,26 @@ module.exports = (env, argv) => {
             })
         ],
         module: {
-            loders: [{
+            rules: [{
                     test: /\.js$/,
                     exclude: /node_modules/,
-                    loders: 'babel-loader',
+                    loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env']
                     }
                 },
                 {
                     test: /\.vue$/,
-                    loders: 'vue-loader'
+                    loader: 'vue-loader'
                 },
                 {
                     test: /\.pug/,
-                    loders: 'pug-plain-loader'
+                    loader: 'pug-plain-loader'
                 },
                 {
                     test: /\.(c|sc)ss$/,
                     use: [{
-                            loders: MiniCssExtractPlugin.loader,
+                            loader: MiniCssExtractPlugin.loader,
                             options: {
                                 publicPath: path.resolve(
                                     __dirname,
@@ -60,7 +60,7 @@ module.exports = (env, argv) => {
                 },
                 {
                     test: /\.(jpg|png|gif)$/,
-                    loders: 'file-loader',
+                    loader: 'file-loader',
                     options: {
                         name: '[name]-[hash].[ext]',
                         outputPath: 'images/bundle',
