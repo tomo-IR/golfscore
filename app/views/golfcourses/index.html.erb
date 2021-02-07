@@ -26,7 +26,7 @@
 	<% end %>
 	<%= paginate @search_golfcoursename %>
 
-	<%= submit_tag 'ラウンドを開始する' %>
+	<%= submit_tag 'ラウンドを開始する', data: { confirm: 'hoge' } %>
 
 <% end %>
 

@@ -11,7 +11,7 @@ class GolfcoursesController < ApplicationController
   def create
     @score = Score.new(new_score_params)
     @score.user_id = current_user.id
-    @score.created_at = Time.current
+    @score.created_at = Time.now.all_day
     @score.status = 0
     if @score.save
       flash[:success] = 'ラウンド開始！！'
@@ -19,7 +19,7 @@ class GolfcoursesController < ApplicationController
     else
       @golfcoursename_all  = Golfcourse.all.page(params[:page]).per(5) #ページネーション
       @search_golfcoursename = Golfcourse.search(params[:search]).page(params[:page]).per(5) #ページネーション
-      flash[:danger] = 'ゴルフ場を選択してください。'
+      flash.now[:danger] = 'ゴルフ場を選択してください。'
       render :index
     end
   end

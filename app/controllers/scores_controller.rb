@@ -39,5 +39,13 @@ class ScoresController < ApplicationController
                         .page(params[:page]).per(10)
   
   end
+  # def edit
+  #   @score = Score.find(params[:id])
+  # end
 
+  # def update
+  #     @score = Score.find(params[:id])
+  #     @score.hole1_score = params[:score][:hole1_score]
+  #     @score.save
+  # end
 end
