@@ -8,6 +8,7 @@
 <span> いいねの数<%= m.liked_users.count %>個</span>
 <span>投稿者 <%= m.user.name %> さん</span><br>
 <% end %>
+<%= paginate @messages %>
 
 <%= link_to "メッセージ一覧にもどる", messages_index_path %><br>
 <%= link_to "トップにもどる", root_path %><br>

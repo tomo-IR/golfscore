@@ -1,9 +1,10 @@
 <h1>スコアカード</h1>
 
-<p>プレイしたコース： <%= @score.golfcourse.golfcoursename %></p>
+<p>コース： <%= @score.golfcourse.golfcoursename %></p>
 <p>プレイ日時： <%= @score.played_date %></p>
+<p>プレイヤー： <%= @score.user.name%>プロ</p>
 <p>トータルスコア： <%= @score.total_score%></p>
-<%= @score.published %><br>
+
 
 <% if @score.hole1_score == nil %>
   <p>1H： 未プレイ </p>
@@ -115,10 +116,14 @@
 
 <%= render 'scores/leader_board' %>
 
-<span><%= link_to "ラウンド一覧に戻る", archives_index_path %> </span><br>
-<% if @score.published == 1 %>
+<% if current_user.id == @score.user.id %>
+  <%= link_to "ラウンド一覧に戻る", archives_index_path %> <br>
+<% end %>
+
+
+<% if current_user.id == @score.user.id && @score.published == 1 %>
   <span><%= link_to "このラウンドのスコアを非公開にする", unpublished_path(score_id: params[:id]), method: :patch, data: { confirm: 'このラウンドの結果を非公開にしてよろしいですか？' }  %> </span><br>
-<% elsif @score.published == 0 %>
+<% elsif current_user.id == @score.user.id && @score.published == 0 %>
   <span><%= link_to "このラウンドのスコアを公開する", published_path(id: params[:id]), method: :patch, data: { confirm: 'このラウンドの結果を公開してよろしいですか？' } %> </span><br>
 <% end %>
 
