@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   def index
+    @user_all  = User.where.not(:name => "ゲストプレイヤー")
+                      .where.not(:id => current_user.id)
+                      .page(params[:page]).per(5) #ページネーション
     @users = User.search(params[:search])
                   .where.not(:name => "ゲストプレイヤー")
                   .where.not(:id => current_user.id)

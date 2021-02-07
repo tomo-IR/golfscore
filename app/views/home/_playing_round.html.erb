@@ -1,7 +1,6 @@
 <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
-  <% puts 'あなたは、サインイン中でゲストプレイヤーでもないです。' %>
-
-  <h2>プレイ中のラウンド</h2>
+  <h2>あなたは、サインイン中でゲストプレイヤーでもないですね。</h2>
+    <h2>プレイ中のラウンド</h2>
   <% if @unfinished_score == [] %>
     <p>プレイ中のラウンドはありません。</p>
   <% else %>
@@ -17,7 +16,6 @@
           <td><%= score.played_date%></td>
           <td><%= link_to score.golfcourse.golfcoursename, score_path(id: score.id)%></td>
           <% if score.thru == nil%>
-            <td><span>-</span></td>
             <td><span>スタート前</span></td>
           <% else %>
             <td><%= score.total_score%></td>
@@ -32,7 +30,8 @@
     </table>
   <% end %>
 <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
-  <% puts 'あなたは、ログイン中でゲストプレイヤーですね。' %>
+  <h2>あなたは、サインイン中でゲストプレイヤーですね。</h2>
+  <%# <h2>ゲストログインだから、何も表示しないよ</h2> %>
 <% else %>
-  <% puts 'ログアウト中です。' %>
+  <h2>ログアウト中ですね</h2>  
 <% end %>

@@ -9,13 +9,14 @@ class HomeController < ApplicationController
       @unfinished_score = Score.where(user_id: current_user.id)
                               .where(status: 0)
                               .includes([:golfcourse])
-      @user = User.find(current_user.id)
-      @following_user = @user.followings
-      @array = []
-      @following_user.each do|score|
+    end
+
+    @user = User.find(current_user.id)
+    @following_user = @user.followings
+    @array = []
+    @following_user.each do|score|
       @array.push(score.id)
     end
-  end
 
     from  = Time.current.at_beginning_of_day + 1.day
     to    = (from - 7.day).at_end_of_day
