@@ -1,0 +1,18 @@
+<% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
+  <% puts 'あなたは、サインイン中でゲストプレイヤーでもないです。' %>
+
+  <h2>フォローしているプレイヤーのラウンド情報(直近1週間)</h2>  
+  <% if @following_score == [] %>
+    <p>直近1週間フォローしているプレイヤーはラウンドしていません。</p>
+  <% else %>
+    <% @following_score.each do|user|%>  
+      <%= user.user.name %>プロが<%= user.played_date.strftime('%-m月%d日(%a)') %>に<%= user.golfcourse.golfcoursename %>でラウンドしました
+      <%= link_to 'スコアを見る', archives_show_path(id: user.id) %><br>
+    <% end %>
+  <% end %>
+
+<% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
+  <% puts 'あなたは、ログイン中でゲストプレイヤーですね。' %>
+<% else %>
+  <% puts 'ログアウト中です。' %>
+<% end %>

@@ -1,6 +1,6 @@
 <h1>ラウンドするゴルフ場を選択</h1>
 
-<%= form_tag(golfcourses_search_path,:method => 'get', local: true) do %>
+<%= form_tag(golfcourses_index_path,:method => 'get', local: true) do %>
 	<%= label :search, "ゴルフ場名を検索" %>
 	<%= text_field_tag :search %>
 	<%= submit_tag 'Search', :golfcoursename => nil %>
@@ -26,7 +26,7 @@
 	<% end %>
 	<%= paginate @search_golfcoursename %>
 
-	<%= submit_tag 'ラウンドを開始する', data: { confirm: 'hoge' } %>
+	<%= submit_tag 'ラウンドを開始する' %>
 
 <% end %>
 
