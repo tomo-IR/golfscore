@@ -40,10 +40,10 @@
     <% if score.status == 1 %>
       <div>
         <%= score.played_date %><br>
+        <%= score.played_date.year %><br>
         <%= score.golfcourse.golfcoursename %><br>
-        <%= score.total_score %><br>
         スタートホール：<%= score.start_hole %>H<br>
-
+        <%= score.total_score %><br>
         <% if score.published == 1%>
           <span>公開</span><br>
         <% else %>

@@ -14,7 +14,6 @@ class PlaysController < ApplicationController
     @score.user_id = current_user.id
     @score.thru = hole_number.to_i
     @score.save
-    
     if @score.start_hole == 1 && @score.thru == 18
       @score.status = 1
       @score.save

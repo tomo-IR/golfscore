@@ -25,6 +25,8 @@ class MessagesController < ApplicationController
 		@message.save
 	end
 
+
+
 	def new
 		@message = Message.new
 	end

@@ -1,5 +1,5 @@
 class HelloWorld
-  def hoge
-    "Hello World"
+    def hoge
+     "Hello World"
+    end
   end
-end

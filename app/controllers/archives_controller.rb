@@ -78,6 +78,9 @@ class ArchivesController < ApplicationController
     end
   end
 
+  def hole_score_edit
+  end    
+
   def create
   end
 
