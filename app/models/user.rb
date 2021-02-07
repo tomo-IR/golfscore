@@ -1,9 +1,10 @@
 class User < ApplicationRecord
   # has_secure_password
-  # validates :name, :presence => true
-  # validates :password, :presence => true
+
   validates :email, :presence => true 
   validates :email, :uniqueness => true
+  validates :name, :uniqueness => true, :presence => true 
+  # validates :password, :presence => true 
 
   mount_uploader :avatar, AvatarUploader
 
@@ -11,7 +12,7 @@ class User < ApplicationRecord
   has_many :scores, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+          :recoverable, :rememberable, :validatable
   
   
   #フォロー機能関係

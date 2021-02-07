@@ -1,6 +1,7 @@
 class Score < ApplicationRecord
   belongs_to :user, :optional => true
   belongs_to :golfcourse
+  validates :golfcourse_id, :presence => true 
 
   def self.search(search)
     today = Date.today
