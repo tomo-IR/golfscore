@@ -4,30 +4,12 @@
   <% if @unfinished_score == [] %>
     <p>プレイ中のラウンドはありません。</p>
   <% else %>
-    <table>
-      <tr>
-        <th>プレイ日</th>
-        <th>コース名</th>
-        <th>暫定スコア</th>
-        <th>THRU</th>
-      </tr>
-      <% @unfinished_score.each do|score| %>
-        <tr>
-          <td><%= score.played_date%></td>
-          <td><%= link_to score.golfcourse.golfcoursename, score_path(id: score.id)%></td>
-          <% if score.thru == nil%>
-            <td><span>スタート前</span></td>
-          <% else %>
-            <td><%= score.total_score%></td>
-            <% if score.start_hole == 1 %>
-              <td><%= score.thru%>H</td>
-            <% else %> 
-              <td><%= score.thru%>H*</td>
-            <% end %>
-          <% end %>
-        </tr>
-      <% end %>
-    </table>
+    <% @unfinished_score.each do|score| %>
+      <%= score.played_date%>
+      <%= link_to score.golfcourse.golfcoursename, score_path(id: score.id)%>
+      <%= score.total_score%>
+      <%= score.thru%>H<br>
+    <% end %>
   <% end %>
 <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
   <h2>あなたは、サインイン中でゲストプレイヤーですね。</h2>
