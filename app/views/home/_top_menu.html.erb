@@ -1,12 +1,15 @@
-<% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
-  <%= link_to "ゴルフ場の掲示板をのぞく", messages_index_path %><br />
-  <%= link_to "過去のスコア解析", '/archives?played_year=0&commit=%E6%A4%9C%E7%B4%A2', played_year: '0', commit: '検索' %><br />
-  <%= link_to "プレイヤー検索", user_index_path %><br />
-  <%= link_to "MYPAGE", mypage_path %><br />
-  <%= link_to "ラウンドする⛳️", golfcourses_index_path %><br />
-<% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
-  <%= link_to "ゴルフ場の掲示板をのぞく", messages_index_path %><br />
-  <%= link_to "プレイヤー検索", user_index_path %><br />
-  <%= link_to "ラウンドする⛳️", golfcourses_index_path %><br />
+<div class="topmenu-list">
+  <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
+    <%= link_to image_tag('board.svg', class: "topmenu-image__title"), messages_index_path, class: "topmenu-list__title" %>
+    <%= link_to image_tag('course.svg', class: "topmenu-image__title"), '/archives?played_year=0&commit=%E6%A4%9C%E7%B4%A2', played_year: '0', commit: '検索', class: "topmenu-list__title" %>
+    <%= link_to image_tag('bag.svg', class: "topmenu-image__title"), user_index_path, class: "topmenu-list__title" %>
+    <%= link_to image_tag('shoes.svg', class: "topmenu-image__title"), mypage_path, class: "topmenu-list__title" %>
+    <%= link_to image_tag('cart.svg', class: "topmenu-image__title"), golfcourses_index_path, class: "topmenu-list__title" %>
 
-<% end %>
+  <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
+    <%= link_to image_tag('board.svg', class: "topmenu-image__title"), messages_index_path, class: "topmenu-list__title" %>
+    <%= link_to image_tag('bag.svg', class: "topmenu-image__title"), user_index_path, class: "topmenu-list__title" %>
+    <%= link_to image_tag('cart.svg', class: "topmenu-image__title"), golfcourses_index_path, class: "topmenu-list__title" %>
+  <% end %>
+</div>
+  <%#= link_to image_tag('logo-01.svg', class: "topmenu-image__title"), root_path  %>

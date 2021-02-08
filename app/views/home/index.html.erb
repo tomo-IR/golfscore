@@ -1,21 +1,10 @@
-<h1>SOLOGOL</h1>
-
-<div>
-  <% if user_signed_in? %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :get %><br>
-    <div>あなたのニックネーム:<%= current_user.name %></div><br>
-  <% else %>
-    <%= link_to "ログイン", new_user_session_path, class: 'post' %><br>
-    <%= link_to "新規登録", new_user_registration_path, class: 'post' %><br>
-    <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %><br>
-  <% end %>
-</div>
-
 <%= render 'top_menu'%>
 
-<%= render 'playing_round'%>
-
-<%= render 'following_timeline'%>
-
+<% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
+<div class="news-list">
+  <%= render 'playing_round'%>
+  <%= render 'following_timeline'%>
+</div>
+<% end %>
 
 <%= session.to_hash %>

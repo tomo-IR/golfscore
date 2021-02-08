@@ -1,3 +1,30 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.topmenu-list {
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.topmenu-image__title {
+    width: 150px;
+}
+
+.news-list {
+    display: flex;
+    justify-content: space-around;
+}
+
+.unfinished_list,
+.follwing_play_list {
+    background-color: white;
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.news-list__image {
+    width: 80px;
+}

@@ -1,7 +1,9 @@
+<div class="unfinished_list">
+<%= image_tag('putter-02.svg', class: "news-list__image") %>
+<div>
 <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
   <% puts 'あなたは、サインイン中でゲストプレイヤーでもないです。' %>
 
-  <h2>プレイ中のラウンド</h2>
   <% if @unfinished_score == [] %>
     <p>プレイ中のラウンドはありません。</p>
   <% else %>
@@ -36,3 +38,6 @@
 <% else %>
   <% puts 'ログアウト中です。' %>
 <% end %>
+
+</div>
+</div>
