@@ -1,3 +1,5 @@
+const { $ } = require("@rails/ujs");
+
 console.log("hoge")
 
 document.addEventListener("turbolinks:load", function() {
