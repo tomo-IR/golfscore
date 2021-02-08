@@ -1,9 +1,10 @@
 <header>
+<% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
   <%= link_to image_tag('logo-01.svg', class: "header-logo-image"), root_path  %>
-</header>
 <% if current_user.avatar? %>  <!-- アップロード画像がある場合に実行する -->
     <%= image_tag current_user.avatar.url, class: "avatar-img" %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
 <% end %>
+  <% end %>
 <div>
   <% if user_signed_in? %>
     <p><%= current_user.name %></p>
@@ -15,3 +16,5 @@
     <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %><br>
   <% end %>
 </div>
+
+</header>
