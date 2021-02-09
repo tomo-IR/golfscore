@@ -1,4 +1,4 @@
-    /*
+/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -13,36 +13,35 @@
  *= require_tree .
  *= require_self
  */
-    
-    @import "bootstrap";
-    h1 {
-        font-size: 20px;
-    }
-    
-    .thmb {
-        width: 300px;
-        display: block;
-    }
-    
-    h1 {
-        color: red;
-    }
-    
-    // 共通↓
-    .header-logo-image {
-        width: 200px;
-    }
-    
-    .avatar-img {
-        width: 70px;
-        height: 70px;
-        object-fit: cover;
-        border-radius: 50%;
-    }
-    
-    body {
-        background-image: url('golf-bg.jpg');
-        background-size: cover;
-    }
-    
-    // 共通↑
+
+@import "bootstrap";
+.headerBlock__avatar {
+    width: 300px;
+    margin-top: 10px;
+}
+
+.avatar-img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 0;
+    float: right;
+    margin: 10px 50px 0px 0px;
+}
+
+.backGround__img {
+    background-image: url('golf-bg.jpg');
+    background-size: cover;
+}
+
+.bgOpacity {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.thmb {
+    //いずれ消す
+    width: 300px;
+    display: block;
+}

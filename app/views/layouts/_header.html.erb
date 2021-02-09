@@ -1,5 +1,6 @@
 <header>
-  <%= link_to image_tag('logo-01.svg', class: "header-logo-image"), root_path  %>
+<div class="headerBlock">
+  <%= link_to image_tag('logo-01.svg', class: "headerBlock__avatar"), root_path  %>
   <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
     <% if current_user.avatar? %>  <!-- アップロード画像がある場合に実行する -->
       <%= image_tag current_user.avatar.url, class: "avatar-img 
@@ -11,14 +12,16 @@
                                                       'aria-expanded': "false", 
                                                       id: "dropdown1", 
                                                       type: "button" %>
+    <% else %>
+      <img src="/assets/ball.svg" alt="" id="dropdown1" class="avatar-img btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup= "true" aria-expanded= "false" type="button">
     <% end %>
     <div class="dropdown-menu" aria-labelledby="dropdown1">
-      <p class="dropdown-item"><%= current_user.name %></p>
-      <p class="dropdown-item"><%= current_user.email %></p>
+      <%= link_to current_user.name, mypage_path, class: "dropdown-item" %>
+      <%= link_to current_user.email, mypage_path, class: "dropdown-item" %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "dropdown-item" %><br>
     </div>
   <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
-    <% if current_user.avatar? %>  <!-- アップロード画像がある場合に実行する -->
+      <% if current_user.avatar? %>  <!-- アップロード画像がある場合に実行する -->
       <%= image_tag current_user.avatar.url, class: "avatar-img 
                                                       btn
                                                       btn-secondary
@@ -28,21 +31,15 @@
                                                       'aria-expanded': "false", 
                                                       id: "dropdown1", 
                                                       type: "button" %>
+    <% else %>
+      <img src="/assets/ball.svg" alt="" id="dropdown1" class="avatar-img btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup= "true" aria-expanded= "false" type="button">
     <% end %>
     <div class="dropdown-menu" aria-labelledby="dropdown1">
-      <p><%= current_user.name %></p>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :get %><br>
+      <p class="dropdown-item"><%= current_user.name %></p>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "dropdown-item" %><br>
     </div>
-  <% else %>
-    <%= link_to "ログイン", new_user_session_path, class: 'post' %><br>
-    <%= link_to "新規登録", new_user_registration_path, class: 'post' %><br>
-    <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %><br>
+
   <% end %>
+  </div>
 </header>
 
-
-<%# <button type="button" id="dropdown1" %>
-      <%# class="btn btn-secondary dropdown-toggle" %>
-      <%# data-toggle="dropdown" %>
-      <%# aria-haspopup="true" %>
-      <%# aria-expanded="false"> %>
