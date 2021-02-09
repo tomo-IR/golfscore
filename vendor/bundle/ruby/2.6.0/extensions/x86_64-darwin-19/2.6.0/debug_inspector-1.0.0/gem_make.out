@@ -1,5 +1,5 @@
 current directory: /Users/iraira/rails/golfscore/vendor/bundle/ruby/2.6.0/gems/debug_inspector-1.0.0/ext/debug_inspector
-/Users/iraira/.rbenv/versions/2.6.6/bin/ruby -I /Users/iraira/.rbenv/versions/2.6.6/lib/ruby/2.6.0 -r ./siteconf20210126-1259-n4fj1q.rb extconf.rb
+/Users/iraira/.rbenv/versions/2.6.6/bin/ruby -I /Users/iraira/.rbenv/versions/2.6.6/lib/ruby/2.6.0 -r ./siteconf20210210-13335-117hwow.rb extconf.rb
 creating Makefile
 
 current directory: /Users/iraira/rails/golfscore/vendor/bundle/ruby/2.6.0/gems/debug_inspector-1.0.0/ext/debug_inspector
@@ -12,4 +12,4 @@ linking shared-object debug_inspector.bundle
 
 current directory: /Users/iraira/rails/golfscore/vendor/bundle/ruby/2.6.0/gems/debug_inspector-1.0.0/ext/debug_inspector
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 debug_inspector.bundle ./.gem.20210126-1259-11tks5j
+/usr/bin/install -c -m 0755 debug_inspector.bundle ./.gem.20210210-13335-u7v2te

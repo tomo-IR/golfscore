@@ -1,7 +1,7 @@
 <h1>掲示板</h1>
 <p>コースごとの口コミや情報が見られます。</p>
 <div>
-  <% @every_course.zip(@golfcoursename) do |id,name| %>
+  <% @every_course.zip(@golfcoursenam) do |id,name| %>
     <span><%= link_to name.golfcoursename, messages_index_course_path(golfcourse_id: id) %> </span><br>
   <% end %>
 </div>
