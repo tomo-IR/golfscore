@@ -43,8 +43,6 @@ class User < ApplicationRecord
     find_or_create_by!(:email => 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "ゲストプレイヤー"
-      user.avatar = "ball.svg"
-      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
   end
 
