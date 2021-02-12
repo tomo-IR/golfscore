@@ -1,26 +1,23 @@
 
-<h1> マイページ</h1>
-<p>お名前</p>
-<%= @user.name %>
-<p>メールアドレス</p>
-<%= @user.email %>
-<p>自己紹介</p>
-<%= @user.introduction %>
-
-<%= link_to "編集する", mypage_edit_path %>
-<% if @user.avatar? %>  <!-- アップロード画像がある場合に実行する -->
-  <p>
-    <strong>Avatar:</strong>
-    <%= image_tag @user.avatar.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
-  </p>
-<% end %>
-
-<% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
-  <%= render 'users/follow_form' %>
-  <%= render 'users/stats' %>
-<% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
-  <%= render 'stats' %>
-  <span>※ゲストユーザーは、フォロー機能を使用できません。</span>
-<% end %>
-
-<%= link_to "トップにもどる", root_path %>
+<div class="mypage-block">
+  <div class="mypage-block__flex">
+    <div class="mypage-block__leftsideBlock">
+      <% if @user.avatar? %>  
+        <%= image_tag @user.avatar.url,class: "mypage-block__avatar" %><
+      <% end %>
+      <p class="mypage-block__name"><%= @user.name %></p>
+      <p class="mypage-block__email"><%= @user.email %></p>
+    </div>
+    <div class="mypage-block__rightsideBlock">
+      <%= link_to "プロフィールを編集する", mypage_edit_path, class: "rightsideBlock__edit" %>
+      <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
+        <%= render 'users/follow_form' %>
+        <%= render 'users/stats' %>
+      <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
+        <%= render 'stats' %>
+        <span>※ゲストユーザーは、フォロー機能を使用できません。</span>
+      <% end %>
+    </div>
+  </div>
+  <p><%= @user.introduction %></p>
+</div>

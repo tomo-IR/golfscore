@@ -6,11 +6,12 @@ class MypagesController < ApplicationController
 	end
 
 	def edit
-
+		@user.avatar.cache! unless @user.avatar.blank?
 	end
 
 	def update
-		if @user.update!(:name => params[:name], :introduction => params[:introduction])
+		if @user.update!(user_params)
+			puts @user..avatar.current_path
 			flash[:edit_success] = '編集されました'
 			redirect_to mypage_edit_path
 		else
@@ -24,5 +25,11 @@ class MypagesController < ApplicationController
 	def set_user
 		@user = User.find(current_user.id)
 	end
+
+	def user_params
+    params.require(:user).permit(:name, :introduction, :avatar, :avatar_cache)
+  end
+
+
 
 end

@@ -1,3 +1,103 @@
 // Place all the styles related to the Mypage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.mypage-block {
+    background: rgba(255, 255, 255, 0.4);
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    .mypage-block__avatar {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+        padding: 0;
+    }
+    .mypage-block__flex {
+        display: flex;
+    }
+    .mypage-block__leftsideBlock {
+        width: 75%;
+        display: inline-block;
+    }
+    .mypage-block__rightsideBlock {
+        width: 20%;
+        display: inline-block;
+        text-align: center;
+    }
+    .rightsideBlock__edit {
+        border: 1px solid black;
+        color: black;
+        height: 30px;
+        display: inline-block;
+        line-height: 30px;
+        width: 100%;
+        border-radius: 15px
+    }
+    .stats__ff {
+        color: #aaaaaa;
+    }
+    .f_number {
+        color: #333333;
+        font-size: 20px;
+    }
+}
+
+.mypageEdit-block {
+    background: rgba(255, 255, 255, 0.4);
+    width: 90%;
+    margin: 0 auto;
+    padding: 30px;
+    height: 500px;
+    .mypageEdit-block__avatar {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+        padding: 0;
+    }
+    .mypageEdit-block__flex {
+        display: flex;
+    }
+    .mypageEdit-block__leftsideBlock {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .mypageEdit-block__rightsideBlock {
+        width: 55%;
+        display: inline-block;
+        text-align: center;
+    }
+    .rightsideBlock__edit {
+        border: 1px solid black;
+        color: black;
+        height: 30px;
+        display: inline-block;
+        line-height: 30px;
+        width: 100%;
+        border-radius: 15px
+    }
+    .userForm__child {
+        display: flex;
+        margin-bottom: 15px;
+    }
+    .form_submit_button {
+        display: block;
+        margin: 0 auto;
+        width: 300px;
+        height: 40px;
+    }
+    .form_label {
+        width: 150px;
+        text-align: left;
+    }
+    .form_input {
+        width: 300px;
+    }
+    .form_textarea {
+        height: 300px;
+    }
+}
