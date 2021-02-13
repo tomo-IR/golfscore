@@ -2,14 +2,16 @@
   <h2><%= params[:hole_number] %>Hのスコアを入力</h2>
   <%#= @score.send("hole#{params[:hole_number]}_score") %>
 
-
-  <button id="eagle">Eagle</button>
-  <button id="birdie">Birdie</button>
-  <button id="par">Par</button>
-  <%= render "form" %>
-  <button id="boggy">Boggy</button>
-  <button id="double_boggy">Double-Boggy</button>
-  <button id="triple_boggy">Triple-Boggy</button><br>
-
+  <div class="play-edit__buttonGroup">
+    <button id="eagle" class="play-edit__scoreButton score_under">Eagle</button>
+    <button id="birdie" class="play-edit__scoreButton score_under">Birdie</button>
+    <button id="par" class="play-edit__scoreButton score_under">Par</button>
+    </div>
+    <%= render "form" %>
+  <div class="play-edit__buttonGroup">
+    <button id="boggy" class="play-edit__scoreButton score_over">Boggy</button>
+    <button id="double_boggy" class="play-edit__scoreButton score_over">Double-Boggy</button>
+    <button id="triple_boggy" class="play-edit__scoreButton score_over">Triple-Boggy</button>
+  </div>
   <p><%= link_to "スコアカードを見る", score_path(id: @score.id) ,hole_number: params[:hole_number] %></p>
 </div>

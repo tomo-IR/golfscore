@@ -8,4 +8,44 @@
         font-size: 100px;
         text-align: center;
     }
+    .play-edit__buttonGroup {
+        display: flex;
+        justify-content: space-evenly;
+        margin: 20px auto;
+        align-items: center;
+    }
+    .play-edit__holeButton {
+        height: 100px;
+        width: 100px;
+        background-color: black;
+        text-align: center;
+        line-height: 100px;
+        color: #ffffff;
+        border: none;
+    }
+    .play-edit__holeButton:hover {
+        cursor: pointer;
+        font-style: italic;
+    }
+    .play-edit__airButton {
+        height: 100px;
+        width: 100px;
+    }
+    .play-edit__scoreButton {
+        width: 70px;
+        height: 70px;
+        border: none;
+    }
+    .play-edit__scoreButton:hover {
+        cursor: pointer;
+        font-style: italic;
+    }
+    .score_under {
+        background-color: blue;
+        color: white;
+    }
+    .score_over {
+        background-color: red;
+        color: white;
+    }
 }
