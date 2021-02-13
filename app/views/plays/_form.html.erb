@@ -1,6 +1,19 @@
 <%= form_with url: play_path(id: @score.id), method: :patch do|f| %>
-  <%#= f.label :hole1_score, '1Hスコア' %>
-  <%= f.number_field :hole_score, value: 0, id: "form_score" %>
+  
+  <% last_hole = params[:hole_number].to_i - 1 %>
+  <% if @score.start_hole.to_i == 1 && params[:hole_number].to_i == 1 %>
+  <% elsif @score.start_hole.to_i == 10 && params[:hole_number].to_i == 10 %>
+  <% elsif @score.start_hole.to_i == 10 && params[:hole_number].to_i == 1 %>
+    <%= link_to "前のホールへ戻る", plays_edit_path(score_id: @score.id, hole_number: 18) %>
+  <% else %>
+    <%=  link_to "前のホールへ戻る", plays_edit_path(score_id: @score.id, hole_number: last_hole) %>
+  <% end %>
+
+  <% if @score.send("hole#{params[:hole_number]}_score") == nil %>
+    <%= f.number_field :hole_score, value: 0, id: "form_score",class: "play-edit_form" %>
+  <% else %>
+    <%= f.number_field :hole_score, value: @score.send("hole#{params[:hole_number]}_score"), id: "form_score",class: "play-edit_form" %>
+  <% end %>
   <%= hidden_field_tag :hole_number, params[:hole_number] %>
   <% if @score.start_hole == 1 && params[:hole_number].to_i == 18 %>
     <%= f.submit "入力してラウンドを完了する" %>
