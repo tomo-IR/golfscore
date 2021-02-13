@@ -1,7 +1,5 @@
-<h1>過去のスコアを解析</h1>
-<div>
-  <h2>完了したラウンド</h2>
-
+<div class="archive-block">
+  <h1>過去のスコアを解析</h1>
   <%= form_tag(archives_index_path,:method => 'get', local: true) do %>
     <%= label :played_year, '期間' %>
     <%= select_tag 'played_year', options_for_select({'全期間': 0, '直近3ヶ月': '直近3ヶ月', '直近6ヶ月': '直近6ヶ月', '2021': 2021, '2020': 2020}, 1) %>
@@ -43,28 +41,30 @@
   <% end %>
 
 <hr>
+  <table class="archive-block__round__table table table-striped">
+    <tr class="archive-block__round__tr">
+      <th>プレイ日</th>
+      <th>コース</th>
+      <th>スコア</th>
+      <th>スタートホール</th>
+      <th>スコア公開</th>
+    </tr>
+    <% @scores_search.each do|score|%>
+      <tr class="archive-block__round__tr">
 
-  <% @scores_search.each do|score|%>
-    <% if score.status == 1 %>
-      <div>
-        <%= score.played_date %><br>
-        <%= score.golfcourse.golfcoursename %><br>
-        <%= score.total_score %><br>
-        スタートホール：<%= score.start_hole %>H<br>
-
-        <% if score.published == 1%>
-          <span>公開</span><br>
+        <td><%= score.played_date %></td>
+        <td><%= score.golfcourse.golfcoursename %></td>
+        <td><%= link_to score.total_score, archives_show_path(id: score.id)%>
+        <td><%= score.start_hole %>H</td>
+        <% if score.published == 1 %>
+          <td>公開中</td>
         <% else %>
-          <span>非公開</span><br>
+          <td>非公開</td>
         <% end %>
-        <%= score.published %><br>
-        <%= link_to 'スコア詳細', archives_show_path(id: score.id) %>
-      </div>
+      </tr>  
     <% end %>
-  <% end %>
-
-
-
+  </table>
+  <%#= paginate @scores, theme: 'twitter-bootstrap-4'%>
 </div>
 
 

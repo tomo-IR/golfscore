@@ -3,7 +3,8 @@ class ArchivesController < ApplicationController
   def index
     @scores =  Score.where(user_id: current_user.id)
                     .where(status: 1)
-                    .includes([:golfcourse])  #.includes([:user]  
+                    .includes([:golfcourse])  #.includes([:user] 
+                    # .page(params[:page]).per(10)
     
     @scores_search = @scores.search(params[:played_year])
 

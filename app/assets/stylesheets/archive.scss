@@ -1,47 +1,11 @@
-// Place all the styles related to the users controller here.
+// Place all the styles related to the Golfcourses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.user-Search {
+.archive-block {
     display: block;
     width: 700px;
-    margin: 0 auto;
-    .user-Search__ul {
-        margin: 10px auto;
-        padding: 0;
-    }
-    .user-Search__list {
-        display: flex;
-        justify-content: center;
-        border-bottom: 1px solid;
-        padding: 10px;
-    }
-    .user-Search__form {
-        display: flex;
-        justify-content: space-evenly;
-    }
-    .user-Search__list__span {
-        width: 300px;
-        text-align: center;
-    }
-    .user-Search__list__name {
-        height: 50px;
-        line-height: 50px;
-        width: 300px;
-        text-align: center;
-    }
-    nav {
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-    }
-}
-
-.userShow-block {
-    background: rgba(255, 255, 255, 0.4);
-    width: 700px;
-    margin: 0 auto;
-    padding: 20px;
-    .userShow-block__avatar {
+    margin: 30px auto;
+    .archive-block__avatar {
         width: 200px;
         height: 200px;
         object-fit: cover;
@@ -49,10 +13,10 @@
         padding: 0;
         margin: 20px auto;
     }
-    .userShow-block__flex {
+    .archive-block__flex {
         display: flex;
     }
-    .userShow-block__leftsideBlock {
+    .archive-block__leftsideBlock {
         width: 75%;
         display: inline-block;
         flex-direction: column;
@@ -60,7 +24,7 @@
         /* justify-content: center; */
         text-align: center;
     }
-    .userShow-block__rightsideBlock {
+    .archive-block__rightsideBlock {
         width: 40%;
         display: flex;
         text-align: center;
@@ -90,17 +54,17 @@
         color: #333333;
         font-size: 20px;
     }
-    .userShow-block__h2 {
+    .archive-block__h2 {
         text-align: center;
     }
-    .userShow-block__round__table {
+    .archive-block__round__table {
         margin: 20px auto;
     }
-    .userShow-block__round__tr {
+    .archive-block__round__tr {
         height: 50px;
         border-bottom: black solid 1px;
     }
-    .userShow-block__noRound {
+    .archive-block__noRound {
         text-align: center;
     }
     nav {

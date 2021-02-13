@@ -28,17 +28,14 @@ Rails.application.routes.draw do
 
 
 
-# ゴルフ場を選択し、ラウンドスタートするまではgolfcourses、スコア入力画面はscoresにする
-
-
   #◇「過去のスコアを見る」まわりのルーティング
   get 'archives',:to => 'archives#index' ,:as => 'archives_index'
   get 'archives/:id', to: 'archives#show' ,:as => 'archives_show'
   get 'archives/:id/edit', to: 'archives#edit' ,:as => 'archives_edit'
   post 'archives/:id', to: 'archives#update' ,:as => 'archives_update'
   delete 'archives/:id',:to => 'archives#destroy' ,:as => 'archives_destroy'
-  post 'archives/published/:id', to: 'archives#score_published' ,:as => 'archives_score_published'
-  post 'archives/unpublished/:id', to: 'archives#score_unpublished' ,:as => 'archives_score_unpublished'
+  # post 'archives/published/:id', to: 'archives#score_published' ,:as => 'archives_score_published'
+  # post 'archives/unpublished/:id', to: 'archives#score_unpublished' ,:as => 'archives_score_unpublished'
 
 
 
