@@ -9,6 +9,6 @@ set :environment, rails_env
 # cronのログの吐き出し場所
 set :output, "#{Rails.root}/log/cron.log"
 
-every 1.day do
+every 5.minute do
   rake "get_golfcourse_info:get"
 end

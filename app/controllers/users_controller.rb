@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     @users = User.search(params[:search])
                   .where.not(:name => "ゲストプレイヤー")
                   .where.not(:id => current_user.id)
-                  .page(params[:page]).per(2) #ページネーション
+                  .page(params[:page]).per(10) #ページネーション
   end
 
   def show
