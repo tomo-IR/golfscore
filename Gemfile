@@ -28,6 +28,7 @@ gem 'whenever', require: false
 gem 'active_decorator'
 gem 'pry-rails'
 gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap4-kaminari-views'
 gem 'jquery-rails'
 
 group :development do

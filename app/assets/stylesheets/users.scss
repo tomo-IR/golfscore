@@ -1,3 +1,33 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.user-Serach {
+    display: block;
+    width: 500px;
+    margin: 0 auto;
+    .user-Serach__list {
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid;
+        padding: 10px;
+    }
+    .user-Serach__form {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .user-Serach__list__span {
+        width: 300px;
+        text-align: center;
+    }
+    .user-Serach__list__name {
+        height: 50px;
+        line-height: 50px;
+        width: 300px;
+        text-align: center;
+    }
+    nav {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+}
