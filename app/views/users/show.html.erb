@@ -1,36 +1,51 @@
-<h1><%= @user.name %>さんのページ</h1>
-<p><%= @user.introduction  %></p>
-<% if @user.avatar? %>  <!-- アップロード画像がある場合に実行する -->
-  <p>
-    <strong>Avatar:</strong>
-    <%= image_tag @user.avatar.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
-  </p>
-<% end %>
 
-<% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
-  <%= render 'follow_form' %>
-  <%= render 'stats' %>
-<% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
-  <%= render 'stats' %>
-  <span>※ゲストユーザーは、フォロー機能を使用できません。</span>
-<% end %>
+<div class="userShow-block">
+  <div class="userShow-block__flex">
+    <div class="userShow-block__leftsideBlock">
+      <% if @user.avatar? %>
+        <%= image_tag @user.avatar.url,class: "userShow-block__avatar" %>
+      <% else %>
+        <img src="/assets/ball.svg" class="userShow-block__avatar">
+      <% end %>
+        <p class="userShow-block__name"><%= @user.name %></p>
+    </div>
+    <div class="userShow-block__rightsideBlock">
+      <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
+        <%= render 'follow_form' %>
+        <%= render 'stats' %>
+      <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
+        <%= render 'stats' %>
+        <span>※ゲストユーザーは、フォロー機能を使用できません。</span>
+      <% end %>
+    </div>
+  </div>
+
+  <p class="userShow-block__introduction"><%= @user.introduction %></p>
+  <%= link_to "ユーザー 一覧に戻る", users_path %>
+
+  <div class="userShow-block__round">
+    <h2 class="userShow-block__h2">ラウンド結果</h2>
 
 
-<h2>ラウンド結果</h2>
-<div>
-  <% @score.each do|score|%>
-    <% if score.published == 1 %>
-      <div>
-        <%= score.played_date %><br>
-        <%= score.golfcourse.golfcoursename %><br>
-        <%= score.total_score %><br>
-        スタートホール：<%= score.start_hole %>H<br>
-
-        <%= link_to "スコア詳細", archives_show_path(id: score.id) %>  
-      </div>
+    <% if @score == [] %>
+      <p class="userShow-block__noRound">表示できるラウンド結果はありません。</p>
+    <% else %>
+      <table class="userShow-block__round__table">
+        <tr class="userShow-block__round__tr">
+          <th>プレイ日</th>
+          <th>コース</th>
+          <th>スコア</th>
+        </tr>
+        <% @score.each do|score|%>
+          <tr class="userShow-block__round__tr">
+            <td><%= score.played_date %></td>
+            <td><%= score.golfcourse.golfcoursename %></td>
+            <td><%= link_to score.total_score, archives_show_path(id: score.id) %></td>
+          </tr>
+        <% end %>
+      </table>
+      <%= paginate @score, theme: 'twitter-bootstrap-4'%>
     <% end %>
-  <% end %>
+  </div>
 </div>
 
-
-<%= link_to "トップにもどる", root_path %><br>

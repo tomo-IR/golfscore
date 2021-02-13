@@ -8,9 +8,14 @@ class UsersController < ApplicationController
 
   def show
     @user  = User.find(params[:id])
-    @score = @user.scores.includes([:golfcourse])
-
+    @score = @user.scores
+                  .where(status: 1)
+                  .where(published: 1)
+                  .includes([:golfcourse])
+                  .order(played_date: :desc)
+                  .page(params[:page]).per(5) #ページネーション
   end
+  
   def scorecard
     @coursename = params[:round_id]
     @score_card_score = Score.where(:round_id => params[:round_id]) #ホールごとのスコアを取得

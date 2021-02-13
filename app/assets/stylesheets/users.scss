@@ -1,32 +1,107 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.user-Serach {
+.user-Search {
     display: block;
     width: 600px;
     margin: 0 auto;
-    .user-Serach__ul {
+    .user-Search__ul {
         margin: 10px auto;
         padding: 0;
     }
-    .user-Serach__list {
+    .user-Search__list {
         display: flex;
         justify-content: center;
         border-bottom: 1px solid;
         padding: 10px;
     }
-    .user-Serach__form {
+    .user-Search__form {
         display: flex;
         justify-content: space-evenly;
     }
-    .user-Serach__list__span {
+    .user-Search__list__span {
         width: 300px;
         text-align: center;
     }
-    .user-Serach__list__name {
+    .user-Search__list__name {
         height: 50px;
         line-height: 50px;
         width: 300px;
+        text-align: center;
+    }
+    nav {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.userShow-block {
+    background: rgba(255, 255, 255, 0.4);
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    .userShow-block__avatar {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+        padding: 0;
+        margin: 20px auto;
+    }
+    .userShow-block__flex {
+        display: flex;
+    }
+    .userShow-block__leftsideBlock {
+        width: 75%;
+        display: inline-block;
+        flex-direction: column;
+        display: flex;
+        /* justify-content: center; */
+        text-align: center;
+    }
+    .userShow-block__rightsideBlock {
+        width: 40%;
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        display: flex;
+        /* align-items: center; */
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    .rightsideBlock__edit {
+        border: 1px solid black;
+        color: black;
+        height: 30px;
+        display: inline-block;
+        line-height: 30px;
+        width: 100%;
+        border-radius: 15px;
+        white-space: nowrap;
+        margin: 30px auto;
+    }
+    .stats__ff {
+        color: #aaaaaa;
+    }
+    .f_number {
+        color: #333333;
+        font-size: 20px;
+    }
+    .userShow-block__h2 {
+        text-align: center;
+    }
+    .userShow-block__round__table {
+        margin: 20px auto;
+        width: 500px;
+    }
+    .userShow-block__round__tr {
+        height: 50px;
+        border-bottom: black solid 1px;
+    }
+    .userShow-block__noRound {
         text-align: center;
     }
     nav {

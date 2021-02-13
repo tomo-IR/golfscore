@@ -12,6 +12,7 @@
         object-fit: cover;
         border-radius: 50%;
         padding: 0;
+        margin: 20px auto;
     }
     .mypage-block__flex {
         display: flex;
@@ -19,11 +20,17 @@
     .mypage-block__leftsideBlock {
         width: 75%;
         display: inline-block;
+        flex-direction: column;
+        display: flex;
+        /* justify-content: center; */
+        text-align: center;
     }
     .mypage-block__rightsideBlock {
-        width: 20%;
-        display: inline-block;
+        width: 40%;
+        display: flex;
         text-align: center;
+        flex-direction: column;
+        justify-content: center;
     }
     .rightsideBlock__edit {
         border: 1px solid black;
@@ -32,7 +39,9 @@
         display: inline-block;
         line-height: 30px;
         width: 100%;
-        border-radius: 15px
+        border-radius: 15px;
+        white-space: nowrap;
+        margin: 30px auto;
     }
     .stats__ff {
         color: #aaaaaa;
