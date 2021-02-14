@@ -19,7 +19,6 @@
                 <td><%= link_to user.user.name, user_path(id: user.user.id) %></td>
                 <td><%= link_to user.golfcourse.golfcourseabbr, archives_show_path(id: user.id) %></td>
               </tr>
-        <%#= link_to 'スコアを見る', archives_show_path(id: user.id) %>
             <% end %>
           </table>
         <% end %>
