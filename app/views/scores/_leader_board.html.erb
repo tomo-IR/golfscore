@@ -1,51 +1,62 @@
 <div class="leader-board">
   <h2>リーダーボード</h1>
-
   <table class="table table-striped">
     <tr>
-      <th scope="col">順位</th>
-      <th scope="col">プレイヤー</th>
-      <th scope="col">スコア</th>
-      <th scope="col">THRU</th>
-      <%# <th scope="col">スタートホール</th> %>
+      <th>順位</th>
+      <th>プレイヤー</th>
+      <th>スコア</th>
+      <th>THRU</th>
     </tr>
     <% s = 0 %>
     <% j = 1 %>
     <% @current_course_scores.each.with_index(1) do|score,i| %>
-    <tr>
-      <% if i == 1 %>
-        <% s = score.total_score %>
-      <% end %>
-
-      <% if score.total_score != s %>
-        <% j = i %>
-        <td><%= j %></td>
-        <td><%= score.user.name %></td>
-        <td><%= score.total_score %></td>
-        <td>
+      <tr>
+        <% if i == 1 %>
+          <% s = score.total_score %>
+        <% end %>
+        <% if score.total_score != s %>
+          <% j = i %>
+          <td><%= j %></td>
+          <td><%= link_to score.user.name, user_path(id: score.user.id) %></td>
+          <td><%= score.total_score %></td>
+          <td>
           <% if score.status == 1 %>
-            F
+            <% if score.start_hole == 1 %>
+              F
+            <% else %>
+              F*
+            <% end %>
           <% else %>
-            <%= score.thru.to_i %>
+            <% if score.start_hole == 1 %>
+              <%= score.thru.to_i %>
+            <% else %>
+              <%= score.thru.to_i %>*
+            <% end %>
           <% end %>
         </td>
-
         <% s = score.total_score %>
-      <% else %>
-        <% s = score.total_score %>
-        <td><%= j %></td>
-        <td><%= score.user.name %></td>
-        <td><%= score.total_score %></td>
-        <td>
-          <% if score.status == 1 %>
-            F
-          <% else %>
-            <%= score.thru.to_i %>
-          <% end %>
-        </td>
-
-      <% end %>
-    </tr>
+        <% else %>
+          <% s = score.total_score %>
+          <td><%= j %></td>
+          <td><%= link_to score.user.name, user_path(id: score.user.id) %></td>
+          <td><%= score.total_score %></td>
+          <td>
+            <% if score.status == 1 %>
+              <% if score.start_hole == 1 %>
+                F
+              <% else %>
+                F*
+              <% end %>
+            <% else %>
+              <% if score.start_hole == 1 %>
+                <%= score.thru.to_i %>
+              <% else %>
+                <%= score.thru.to_i %>*
+              <% end %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
     <% end %>
   </table>
   <p>*は10Hスタート</p>
