@@ -7,17 +7,19 @@
   <% if @unfinished_score == [] %>
     <p>プレイ中のラウンドはありません。</p>
   <% else %>
-    <table>
+<h4>スコア入力中のラウンド</h4>
+<p>クリックすると、スコア入力画面に戻れます。</p>
+    <table class=" table table-striped">
       <tr>
         <th>プレイ日</th>
         <th>コース名</th>
-        <th>暫定スコア</th>
+        <th>暫定<br>スコア</th>
         <th>THRU</th>
       </tr>
       <% @unfinished_score.each do|score| %>
         <tr>
-          <td><%= score.played_date%></td>
-          <td><%= link_to score.golfcourse.golfcoursename, score_path(id: score.id)%></td>
+          <td><%= score.played_date.strftime('%-m月%d日(%a)')%></td>
+          <td><%= link_to score.golfcourse.golfcourseabbr, score_path(id: score.id)%></td>
           <% if score.thru == nil%>
             <td><span>-</span></td>
             <td><span>スタート前</span></td>

@@ -1,16 +1,19 @@
-<%= render 'top_menu'%>
+<div class="home-block">
+<p>SOLOGOLはお一人様ゴルフをより楽しくプレーするためのアプリです。</p>
+  <%= render 'top_menu'%>
+</div>
 
-<% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
-  <div class="newsList">
-    <%= render 'playing_round'%>
-    <%= render 'following_timeline'%>
-  </div>
-<% end %>
+  <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
+    <div class="newsList">
+      <%= render 'playing_round'%>
+      <%= render 'following_timeline'%>
+    </div>
+  <% end %>
 
-<% unless user_signed_in? %>
-  <div class="authBlock">
-    <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-primary authBlock__btn' %><br>
-    <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-success authBlock__btn' %><br>
-    <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn btn-outline-warning authBlock__btn" %><br>
-  </div>
-<% end %>
+  <% unless user_signed_in? %>
+    <div class="authBlock">
+      <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-primary authBlock__btn' %><br>
+      <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-success authBlock__btn' %><br>
+      <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn btn-outline-warning authBlock__btn" %><br>
+    </div>
+  <% end %>

@@ -1,34 +1,35 @@
-<h1>ラウンドするゴルフ場を選択</h1>
+<div class="golfcourse-block">
+	<h1>ラウンドするゴルフ場を選択</h1>
 
-<%= form_tag(golfcourses_index_path,:method => 'get', local: true) do %>
-	<%= label :search, "ゴルフ場名を検索" %>
-	<%= text_field_tag :search %>
-	<%= submit_tag 'Search', :golfcoursename => nil %>
-<% end %>
-
-<%= form_with url:round_start_path do |f| %>
-
-	<%= f.label :played_date, "ラウンドする日" %>
-	<%= f.date_select :played_date, require: true, use_month_numbers: true %><br>
-
-	<%= f.label :start_hole, "スタートホール" %>
-	<%= f.select :start_hole, [['1H', 1], ['10H', 10]]  %><br>
-
-	<%= f.label :published, "このラウンドのスコアの公開/非公開" %>
-	<%= f.select :published, [['公開', 1], ['非公開', 0]] %>
-
-	<div id="search_result">
-	<% @search_golfcoursename.each do |name| %><br>
-		<%= f.radio_button :golfcourse_id, name.id, require: true %>
-		<%= name.golfcoursename %><br>
-
-		<%= name.address %><br>
-		<%= name.golfcoursecaption %><br>
+	<%= form_tag(golfcourses_index_path,:method => 'get', local: true) do %>
+		<%= label :search, "ゴルフ場名を検索" %>
+		<%= text_field_tag :search %>
+		<%= submit_tag 'Search', :golfcoursename => nil %>
 	<% end %>
-	<%= paginate @search_golfcoursename %>
-	<%= submit_tag 'ラウンドを開始する' %>
-	</div>
 
-<% end %>
+	<%= form_with url:round_start_path do |f| %>
 
+		<%= f.label :played_date, "ラウンドする日" %>
+		<%= f.date_select :played_date, require: true, use_month_numbers: true %><br>
 
+		<%= f.label :start_hole, "スタートホール" %>
+		<%= f.select :start_hole, [['1H', 1], ['10H', 10]]  %><br>
+
+		<%= f.label :published, "このラウンドのスコアの公開/非公開" %>
+		<%= f.select :published, [['公開', 1], ['非公開', 0]] %>
+
+		<div id="search_result">
+		<% @search_golfcoursename.each do |name| %><br>
+			<%= f.radio_button :golfcourse_id, name.id, require: true %>
+			<%= name.golfcoursename %><br>
+
+			<%= name.address %><br>
+			<%= name.golfcoursecaption %><br>
+		<% end %>
+		<%= paginate @search_golfcoursename %>
+		<%= submit_tag 'ラウンドを開始する' %>
+		</div>
+
+	<% end %>
+
+</div>
