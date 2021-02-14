@@ -1,19 +1,29 @@
 <div class="follwingPlayList">
-<%= image_tag('cap-02.svg', class: "newsList__image", id: "test") %>
-<div>
-  <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
-    <% puts 'あなたは、サインイン中でゲストプレイヤーでもないです。' %>
+  <%= image_tag('cap-02.svg', class: "newsList__image", id: "test") %>
+    <div>
+      <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
+        <% puts 'あなたは、サインイン中でゲストプレイヤーでもないです。' %>
+        <% if @following_score == [] %>
+          <p>直近1週間フォローしているプレイヤーはラウンドしていません。</p>
+        <% else %>
+          <h4>フォローしているプレイヤーのラウンド情報</h4>
+          <table class=" table table-striped">
+            <tr>
+              <th>プレイ日</th>
+              <th>プレイヤー</th>
+              <th>コース名</th>
+            </tr>
+            <% @following_score.each do|user|%>  
+              <tr>
+                <td><%= user.played_date.strftime('%-m月%d日(%a)') %></td>
+                <td><%= link_to user.user.name, user_path(id: user.user.id) %></td>
+                <td><%= link_to user.golfcourse.golfcourseabbr, archives_show_path(id: user.id) %></td>
+              </tr>
+        <%#= link_to 'スコアを見る', archives_show_path(id: user.id) %>
+            <% end %>
+          </table>
+        <% end %>
 
-    <% if @following_score == [] %>
-      <p>直近1週間フォローしているプレイヤーはラウンドしていません。</p>
-    <% else %>
-<h4>フォローしているプレイヤーのラウンド情報</h4>
-
-      <% @following_score.each do|user|%>  
-        <%= user.user.name %>プロが<%= user.played_date.strftime('%-m月%d日(%a)') %>に<%= user.golfcourse.golfcoursename %>でラウンドしました
-        <%= link_to 'スコアを見る', archives_show_path(id: user.id) %><br>
-      <% end %>
-    <% end %>
 
   <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
     <% puts 'あなたは、ログイン中でゲストプレイヤーですね。' %>
