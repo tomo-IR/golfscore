@@ -1,45 +1,43 @@
 <div class="unfinishedList">
-<%= image_tag('putter-02.svg', class: "newsList__image") %>
-<div>
-<% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
-  <% puts 'あなたは、サインイン中でゲストプレイヤーでもないです。' %>
-
-  <% if @unfinished_score == [] %>
-    <p>プレイ中のラウンドはありません。</p>
-  <% else %>
-<h4>スコア入力中のラウンド</h4>
-<p>クリックすると、スコア入力画面に戻れます。</p>
-    <table class=" table table-striped">
-      <tr>
-        <th>プレイ日</th>
-        <th>コース名</th>
-        <th>暫定<br>スコア</th>
-        <th>THRU</th>
-      </tr>
-      <% @unfinished_score.each do|score| %>
-        <tr>
-          <td><%= score.played_date.strftime('%-m月%d日(%a)')%></td>
-          <td><%= link_to score.golfcourse.golfcourseabbr, score_path(id: score.id)%></td>
-          <% if score.thru == nil%>
-            <td><span>-</span></td>
-            <td><span>スタート前</span></td>
-          <% else %>
-            <td><%= score.total_score%></td>
-            <% if score.start_hole == 1 %>
-              <td><%= score.thru%>H</td>
-            <% else %> 
-              <td><%= score.thru%>H*</td>
-            <% end %>
+  <%= image_tag('putter-02.svg', class: "newsList__image") %>
+  <div>
+    <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
+      <% puts 'あなたは、サインイン中でゲストプレイヤーでもないです。' %>
+      <% if @unfinished_score == [] %>
+        <p>プレイ中のラウンドはありません。</p>
+      <% else %>
+        <h4>スコア入力中のラウンド</h4>
+        <p>クリックすると、スコア入力画面に戻れます。</p>
+        <table class=" table table-striped">
+          <tr>
+            <th>プレイ日</th>
+            <th>コース名</th>
+            <th>暫定<br>スコア</th>
+            <th>THRU</th>
+          </tr>
+          <% @unfinished_score.each do|score| %>
+            <tr>
+              <td><%= score.played_date.strftime('%-m月%d日(%a)')%></td>
+              <td><%= link_to score.golfcourse.golfcourseabbr, score_path(id: score.id)%></td>
+              <% if score.thru == nil%>
+                <td><span>-</span></td>
+                <td><span>スタート前</span></td>
+              <% else %>
+                <td><%= score.total_score%></td>
+                <% if score.start_hole == 1 %>
+                  <td><%= score.thru%>H</td>
+                <% else %> 
+                  <td><%= score.thru%>H*</td>
+                <% end %>
+              <% end %>
+            </tr>
           <% end %>
-        </tr>
+        </table>
       <% end %>
-    </table>
-  <% end %>
-<% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
-  <% puts 'あなたは、ログイン中でゲストプレイヤーですね。' %>
-<% else %>
-  <% puts 'ログアウト中です。' %>
-<% end %>
-
-</div>
-</div>
+      <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
+        <% puts 'あなたは、ログイン中でゲストプレイヤーですね。' %>
+      <% else %>
+        <% puts 'ログアウト中です。' %>
+      <% end %>
+    </div>
+  </div>
