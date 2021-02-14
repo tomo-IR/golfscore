@@ -22,3 +22,26 @@
         margin: 0 auto;
     }
 }
+
+.score-block__message {
+    .score-block__img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+        padding: 0;
+        margin: 0px 10px 0px 0px;
+    }
+    .score-block__date-content {
+        font-size: 20px;
+        display: block;
+    }
+    .score-block__date-like {
+        text-align: right;
+        display: block;
+    }
+    .score-block__group {
+        padding: 10px;
+        background-color: aliceblue;
+    }
+}

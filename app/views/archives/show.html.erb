@@ -1,134 +1,24 @@
-<h1>スコアカード</h1>
+<div class="archiveShow-block">
+  <h1>スコア詳細</h1>
+  <p>コース： <%= @score.golfcourse.golfcoursename %></p>
+  <p>プレイ日時： <%= @score.played_date.strftime('20%y年%-m月%d日(%a)') %></p>
+  <p>トータルスコア： <%= @score.total_score%></p>
+  <div class="card-borad_block">
+    <%= render 'scores/score_card' %>
+    <%= render 'scores/leader_board' %>
+  </div>
+  <% if current_user.id == @score.user.id %>
+    <%= link_to "ラウンド一覧に戻る", archives_index_path %> <br>
+  <% end %>
 
-<p>コース： <%= @score.golfcourse.golfcoursename %></p>
-<p>プレイ日時： <%= @score.played_date %></p>
-<p>プレイヤー： <%= @score.user.name%>プロ</p>
-<p>トータルスコア： <%= @score.total_score%></p>
+  <% if current_user.id == @score.user.id && @score.published == 1 %>
+    <span><%= link_to "このラウンドのスコアを非公開にする", unpublished_path(score_id: params[:id]), method: :patch, data: { confirm: 'このラウンドの結果を非公開にしてよろしいですか？' }  %> </span><br>
+  <% elsif current_user.id == @score.user.id && @score.published == 0 %>
+    <span><%= link_to "このラウンドのスコアを公開する", published_path(id: params[:id]), method: :patch, data: { confirm: 'このラウンドの結果を公開してよろしいですか？' } %> </span><br>
+  <% end %>
 
-
-<% if @score.hole1_score == nil %>
-  <p>1H： 未プレイ </p>
-<% else %>
-  <p>1H： <%= format('%+d', @score.hole1_score) %></p>
-<% end %>
-
-<% if @score.hole2_score == nil %>
-  <p>2H： 未プレイ </p>
-<% else %>
-  <p>2H： <%= format('%+d', @score.hole2_score) %></p>
-<% end %>
-
-<% if @score.hole3_score == nil %>
-  <p>3H： 未プレイ </p>
-<% else %>
-  <p>3H： <%= format('%+d', @score.hole3_score) %></p>
-<% end %>
-
-<% if @score.hole4_score == nil %>
-  <p>4H： 未プレイ </p>
-<% else %>
-  <p>4H： <%= format('%+d', @score.hole4_score) %></p>
-<% end %>
-
-<% if @score.hole5_score == nil %>
-  <p>5H： 未プレイ </p>
-<% else %>
-  <p>5H： <%= format('%+d', @score.hole5_score) %></p>
-<% end %>
-
-<% if @score.hole6_score == nil %>
-  <p>6H： 未プレイ </p>
-<% else %>
-  <p>6H： <%= format('%+d', @score.hole6_score) %></p>
-<% end %>
-
-<% if @score.hole7_score == nil %>
-  <p>7H： 未プレイ </p>
-<% else %>
-  <p>7H： <%= format('%+d', @score.hole7_score) %></p>
-<% end %>
-
-<% if @score.hole8_score == nil %>
-  <p>8H： 未プレイ </p>
-<% else %>
-  <p>8H： <%= format('%+d', @score.hole8_score) %></p>
-<% end %>
-
-<% if @score.hole9_score == nil %>
-  <p>9H： 未プレイ </p>
-<% else %>
-  <p>9H： <%= format('%+d', @score.hole9_score) %></p>
-<% end %>
-
-<% if @score.hole10_score == nil %>
-  <p>10H： 未プレイ </p>
-<% else %>
-  <p>10H： <%= format('%+d', @score.hole10_score) %></p>
-<% end %>
-
-<% if @score.hole11_score == nil %>
-  <p>11H： 未プレイ </p>
-<% else %>
-  <p>11H： <%= format('%+d', @score.hole11_score) %></p>
-<% end %>
-
-<% if @score.hole12_score == nil %>
-  <p>12H： 未プレイ </p>
-<% else %>
-  <p>12H： <%= format('%+d', @score.hole12_score) %></p>
-<% end %>
-
-<% if @score.hole13_score == nil %>
-  <p>13H： 未プレイ </p>
-<% else %>
-  <p>13H： <%= format('%+d', @score.hole13_score) %></p>
-<% end %>
-
-<% if @score.hole14_score == nil %>
-  <p>14H： 未プレイ </p>
-<% else %>
-  <p>14H： <%= format('%+d', @score.hole14_score) %></p>
-<% end %>
-
-<% if @score.hole15_score == nil %>
-  <p>15H： 未プレイ </p>
-<% else %>
-  <p>15H： <%= format('%+d', @score.hole15_score) %></p>
-<% end %>
-
-<% if @score.hole16_score == nil %>
-  <p>16H： 未プレイ </p>
-<% else %>
-  <p>16H： <%= format('%+d', @score.hole16_score) %></p>
-<% end %>
-
-<% if @score.hole17_score == nil %>
-  <p>17H： 未プレイ </p>
-<% else %>
-  <p>17H： <%= format('%+d', @score.hole17_score) %></p>
-<% end %>
-
-<% if @score.hole18_score == nil %>
-  <p>18H： 未プレイ </p>
-<% else %>
-  <p>18H： <%= format('%+d', @score.hole18_score) %></p>
-<% end %>
-
-<%= render 'scores/leader_board' %>
-
-<% if current_user.id == @score.user.id %>
-  <%= link_to "ラウンド一覧に戻る", archives_index_path %> <br>
-<% end %>
-
-
-<% if current_user.id == @score.user.id && @score.published == 1 %>
-  <span><%= link_to "このラウンドのスコアを非公開にする", unpublished_path(score_id: params[:id]), method: :patch, data: { confirm: 'このラウンドの結果を非公開にしてよろしいですか？' }  %> </span><br>
-<% elsif current_user.id == @score.user.id && @score.published == 0 %>
-  <span><%= link_to "このラウンドのスコアを公開する", published_path(id: params[:id]), method: :patch, data: { confirm: 'このラウンドの結果を公開してよろしいですか？' } %> </span><br>
-<% end %>
-
-
-<% if  current_user.id == @score.user.id %>
-  <span><%= link_to "このラウンドのスコアを編集する", archives_edit_path %> </span><br>
-  <span><%= link_to "このラウンドのスコアを削除する", archives_destroy_path, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %> </span><br>
-<% end %>
+  <% if  current_user.id == @score.user.id %>
+    <span><%= link_to "このラウンドのスコアを編集する", archives_edit_path %> </span><br>
+    <span><%= link_to "このラウンドのスコアを削除する", archives_destroy_path, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %> </span><br>
+  <% end %>
+</div>

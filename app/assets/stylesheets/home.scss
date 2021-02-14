@@ -23,7 +23,7 @@
 
 .newsList {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     .newsList__image {
         margin: 30px;
         width: 85px;
@@ -41,6 +41,7 @@
     align-items: flex-start;
     border: 1px solid;
     padding: 10px;
+    margin: 20px;
 }
 
 .newsList__image {

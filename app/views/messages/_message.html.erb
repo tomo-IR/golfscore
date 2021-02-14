@@ -1,17 +1,35 @@
-<p id="message-<%= message.id %>">
+<p id="message-<%= message.id %>" class="score-block__group">
+
+	<%# アバター %>
+	<% if message.user.avatar? %>
+		<%= image_tag message.user.avatar.url, class: "score-block__img"%>
+	<% else %>
+		<img src="/assets/ball.svg" class="score-block__img">
+	<% end %>
+
+	<%# name %>
+	<span><%= link_to message.user.name, users_show_path(id: message.user.id) %></span>
+
+	<%# 投稿画像 %>
 	<% if message.image != nil %>
     <img class="thmb" src="<%= "#{message.image}" %>">
   <% end %>
-	<span><%= message.content %></span>
-	<span><%= message.user.name %></span>
-	<span><%= message.created_at %></span>
-	<% if current_user.already_liked?(message) %>
-		<%= link_to message.likes.count, {controller: "messages", action: "show", message_id: message.id}, method: :get, id: "like-" + message.id.to_s %>
-		<%= link_to '❤️', {controller: "likes", action: "destroy", message_id: message.id, user_id: current_user.id, score_id: @score.id }, method: :delete, remote: true, id: "change-unlike-" + message.id.to_s %>
-	<% else %>   
-		<%= link_to message.likes.count, {controller: "messages", action: "show", message_id: message.id}, method: :get, id: "unlike-" + message.id.to_s %>
-		<%= link_to '♡', {controller: "likes", action: "create", message_id: message.id, user_id: current_user.id, score_id: @score.id }, method: :post, remote: true, id: "change-like-" + message.id.to_s %>
-	<% end %>
+
+	<%# 文章 %>
+	<span class="score-block__date-content"><%= message.content %></span>
+	
+	<%# 日付といいね %>	
+	<span class="score-block__date-like">
+		<span><%= message.created_at %></span>
+		<% if current_user.already_liked?(message) %>
+			<%= link_to message.likes.count, {controller: "messages", action: "show", message_id: message.id}, method: :get, id: "like-" + message.id.to_s %>
+			<%= link_to '❤️', {controller: "likes", action: "destroy", message_id: message.id, user_id: current_user.id, score_id: @score.id }, method: :delete, remote: true, id: "change-unlike-" + message.id.to_s %>
+		<% else %>   
+			<%= link_to message.likes.count, {controller: "messages", action: "show", message_id: message.id}, method: :get, id: "unlike-" + message.id.to_s %>
+			<%= link_to '♡', {controller: "likes", action: "create", message_id: message.id, user_id: current_user.id, score_id: @score.id }, method: :post, remote: true, id: "change-like-" + message.id.to_s %>
+			<% end %>
+	</span>
+
 </p>
 
 

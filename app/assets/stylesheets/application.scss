@@ -22,6 +22,36 @@ a:hover {
     font-weight: 800;
 }
 
+li {
+    list-style: none;
+}
+
+.leader-board__thead {
+    display: block;
+}
+
+.leader-board__tbody {
+    display: block;
+    overflow-y: scroll;
+    height: 430px;
+}
+
+.leader-board__rank {
+    min-width: 60px;
+}
+
+.leader-board__player {
+    min-width: 155px;
+}
+
+.leader-board__score {
+    min-width: 75px;
+}
+
+.leader-board__thru {
+    min-width: 57px;
+}
+
 .headerBlock__avatar {
     width: 300px;
     margin-top: 10px;
@@ -49,6 +79,7 @@ body {
 
 .thmb {
     //いずれ消す
-    width: 300px;
+    width: 200px;
     display: block;
+    margin: 10px auto;
 }
