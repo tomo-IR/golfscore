@@ -1,3 +1,24 @@
 // Place all the styles related to the Score controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.score-block {
+    width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    .card-borad_block {
+        display: flex;
+        justify-content: center;
+    }
+    .score-card {
+        width: 320px;
+        margin: 0 auto;
+    }
+    .score-card__table {
+        width: 320px;
+        display: flex;
+    }
+    .leader-board {
+        width: 320px;
+        margin: 0 auto;
+    }
+}

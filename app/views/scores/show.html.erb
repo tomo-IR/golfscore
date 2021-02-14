@@ -1,28 +1,15 @@
-<h1>スコア入力画面</h1>
-<p>スコアID:<%= @score.id %></p>
+<div class="score-block">
 <p>ゴルフ場名:<%= @score.golfcourse.golfcoursename %></p>
-<p>プレイヤー名:<%= @score.user.name %></p>
-<p>ユーザーID:<%= @score.user.id %></p>
+<p>プレイ日:<%= @score.played_date %></p>
+<p>スタートホール:<%= @score.start_hole %>H</p>
+
 <p>Total score:
   <span id='total_score'><%= @score.total_score %></span>  
 </p>
-<%= render 'score_card' %>
-<% if @score.status == 0 %>
-  <p>
-    <%= link_to "スコア入力に戻る", plays_edit_path(score_id: @score.id, hole_number: @score.thru.to_i + 1)%>
-  </p>
-<% end %>
-
-<%#= render "/plays/form" %>
-
-<%# if @score.hole1_score == nil %>
-  <%#= link_to "このラウンドを終了する", golfcourses_finish_path, method: :update, data: { confirm: 'ラウンドを終了してよろしいですか？' }  %>
-<%# end %>
-<hr>
-
-<h1>リーダーボード</h1>
-<%= render 'leader_board' %>
-<hr>
+<div class="card-borad_block">
+  <%= render 'score_card' %>
+  <%= render 'leader_board' %>
+</div>
 
 <h1><%= @score.golfcourse.golfcoursename %>のメッセージボード</h1>
 
@@ -33,3 +20,4 @@
 </div>
 <%= paginate @messages %>
 
+</div>
