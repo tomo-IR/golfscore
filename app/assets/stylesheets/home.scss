@@ -30,7 +30,7 @@
     justify-content: center;
     .newsList__image {
         margin: 30px;
-        width: 85px;
+        width: 70px;
     }
 }
 
@@ -40,16 +40,24 @@
     width: 500px;
     height: auto;
     min-height: 200px;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
+    // display: flex;
+    // justify-content: space-around;
+    // align-items: flex-start;
     border-radius: 10px;
     padding: 10px;
     margin: 20px;
 }
 
+.title_group {
+    padding-top: 29px;
+}
+
 .newsList__image {
     width: 80px;
+}
+
+.image_and_title {
+    display: flex;
 }
 
 .authBlock {

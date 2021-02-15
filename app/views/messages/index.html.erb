@@ -1,9 +1,10 @@
 <div class="message-block">
-<h1>掲示板</h1>
-<p>コースごとの口コミや情報が見られます。</p>
-<ul>
-  <% @every_course_name.each do|name|%>
+  <h1>掲示板</h1>
+  <p>コースごとの口コミや情報が見られます。</p>
+  <p>※メッセージはラウンド画面でしか投稿できません。</p>
+  <ul>
+    <% @every_course_name.each do|name|%>
       <li><%= link_to name.golfcoursename, messages_index_course_path(golfcourse_id: name.id) %> </li>
-  <% end %>
-</ul>
+    <% end %>
+  </ul>
 </div>

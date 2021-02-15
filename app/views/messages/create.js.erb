@@ -1,6 +1,6 @@
 document.getElementById('messages')
 .insertAdjacentHTML('afterbegin',
-'<p id="message-<%= @message.id %>">\
+'<p id="message-<%= @message.id %>" class="score-block__group">\
 	<% if @message.user.avatar? %>\
 		<%= image_tag @message.user.avatar.url, class: "score-block__img"%>\
 	<% else %>\

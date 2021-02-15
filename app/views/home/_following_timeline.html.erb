@@ -1,12 +1,16 @@
 <div class="follwingPlayList">
-  <%= image_tag('cap-02.svg', class: "newsList__image", id: "test") %>
+  <div class="image_and_title">
+    <%= image_tag('cap-02.svg', class: "newsList__image", id: "test") %>
+    <div class="title_group">
+      <h4>フォローしているプレイヤーのラウンド情報</h4>
+    </div>
+  </div>
   <div>
     <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
       <% puts 'あなたは、サインイン中でゲストプレイヤーでもないです。' %>
       <% if @following_score == [] %>
         <p>直近1週間フォローしているプレイヤーはラウンドしていません。</p>
       <% else %>
-        <h4>フォローしているプレイヤーのラウンド情報</h4>
         <table class=" table table-striped">
           <tr>
             <th>プレイ日</th>
