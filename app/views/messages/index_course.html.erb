@@ -1,14 +1,47 @@
 
+<div class="messageCourse-block">
 <h1> <%= @course_name.golfcourse.golfcoursename %>の掲示板</h1>
 
-<% @messages.each do |m| %>
-<span> <%= m.content %> </span>
-<span> <%= m.created_at %> </span>
+<% @messages.each do |message| %>
+  <p class="messageCourse-message">
+	<% if message.user.avatar? %>
+		<%= image_tag message.user.avatar.url, class: "messageCourse-block__img"%>
+	<% else %>
+		<img src="/assets/ball.svg" class="messageCourse-block__img">
+	<% end %>
 
-<span> いいねの数<%= m.liked_users.count %>個</span>
-<span>投稿者 <%= m.user.name %> さん</span><br>
+	<%# name %>
+	<span><%= link_to message.user.name, users_show_path(id: message.user.id) %></span>
+
+	<%# 投稿画像 %>
+	<% if message.image != nil %>
+    <img class="thmb" src="<%= "#{message.image}" %>">
+  <% end %>
+
+	<%# 文章 %>
+	<span class="messageCourse-block__date-content"><%= message.content %></span>
+
+  <%# 日付といいね %>	
+	<span class="messageCourse-block__date-like">
+		<span><%= message.created_at %></span>
+		<%= message.likes.count %>
+  </span>	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <% end %>
 <%= paginate @messages %>
 
 <%= link_to "メッセージ一覧にもどる", messages_index_path %><br>
-<%= link_to "トップにもどる", root_path %><br>
+

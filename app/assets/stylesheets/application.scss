@@ -91,6 +91,9 @@ body {
     background-image: image-url('shiba.jpg');
     // background-repeat: repeat-x;
     background-size: cover;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
 }
 
 .thmb {
@@ -98,4 +101,8 @@ body {
     width: 200px;
     display: block;
     margin: 10px auto;
+}
+
+.flex-1 {
+    flex: 1;
 }

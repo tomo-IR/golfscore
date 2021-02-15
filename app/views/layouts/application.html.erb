@@ -11,11 +11,13 @@
   </head>
 
   <body class="backGround__img">
-      <%= render 'layouts/header' %>
-      <%= render 'layouts/flash.scores' %>
+    <%= render 'layouts/header' %>
+    <%= render 'layouts/flash.scores' %>
+    <div class="flex-1">
       <%= yield %>
-      <%= render 'layouts/footer' %>
-      <%#= debug(params) if Rails.env.development? %>
-      <%#= session.to_hash %>
+    </div>
+    <%= render 'layouts/footer' %>
+    <%#= debug(params) if Rails.env.development? %>
+    <%#= session.to_hash %>
   </body>
 </html>
