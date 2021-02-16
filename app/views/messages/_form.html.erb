@@ -2,6 +2,7 @@
 	<%= f.label :content, "メッセージ" %>
 	<%= f.text_field :content %><br>
   <%= hidden_field_tag :score_id, @score.id %>
+	<%= f.label :image, "画像" %>
 	<%= f.file_field :image %><br>
 	<%= f.submit 'メッセージを送信する' %>
     

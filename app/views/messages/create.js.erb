@@ -1,3 +1,15 @@
+var message_content = document.getElementById( "message_content").value ;
+var message_image = document.getElementById( "message_image").value ;
+
+
+if (message_content == "" &&  message_image == ""){
+	console.log("どちらもからです。")
+	alert('メッセージか画像、どちらかは入力して下さい。');
+}else{
+
+
+
+
 document.getElementById('messages')
 .insertAdjacentHTML('afterbegin',
 '<p id="message-<%= @message.id %>" class="score-block__group">\
@@ -18,10 +30,6 @@ document.getElementById('messages')
 	</span>\
 </p>');
 
-
-
-console.log("メッセージ更新したよ")
 document.getElementById('message_content').value = ''
 document.getElementById('message_image').value = ''
-
-console.log("フォームをカラにしたよ")
+}
