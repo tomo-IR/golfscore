@@ -12,10 +12,12 @@
         }
         .golfcourse-block__longform {
             border: none;
-            border-radius: 15px;
-            height: 30px;
-            width: 150px;
+            border-radius: 20px;
+            height: 40px;
+            width: 310px;
             margin-bottom: 10px;
+            line-height: 40px;
+            font-size: 20px;
         }
         .golfcourse-block__form {
             border: none;
@@ -24,6 +26,25 @@
             width: 100px;
             margin-bottom: 10px;
             padding-left: 31px;
+        }
+        .golfcourse-block__searchbutton {
+            border-radius: 20px;
+            height: 40px;
+            width: 150px;
+            border: none;
+        }
+        .golfcourse-block__startbutton {
+            border-radius: 25px;
+            height: 50px;
+            width: 300px;
+            border: none;
+            display: block;
+            margin: 15px auto;
+            font-size: 26px;
+        }
+        .golfcourse-block__searchbutton:hover,
+        .golfcourse-block__startbutton:hover {
+            cursor: pointer;
         }
         .search_result__block {
             background-color: rgba(240, 248, 255, 0.7);

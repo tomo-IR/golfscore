@@ -3,7 +3,8 @@
 	<%= form_tag(golfcourses_index_path,:method => 'get', local: true) do %>
 		<%= label :search, "ゴルフ場名を検索", class: "golfcourse-block__label" %>
 		<%= text_field_tag :search, "", {class: "golfcourse-block__longform"} %>
-		<%= submit_tag 'Search', :golfcoursename => nil %>
+		<%= submit_tag 'ゴルフ場を検索', :golfcoursename => nil, class: "golfcourse-block__searchbutton" %>
+		<p class="search_result__name">①これからラウンドするゴルフ場名を検索して下さい。</p>
 	<% end %>
 
 	<%= form_with url:round_start_path, id: "golfcourse_form", html:{name: "select_course_form"} do |f| %>
@@ -29,7 +30,7 @@
 				</div>
 				<% end %>
 				<%= paginate @search_golfcoursename %>
-				<%= submit_tag 'ラウンドを開始する', id: "golfcourse_select" %>
+				<%= submit_tag 'ラウンドを開始する', id: "golfcourse_select", class: "golfcourse-block__startbutton" %>
 		</div>
 	<% end %>
 </div>
