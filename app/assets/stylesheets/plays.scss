@@ -2,24 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .play-edit {
+    width: 700px;
+    margin: 0 auto;
+    padding: 20px;
     .play-edit_form {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
         font-size: 100px;
         text-align: center;
+        margin: 10px;
     }
     .play-edit__buttonGroup {
         display: flex;
-        justify-content: space-evenly;
-        margin: 20px auto;
+        justify-content: center;
+        margin: 0px auto;
         align-items: center;
+        height: 160px;
     }
     .play-edit__holeButton {
-        height: 100px;
-        width: 100px;
+        height: 150px;
+        width: 150px;
         background-color: black;
         text-align: center;
-        line-height: 100px;
+        line-height: 150px;
         color: #ffffff;
         border: none;
     }
@@ -28,13 +33,14 @@
         font-style: italic;
     }
     .play-edit__airButton {
-        height: 100px;
-        width: 100px;
+        height: 150px;
+        width: 150px;
     }
     .play-edit__scoreButton {
-        width: 70px;
-        height: 70px;
+        width: 150px;
+        height: 150px;
         border: none;
+        margin: 5px;
     }
     .play-edit__scoreButton:hover {
         cursor: pointer;

@@ -1,18 +1,19 @@
 <div class="golfcourse-block">
 	<h1>ラウンドするゴルフ場を選択</h1>
 	<%= form_tag(golfcourses_index_path,:method => 'get', local: true) do %>
-		<%= label :search, "ゴルフ場名を検索" %>
-		<%= text_field_tag :search %>
+		<%= label :search, "ゴルフ場名を検索", class: "golfcourse-block__label" %>
+		<%= text_field_tag :search, "", {class: "golfcourse-block__longform"} %>
 		<%= submit_tag 'Search', :golfcoursename => nil %>
 	<% end %>
 
 	<%= form_with url:round_start_path, id: "golfcourse_form", html:{name: "select_course_form"} do |f| %>
-		<%= f.label :played_date, "ラウンドする日" %>
-		<%= f.date_select :played_date, require: true, use_month_numbers: true %><br>
-		<%= f.label :start_hole, "スタートホール" %>
-		<%= f.select :start_hole, [['1H', 1], ['10H', 10]]  %><br>
-		<%= f.label :published, "このラウンドのスコアの公開/非公開" %>
-		<%= f.select :published, [['公開', 1], ['非公開', 0]] %>
+		<%= f.label :played_date, "ラウンドする日", class: "golfcourse-block__label" %>
+		<%= f.date_select :played_date, {require: true, use_month_numbers: true}, {class: "golfcourse-block__form"} %><br>
+		<%= f.label :start_hole, "スタートホール", class: "golfcourse-block__label" %>
+		<%= f.select :start_hole, [['1H', 1], ['10H', 10]], {}, {class: "golfcourse-block__form"}  %><br>
+		<%= f.label :published, "このラウンドのスコアの公開/非公開", class: "golfcourse-block__label" %>
+		<%= f.select :published, [['公開', 1], ['非公開', 0]], {}, {class: "golfcourse-block__form"} %>
+		<p>※「非公開」にすると、リーダーボードに載らず、他ユーザーの方からスコアを閲覧されることもありません。後からでも変更可能です。</p>
 		<div id="search_result" class="search_result">
 			<% i = 1 %>
 			<% @search_golfcoursename.each.with_index(1) do |name,index| %>

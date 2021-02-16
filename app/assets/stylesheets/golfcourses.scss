@@ -5,6 +5,26 @@
         width: 700px;
         margin: 0 auto;
         padding: 20px;
+        .golfcourse-block__label {
+            display: block;
+            margin-top: 15px;
+            font-size: 20px;
+        }
+        .golfcourse-block__longform {
+            border: none;
+            border-radius: 15px;
+            height: 30px;
+            width: 150px;
+            margin-bottom: 10px;
+        }
+        .golfcourse-block__form {
+            border: none;
+            border-radius: 15px;
+            height: 30px;
+            width: 100px;
+            margin-bottom: 10px;
+            padding-left: 31px;
+        }
         .search_result__block {
             background-color: rgba(240, 248, 255, 0.7);
             border-radius: 15px;
@@ -39,6 +59,7 @@
     
     .grad-btn:hover {
         cursor: pointer;
+        background: rgba(255, 205, 0, 0.5);
     }
     
     .grad-btn::before {

@@ -12,6 +12,7 @@ document.addEventListener("turbolinks:load", function() {
                 // i番目のラジオボタンがチェックされているかを判定
                 if (document.select_course_form.golfcourse_id[i].checked) {
                     flag = true;
+                    alert("よろしいですか？")
                 }
             }
             // 何も選択されていない場合の処理

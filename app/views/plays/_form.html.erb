@@ -2,9 +2,9 @@
   
   <% last_hole = params[:hole_number].to_i - 1 %>
   <% if @score.start_hole.to_i == 1 && params[:hole_number].to_i == 1 %>
-    <a class="play-edit__airButton" ></a>
+    <a class="play-edit__airButton"></a>
   <% elsif @score.start_hole.to_i == 10 && params[:hole_number].to_i == 10 %>
-    <a class="play-edit__airButton ></a>
+    <a class="play-edit__airButton"></a>
   <% elsif @score.start_hole.to_i == 10 && params[:hole_number].to_i == 1 %>
     <%= link_to "前のホールへ", plays_edit_path(score_id: @score.id, hole_number: 18), class: "play-edit__holeButton"  %>
   <% else %>
