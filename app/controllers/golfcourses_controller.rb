@@ -17,10 +17,10 @@ class GolfcoursesController < ApplicationController
       flash[:success] = 'ラウンド開始！！'
       redirect_to plays_edit_path(score_id: @score.id, hole_number: params[:start_hole])  
     else
-      @golfcoursename_all  = Golfcourse.all.page(params[:page]).per(5) #ページネーション
-      @search_golfcoursename = Golfcourse.search(params[:search]).page(params[:page]).per(5) #ページネーション
-      flash[:danger] = 'ゴルフ場を選択してください。'
-      render :index
+      # @golfcoursename_all  = Golfcourse.all.page(params[:page]).per(5) #ページネーション
+      # @search_golfcoursename = Golfcourse.search(params[:search]).page(params[:page]).per(5) #ページネーション
+      # flash[:danger] = 'ゴルフ場を選択してください。'
+      # render :index
     end
   end
 

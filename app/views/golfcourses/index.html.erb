@@ -1,39 +1,34 @@
 <div class="golfcourse-block">
 	<h1>ラウンドするゴルフ場を選択</h1>
-
 	<%= form_tag(golfcourses_index_path,:method => 'get', local: true) do %>
 		<%= label :search, "ゴルフ場名を検索" %>
 		<%= text_field_tag :search %>
 		<%= submit_tag 'Search', :golfcoursename => nil %>
 	<% end %>
 
-	<%= form_with url:round_start_path do |f| %>
-
+	<%= form_with url:round_start_path, id: "golfcourse_form", html:{name: "select_course_form"} do |f| %>
 		<%= f.label :played_date, "ラウンドする日" %>
 		<%= f.date_select :played_date, require: true, use_month_numbers: true %><br>
-
 		<%= f.label :start_hole, "スタートホール" %>
 		<%= f.select :start_hole, [['1H', 1], ['10H', 10]]  %><br>
-
 		<%= f.label :published, "このラウンドのスコアの公開/非公開" %>
 		<%= f.select :published, [['公開', 1], ['非公開', 0]] %>
-
-		<div id="search_result">
-			<% @search_golfcoursename.each do |name| %><br>
-				<%= f.radio_button :golfcourse_id, name.id, require: true %>
-				<%= name.golfcoursename %><br>
-
-				<%= name.address %><br>
-				<div class="grad-wrap">
-				<input id="trigger1" class="grad-trigger" type="checkbox">
-					<div class="grad-item"><%= name.golfcoursecaption %></div>
-					<label class="grad-btn" for="trigger1"></label>
+		<div id="search_result" class="search_result">
+			<% i = 1 %>
+			<% @search_golfcoursename.each.with_index(1) do |name,index| %>
+				<div class="search_result__block">
+					<%= f.radio_button :golfcourse_id, name.id, require: true, class: "search_result__radiobutton", id: "radio_#{index}" %>
+					<p class="search_result__name"><%= name.golfcoursename %></p>
+					<p class="search_result__address"><%= name.address %></p>
+					<div class="grad-wrap">
+						<input id="trigger<%= name.id %>" class="grad-trigger" type="checkbox">
+						<div class="grad-item"><%= name.golfcoursecaption %></div>
+							<label class="grad-btn" for="trigger<%= name.id %>"></label>
+					</div>
 				</div>
-			<% end %>
-			<%= paginate @search_golfcoursename %>
-			<%= submit_tag 'ラウンドを開始する' %>
+				<% end %>
+				<%= paginate @search_golfcoursename %>
+				<%= submit_tag 'ラウンドを開始する', id: "golfcourse_select" %>
 		</div>
-
 	<% end %>
-
 </div>

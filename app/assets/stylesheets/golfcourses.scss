@@ -1,55 +1,85 @@
-// Place all the styles related to the Golfcourses controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-.golfcourse-block {
-    width: 700px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.grad-btn {
-    /*.grad-btnのCSSは表示/非表示の動作には関係ないので、ご自由にどうぞ。*/
-}
-
-.grad-btn::before {
-    content: "続きを読む"
-}
-
-.grad-item {
-    position: relative;
-    overflow: hidden;
-    height: 45px;
-    /*隠した状態の高さ*/
-}
-
-.grad-item::before {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    /*グラデーションで隠す高さ*/
-    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.9) 50%, #fff 100%);
-    background: linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.9) 50%, #fff 100%);
-    content: "";
-}
-
-.grad-trigger {
-    display: none;
-    /*チェックボックスは常に非表示*/
-}
-
-.grad-trigger:checked~.grad-btn::before {
-    content: "閉じる"/*チェックされていたら、文言を変更する*/
-}
-
-.grad-trigger:checked~.grad-item {
-    height: auto;
-    /*チェックされていたら、高さを戻す*/
-}
-
-.grad-trigger:checked~.grad-item::before {
-    display: none;
-    /*チェックされていたら、grad-itemのbeforeを非表示にする*/
-}
+    // Place all the styles related to the Golfcourses controller here.
+    // They will automatically be included in application.css.
+    // You can use Sass (SCSS) here: https://sass-lang.com/
+    .golfcourse-block {
+        width: 700px;
+        margin: 0 auto;
+        padding: 20px;
+        .search_result__block {
+            background-color: rgba(240, 248, 255, 0.7);
+            border-radius: 15px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .search_result {
+            .search_result__name {
+                display: inline;
+                font-size: 25px;
+            }
+            .search_result__address {
+                font-size: 20px;
+            }
+            .search_result__radiobutton {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+    
+    .grad-btn {
+        text-align: center;
+        display: block;
+        background: white;
+        width: 150px;
+        margin: 10px auto;
+        border-radius: 10px;
+        height: 30px;
+        line-height: 30px;
+    }
+    
+    .grad-btn:hover {
+        cursor: pointer;
+    }
+    
+    .grad-btn::before {
+        content: "⬇️全文読む"
+    }
+    
+    .grad-item {
+        position: relative;
+        overflow: hidden;
+        height: 45px;
+        /*隠した状態の高さ*/
+    }
+    
+    .grad-item::before {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 40px;
+        /*グラデーションで隠す高さ*/
+        background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.9) 50%, #fff 100%);
+        background: linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.9) 50%, #fff 100%);
+        content: "";
+    }
+    
+    .grad-trigger {
+        display: none;
+        /*チェックボックスは常に非表示*/
+    }
+    
+    .grad-trigger:checked~.grad-btn::before {
+        content: "⬆️閉じる"/*チェックされていたら、文言を変更する*/
+    }
+    
+    .grad-trigger:checked~.grad-item {
+        height: auto;
+        /*チェックされていたら、高さを戻す*/
+    }
+    
+    .grad-trigger:checked~.grad-item::before {
+        display: none;
+        /*チェックされていたら、grad-itemのbeforeを非表示にする*/
+    }
