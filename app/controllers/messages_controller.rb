@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
 		@every_course_id = Message.distinct.pluck(:golfcourse_id)
 		# ↑この配列を予め並び替え得とく
 		@golfcoursename = Golfcourse.all
-		@every_course_name = Golfcourse.where(id: @every_course_id)#.order(created_at: :desc)
+		@every_course_name = Golfcourse.where(id: @every_course_id).page(params[:page]).per(5)#.order(created_at: :desc)
 	end
 
 	def index_course

@@ -19,15 +19,19 @@
 		<%= f.select :published, [['公開', 1], ['非公開', 0]] %>
 
 		<div id="search_result">
-		<% @search_golfcoursename.each do |name| %><br>
-			<%= f.radio_button :golfcourse_id, name.id, require: true %>
-			<%= name.golfcoursename %><br>
+			<% @search_golfcoursename.each do |name| %><br>
+				<%= f.radio_button :golfcourse_id, name.id, require: true %>
+				<%= name.golfcoursename %><br>
 
-			<%= name.address %><br>
-			<%= name.golfcoursecaption %><br>
-		<% end %>
-		<%= paginate @search_golfcoursename %>
-		<%= submit_tag 'ラウンドを開始する' %>
+				<%= name.address %><br>
+				<div class="grad-wrap">
+				<input id="trigger1" class="grad-trigger" type="checkbox">
+					<div class="grad-item"><%= name.golfcoursecaption %></div>
+					<label class="grad-btn" for="trigger1"></label>
+				</div>
+			<% end %>
+			<%= paginate @search_golfcoursename %>
+			<%= submit_tag 'ラウンドを開始する' %>
 		</div>
 
 	<% end %>

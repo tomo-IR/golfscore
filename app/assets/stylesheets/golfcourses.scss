@@ -6,3 +6,50 @@
     margin: 0 auto;
     padding: 20px;
 }
+
+.grad-btn {
+    /*.grad-btnのCSSは表示/非表示の動作には関係ないので、ご自由にどうぞ。*/
+}
+
+.grad-btn::before {
+    content: "続きを読む"
+}
+
+.grad-item {
+    position: relative;
+    overflow: hidden;
+    height: 45px;
+    /*隠した状態の高さ*/
+}
+
+.grad-item::before {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    /*グラデーションで隠す高さ*/
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.9) 50%, #fff 100%);
+    background: linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.9) 50%, #fff 100%);
+    content: "";
+}
+
+.grad-trigger {
+    display: none;
+    /*チェックボックスは常に非表示*/
+}
+
+.grad-trigger:checked~.grad-btn::before {
+    content: "閉じる"/*チェックされていたら、文言を変更する*/
+}
+
+.grad-trigger:checked~.grad-item {
+    height: auto;
+    /*チェックされていたら、高さを戻す*/
+}
+
+.grad-trigger:checked~.grad-item::before {
+    display: none;
+    /*チェックされていたら、grad-itemのbeforeを非表示にする*/
+}

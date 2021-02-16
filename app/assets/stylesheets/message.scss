@@ -75,3 +75,33 @@
         // opacity: 0.9;
     }
 }
+
+.likeUser-block {
+    display: block;
+    width: 700px;
+    margin: 0 auto;
+    .likeUser__ul {
+        margin: 10px auto;
+        padding: 0;
+    }
+    .likeUser__list {
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid;
+        padding: 10px;
+    }
+    .likeUser__form {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .likeUser__list__span {
+        width: 300px;
+        text-align: center;
+    }
+    .likeUser__list__name {
+        height: 50px;
+        line-height: 50px;
+        width: 300px;
+        text-align: center;
+    }
+}
