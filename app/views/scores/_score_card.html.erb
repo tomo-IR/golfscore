@@ -196,9 +196,4 @@
 
     </table>
   </div>
-    <% if @score.status == 0 %>
-    <p>
-      <%= link_to "スコア入力に戻る", plays_edit_path(score_id: @score.id, hole_number: @score.thru.to_i + 1)%>
-    </p>
-  <% end %>
 </div>

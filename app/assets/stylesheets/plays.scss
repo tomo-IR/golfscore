@@ -12,6 +12,24 @@
         text-align: center;
         margin: 10px;
     }
+    .play-edit__showScorecard {
+        margin-top: 15px;
+        background-color: whitesmoke;
+        height: 45px;
+        line-height: 45px;
+        width: 500px;
+        text-align: center;
+        margin: 15px auto;
+        border-radius: 22px;
+        a {
+            font-size: 20px;
+            color: blue;
+        }
+        i {
+            font-size: 20px;
+            color: black;
+        }
+    }
     .play-edit__buttonGroup {
         display: flex;
         justify-content: center;
@@ -41,6 +59,7 @@
         height: 150px;
         border: none;
         margin: 5px;
+        font-size: 30px;
     }
     .play-edit__scoreButton:hover {
         cursor: pointer;

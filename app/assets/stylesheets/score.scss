@@ -48,3 +48,22 @@
         // opacity: 0.9;
     }
 }
+
+.score-block__returnScoreinput {
+    margin-top: 15px;
+    background-color: whitesmoke;
+    height: 45px;
+    line-height: 45px;
+    width: 500px;
+    text-align: center;
+    margin: 15px auto;
+    border-radius: 22px;
+    a {
+        font-size: 20px;
+        color: blue;
+    }
+    i {
+        font-size: 20px;
+        color: black;
+    }
+}
