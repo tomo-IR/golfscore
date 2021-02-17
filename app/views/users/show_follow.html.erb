@@ -1,9 +1,20 @@
-<% @user.followings.each do |user| %>
-<table>
-<tr>
-  <td>  <%= user.name %> </td>
-  <td><%= link_to '詳細', user_path(user) %></td>
-</tr>
-
-</table>
-<% end %>
+<div class="followUser-block">
+  <h2><%= @user.name %>プロがフォローしているプレイヤー</h2>
+  <% if @users == [] %>
+    <p>フォローしているプロはいません。</p>
+  <% else %>
+    <ul class="followUser-block__ul">
+      <% @user.followings.each do |user| %>
+        <li class="followUser-block__list">
+          <% if user.avatar? %>  <!-- アップロード画像がある場合に実行する -->
+            <%= image_tag user.avatar.url, class: "avatar-img"%>
+          <% else %>
+            <img src="/assets/ball.svg" class="avatar-img">
+          <% end %>
+          <span class="followUser-block__list__span"><%= link_to user.name, user_path(id: user.id), class: "followUser-block__list__name" %></span>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+    <%#= paginate @users, theme: 'twitter-bootstrap-4' %>
+</div>

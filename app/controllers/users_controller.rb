@@ -16,22 +16,22 @@ class UsersController < ApplicationController
                   .page(params[:page]).per(5) #ページネーション
   end
   
-  def scorecard
-    @coursename = params[:round_id]
-    @score_card_score = Score.where(:round_id => params[:round_id]) #ホールごとのスコアを取得
-    @score_card_course = Score.where(:round_id => params[:round_id]).first #ラウンドしたコース、日付を取得
-    @score_sum = Score.where(:round_id => params[:round_id]).sum(:hole_score)
-  end
+  # def scorecard
+  #   @coursename = params[:round_id]
+  #   @score_card_score = Score.where(:round_id => params[:round_id]) #ホールごとのスコアを取得
+  #   @score_card_course = Score.where(:round_id => params[:round_id]).first #ラウンドしたコース、日付を取得
+  #   @score_sum = Score.where(:round_id => params[:round_id]).sum(:hole_score)
+  # end
 
   def following
     @user  = User.find(params[:id])
-    @users = @user.followings
+    @users = @user.followings#.page(params[:page]).per(5) #ページネーション
     render 'show_follow'
   end
 
   def followers
     @user  = User.find(params[:id])
-    @users = @user.followers
+    @users = @user.followers#.page(params[:page]).per(5) #ページネーション
     render 'show_follower'
   end
 
