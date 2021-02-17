@@ -1,97 +1,153 @@
-// Place all the styles related to the Golfcourses controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-.archive-block {
-    display: block;
-    width: 700px;
-    margin: 30px auto;
-    .archive-block__avatar {
-        width: 200px;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 50%;
-        padding: 0;
-        margin: 20px auto;
-    }
-    .archive-block__flex {
-        display: flex;
-    }
-    .archive-block__leftsideBlock {
-        width: 75%;
-        display: inline-block;
-        flex-direction: column;
-        display: flex;
-        /* justify-content: center; */
-        text-align: center;
-    }
-    .archive-block__rightsideBlock {
-        width: 40%;
-        display: flex;
-        text-align: center;
-        flex-direction: column;
-        justify-content: center;
-        display: flex;
-        /* align-items: center; */
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-    }
-    .rightsideBlock__edit {
-        border: 1px solid black;
-        color: black;
-        height: 30px;
-        display: inline-block;
-        line-height: 30px;
-        width: 100%;
-        border-radius: 15px;
-        white-space: nowrap;
+    // Place all the styles related to the Golfcourses controller here.
+    // They will automatically be included in application.css.
+    // You can use Sass (SCSS) here: https://sass-lang.com/
+    .archive-block {
+        display: block;
+        width: 700px;
         margin: 30px auto;
+        .archive-block__avatar {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            padding: 0;
+            margin: 20px auto;
+        }
+        .archive-block__flex {
+            display: flex;
+        }
+        .archive-block__leftsideBlock {
+            width: 75%;
+            display: inline-block;
+            flex-direction: column;
+            display: flex;
+            /* justify-content: center; */
+            text-align: center;
+        }
+        .archive-block__rightsideBlock {
+            width: 40%;
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            justify-content: center;
+            display: flex;
+            /* align-items: center; */
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        .rightsideBlock__edit {
+            border: 1px solid black;
+            color: black;
+            height: 30px;
+            display: inline-block;
+            line-height: 30px;
+            width: 100%;
+            border-radius: 15px;
+            white-space: nowrap;
+            margin: 30px auto;
+        }
+        .stats__ff {
+            color: #aaaaaa;
+        }
+        .f_number {
+            color: #333333;
+            font-size: 20px;
+        }
+        .archive-block__h2 {
+            text-align: center;
+        }
+        .archive-block__round__table {
+            margin: 20px auto;
+        }
+        .archive-block__round__tr {
+            height: 50px;
+            border-bottom: black solid 1px;
+        }
+        .archive-block__noRound {
+            text-align: center;
+        }
+        nav {
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
     }
-    .stats__ff {
-        color: #aaaaaa;
-    }
-    .f_number {
-        color: #333333;
-        font-size: 20px;
-    }
-    .archive-block__h2 {
-        text-align: center;
-    }
-    .archive-block__round__table {
-        margin: 20px auto;
-    }
-    .archive-block__round__tr {
-        height: 50px;
-        border-bottom: black solid 1px;
-    }
-    .archive-block__noRound {
-        text-align: center;
-    }
-    nav {
+    
+    .archiveShow-block {
+        width: 700px;
         margin: 0 auto;
-        display: flex;
-        justify-content: center;
+        padding: 20px;
+        .card-borad_block {
+            display: flex;
+            justify-content: center;
+        }
+        .score-card {
+            width: 320px;
+            margin: 0 auto;
+        }
+        .score-card__table {
+            width: 320px;
+            display: flex;
+        }
+        .leader-board {
+            width: 320px;
+            margin: 0 auto;
+        }
+        .archiveShow-block__linkGroup {
+            a {
+                display: block;
+                width: 100%;
+                text-align: center;
+                border: 1px solid;
+                margin: 10px auto;
+                border-radius: 12px;
+                background: aliceblue;
+            }
+        }
     }
-}
-
-.archiveShow-block {
-    width: 700px;
-    margin: 0 auto;
-    padding: 20px;
-    .card-borad_block {
-        display: flex;
-        justify-content: center;
+    
+    @media(max-width: 700px) {
+        .archive-block {
+            width: auto;
+            .archive-block__round__table {
+                font-size: 12px;
+            }
+        }
+        .archiveShow-block {
+            width: auto;
+            .card-borad_block {
+                flex-direction: column;
+            }
+            .score-card {
+                width: 290px;
+            }
+            .leader-board__rank {
+                min-width: 57px;
+            }
+            .leader-board__player {
+                min-width: 128px;
+            }
+            .leader-board__score {
+                min-width: 75px;
+            }
+            .leader-board__thru {
+                min-width: 65px;
+            }
+            .leader-board__tbody {
+                height: auto;
+                max-height: 300px;
+            }
+            .archiveShow-block__linkGroup {
+                a {
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                    border: 1px solid;
+                    margin: 10px auto;
+                    border-radius: 12px;
+                    background: aliceblue;
+                }
+            }
+        }
     }
-    .score-card {
-        width: 320px;
-        margin: 0 auto;
-    }
-    .score-card__table {
-        width: 320px;
-        display: flex;
-    }
-    .leader-board {
-        width: 320px;
-        margin: 0 auto;
-    }
-}
