@@ -1,70 +1,122 @@
-// Place all the styles related to the Score controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-.score-block {
-    width: 700px;
-    margin: 0 auto;
-    padding: 20px;
-    .card-borad_block {
-        display: flex;
-        justify-content: center;
-    }
-    .score-card {
-        width: 320px;
+    // Place all the styles related to the Score controller here.
+    // They will automatically be included in application.css.
+    // You can use Sass (SCSS) here: https://sass-lang.com/
+    .score-block {
+        width: 700px;
         margin: 0 auto;
+        padding: 20px;
+        .card-borad_block {
+            display: flex;
+            justify-content: center;
+        }
+        .score-card {
+            width: 320px;
+            margin: 0 auto;
+        }
+        .score-card__table {
+            width: 320px;
+            display: flex;
+        }
+        .leader-board {
+            width: 320px;
+            margin: 0 auto;
+        }
     }
-    .score-card__table {
-        width: 320px;
-        display: flex;
+    
+    .score-block__message {
+        .score-block__img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+            padding: 0;
+            margin: 0px 10px 0px 0px;
+        }
+        .score-block__date-content {
+            font-size: 20px;
+            display: block;
+            word-break: break-word;
+        }
+        .score-block__date-like {
+            text-align: right;
+            display: block;
+        }
+        .score-block__group {
+            padding: 10px;
+            // background-color: aliceblue;
+            background-color: rgba(240, 248, 255, 0.7);
+            border-radius: 15px;
+            // opacity: 0.9;
+        }
     }
-    .leader-board {
-        width: 320px;
-        margin: 0 auto;
+    
+    .score-block__returnScoreinput {
+        margin-top: 15px;
+        background-color: whitesmoke;
+        height: 45px;
+        line-height: 45px;
+        width: 500px;
+        text-align: center;
+        margin: 15px auto;
+        border-radius: 22px;
+        a {
+            font-size: 20px;
+            color: blue;
+        }
+        i {
+            font-size: 20px;
+            color: black;
+        }
     }
-}
-
-.score-block__message {
-    .score-block__img {
-        width: 40px;
-        height: 40px;
-        object-fit: cover;
-        border-radius: 50%;
-        padding: 0;
-        margin: 0px 10px 0px 0px;
+    
+    @media(max-width: 700px) {
+        .score-block {
+            width: auto;
+            .card-borad_block {
+                flex-direction: column;
+            }
+            .score-card {
+                width: 290px;
+                margin: 0 auto;
+            }
+            .score-block__returnScoreinput {
+                margin-top: 15px;
+                height: 30px;
+                line-height: 30px;
+                width: 250px;
+                margin: 15px auto;
+                border-radius: 15px;
+            }
+            .score-card__table {
+                display: flex;
+                width: 290px;
+                font-size: 12px;
+                margin-bottom: 25px;
+            }
+            .leader-board {
+                width: 290px;
+                margin: 0 auto;
+                font-size: 12px;
+            }
+            .leader-board__rank {
+                min-width: 60px;
+            }
+            .leader-board__player {
+                min-width: 70px;
+            }
+            .leader-board__score {
+                min-width: 75px;
+            }
+            .leader-board__thru {
+                min-width: 65px;
+            }
+            .leader-board__tbody {
+                height: auto;
+                max-height: 300px;
+            }
+            .score-block__img {
+                width: 25px;
+                height: 25px;
+            }
+        }
     }
-    .score-block__date-content {
-        font-size: 20px;
-        display: block;
-        word-break: break-word;
-    }
-    .score-block__date-like {
-        text-align: right;
-        display: block;
-    }
-    .score-block__group {
-        padding: 10px;
-        // background-color: aliceblue;
-        background-color: rgba(240, 248, 255, 0.7);
-        border-radius: 15px;
-        // opacity: 0.9;
-    }
-}
-
-.score-block__returnScoreinput {
-    margin-top: 15px;
-    background-color: whitesmoke;
-    height: 45px;
-    line-height: 45px;
-    width: 500px;
-    text-align: center;
-    margin: 15px auto;
-    border-radius: 22px;
-    a {
-        font-size: 20px;
-        color: blue;
-    }
-    i {
-        font-size: 20px;
-        color: black;
-    }
-}
