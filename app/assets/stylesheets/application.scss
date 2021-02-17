@@ -35,6 +35,16 @@ h6 {
     text-align: center;
 }
 
+input[type="file"] {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+}
+
 .leader-board__thead {
     display: block;
 }

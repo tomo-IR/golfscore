@@ -14,8 +14,8 @@
 			<% end %>
 			<span class="messageCourse-block__date-content"><%= message.content %></span>
 			<span class="messageCourse-block__date-like">
-			<span><%= message.created_at %></span>
-				<%= message.likes.count %>
+				<span><%= message.created_at %></span><br>
+				いいねの数:<span><%= message.likes.count %></span>
 			</span>	
 			<% end %>
 		</p>
