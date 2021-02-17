@@ -25,7 +25,10 @@ class ArchivesController < ApplicationController
     playing_course = Score.find(params[:id])
     golfcourse_id = playing_course.golfcourse_id
     played_date = playing_course.played_date
-    current_course_scores = Score.where(golfcourse_id: golfcourse_id, played_date: played_date) .includes([:user])
+    current_course_scores = Score.where(golfcourse_id: golfcourse_id, played_date: played_date) 
+                                  .where.not(published: 0)
+                                  .where.not(thru: nil)
+                                  .includes([:user])    
     @current_course_scores = current_course_scores.sort_by do |score|
       score.hole1_score.to_i + 
       score.hole2_score.to_i + 

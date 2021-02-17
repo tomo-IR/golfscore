@@ -7,8 +7,8 @@ class ScoresController < ApplicationController
     golfcourse_id = playing_course.golfcourse_id
     played_date = playing_course.played_date
     current_course_scores = Score.where(golfcourse_id: golfcourse_id, played_date: played_date) 
-                                  .where.not(thru: nil)
                                   .where.not(published: 0)
+                                  .where.not(thru: nil)
                                   .includes([:user])
     @current_course_scores = current_course_scores.sort_by do |score|
       score.hole1_score.to_i + 
