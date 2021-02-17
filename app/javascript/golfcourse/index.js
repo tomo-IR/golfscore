@@ -1,4 +1,4 @@
-const { $ } = require("@rails/ujs");
+const { $, confirm } = require("@rails/ujs");
 
 // ゴルフ場選択ページにて、ラジオボタンを何も選択しなかった時のバリデーション処理
 document.addEventListener("turbolinks:load", function() {
@@ -12,7 +12,7 @@ document.addEventListener("turbolinks:load", function() {
             // i番目のラジオボタンがチェックされているかを判定
             if (document.select_course_form.golfcourse_id[i].checked) {
                 flag = true;
-                alert("よろしいですか？")
+                // confirm("よろしいですか？")
             }
         }
         // 何も選択されていない場合の処理

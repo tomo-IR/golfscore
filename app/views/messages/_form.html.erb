@@ -1,10 +1,10 @@
-<%= form_with model: message do |f| %>
-	<%= f.label :content, "メッセージ" %>
-	<%= f.text_field :content %><br>
+<%= form_with model: message, class: "messageForm-block" do |f| %>
+	<%= f.label :content, "メッセージ", class: "messageForm-block__label" %>
+	<%= f.text_field :content, class: "messageForm-block__textfield" %>
   <%= hidden_field_tag :score_id, @score.id %>
-	<%= f.label :image, "画像" %>
-	<%= f.file_field :image %><br>
-	<%= f.submit 'メッセージを送信する' %>
+	<%= f.label :image, "画像", class: "messageForm-block__label"  %>
+	<%= f.file_field :image, class: "messageForm-block__filefield" %>
+	<%= f.submit 'メッセージを送信する', class: "messageForm-block__submit" %>
     
 
 <% end %>

@@ -38,6 +38,36 @@
         width: 320px;
         margin: 0 auto;
     }
+    .messageForm-block {
+        // display: block;
+        .messageForm-block__label {
+            display: block;
+            margin-top: 15px;
+            font-size: 20px;
+        }
+        .messageForm-block__textfield {
+            border: none;
+            border-radius: 20px;
+            height: 110px;
+            width: 100%;
+            margin-bottom: 10px;
+            /* line-height: 20px; */
+            font-size: 20px;
+        }
+        .messageForm-block__submit {
+            border-radius: 25px;
+            height: 40px;
+            width: 300px;
+            border: none;
+            display: block;
+            margin: 15px auto;
+            font-size: 20px;
+            line-height: 40px;
+        }
+        .messageForm-block__filefield {
+            font-size: 18px;
+        }
+    }
 }
 
 .messageCourse-block {
@@ -62,6 +92,7 @@
     .messageCourse-block__date-content {
         font-size: 20px;
         display: block;
+        word-break: break-word;
     }
     .messageCourse-block__date-like {
         text-align: right;
