@@ -18,6 +18,7 @@
             margin-bottom: 10px;
             line-height: 40px;
             font-size: 20px;
+            padding-left: 20px;
         }
         .golfcourse-block__form {
             border: none;
@@ -72,6 +73,86 @@
         }
     }
     
+    @media(max-width: 700px) {
+        .golfcourse-block {
+            width: auto;
+            .golfcourse-block__label {
+                font-size: 15px;
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+            .search_result__setsumei {
+                font-size: 12px;
+            }
+            .golfcourse-block__searchbutton {
+                border-radius: 10px;
+                height: 20px;
+                width: 130px;
+                border: none;
+                font-size: 14px;
+            }
+            .golfcourse-block__longform {
+                border: none;
+                border-radius: 15px;
+                height: 30px;
+                width: 280px;
+                margin-bottom: 10px;
+                line-height: 30px;
+                font-size: 16px;
+                padding-left: 20px;
+            }
+            .golfcourse-block__form {
+                border: none;
+                border-radius: 12px;
+                height: 24px;
+                width: 80px;
+                margin-bottom: 10px;
+                padding-left: 10px;
+            }
+            p {
+                font-size: 12px;
+            }
+            .search_result {
+                .search_result__name {
+                    font-size: 16px;
+                }
+                .search_result__radiobutton {
+                    width: 15px;
+                    height: 15px;
+                }
+                .search_result__address {
+                    font-size: 12px;
+                }
+                .grad-item {
+                    font-size: 12px;
+                }
+                .grad-btn::before {
+                    font-size: 14px;
+                }
+                .grad-btn {
+                    text-align: center;
+                    display: block;
+                    background: white;
+                    width: 120px;
+                    margin: 0px auto;
+                    border-radius: 10px;
+                    height: 24px;
+                    line-height: 24px;
+                }
+                .golfcourse-block__startbutton {
+                    border-radius: 20px;
+                    height: 40px;
+                    width: 260px;
+                    border: none;
+                    display: block;
+                    margin: 15px auto;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+    
+    // ゴルフ場説明文を隠す処理
     .grad-btn {
         text-align: center;
         display: block;

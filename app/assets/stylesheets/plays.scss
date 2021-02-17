@@ -1,76 +1,123 @@
-// Place all the styles related to the Plays controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-.play-edit {
-    width: 700px;
-    margin: 0 auto;
-    padding: 20px;
-    .play-edit_form {
-        width: 150px;
-        height: 150px;
-        font-size: 100px;
-        text-align: center;
-        margin: 10px;
-    }
-    .play-edit__showScorecard {
-        margin-top: 15px;
-        background-color: whitesmoke;
-        height: 45px;
-        line-height: 45px;
-        width: 500px;
-        text-align: center;
-        margin: 15px auto;
-        border-radius: 22px;
-        a {
-            font-size: 20px;
-            color: blue;
+    // Place all the styles related to the Plays controller here.
+    // They will automatically be included in application.css.
+    // You can use Sass (SCSS) here: https://sass-lang.com/
+    .play-edit {
+        width: 700px;
+        margin: 0 auto;
+        padding: 20px;
+        .play-edit_form {
+            width: 150px;
+            height: 150px;
+            font-size: 100px;
+            text-align: center;
+            margin: 10px;
         }
-        i {
-            font-size: 20px;
-            color: black;
+        .play-edit__showScorecard {
+            margin-top: 15px;
+            background-color: whitesmoke;
+            height: 45px;
+            line-height: 45px;
+            width: 500px;
+            text-align: center;
+            margin: 15px auto;
+            border-radius: 22px;
+            a {
+                font-size: 20px;
+                color: blue;
+            }
+            i {
+                font-size: 20px;
+                color: black;
+            }
+        }
+        .play-edit__buttonGroup {
+            display: flex;
+            justify-content: center;
+            margin: 0px auto;
+            align-items: center;
+            height: 160px;
+        }
+        .play-edit__holeButton {
+            height: 150px;
+            width: 150px;
+            background-color: black;
+            text-align: center;
+            line-height: 150px;
+            color: #ffffff;
+            border: none;
+        }
+        .play-edit__holeButton:hover {
+            cursor: pointer;
+            font-style: italic;
+        }
+        .play-edit__airButton {
+            height: 150px;
+            width: 150px;
+        }
+        .play-edit__scoreButton {
+            width: 150px;
+            height: 150px;
+            border: none;
+            margin: 5px;
+            font-size: 30px;
+        }
+        .play-edit__scoreButton:hover {
+            cursor: pointer;
+            font-style: italic;
+        }
+        .score_under {
+            background-color: blue;
+            color: white;
+        }
+        .score_over {
+            background-color: red;
+            color: white;
         }
     }
-    .play-edit__buttonGroup {
-        display: flex;
-        justify-content: center;
-        margin: 0px auto;
-        align-items: center;
-        height: 160px;
+    
+    @media(max-width: 700px) {
+        .play-edit {
+            width: auto;
+            .play-edit__scoreButton {
+                width: 70px;
+                height: 70px;
+                font-size: 18px;
+            }
+            .play-edit_form {
+                width: 70px;
+                height: 69px;
+                font-size: 40px;
+                text-align: center;
+                margin: 10px;
+            }
+            .play-edit__holeButton {
+                height: 70px;
+                width: 70px;
+                background-color: black;
+                line-height: 70px;
+                font-size: 12px;
+                padding: 0;
+            }
+            .play-edit__airButton {
+                height: 70px;
+                width: 70px;
+            }
+            .play-edit__buttonGroup {
+                height: 80px;
+            }
+            .play-edit__showScorecard {
+                margin-top: 15px;
+                height: 30px;
+                line-height: 30px;
+                width: 250px;
+                margin: 15px auto;
+                border-radius: 15px;
+            }
+            .play-edit__showScorecard a {
+                font-size: 12px;
+            }
+            .play-edit__showScorecard i {
+                font-size: 14px;
+            }
+        }
     }
-    .play-edit__holeButton {
-        height: 150px;
-        width: 150px;
-        background-color: black;
-        text-align: center;
-        line-height: 150px;
-        color: #ffffff;
-        border: none;
-    }
-    .play-edit__holeButton:hover {
-        cursor: pointer;
-        font-style: italic;
-    }
-    .play-edit__airButton {
-        height: 150px;
-        width: 150px;
-    }
-    .play-edit__scoreButton {
-        width: 150px;
-        height: 150px;
-        border: none;
-        margin: 5px;
-        font-size: 30px;
-    }
-    .play-edit__scoreButton:hover {
-        cursor: pointer;
-        font-style: italic;
-    }
-    .score_under {
-        background-color: blue;
-        color: white;
-    }
-    .score_over {
-        background-color: red;
-        color: white;
-    }
-}
