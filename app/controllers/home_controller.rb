@@ -9,6 +9,7 @@ class HomeController < ApplicationController
       @unfinished_score = Score.where(user_id: current_user.id)
                               .where(status: 0)
                               .includes([:golfcourse])
+                              .order(played_date: :desc)
       @user = User.find(current_user.id)
       @following_user = @user.followings
       @following_user_id = []

@@ -4,7 +4,7 @@
 		<%= label :search, "ゴルフ場名を検索", class: "golfcourse-block__label" %>
 		<%= text_field_tag :search, "", {class: "golfcourse-block__longform"} %>
 		<%= submit_tag 'ゴルフ場を検索', :golfcoursename => nil, class: "golfcourse-block__searchbutton" %>
-		<p class="search_result__name">①これからラウンドするゴルフ場名を検索して下さい。</p>
+		<p class="search_result__setsumei">①これからラウンドするゴルフ場名を検索して下さい。</p>
 	<% end %>
 
 	<%= form_with url:round_start_path, id: "golfcourse_form", html:{name: "select_course_form"} do |f| %>
@@ -14,23 +14,29 @@
 		<%= f.select :start_hole, [['1H', 1], ['10H', 10]], {}, {class: "golfcourse-block__form"}  %><br>
 		<%= f.label :published, "このラウンドのスコアの公開/非公開", class: "golfcourse-block__label" %>
 		<%= f.select :published, [['公開', 1], ['非公開', 0]], {}, {class: "golfcourse-block__form"} %>
+		<p class="search_result__setsumei">②ラウンド日、スタートホール、スコア公開/非公開を選択して下さい。</p>
 		<p>※「非公開」にすると、リーダーボードに載らず、他ユーザーの方からスコアを閲覧されることもありません。後からでも変更可能です。</p>
 		<div id="search_result" class="search_result">
+			<p class="search_result__setsumei">③検索結果からお一つ選択して「ラウンドを開始する」をクリックして下さい。</p>
 			<% i = 1 %>
-			<% @search_golfcoursename.each.with_index(1) do |name,index| %>
-				<div class="search_result__block">
-					<%= f.radio_button :golfcourse_id, name.id, require: true, class: "search_result__radiobutton", id: "radio_#{index}" %>
-					<p class="search_result__name"><%= name.golfcoursename %></p>
-					<p class="search_result__address"><%= name.address %></p>
-					<div class="grad-wrap">
-						<input id="trigger<%= name.id %>" class="grad-trigger" type="checkbox">
-						<div class="grad-item"><%= name.golfcoursecaption %></div>
+			<% if @search_golfcoursename == [] %>
+				<p>該当するゴルフ場がみつかりません。</p>
+			<% else %>
+				<% @search_golfcoursename.each.with_index(1) do |name,index| %>
+					<div class="search_result__block">
+						<%= f.radio_button :golfcourse_id, name.id, require: true, class: "search_result__radiobutton", id: "radio_#{index}" %>
+						<p class="search_result__name"><%= name.golfcoursename %></p>
+						<p class="search_result__address"><%= name.address %></p>
+						<div class="grad-wrap">
+							<input id="trigger<%= name.id %>" class="grad-trigger" type="checkbox">
+							<div class="grad-item"><%= name.golfcoursecaption %></div>
 							<label class="grad-btn" for="trigger<%= name.id %>"></label>
+						</div>
 					</div>
-				</div>
 				<% end %>
 				<%= paginate @search_golfcoursename %>
 				<%= submit_tag 'ラウンドを開始する', id: "golfcourse_select", class: "golfcourse-block__startbutton" %>
+			<% end %>
 		</div>
 	<% end %>
 </div>

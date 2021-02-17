@@ -8,7 +8,7 @@ document.addEventListener("turbolinks:load", function() {
         console.log("送信ボタンクリックした");
         var flag = false; // 選択されているか否かを判定するフラグ
         // ラジオボタンの数だけ判定を繰り返す（ボタンを表すインプットタグがあるので１引く）
-        for (var i = 0; i < document.select_course_form.golfcourse_id.length - 1; i++) {
+        for (var i = 0; i < document.select_course_form.golfcourse_id.length; i++) {
             // i番目のラジオボタンがチェックされているかを判定
             if (document.select_course_form.golfcourse_id[i].checked) {
                 flag = true;
@@ -27,6 +27,7 @@ document.addEventListener("turbolinks:load", function() {
     if (urlParam == "search=&commit=Search" || urlParam == "") {
         console.log("paramsカラです")
         document.getElementById("search_result").style.display = "none"
+        document.getElementById("golfcourse_select").style.display = "none"
     } else {
         console.log("params有り")
     }
