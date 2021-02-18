@@ -1,35 +1,34 @@
 var message_content = document.getElementById( "message_content").value ;
+var message_length = message_content.length ;
 var message_image = document.getElementById( "message_image").value ;
-
+console.log(message_length)
 
 if (message_content == "" &&  message_image == ""){
 	console.log("どちらもからです。")
 	alert('メッセージか画像、どちらかは入力して下さい。');
+}else if(message_length > 100){
+	console.log(message_length);
+	alert('メッセージは100文字以内でお願いします。');
 }else{
-
-
-
-
-document.getElementById('messages')
-.insertAdjacentHTML('afterbegin',
-'<p id="message-<%= @message.id %>" class="score-block__group">\
-	<% if @message.user.avatar? %>\
-		<%= image_tag @message.user.avatar.url, class: "score-block__img"%>\
-	<% else %>\
-		<img src="/assets/ball.svg" class="score-block__img">\
-	<% end %>\
-	<span><%= link_to @message.user.name, users_show_path(id: @message.user.id) %></span>\
-	<% if @message.image != nil %>\
-    <img class="thmb" src="<%= "#{@message.image}" %>">\
-  <% end %>\
-	<span class="score-block__date-content"><%= @message.content %></span>\
-	<span class="score-block__date-like">\
-		<span><%= @message.created_at %></span>\
-		<a id="unlike-<%= @message.id %>" href ="/messages/<%= params[:score_id] %>?message_id=<%= @message.id %>">0</a>\
-    <a id="change-like-<%= @message.id %>" data-remote="true" rel="nofollow" data-method="post" href="/likes?message_id=<%= @message.id %>&score_id=<%= params[:score_id] %>&user_id=<%= current_user.id %>">\♡\</a>\
-	</span>\
-</p>');
-
-document.getElementById('message_content').value = ''
-document.getElementById('message_image').value = ''
+	document.getElementById('messages')
+	.insertAdjacentHTML('afterbegin',
+		'<p id="message-<%= @message.id %>" class="score-block__group">\
+			<% if @message.user.avatar? %>\
+				<%= image_tag @message.user.avatar.url, class: "score-block__img"%>\
+			<% else %>\
+				<img src="/assets/ball.svg" class="score-block__img">\
+			<% end %>\
+			<span><%= link_to @message.user.name, users_show_path(id: @message.user.id) %></span>\
+			<% if @message.image != nil %>\
+				<img class="thmb" src="<%= "#{@message.image}" %>">\
+			<% end %>\
+			<span class="score-block__date-content"><%= @message.content %></span>\
+			<span class="score-block__date-like">\
+				<span><%= @message.created_at %></span>\
+				<a id="unlike-<%= @message.id %>" href ="/messages/<%= params[:score_id] %>?message_id=<%= @message.id %>">0</a>\
+				<a id="change-like-<%= @message.id %>" data-remote="true" rel="nofollow" data-method="post" href="/likes?message_id=<%= @message.id %>&score_id=<%= params[:score_id] %>&user_id=<%= current_user.id %>">\♡\</a>\
+			</span>\
+		</p>');
+		document.getElementById('message_content').value = ''
+		document.getElementById('message_image').value = ''
 }
