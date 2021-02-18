@@ -39,7 +39,7 @@
         <% @score.each do|score|%>
           <tr class="userShow-block__round__tr">
             <td><%= score.played_date %></td>
-            <td><%= score.golfcourse.golfcoursename %></td>
+            <td><%= score.golfcourse.golfcourseabbr %></td>
             <td><%= link_to score.total_score, archives_show_path(id: score.id) %></td>
           </tr>
         <% end %>
