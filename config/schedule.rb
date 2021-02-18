@@ -1,5 +1,5 @@
 set :output, 'log/crontab.log'
-set :environment, ENV['RAILS_ENV']
+set :environment, :production
 # Rails.rootを使用するために必要
 require File.expand_path(File.dirname(__FILE__) + "/environment")
 # cronを実行する環境変数
