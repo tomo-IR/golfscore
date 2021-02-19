@@ -49,6 +49,11 @@
         justify-content: center;
     }
     
+    .alert-light {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
     .leader-board__thead {
         display: block;
     }
@@ -75,13 +80,24 @@
         min-width: 57px;
     }
     
-    .headerBlock__avatar {
-        width: 300px;
-        margin-top: 10px;
-    }
-    
-    .headerBlock__avatar:hover {
-        opacity: 0.5;
+    .headerBlock {
+        .headerBlock__avatar {
+            width: 300px;
+            margin-top: 10px;
+        }
+        .headerBlock__avatar:hover {
+            opacity: 0.5;
+        }
+        .headerBlock__nav {
+            float: right;
+        }
+        .headerBlock__ul {
+            display: flex;
+            justify-content: center;
+        }
+        .headerBlock__ul li {
+            margin: 20px 10px;
+        }
     }
     
     .avatar-img {
@@ -110,7 +126,7 @@
     
     body {
         font-family: 'Kosugi Maru', sans-serif;
-        color: #555555;
+        color: #222222;
         background-image: image-url('shiba.jpg');
         // background-repeat: repeat-x;
         background-size: cover;

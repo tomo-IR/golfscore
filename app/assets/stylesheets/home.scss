@@ -1,136 +1,152 @@
-        // Place all the styles related to the home controller here.
-        // They will automatically be included in application.css.
-        // You can use Sass (SCSS) here: https://sass-lang.com/
-        .home-block {
-            width: 700px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .topMenu-list {
-            display: flex;
-            justify-content: space-between;
-            margin: 50px auto;
-        }
-        
-        .topMenu-image__title {
-            width: 150px;
-        }
-        
-        .topMenu-image__title:hover {
-            opacity: 0.5;
-        }
-        
-        .headerBlock {
-            margin: 0px 30px 70px 30px;
-        }
-        
-        .newsList {
-            display: flex;
-            justify-content: center;
-            .newsList__image {
-                margin: 30px;
-                width: 70px;
-            }
-        }
-        
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.home-block {
+    width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.topMenu-list {
+    display: flex;
+    justify-content: space-between;
+    margin: 3px auto;
+}
+
+.topMenu-image__title {
+    width: 150px;
+}
+
+.topMenu-image__title:hover {
+    opacity: 0.5;
+}
+
+.headerBlock {
+    margin: 0px 30px 70px 30px;
+}
+
+.newsList {
+    display: flex;
+    justify-content: center;
+    .newsList__image {
+        margin: 30px;
+        width: 70px;
+    }
+}
+
+.unfinishedList,
+.follwingPlayList {
+    background-color: white;
+    width: 500px;
+    height: auto;
+    min-height: 200px;
+    // display: flex;
+    // justify-content: space-around;
+    // align-items: flex-start;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+}
+
+.title_group {
+    padding-top: 29px;
+}
+
+.newsList__image {
+    width: 80px;
+}
+
+.image_and_title {
+    display: flex;
+}
+
+.authBlock {
+    .authBlock__btn {
+        width: 50%;
+        height: 50px;
+        line-height: 37px;
+        margin: 20px auto;
+        display: block;
+    }
+}
+
+.home-block__round {
+    width: 700px;
+    margin: 0px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    .home-block__p {
+        height: 30px;
+        text-align: center;
+    }
+    .home-block__span {
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
+
+@media(max-width: 700px) {
+    .newsList {
+        flex-direction: column;
         .unfinishedList,
         .follwingPlayList {
-            background-color: white;
-            width: 500px;
-            height: auto;
-            min-height: 200px;
-            // display: flex;
-            // justify-content: space-around;
-            // align-items: flex-start;
-            border-radius: 10px;
-            padding: 10px;
-            margin: 20px;
+            margin: 10px auto;
         }
-        
-        .title_group {
-            padding-top: 29px;
+        .table {
+            font-size: 3vw;
         }
-        
         .newsList__image {
-            width: 80px;
+            margin: 15px;
+            width: 50px;
         }
-        
-        .image_and_title {
-            display: flex;
+        th {
+            white-space: nowrap;
         }
-        
-        .authBlock {
-            .authBlock__btn {
-                width: 50%;
-                height: 50px;
-                line-height: 37px;
-                margin: 20px auto;
-                display: block;
+        .title_group {
+            h4 {
+                font-size: 6vw;
+            }
+            p {
+                font-size: 4vw;
             }
         }
-        
-        @media(max-width: 700px) {
-            .newsList {
-                flex-direction: column;
-                .unfinishedList,
-                .follwingPlayList {
-                    margin: 10px auto;
-                }
-                .table {
-                    font-size: 3vw;
-                }
-                .newsList__image {
-                    margin: 15px;
-                    width: 50px;
-                }
-                th {
-                    white-space: nowrap;
-                }
-                .title_group {
-                    h4 {
-                        font-size: 6vw;
-                    }
-                    p {
-                        font-size: 4vw;
-                    }
-                }
-            }
-            .topMenu-list {
-                align-content: flex-start;
-            }
-            .home-block {
-                width: auto;
-            }
-            .topMenu-image__title {
-                width: 120px;
-            }
+    }
+    .topMenu-list {
+        align-content: flex-start;
+    }
+    .home-block {
+        width: auto;
+    }
+    .topMenu-image__title {
+        width: 120px;
+    }
+}
+
+@media(max-width: 550px) {
+    .home-block {
+        padding-bottom: 0;
+        .topMenu-image__title {
+            width: 100px;
         }
-        
-        @media(max-width: 550px) {
-            .home-block {
-                padding-bottom: 0;
-                .topMenu-image__title {
-                    width: 100px;
-                }
-                .topMenu-list {
-                    margin-bottom: 0;
-                    margin-top: 0;
-                }
-                p {
-                    font-size: 3vw;
-                }
-            }
-            .unfinishedList,
-            .follwingPlayList {
-                width: 90%;
-            }
+        .topMenu-list {
+            margin-bottom: 0;
+            margin-top: 0;
         }
-        
-        @media(max-width: 450px) {
-            .home-block {
-                .topMenu-image__title {
-                    width: 70px;
-                }
-            }
+        p {
+            font-size: 3vw;
         }
+    }
+    .unfinishedList,
+    .follwingPlayList {
+        width: 90%;
+    }
+}
+
+@media(max-width: 450px) {
+    .home-block {
+        .topMenu-image__title {
+            width: 70px;
+        }
+    }
+}

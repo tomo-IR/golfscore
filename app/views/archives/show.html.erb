@@ -8,7 +8,7 @@
     <%= render 'scores/leader_board' %>
   </div>
   <% if current_user.id == @score.user.id %>
-    <%= link_to "ラウンド一覧に戻る", archives_index_path %> 
+    <%= link_to "ラウンド一覧に戻る", archives_index_path,class: "archiveShow-block__backRoundIndex" %> 
   <% end %>
   <div class="archiveShow-block__linkGroup">
     <% if current_user.id == @score.user.id && @score.published == 1 %>
