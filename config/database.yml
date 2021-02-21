@@ -47,10 +47,17 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   pool: 5
+#   database: golfscore_production
+#   username: golfscore
+#   password: <%= ENV['GOLFSCORE_DATABASE_PASSWORD'] %>
+
 production:
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  database: golfscore_production
-  username: golfscore
-  password: <%= ENV['GOLFSCORE_DATABASE_PASSWORD'] %>
+  <<: *default
+  database: golf_score_production
+  username: root
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:hostname] %>
