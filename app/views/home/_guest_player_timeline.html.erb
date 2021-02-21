@@ -1,0 +1,29 @@
+<div class="follwingPlayList">
+  <div class="image_and_title">
+    <%= image_tag('cap-02.svg', class: "newsList__image", id: "test") %>
+    <div class="title_group">
+      <h4>他のプレイヤーのラウンド情報</h4>
+    </div>
+  </div>
+  <div>
+      <%# if @guest_random_score == [] %>
+        <%# <p>直近1週間フォローしているプレイヤーはラウンドしていません。</p> %>
+      <%# else %>
+        <table class=" table table-striped">
+          <tr>
+            <th>プレイ日</th>
+            <th>プレイヤー</th>
+            <th>コース名</th>
+          </tr>
+          <% @guest_random_score.each do|score|%>  
+            <tr>
+              <td><%= score.played_date.strftime('%-m月%d日(%a)') %></td>
+              <td><%= link_to score.user.name, user_path(id: score.user.id) %></td>
+              <td><%= link_to score.golfcourse.golfcourseabbr, archives_show_path(id: score.user.id) %></td>
+            </tr>
+          <% end %>
+        </table>
+      <%# end %>
+
+  </div>
+</div>

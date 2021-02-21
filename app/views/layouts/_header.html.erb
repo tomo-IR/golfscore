@@ -17,7 +17,7 @@
     <% end %>
     <div class="dropdown-menu" aria-labelledby="dropdown1">
       <%= link_to current_user.name, mypage_path, class: "dropdown-item" %>
-      <%= link_to current_user.email, mypage_path, class: "dropdown-item" %>
+      <%#= link_to current_user.email, mypage_path, class: "dropdown-item" %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "dropdown-item" %><br>
     </div>
   <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
@@ -38,6 +38,16 @@
       <p class="dropdown-item"><%= current_user.name %></p>
       <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "dropdown-item" %><br>
     </div>
+  <% else %>
+  <nav class="headerBlock__nav">
+    <ul class="headerBlock__ul">
+      <li><%= link_to "ログイン", new_user_session_path, class: '' %></li>
+      <li><%= link_to "新規登録", new_user_registration_path, class: '' %></li>
+      <li><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "" %></li>
+    </ul>
+  </nav>
+
+
 
   <% end %>
   </div>
