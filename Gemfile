@@ -30,6 +30,7 @@ gem 'pry-rails'
 gem 'bootstrap', '~> 4.1.1'
 gem 'bootstrap4-kaminari-views'
 gem 'jquery-rails'
+gem 'pg'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -42,6 +43,11 @@ group :development do
   gem 'rubocop-rspec'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem "capistrano", "~> 3.10", require: false
+  gem "capistrano-rails", "~> 1.6", require: false
+  gem 'capistrano-rbenv', '~> 2.2'
+  gem 'capistrano-rbenv-vars', '~> 0.1'
+  gem 'capistrano3-puma', '< 5'
 end
 
 group :test do
@@ -52,7 +58,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '>= 0.18', '< 2.0'
+  gem 'mysql2', '>= 0.5.3'
   gem "capistrano", "~> 3.10", require: false
   gem "capistrano-rails", "~> 1.6", require: false
   gem 'capistrano-rbenv', '~> 2.2'
