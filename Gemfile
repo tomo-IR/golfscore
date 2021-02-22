@@ -30,7 +30,7 @@ gem 'pry-rails'
 gem 'bootstrap', '~> 4.1.1'
 gem 'bootstrap4-kaminari-views'
 gem 'jquery-rails'
-gem 'pg'
+# gem 'pg'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
