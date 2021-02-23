@@ -5,7 +5,7 @@
       <% if @user.avatar? %>
         <%= image_tag asset_path(@user.avatar.url), class: "userShow-block__avatar" %>
       <% else %>
-        <img src="/assets/ball.svg" class="userShow-block__avatar">
+        <%= image_tag asset_path("ball.svg"), class: "userShow-block__avatar" %>
       <% end %>
         <p class="userShow-block__name"><%= @user.name %></p>
     </div>
