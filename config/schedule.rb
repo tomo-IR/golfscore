@@ -5,6 +5,6 @@ set :output, 'log/cron.log'
 set :environment, :production
 
 
-every 5.minute do
+every 7.days do
   rake "get_golfcourse_info:get"
 end
