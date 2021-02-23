@@ -7,5 +7,6 @@ if Rails.env.production?
       region: "ap-northeast-1"
     }
     config.fog_directory = "sologol-bucket"
+    config.fog_public = false
   end
 end
