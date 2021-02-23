@@ -20,7 +20,7 @@ if (message_content == "" &&  message_image == ""){
 			<% end %>\
 			<span><%= link_to @message.user.name, users_show_path(id: @message.user.id) %></span>\
 			<% if @message.image != nil %>\
-				<%= image_tag asset_path("#{@message.image}"), class: "thumb" %>\
+				<%= image_tag asset_path("#{@message.image}"), class: "thmb" %>\
 			<% end %>\
 			<span class="score-block__date-content"><%= @message.content %></span>\
 			<span class="score-block__date-like">\
