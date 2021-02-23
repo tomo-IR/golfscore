@@ -4,8 +4,8 @@
     <div class="mypage-block__leftsideBlock">
       <% if @user.avatar? %>  
         <%= image_tag asset_path(@user.avatar.url), class: "mypage-block__avatar" %>
-        <% else %>
-        <img src="/assets/ball.svg" class="mypage-block__avatar">
+      <% else %>
+        <%= image_tag asset_path("ball.svg"), class: "mypage-block__avatar"%>
       <% end %>
       <p class="mypage-block__name"><%= @user.name %></p>
       <p class="mypage-block__email"><%= @user.email %></p>
