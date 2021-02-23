@@ -74,3 +74,5 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'vcr'
 end
+
+gem "fog-aws", "~> 3.8"

@@ -20,13 +20,22 @@ document.addEventListener("turbolinks:load", function() {
         // ラジオボタンの数だけ判定を繰り返す（ボタンを表すインプットタグがあるので１引く）
         radio_count = document.getElementsByName("golfcourse_id").length;
         console.log(radio_count);
-        for (var i = 0; i < radio_count; i++) {
-            // i番目のラジオボタンがチェックされているかを判定
-            console.log(document.select_course_form.golfcourse_id[i])
-            if (document.select_course_form.golfcourse_id[i].checked) {
+        if (radio_count == 1) {
+            console.log(document.select_course_form.golfcourse_id)
+            if (document.select_course_form.golfcourse_id.checked) {
                 flag = true;
             } else {
                 console.log("チェックなし")
+            }
+        } else {
+            for (var i = 0; i < radio_count; i++) {
+                // i番目のラジオボタンがチェックされているかを判定
+                console.log(document.select_course_form.golfcourse_id[i])
+                if (document.select_course_form.golfcourse_id[i].checked) {
+                    flag = true;
+                } else {
+                    console.log("チェックなし")
+                }
             }
         }
         // 何も選択されていない場合の処理
