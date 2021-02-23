@@ -11,7 +11,8 @@ set :nginx_sites_enabled_path, "/etc/nginx/conf.d"
 
 append :linked_files, "config/master.key"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "node_modules"
-set :branch, "main"
+# set :branch, "main"
+set :branch, ENV['BRANCH'] || "main"
 set :whenever_roles,        ->{ :app }
 # Default branch is :main
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

@@ -14,7 +14,7 @@ if (message_content == "" &&  message_image == ""){
 	.insertAdjacentHTML('afterbegin',
 		'<p id="message-<%= @message.id %>" class="score-block__group">\
 			<% if @message.user.avatar? %>\
-				<%= image_tag @message.user.avatar.url, class: "score-block__img"%>\
+				<%= image_tag asset_path(@message.user.avatar.url), class: "score-block__img"%>\
 			<% else %>\
 				<img src="/assets/ball.svg" class="score-block__img">\
 			<% end %>\

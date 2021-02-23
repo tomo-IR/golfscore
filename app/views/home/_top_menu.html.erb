@@ -4,11 +4,10 @@
     <%= link_to image_tag('message.svg', class: "topMenu-image__title"), messages_index_path, class: "topMenu-list__title" %>
     <%= link_to image_tag('score.svg', class: "topMenu-image__title"), '/archives?played_year=0&commit=%E6%A4%9C%E7%B4%A2', played_year: '0', commit: '検索', class: "topMenu-list__title" %>
     <%= link_to image_tag('player.svg', class: "topMenu-image__title"), user_index_path, class: "topMenu-list__title" %>
-    <%#= link_to image_tag('mypage.svg', class: "topMenu-image__title"), mypage_path, class: "topMenu-list__title" %>
   <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
     <%= link_to image_tag('round.svg', class: "topMenu-image__title"), golfcourses_index_path, class: "topMenu-list__title" %>
     <%= link_to image_tag('message.svg', class: "topMenu-image__title"), messages_index_path, class: "topMenu-list__title" %>
     <%= link_to image_tag('player.svg', class: "topMenu-image__title"), user_index_path, class: "topMenu-list__title" %>
   <% end %>
 </div>
-  <%#= link_to image_tag('logo-01.svg', class: "topMenu-image__title"), root_path  %>
+

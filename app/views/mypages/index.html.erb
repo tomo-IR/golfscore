@@ -3,7 +3,7 @@
   <div class="mypage-block__flex">
     <div class="mypage-block__leftsideBlock">
       <% if @user.avatar? %>  
-        <%= image_tag @user.avatar.url,class: "mypage-block__avatar" %>
+        <%= image_tag asset_path(@user.avatar.url), class: "mypage-block__avatar" %>
         <% else %>
         <img src="/assets/ball.svg" class="mypage-block__avatar">
       <% end %>

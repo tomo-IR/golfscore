@@ -4,7 +4,7 @@
 	<% @messages.each do |message| %>
   	<p class="messageCourse-message">
 			<% if message.user.avatar? %>
-				<%= image_tag message.user.avatar.url, class: "messageCourse-block__img"%>
+				<%= image_tag asset_path(message.user.avatar.url), class: "messageCourse-block__img"%>
 			<% else %>
 				<img src="/assets/ball.svg" class="messageCourse-block__img">
 			<% end %>

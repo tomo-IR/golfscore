@@ -3,7 +3,7 @@
   <div class="userShow-block__flex">
     <div class="userShow-block__leftsideBlock">
       <% if @user.avatar? %>
-        <%= image_tag @user.avatar.url,class: "userShow-block__avatar" %>
+        <%= image_tag asset_path(@user.avatar.url), class: "userShow-block__avatar" %>
       <% else %>
         <img src="/assets/ball.svg" class="userShow-block__avatar">
       <% end %>
