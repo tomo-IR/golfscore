@@ -1,6 +1,8 @@
-require File.expand_path(File.dirname(__FILE__) + "/environment")
+env :PATH, ENV['PATH']
+# ログファイルの出力先
+set :output, 'log/cron.log'
+# ジョブの実行環境の指定
 set :environment, :production
-set :output, "#{Rails.root}/log/cron.log" 
 
 
 every 5.minute do
