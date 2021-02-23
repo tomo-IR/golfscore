@@ -9,12 +9,11 @@
           <% if user.avatar? %>  <!-- アップロード画像がある場合に実行する -->
             <%= image_tag asset_path(user.avatar.url), class: "avatar-img"%>
           <% else %>
-            <img src="/assets/ball.svg" class="avatar-img">
-        <% end %>
-        <span class="likeUser__list__span"><%= link_to user.name, user_path(id: user.id), class: "likeUser__list__name" %></span>
-      </li>
+            <%= image_tag asset_path("ball.svg"), class: "avatar-img" %>
+          <% end %>
+          <span class="likeUser__list__span"><%= link_to user.name, user_path(id: user.id), class: "likeUser__list__name" %></span>
+        </li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
-<%#= paginate @users, theme: 'twitter-bootstrap-4'%>
+  </ul>
 </div>

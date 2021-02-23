@@ -14,7 +14,7 @@
         <% if user.avatar? %>  <!-- アップロード画像がある場合に実行する -->
           <%= image_tag asset_path(user.avatar.url), class: "avatar-img"%>
         <% else %>
-          <img src="/assets/ball.svg" class="avatar-img">
+          <%= image_tag asset_path("ball.svg"), class: "avatar-img"%>
         <% end %>
         <span class="user-Search__list__span"><%= link_to user.name, user_path(id: user.id), class: "user-Search__list__name" %></span>
       </li>

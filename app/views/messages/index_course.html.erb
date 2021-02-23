@@ -6,11 +6,11 @@
 			<% if message.user.avatar? %>
 				<%= image_tag asset_path(message.user.avatar.url), class: "messageCourse-block__img"%>
 			<% else %>
-				<img src="/assets/ball.svg" class="messageCourse-block__img">
+				<%= image_tag asset_path("ball.svg"), class: "messageCourse-block__img"%>
 			<% end %>
 			<span><%= link_to message.user.name, users_show_path(id: message.user.id) %></span>
 			<% if message.image != nil %>
-				<img class="thmb" src="<%= "#{message.image}" %>">
+				<%= image_tag asset_path("#{message.image}"), class: "thmb" %>
 			<% end %>
 			<span class="messageCourse-block__date-content"><%= message.content %></span>
 			<span class="messageCourse-block__date-like">

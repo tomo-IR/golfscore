@@ -4,7 +4,7 @@
 	<% if message.user.avatar? %>
 		<%= image_tag asset_path(message.user.avatar.url), class: "score-block__img"%>
 	<% else %>
-		<img src="/assets/ball.svg" class="score-block__img">
+		<%= image_tag asset_path("ball.svg"), class: "score-block__img"%>
 	<% end %>
 
 	<%# name %>
@@ -12,7 +12,7 @@
 
 	<%# 投稿画像 %>
 	<% if message.image != nil %>
-    <img class="thmb" src="<%= "#{message.image}" %>">
+		<%= image_tag asset_path("#{message.image}"), class: "thmb" %>
   <% end %>
 
 	<%# 文章 %>
