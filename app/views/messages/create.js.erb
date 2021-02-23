@@ -16,11 +16,11 @@ if (message_content == "" &&  message_image == ""){
 			<% if @message.user.avatar? %>\
 				<%= image_tag asset_path(@message.user.avatar.url), class: "score-block__img"%>\
 			<% else %>\
-				<img src="/assets/ball.svg" class="score-block__img">\
+				<%= image_tag asset_path("ball.svg"), class: "score-block__img"%>\
 			<% end %>\
 			<span><%= link_to @message.user.name, users_show_path(id: @message.user.id) %></span>\
 			<% if @message.image != nil %>\
-				<img class="thmb" src="<%= "#{@message.image}" %>">\
+				<%= image_tag asset_path("#{@message.image}"), class: "thumb" %>\
 			<% end %>\
 			<span class="score-block__date-content"><%= @message.content %></span>\
 			<span class="score-block__date-like">\
