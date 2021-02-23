@@ -30,7 +30,7 @@ gem 'pry-rails'
 gem 'bootstrap', '~> 4.1.1'
 gem 'bootstrap4-kaminari-views'
 gem 'jquery-rails'
-# gem 'pg'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -64,6 +64,7 @@ group :production do
   gem 'capistrano-rbenv', '~> 2.2'
   gem 'capistrano-rbenv-vars', '~> 0.1'
   gem 'capistrano3-puma', '< 5'
+  gem "fog-aws", "~> 3.8"
 end
 
 group :development, :test do
@@ -75,4 +76,3 @@ group :development, :test do
   gem 'vcr'
 end
 
-gem "fog-aws", "~> 3.8"
