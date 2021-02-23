@@ -3,7 +3,7 @@
   <%= link_to image_tag('logo-01.svg', class: "headerBlock__avatar"), root_path  %>
   <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
     <% if current_user.avatar? %>  <!-- アップロード画像がある場合に実行する -->
-      <%= image_tag current_user.avatar.url, class: "avatar-img 
+      <%= image_tag asset_path(current_user.avatar.url), class: "avatar-img 
                                                       btn
                                                       btn-secondary
                                                       dropdown-toggle", 
@@ -13,7 +13,17 @@
                                                       id: "dropdown1", 
                                                       type: "button" %>
     <% else %>
-      <img src="/assets/ball.svg" alt="" id="dropdown1" class="avatar-img btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup= "true" aria-expanded= "false" type="button">
+      <%# <img src="/assets/ball.svg" alt="" id="dropdown1" class="avatar-img btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup= "true" aria-expanded= "false" type="button"> %>
+      <%= image_tag asset_path("ball.svg"), class: "avatar-img 
+                                                      btn
+                                                      btn-secondary
+                                                      dropdown-toggle", 
+                                                      'data-toggle': "dropdown", 
+                                                      'aria-haspopup': "true", 
+                                                      'aria-expanded': "false", 
+                                                      id: "dropdown1", 
+                                                      type: "button" %>
+    
     <% end %>
     <div class="dropdown-menu" aria-labelledby="dropdown1">
       <%= link_to current_user.name, mypage_path, class: "dropdown-item" %>
@@ -22,7 +32,7 @@
     </div>
   <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
       <% if current_user.avatar? %>  <!-- アップロード画像がある場合に実行する -->
-      <%= image_tag current_user.avatar.url, class: "avatar-img 
+      <%= image_tag asset_path(current_user.avatar.url), class: "avatar-img 
                                                       btn
                                                       btn-secondary
                                                       dropdown-toggle", 
@@ -32,8 +42,15 @@
                                                       id: "dropdown1", 
                                                       type: "button" %>
     <% else %>
-      <img src="/assets/ball.svg" alt="" id="dropdown1" class="avatar-img btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup= "true" aria-expanded= "false" type="button">
-    <% end %>
+      <%= image_tag asset_path("ball.svg"), class: "avatar-img 
+                                                            btn
+                                                            btn-secondary
+                                                            dropdown-toggle", 
+                                                            'data-toggle': "dropdown", 
+                                                            'aria-haspopup': "true", 
+                                                            'aria-expanded': "false", 
+                                                            id: "dropdown1", 
+                                                            type: "button" %>    <% end %>
     <div class="dropdown-menu" aria-labelledby="dropdown1">
       <p class="dropdown-item"><%= current_user.name %></p>
       <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "dropdown-item" %><br>
