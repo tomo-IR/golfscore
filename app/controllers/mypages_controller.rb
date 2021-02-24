@@ -11,7 +11,7 @@ class MypagesController < ApplicationController
 
 	def update
 		if @user.update!(user_params)
-			puts @user..avatar.current_path
+			puts @user.avatar.current_path
 			flash[:edit_success] = '編集されました'
 			redirect_to mypage_edit_path
 		else
