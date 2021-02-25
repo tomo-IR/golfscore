@@ -6,9 +6,9 @@
   <% elsif @score.start_hole.to_i == 10 && params[:hole_number].to_i == 10 %>
     <a class="play-edit__airButton"></a>
   <% elsif @score.start_hole.to_i == 10 && params[:hole_number].to_i == 1 %>
-    <%= link_to "保存しないで前のホールへ", plays_edit_path(score_id: @score.id, hole_number: 18), class: "play-edit__holeButton"  %>
+    <%= link_to "前のホールへ", plays_edit_path(score_id: @score.id, hole_number: 18), class: "play-edit__holeButton"  %>
   <% else %>
-    <%=  link_to "保存しないで前のホールへ", plays_edit_path(score_id: @score.id, hole_number: last_hole), class: "play-edit__holeButton"  %>
+    <%=  link_to "前のホールへ", plays_edit_path(score_id: @score.id, hole_number: last_hole), class: "play-edit__holeButton"  %>
   <% end %>
 
   <% if @score.send("hole#{params[:hole_number]}_score") == nil %>
@@ -22,6 +22,6 @@
   <% elsif @score.start_hole == 10 && params[:hole_number].to_i == 9 %>
     <%= f.submit "ラウンドを完了する", class: "play-edit__holeButton"  %>
   <% else %>  
-    <%= f.submit "保存して次のホールへ", class: "play-edit__holeButton" %>
+    <%= f.submit "次のホールへ", class: "play-edit__holeButton" %>
   <% end %>
 <% end %>

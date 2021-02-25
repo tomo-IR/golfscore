@@ -110,3 +110,61 @@
         height: 300px;
     }
 }
+
+@media(max-width: 700px) {
+    .mypage-block {
+        width: 95%;
+        margin-bottom: 10px;
+        .mypage-block__avatar {
+            width: 100px;
+            height: 100px;
+        }
+        .mypage-block__leftsideBlock,
+        .mypage-block__rightsideBlock {
+            width: 50%;
+        }
+        .rightsideBlock__edit {
+            font-size: 13px;
+            height: 25px;
+            line-height: 25px;
+            border-radius: 13px;
+        }
+    }
+    .mypageEdit-block {
+        width: 95%;
+        padding: 5px;
+        height: auto;
+        .mypageEdit-block__flex {
+            flex-direction: column;
+        }
+        .mypageEdit-block__leftsideBlock,
+        {
+            width: 100%;
+            justify-content: end;
+        }
+        .mypageEdit-block__avatar {
+            width: 120px;
+            height: 120px;
+        }
+        .mypageEdit-block__rightsideBlock {
+            width: 100%;
+        }
+        .form_textarea {
+            height: 190px;
+        }
+        .userForm__child {
+            display: block;
+            margin-bottom: 15px;
+        }
+        .form_input {
+            width: 98%;
+            font-size: 13px;
+        }
+        .form_submit_button {
+            width: auto;
+        }
+        .form_label {
+            text-align: center;
+        }
+    }
+}
