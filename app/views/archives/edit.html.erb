@@ -1,49 +1,49 @@
-<h1>スコアカード</h1>
-
-
-
-<%= form_with url:archives_update_path do |f| %>
-  <%= f.label :hole1_score, '1H' %>
-  <%= f.number_field :hole1_score, value: @score.hole1_score %><br>
-  <%= f.label :hole2_score, '2H' %>
-  <%= f.number_field :hole2_score, value: @score.hole2_score %><br>
-  <%= f.label :hole3_score, '3H' %>
-  <%= f.number_field :hole3_score, value: @score.hole3_score %><br>
-  <%= f.label :hole4_score, '4H' %>
-  <%= f.number_field :hole4_score, value: @score.hole4_score %><br>
-  <%= f.label :hole5_score, '5H' %>
-  <%= f.number_field :hole5_score, value: @score.hole5_score %><br>
-  <%= f.label :hole6_score, '6H' %>
-  <%= f.number_field :hole6_score, value: @score.hole6_score %><br>
-  <%= f.label :hole7_score, '7H' %>
-  <%= f.number_field :hole7_score, value: @score.hole7_score %><br>
-  <%= f.label :hole8_score, '8H' %>
-  <%= f.number_field :hole8_score, value: @score.hole8_score %><br>
-  <%= f.label :hole9_score, '9H' %>
-  <%= f.number_field :hole9_score, value: @score.hole9_score %><br>
-  <%= f.label :hole10_score, '10H' %>
-  <%= f.number_field :hole10_score, value: @score.hole10_score %><br>
-  <%= f.label :hole11_score, '11H' %>
-  <%= f.number_field :hole11_score, value: @score.hole11_score %><br>
-  <%= f.label :hole12_score, '12H' %>
-  <%= f.number_field :hole12_score, value: @score.hole12_score %><br>
-    <%= f.label :hole13_score, '13H' %>
-  <%= f.number_field :hole13_score, value: @score.hole13_score %><br>
-  <%= f.label :hole14_score, '14H' %>
-  <%= f.number_field :hole14_score, value: @score.hole14_score %><br>
-  <%= f.label :hole15_score, '15H' %>
-  <%= f.number_field :hole15_score, value: @score.hole15_score %><br>
-  <%= f.label :hole16_score, '16H' %>
-  <%= f.number_field :hole16_score, value: @score.hole16_score %><br>
-  <%= f.label :hole17_score, '17H' %>
-  <%= f.number_field :hole17_score, value: @score.hole17_score %><br>
-  <%= f.label :hole18_score, '18H' %>
-  <%= f.number_field :hole18_score, value: @score.hole18_score %><br>
-    <%= f.submit "編集する" %>
-
-  
-<% end %>
-
-
-
-<%= link_to "トップにもどる", root_path %>
+<div class="archiveEdit-block">
+  <h1>スコアカード</h1>
+  <%= form_with url:archives_update_path do |f| %>
+    <div class="archiveEdit-block__formwrap">
+      <div>
+        <%= f.label :hole1_score, '1H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole1_score, value: @score.hole1_score, class: "archiveEdit-block__form" %><br>
+        <%= f.label :hole2_score, '2H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole2_score, value: @score.hole2_score, class: "archiveEdit-block__form" %><br>
+        <%= f.label :hole3_score, '3H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole3_score, value: @score.hole3_score, class: "archiveEdit-block__form" %><br>
+        <%= f.label :hole4_score, '4H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole4_score, value: @score.hole4_score, class: "archiveEdit-block__form" %><br>
+        <%= f.label :hole5_score, '5H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole5_score, value: @score.hole5_score, class: "archiveEdit-block__form" %><br>
+        <%= f.label :hole6_score, '6H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole6_score, value: @score.hole6_score, class: "archiveEdit-block__form" %><br>
+        <%= f.label :hole7_score, '7H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole7_score, value: @score.hole7_score, class: "archiveEdit-block__form" %><br>
+        <%= f.label :hole8_score, '8H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole8_score, value: @score.hole8_score, class: "archiveEdit-block__form" %><br>
+        <%= f.label :hole9_score, '9H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole9_score, value: @score.hole9_score, class: "archiveEdit-block__form" %><br>
+      </div>
+      <div>
+        <%= f.label :hole10_score, '10H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole10_score, value: @score.hole10_score, class: "archiveEdit-block__form" %><br>
+        <%= f.label :hole11_score, '11H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole11_score, value: @score.hole11_score, class: "archiveEdit-block__form" %><br>
+        <%= f.label :hole12_score, '12H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole12_score, value: @score.hole12_score, class: "archiveEdit-block__form" %><br>
+          <%= f.label :hole13_score, '13H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole13_score, value: @score.hole13_score, class: "archiveEdit-block__form" %><br>
+        <%= f.label :hole14_score, '14H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole14_score, value: @score.hole14_score, class: "archiveEdit-block__form" %><br>
+        <%= f.label :hole15_score, '15H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole15_score, value: @score.hole15_score, class: "archiveEdit-block__form" %><br>
+        <%= f.label :hole16_score, '16H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole16_score, value: @score.hole16_score, class: "archiveEdit-block__form" %><br>
+        <%= f.label :hole17_score, '17H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole17_score, value: @score.hole17_score, class: "archiveEdit-block__form" %><br>
+        <%= f.label :hole18_score, '18H', class: "archiveEdit-block__label" %>
+        <%= f.number_field :hole18_score, value: @score.hole18_score, class: "archiveEdit-block__form" %><br>
+      </div>
+    </div>
+    <%= f.submit "編集する", class: "archiveEdit-block__submit" %>
+  <% end %>
+  <%= link_to "スコアカードに戻る", archives_show_path(id: params[:id]), class: "archiveEdit-block__back" %>
+</div>

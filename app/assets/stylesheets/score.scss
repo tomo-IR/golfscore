@@ -74,6 +74,7 @@
             width: auto;
             .card-borad_block {
                 flex-direction: column;
+                width: 95%;
             }
             .score-card {
                 width: 290px;
@@ -92,6 +93,9 @@
                 width: 290px;
                 font-size: 12px;
                 margin-bottom: 25px;
+                table {
+                    width: 50%;
+                }
             }
             .leader-board {
                 width: 290px;
