@@ -6,16 +6,16 @@ class MypagesController < ApplicationController
 	end
 
 	def edit
-		@user.avatar.cache! unless @user.avatar.blank?
+		# @user.avatar.cache! unless @user.avatar.blank?
 	end
 
 	def update
 		if @user.update!(user_params)
 			puts @user.avatar.current_path
-			flash[:edit_success] = '編集されました'
+			flash[:edit_success] = 'プロフィールが編集されました'
 			redirect_to mypage_edit_path
 		else
-			flash.now[:danger] = 'スコアが編集されませんでした'
+			flash.now[:danger] = '編集できませんでした'
 			render 'mypages/index'
 		end
 	end
@@ -27,7 +27,7 @@ class MypagesController < ApplicationController
 	end
 
 	def user_params
-    params.require(:user).permit(:name, :introduction, :avatar, :avatar_cache)
+    params.require(:user).permit(:name, :introduction, :avatar)
   end
 
 
