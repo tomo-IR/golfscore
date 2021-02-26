@@ -1,4 +1,4 @@
-# if Rails.env.production?
+if Rails.env.production?
   CarrierWave.configure do |config|
     config.fog_credentials = {
       provider: "AWS",
@@ -10,4 +10,4 @@
     config.cache_storage = :fog
     config.fog_public = false
   end
-# end
+end
