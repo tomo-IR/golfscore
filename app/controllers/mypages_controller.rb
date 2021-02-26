@@ -6,7 +6,7 @@ class MypagesController < ApplicationController
 	end
 
 	def edit
-		# @user.avatar.cache! unless @user.avatar.blank?
+		
 	end
 
 	def update
@@ -29,7 +29,5 @@ class MypagesController < ApplicationController
 	def user_params
     params.require(:user).permit(:name, :introduction, :avatar)
   end
-
-
 
 end

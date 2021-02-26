@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: %i(update)
+
   def index
     @users = User.search(params[:search])
                   .where.not(:name => "ゲストプレイヤー")
@@ -15,13 +17,7 @@ class UsersController < ApplicationController
                   .order(played_date: :desc)
                   .page(params[:page]).per(5) #ページネーション
   end
-  
-  # def scorecard
-  #   @coursename = params[:round_id]
-  #   @score_card_score = Score.where(:round_id => params[:round_id]) #ホールごとのスコアを取得
-  #   @score_card_course = Score.where(:round_id => params[:round_id]).first #ラウンドしたコース、日付を取得
-  #   @score_sum = Score.where(:round_id => params[:round_id]).sum(:hole_score)
-  # end
+
 
   def following
     @user  = User.find(params[:id])
@@ -36,9 +32,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(current_user.id)
-    if @user.update!(user_params)#(name: params[:user][:name], avatar: params[:user][:avatar], introduction: params[:user][:introduction])
-        flash[:edit_success] = '編集されました'
+    if @user.update!(user_params)
+        flash[:edit_success] = 'プロフィールが編集されました'
         redirect_to mypage_edit_path
 
     else
@@ -48,8 +43,13 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
+  def set_user
+		@user = User.find(current_user.id)
+	end
+
 	def user_params
     params.require(:user).permit(:name, :introduction, :avatar)
   end
+  
 end
