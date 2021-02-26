@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(current_user.id)
-    if @user.update!(:name => params[:user][:name], :avatar => params[:user][:avatar])
+    if @user.update!(name: params[:user][:name], avatar: params[:user][:avatar], introduction: params[:user][:introduction])
         flash[:edit_success] = '編集されました'
         redirect_to mypage_edit_path
 
