@@ -8,6 +8,6 @@ if Rails.env.production?
     }
     config.fog_directory = "sologol-bucket"
     config.cache_storage = :fog
-    # config.fog_public = false
+    config.fog_public = false
   end
 end
