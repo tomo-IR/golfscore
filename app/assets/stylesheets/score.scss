@@ -75,22 +75,23 @@
             .card-borad_block {
                 flex-direction: column;
                 width: 95%;
+                margin: 0 auto;
             }
             .score-card {
-                width: 290px;
+                width: 99%;
                 margin: 0 auto;
             }
             .score-block__returnScoreinput {
                 margin-top: 15px;
                 height: 30px;
                 line-height: 30px;
-                width: 250px;
+                width: 99%;
                 margin: 15px auto;
                 border-radius: 15px;
             }
             .score-card__table {
                 display: flex;
-                width: 290px;
+                width: 99%;
                 font-size: 12px;
                 margin-bottom: 25px;
                 table {
@@ -98,7 +99,7 @@
                 }
             }
             .leader-board {
-                width: 290px;
+                width: 99%;
                 margin: 0 auto;
                 font-size: 12px;
             }
