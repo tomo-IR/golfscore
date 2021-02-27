@@ -23,6 +23,9 @@
 
 .headerBlock {
     margin: 0px 30px 70px 30px;
+    .dropdown {
+        display: none;
+    }
 }
 
 .newsList {
@@ -120,6 +123,26 @@
     }
     .topMenu-image__title {
         width: 120px;
+    }
+    .home-block__round {
+        width: 95%;
+        .home-block__p {
+            font-size: 12px;
+            text-align: left;
+        }
+        .home-block__span {
+            font-size: 13px;
+        }
+    }
+    .headerBlock {
+        .dropdown {
+            display: inline-block;
+            width: 100px;
+            float: right;
+            text-align: right;
+            margin-top: 5px;
+            font-size: 25px;
+        }
     }
 }
 
