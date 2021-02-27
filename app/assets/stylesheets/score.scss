@@ -78,7 +78,7 @@
                 margin: 0 auto;
             }
             .score-card {
-                width: 99%;
+                width: 100%;
                 margin: 0 auto;
             }
             .score-block__returnScoreinput {
@@ -91,7 +91,7 @@
             }
             .score-card__table {
                 display: flex;
-                width: 99%;
+                width: 100%;
                 font-size: 12px;
                 margin-bottom: 25px;
                 table {
@@ -99,21 +99,21 @@
                 }
             }
             .leader-board {
-                width: 99%;
+                width: 100%;
                 margin: 0 auto;
                 font-size: 12px;
             }
             .leader-board__rank {
-                min-width: 60px;
+                min-width: 50px;
             }
             .leader-board__player {
                 min-width: 70px;
             }
             .leader-board__score {
-                min-width: 75px;
+                min-width: 55px;
             }
             .leader-board__thru {
-                min-width: 65px;
+                min-width: 55px;
             }
             .leader-board__tbody {
                 height: auto;
