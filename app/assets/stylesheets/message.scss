@@ -57,7 +57,7 @@
         .messageForm-block__submit {
             border-radius: 25px;
             height: 40px;
-            width: 300px;
+            width: 90%;
             border: none;
             display: block;
             margin: 15px auto;
@@ -194,5 +194,12 @@
     }
     .likeUser-block {
         width: 95%;
+    }
+    .score-block {
+        .messageForm-block {
+            .messageForm-block__filefield {
+                font-size: 14px;
+            }
+        }
     }
 }
