@@ -155,7 +155,7 @@
             width: auto;
             .card-borad_block {
                 flex-direction: column;
-                width: 95%;
+                width: 100%;
                 margin: 0 auto;
             }
             .score-card {
@@ -165,7 +165,7 @@
                 min-width: 57px;
             }
             .leader-board__player {
-                min-width: 128px;
+                min-width: 110px;
             }
             .leader-board__score {
                 min-width: 75px;
@@ -192,6 +192,10 @@
                 table {
                     width: 50%;
                 }
+            }
+            .leader-board {
+                width: 100%;
+                margin: 0 auto;
             }
         }
         .archiveEdit-block {
