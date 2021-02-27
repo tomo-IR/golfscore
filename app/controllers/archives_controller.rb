@@ -89,10 +89,10 @@ class ArchivesController < ApplicationController
   def destroy
     if @score.destroy
       flash[:delete_success] = 'スコアが削除されました'
-      redirect_to root_path
+      redirect_to archives_index_path
     else
       flash[:delete_success] = 'スコアが削除できませんでした'
-      redirect_to root_path
+      redirect_to archives_index_path
     end 
   end
 
