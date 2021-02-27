@@ -51,9 +51,10 @@
         <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "dropdown-item" %><br>
       </div>
     <% else %>
-      <div class="dropdownbtn btn-secondary dropdown-toggle">
+      <div class="dropdown">
         <i class="fas fa-bars"
                   id="dropdown1"
+                  class="btn btn-secondary dropdown-toggle"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false">
