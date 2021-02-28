@@ -1,24 +1,46 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# SOLOGOL
+SOLOGOL (ソロゴル)とは、お一人様ゴルフでも、寂しい思いをすることなく、楽しくゴルフをプレーできるアプリです。
 
-Things you may want to cover:
+## URL
+sologol.work
 
-* Ruby version
+# 制作に至った背景
 
-* System dependencies
 
-* Configuration
+## 機能一覧
 
-* Database creation
+### ユーザー関係
+* ユーザー登録・編集・削除（deviseのgemを使用)
+* 登録不要のゲストログイン
+* プロフィール画像の登録・編集（carrierwave使用）
+* ユーザーのフォロー・フォロー解除
+* フォロー中のユーザーとフォロワーの一覧表示
+* フォローしているユーザーの最近のラウンド情報をタイムライン表示
 
-* Database initialization
 
-* How to run the test suite
+### メッセージ投稿関係
+* 各ゴルフ場の掲示板へのメッセージ投稿(非同期通信)
+* 各メッセージへのいいね機能(非同期通信)
+* いいねしたユーザー一覧表示機能
+* 画像投稿機能(carrierwave、非同期通信)
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+### ゴルフスコア関係
+* スコア入力、集計機能
+* リーダーボード機能（同一プレー日、同一ゴルフ場でのスコアランキング表示）
+* スコア非公開機能
+* プレイ終了後スコア編集機能
+* スコア解析機能（期間絞り込み機能）
 
-* ...
+
+### ゴルフ場情報関係
+* 楽天GORAゴルフ場検索API (version:2017-06-23より取得)
+* ゴルフ場キーワード検索機能(日本全国全てのゴルフ場)
+* gem  wheneverによる週一回の自動更新機能
+
+
+### その他
+* レスポンシブ対応
+* テスト（20 examples）
