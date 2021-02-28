@@ -4,7 +4,7 @@
 SOLOGOL (ソロゴル)とは、お一人様ゴルフでも、寂しい思いをすることなく、楽しくゴルフをプレーすることをサポートするアプリです。
 
 ## URL
-[https://sologol.work/](sologol.work)
+[https://sologol.work/](https://sologol.work/)
 
 ## 制作に至った背景
 現在のコロナ禍において、ゴルフ業界は外出自粛によって経営的に大打撃を受けています。
