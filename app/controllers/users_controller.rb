@@ -37,7 +37,7 @@ class UsersController < ApplicationController
         redirect_to mypage_edit_path
 
     else
-        flash.now[:danger] = 'スコアが編集されませんでした'
+        flash.now[:danger] = 'プロフィールが編集されませんでした'
         render 'mypages/index'
     end
   end

@@ -21,6 +21,7 @@ gem 'bootsnap', '>= 1.4.2', :require => false
 gem 'tzinfo-data', :platforms => [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'carrierwave'
+gem 'mini_magick'
 gem 'kaminari'
 gem 'bullet', :group => :development
 gem 'parser', '>= 2.7.1.5'

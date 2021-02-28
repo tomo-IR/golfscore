@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :name, :uniqueness => true, :presence => true 
   # validates :password, :presence => true 
 
-  mount_uploader :avatar, ImageUploader
+  mount_uploader :avatar, AvatarUploader
 
   has_many :messages, dependent: :destroy
   has_many :scores, dependent: :destroy
