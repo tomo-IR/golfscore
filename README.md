@@ -66,6 +66,7 @@ SOLOGOL (ソロゴル)とは、お一人様ゴルフでも、寂しい思いを�
 ### 開発環境
 * Docker
 * RuboCop
+* bullet(N+1問題)
 
 ### 本番環境
 * AWS(VPC、EC2、S3、Route53、IAM)
