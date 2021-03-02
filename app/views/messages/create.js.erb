@@ -23,6 +23,7 @@ if (message_content == "" &&  message_image == ""){
 				<%= image_tag asset_path("#{@message.image}"), class: "thmb" %>\
 			<% end %>\
 			<span class="score-block__date-content"><%= @message.content %></span>\
+				<a data-confirm="このメッセージを削除してよろしいですか？" class="score-block__delete_button" data-remote="true" rel="nofollow" data-method="delete" href="/messages/<%= params[:score_id] %>?message_id=<%= @message.id %>  &score_id=<%= params[:score_id] %>&user_id=<%= current_user.id %>">削除</a>\
 			<span class="score-block__date-like">\
 				<span><%= @message.created_at %></span>\
 				<a id="unlike-<%= @message.id %>" href ="/messages/<%= params[:score_id] %>?message_id=<%= @message.id %>">0</a>\

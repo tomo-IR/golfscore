@@ -27,6 +27,13 @@ class MessagesController < ApplicationController
 		@message.save
 	end
 
+	def destroy
+		@message = Message.find(params[:message_id])
+		if @message.user.id == current_user.id
+			@message.destroy
+		end
+	end
+
 	def new
 		@message = Message.new
 	end

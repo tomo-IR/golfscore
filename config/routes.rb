@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
 
   #◇「掲示板を覗く」まわりのルーティング
-  resources :messages, only: [:create]
+  resources :messages, only: [:create, :destroy]
 
   get '/messages/index',:to => 'messages#index' ,:as => 'messages_index'
   get '/messages/index/:golfcourse_id', :to => 'messages#index_course' ,:as => 'messages_index_course'
