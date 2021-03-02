@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+	before_action :authenticate_user!
 	def index
 		@messages = Message.all.includes(:user).includes(:golfcourse)
 		@every_course_id = Message.distinct.pluck(:golfcourse_id)

@@ -1,4 +1,5 @@
 class UnpublishedsController < ApplicationController
+  before_action :authenticate_user!
   def update
     @score = Score.find(params[:id])
     @score.published = 0

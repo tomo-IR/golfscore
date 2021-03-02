@@ -1,5 +1,5 @@
 class PlaysController < ApplicationController
-  
+  before_action :authenticate_user!
   def edit
     @score = Score.find(params[:score_id])
   end

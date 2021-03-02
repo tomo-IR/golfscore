@@ -1,4 +1,5 @@
 class ArchivesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_score, only: %i(show edit update destroy)
   def index
     @scores =  Score.where(user_id: current_user.id)

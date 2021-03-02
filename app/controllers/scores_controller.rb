@@ -1,4 +1,5 @@
 class ScoresController < ApplicationController
+  before_action :authenticate_user!
   def show
     @score = Score.find(params[:id])
 

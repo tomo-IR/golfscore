@@ -1,4 +1,5 @@
 class GolfcoursesController < ApplicationController
+  before_action :authenticate_user!
   before_action :auth_user, only: %i[play]
   
   def index

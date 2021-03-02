@@ -1,5 +1,5 @@
 class RelationshipsController < ApplicationController
-
+  before_action :authenticate_user!
   def create
     @user = User.find(params[:relationship][:following_id])
     current_user.follow!(@user)
