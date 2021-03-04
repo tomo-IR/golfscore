@@ -2,65 +2,65 @@
   <h2>リーダーボード</h1>
   <table class="table table-striped table-hover">
     <thead class="leader-board__thead">
-    <tr>
-      <th class="leader-board__rank">順位</th>
-      <th class="leader-board__player">プレイヤー</th>
-      <th class="leader-board__score">スコア</th>
-      <th class="leader-board__thru">THRU</th>
-    </tr>
-    </thead>
-    <% s = 0 %>
-    <% j = 1 %>
-    <tbody class="leader-board__tbody">
-    <% @current_course_scores.each.with_index(1) do|score,i| %>
       <tr>
-        <% if i == 1 %>
-          <% s = score.total_score %>
-        <% end %>
-        <% if score.total_score != s %>
-          <% j = i %>
-          <td class="leader-board__rank"><%= j %></td>
-          <td class="leader-board__player"><%= link_to score.user.name, user_path(id: score.user.id) %></td>
-          <td class="leader-board__score"><%= score.total_score %></td>
-          <td class="leader-board__thru">
-          <% if score.status == 1 %>
-            <% if score.start_hole == 1 %>
-              F
-            <% else %>
-              F*
-            <% end %>
-          <% else %>
-            <% if score.start_hole == 1 %>
-              <%= score.thru.to_i %>
-            <% else %>
-              <%= score.thru.to_i %>*
-            <% end %>
-          <% end %>
-        </td>
-        <% s = score.total_score %>
-        <% else %>
-          <% s = score.total_score %>
-          <td class="leader-board__rank"><%= j %></td>
-          <td class="leader-board__player"><%= link_to score.user.name, user_path(id: score.user.id) %></td>
-          <td class="leader-board__score"><%= score.total_score %></td>
-          <td class="leader-board__thru">
-            <% if score.status == 1 %>
-              <% if score.start_hole == 1 %>
-                F
-              <% else %>
-                F*
-              <% end %>
-            <% else %>
-              <% if score.start_hole == 1 %>
-                <%= score.thru.to_i %>
-              <% else %>
-                <%= score.thru.to_i %>*
-              <% end %>
-            <% end %>
-          </td>
-        <% end %>
+        <th class="leader-board__rank">順位</th>
+        <th class="leader-board__player">プレイヤー</th>
+        <th class="leader-board__score">スコア</th>
+        <th class="leader-board__thru">THRU</th>
       </tr>
-    <% end %>
+    </thead>
+    <% s = 0 %><%# 前の順位のスコアを一時的に保存できる変数 %>
+    <% rank = 1 %><%# 順位を表す変数 %>
+    <tbody class="leader-board__tbody">
+      <% @current_course_scores.each.with_index(1) do|score,i| %>
+        <tr>
+          <% if i == 1 %><%# 一番初めのスコアはその１つ前の順位のスコアの値はないので、そこに値を仮に入れておくために、今のスコアにしておく %>
+            <% s = score.total_score %>
+          <% end %>
+          <% if score.total_score != s %><%# 一つ前の順位のスコアと異なったら %>
+            <% rank = i %><%# index(変数i)をrankに代入 %>
+            <td class="leader-board__rank"><%= rank %></td>
+            <td class="leader-board__player"><%= link_to score.user.name, user_path(id: score.user.id) %></td>
+            <td class="leader-board__score"><%= score.total_score %></td>
+            <td class="leader-board__thru">
+              <% if score.status == 1 %>
+                <% if score.start_hole == 1 %>
+                  F
+                <% else %>
+                  F*
+                <% end %>
+              <% else %>
+                <% if score.start_hole == 1 %>
+                  <%= score.thru.to_i %>
+                <% else %>
+                  <%= score.thru.to_i %>*
+                <% end %>
+              <% end %>
+            </td>
+            <% s = score.total_score %><%# このスコアを変数sに入れておき、次のスコアと比較するために使用する。 %>
+          <% else %><%# 一つ前の順位のスコアと同じなら %>
+            <% s = score.total_score %>
+            <td class="leader-board__rank"><%= rank %></td><%# index(変数i)をrankに代入しないで、前のrankを引き継ぐ %>
+            <td class="leader-board__player"><%= link_to score.user.name, user_path(id: score.user.id) %></td>
+            <td class="leader-board__score"><%= score.total_score %></td>
+            <td class="leader-board__thru">
+              <% if score.status == 1 %>
+                <% if score.start_hole == 1 %>
+                  F
+                <% else %>
+                  F*
+                <% end %>
+              <% else %>
+                <% if score.start_hole == 1 %>
+                  <%= score.thru.to_i %>
+                <% else %>
+                  <%= score.thru.to_i %>*
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
     </tbody>
   </table>
   <p>*は10Hスタート</p>

@@ -40,10 +40,10 @@
         .play-edit__holeButton {
             height: 150px;
             width: 150px;
-            background-color: black;
+            background-color: #D9E5FF;
             text-align: center;
             line-height: 150px;
-            color: #ffffff;
+            color: #222222;
             border: none;
             font-size: 12px;
         }
@@ -61,17 +61,18 @@
             border: none;
             margin: 5px;
             font-size: 30px;
+            text-align: center;
         }
         .play-edit__scoreButton:hover {
             cursor: pointer;
             font-style: italic;
         }
         .score_under {
-            background-color: blue;
+            background-color: #FF1A6F;
             color: white;
         }
         .score_over {
-            background-color: red;
+            background-color: #000099;
             color: white;
         }
     }
@@ -94,7 +95,6 @@
             .play-edit__holeButton {
                 height: 70px;
                 width: 70px;
-                background-color: black;
                 line-height: 70px;
                 font-size: 12px;
                 padding: 0;
