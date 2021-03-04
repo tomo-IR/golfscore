@@ -4,8 +4,6 @@ document.getElementById("unlike-" + "<%= params[:message_id] %>").textContent = 
 var count = document.getElementById("unlike-" + "<%= params[:message_id] %>");
 count.id = "like-" + "<%= params[:message_id] %>";
 
-
-
 document.getElementById("change-like-" + "<%= params[:message_id] %>").innerText = "❤️";
 var change_button = document.getElementById("change-like-" + "<%= params[:message_id] %>");
 change_button.id = "change-unlike-" + "<%= params[:message_id] %>";
@@ -15,8 +13,5 @@ change_button.setAttribute('href', '/likes/' + '<%= params[:score_id] %>' + '?me
 // document.getElementById("notheart-" + "<%#= params[:message_id] %>").innerText = "❤️";
 // document.getElementById("notheart-" + "<%#= params[:message_id] %>").id = "heart-" + "<%#= params[:message_id] %>"
 
-console.log("<%= params[:message_id] %>")
-console.log("<%= params[:user_id] %>")
-console.log("<%= params[:score_id] %>")
 
 

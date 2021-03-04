@@ -1,13 +1,10 @@
 var message_content = document.getElementById( "message_content").value ;
 var message_length = message_content.length ;
 var message_image = document.getElementById( "message_image").value ;
-console.log(message_length)
 
 if (message_content == "" &&  message_image == ""){
-	console.log("どちらもからです。")
 	alert('メッセージか画像、どちらかは入力して下さい。');
 }else if(message_length > 100){
-	console.log(message_length);
 	alert('メッセージは100文字以内でお願いします。');
 }else{
 	document.getElementById('messages')

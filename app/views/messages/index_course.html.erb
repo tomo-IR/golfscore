@@ -8,17 +8,19 @@
 			<% else %>
 				<%= image_tag asset_path("ball.svg"), class: "messageCourse-block__img"%>
 			<% end %>
+
 			<span><%= link_to message.user.name, users_show_path(id: message.user.id) %></span>
+
 			<% if message.image != nil %>
 				<%= image_tag asset_path("#{message.image}"), class: "thmb" %>
 			<% end %>
+
 			<span class="messageCourse-block__date-content"><%= message.content %></span>
 			<span class="messageCourse-block__date-like">
-				<span><%= message.created_at %></span><br>
-				いいねの数:<span><%= message.likes.count %></span>
+				<span><%= message.created_at %></span><br>いいねの数:<span><%= message.likes.count %></span>
 			</span>	
-			<% end %>
 		</p>
+	<% end %>
 	<%= paginate @messages %>
 	<%= link_to "メッセージ一覧にもどる", messages_index_path, class: "messageCourse-block__backIndex" %>
 </div>

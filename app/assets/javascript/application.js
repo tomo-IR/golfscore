@@ -17,12 +17,3 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
-
-console.log("hoge")
-
-// console.log("hoge");
-// document.getElementById("my-button").onclick = function() {
-//     // ボタンがクリックされた時に実行される
-//     alert("押された！");
-// };

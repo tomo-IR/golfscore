@@ -2,28 +2,19 @@
   <div class="home-block">
     <%= render 'top_menu'%>
   </div>
-  <% end %>
+<% end %>
 
-  <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
-    <div class="newsList">
-      <%= render 'playing_round'%>
-      <%= render 'following_timeline'%>
-    </div>
-  <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
-    <div class="newsList">
-      <%= render 'guest_player_timeline'%>
-    </div>
-  <% end %>
+<% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
+  <div class="newsList">
+    <%= render 'playing_round'%>
+    <%= render 'following_timeline'%>
+  </div>
+<% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
+  <div class="newsList">
+    <%= render 'guest_player_timeline'%>
+  </div>
+<% end %>
 
-  <% unless user_signed_in? %>
-    <div class="home-block__round">
-      <h2>最近のラウンド情報</h2>
-      <% @scores.each do|score|%>
-        <p class="home-block__p">
-          <%= score.played_date.strftime('%-m月%d日(%a)') %>に
-          <span class="home-block__span"><%= score.user.name%></span>プロが
-          <span class="home-block__span"><%= score.golfcourse.golfcourseabbr%></span>でプレーしています。
-        </p>
-      <% end %>
-    </div>
-  <% end %>
+<% unless user_signed_in? %>
+  <%= render 'round_information'%>
+<% end %>
