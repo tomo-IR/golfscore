@@ -21,7 +21,7 @@
             <tr>
               <td><%= user.played_date.strftime('%-m月%d日(%a)') %></td>
               <td><%= link_to user.user.name, user_path(id: user.user.id) %></td>
-              <td><%= link_to user.golfcourse.golfcourseabbr, archives_show_path(id: user.id) %></td>
+              <td><%= link_to user.golfcourse.golfcourseabbr, archive_path(id: user.id) %></td>
             </tr>
           <% end %>
         </table>

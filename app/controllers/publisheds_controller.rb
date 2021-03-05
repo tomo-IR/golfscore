@@ -5,7 +5,7 @@ class PublishedsController < ApplicationController
     @score.published = 1
     if @score.save
       flash[:edit_success] = 'このラウンドのスコアを公開しました。'
-      redirect_to archives_index_path
+      redirect_to archives_path
     else
       flash[:delete_success] = 'このラウンドのスコアを非公開にできませんでした'
       redirect_to root_path

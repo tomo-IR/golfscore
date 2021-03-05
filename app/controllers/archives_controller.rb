@@ -77,7 +77,7 @@ class ArchivesController < ApplicationController
                       :hole17_score => params[:hole17_score],
                       :hole18_score => params[:hole18_score],)
       flash[:edit_success] = 'スコアが編集されました'
-      redirect_to archives_show_path
+      redirect_to archive_path
     else
       flash.now[:danger] = 'スコアが編集されませんでした'
       render 'archives/show'
@@ -90,10 +90,10 @@ class ArchivesController < ApplicationController
   def destroy
     if @score.destroy
       flash[:delete_success] = 'スコアが削除されました'
-      redirect_to archives_index_path
+      redirect_to archives_path
     else
       flash[:delete_success] = 'スコアが削除できませんでした'
-      redirect_to archives_index_path
+      redirect_to archives_path
     end 
   end
 

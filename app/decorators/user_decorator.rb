@@ -3,5 +3,5 @@
 module UserDecorator
     def current_score
         
-      end
+    end
 end

@@ -8,7 +8,7 @@
     <%= render 'scores/leader_board' %>
   </div>
   <% if current_user.id == @score.user.id %>
-    <%= link_to "ラウンド一覧に戻る", archives_index_path,class: "archiveShow-block__backRoundIndex" %> 
+    <%= link_to "ラウンド一覧に戻る", archives_path,class: "archiveShow-block__backRoundIndex" %> 
   <% end %>
   <div class="archiveShow-block__linkGroup">
     <% if current_user.id == @score.user.id && @score.published == 1 %>
@@ -18,7 +18,7 @@
     <% end %>
 
     <% if  current_user.id == @score.user.id %>
-      <%= link_to "このラウンドのスコアを編集する", archives_edit_path %>
+      <%= link_to "このラウンドのスコアを編集する", edit_archive_path %>
       <%= link_to "このラウンドのスコアを削除する", archives_destroy_path, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
     <% end %>
   </div>

@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
         flash[:edit_success] = 'プロフィールが編集されました'
-        redirect_to mypage_edit_path
+        redirect_to edit_mypage_path
 
     else
         flash.now[:danger] = 'プロフィールが編集されませんでした'

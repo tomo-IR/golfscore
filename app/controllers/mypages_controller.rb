@@ -14,7 +14,7 @@ class MypagesController < ApplicationController
 		if @user.update!(user_params)
 			puts @user.avatar.current_path
 			flash[:edit_success] = 'プロフィールが編集されました'
-			redirect_to mypage_edit_path
+			redirect_to edit_mypage_path
 		else
 			flash.now[:danger] = '編集できませんでした'
 			render 'mypages/index'

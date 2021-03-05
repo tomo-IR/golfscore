@@ -23,7 +23,7 @@
       
       <% end %>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown1">
-        <%= link_to current_user.name, mypage_path, class: "dropdown-item" %>
+        <%= link_to current_user.name, mypages_path, class: "dropdown-item" %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "dropdown-item" %><br>
       </div>
     <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>

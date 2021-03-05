@@ -11,7 +11,7 @@
       <p class="mypage-block__email"><%= @user.email %></p>
     </div>
     <div class="mypage-block__rightsideBlock">
-      <%= link_to "プロフィールを編集する", mypage_edit_path, class: "rightsideBlock__edit" %>
+      <%= link_to "プロフィールを編集する", edit_mypage_path(id: current_user.id), class: "rightsideBlock__edit" %>
       <% if user_signed_in? && current_user.name != "ゲストプレイヤー" %>
         <%= render 'users/follow_form' %>
         <%= render 'users/stats' %>

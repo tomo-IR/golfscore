@@ -1,6 +1,6 @@
 <div class="archive-block">
   <h1>過去のスコアを解析</h1>
-  <%= form_tag(archives_index_path,:method => 'get', local: true) do %>
+  <%= form_tag(archives_path,:method => 'get', local: true) do %>
     <%= label :played_year, '期間' %>
     <%= select_tag 'played_year', options_for_select({'全期間': 0, '直近3ヶ月': '直近3ヶ月', '直近6ヶ月': '直近6ヶ月', '2021': 2021, '2020': 2020}, 1) %>
     <%= submit_tag '検索' %>
@@ -54,7 +54,7 @@
 
         <td><%= score.played_date %></td>
         <td><%= score.golfcourse.golfcourseabbr %></td>
-        <td><%= link_to score.total_score, archives_show_path(id: score.id)%>
+        <td><%= link_to score.total_score, archive_path(id: score.id)%>
         <td><%= score.start_hole %>H</td>
         <% if score.published == 1 %>
           <td>公開中</td>
