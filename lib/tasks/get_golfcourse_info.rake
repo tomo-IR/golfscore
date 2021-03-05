@@ -10,7 +10,7 @@ namespace :get_golfcourse_info do
     #1.総ページ数	(pageCount)を取得
     params = {
       'format'        => 'json',
-      'applicationId' => '1083401508369226218',
+      'applicationId' => ENV["API_KEY"],
       'hits'          => 30,
       
     }
