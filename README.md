@@ -89,7 +89,7 @@ SOLOGOL (ソロゴル)とは、「お一人様ゴルフ」でも、寂しい思�
 
 ### 本番環境
 * AWS(VPC、EC2、S3、Route53、IAM)
-* Nginx、Unicorn
+* Nginx、Puma
 * Capistrono 3.15.0
 
 ### その他
