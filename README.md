@@ -97,3 +97,7 @@ SOLOGOL (ソロゴル)とは、「お一人様ゴルフ」でも、寂しい思�
 
 ## データベース
 ![er](https://user-images.githubusercontent.com/69664323/109645709-8f0b6200-7b9a-11eb-91e7-db2a45f49f95.png)
+
+## インフラ構成図
+![Untitled Diagram](https://user-images.githubusercontent.com/69664323/110208068-59cc8000-7eca-11eb-89f6-24da2c0368bd.jpg)
+
