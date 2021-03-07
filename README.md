@@ -92,7 +92,7 @@ SOLOGOL (ソロゴル)とは、「お一人様ゴルフ」でも、寂しい思�
 *【アプリケーションサーバー】 Puma
 
 ### その他
-* whenever
+* whenever(ゴルフ場情報自動更新タスク定期実行)
 
 ## データベース
 <img src="https://user-images.githubusercontent.com/69664323/109645709-8f0b6200-7b9a-11eb-91e7-db2a45f49f95.png" width="600px">
