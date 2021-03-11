@@ -66,7 +66,7 @@ SOLOGOL (ソロゴル)とは、「お一人様ゴルフ」でも、寂しい思�
 
 ### フロントエンド
 * html
-* Sass
+* Scss
 * JavaScript（ES6、一部jQuery）
 * bootstrap
 
