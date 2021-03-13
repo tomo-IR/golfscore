@@ -1,10 +1,7 @@
 class User < ApplicationRecord
-  # has_secure_password
 
-  validates :email, :presence => true 
-  validates :email, :uniqueness => true
+  validates :email, :uniqueness => true, :presence => true 
   validates :name, :uniqueness => true, :presence => true 
-  # validates :password, :presence => true 
 
   mount_uploader :avatar, AvatarUploader
 
@@ -13,7 +10,6 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
-  
   
   #フォロー機能関係
   has_many :following_relationships, :foreign_key => "follower_id", :class_name => "Relationship", :dependent => :destroy
@@ -50,5 +46,5 @@ class User < ApplicationRecord
       return User.all unless search
       User.where(['name LIKE ?', "%#{search}%"])
   end
- 
+
 end
