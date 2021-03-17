@@ -6,25 +6,25 @@
   
   <div class="field">
     <%= f.label :Eメールアドレス, class: "user-devise-block__label"  %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "user-devise-block__textfield" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "user-devise-block__textfield", required: true %>
   </div>
 
   <div class="field">
     <%= f.label :プレイヤーネーム, class: "user-devise-block__label"  %>
-    <%= f.text_field :name, class: "user-devise-block__textfield" %>
+    <%= f.text_field :name, class: "user-devise-block__textfield", required: true  %>
   </div>
 
   <div class="field">
-    <%= f.label :パスワード, class: "user-devise-block__label"  %>
+    <%= f.label :パスワード, class: "user-devise-block__label", required: true %>
     <% if @minimum_password_length %>
     <em>(半角英数<%= @minimum_password_length %> 文字以上)</em>
     <% end %>
-    <%= f.password_field :password, autocomplete: "new-password", class: "user-devise-block__textfield" %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "user-devise-block__textfield", required: true %>
   </div>
 
   <div class="field">
     <%= f.label :パスワード（確認用）, class: "user-devise-block__label"  %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "user-devise-block__textfield" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "user-devise-block__textfield", required: true  %>
   </div>
 
 
