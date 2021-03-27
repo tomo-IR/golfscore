@@ -3,7 +3,7 @@
   <p>コースごとの口コミや情報が見られます。</p>
   <p>※メッセージはラウンド画面でしか投稿できません。</p>
   <ul>
-    <% @every_course_name.each do|name|%>
+    <% @every_course_name.sort_by do|name|%>
       <li class="message-index-block__list">
         <%= link_to name.golfcoursename, messages_index_course_path(golfcourse_id: name.id) %> 
         <p> <%= name.address %></p>

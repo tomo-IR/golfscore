@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :api, { format: 'json' } do
+      resources :archiveus, only: [:index]
+  end
   root :to => 'home#index'
 
   get '/home/index',:to => 'home#index'
