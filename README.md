@@ -86,7 +86,7 @@ SOLOGOL (ソロゴル)とは、「お一人様ゴルフ」でも、寂しい思�
 * bullet 6.1.3
 
 ### 本番環境
-* AWS(VPC、EC2、RDS、S3、Route53、IAM、CloudFron)
+* AWS(VPC、EC2、RDS、S3、Route53、IAM、CloudFront)
 * HTTPS化(ACM, ALB)
 *【Web サーバー】 Nginx
 *【アプリケーションサーバー】 Puma
