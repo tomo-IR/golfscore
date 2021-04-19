@@ -2,13 +2,15 @@
   <h1>各ゴルフ場の掲示板</h1>
   <p>コースごとの口コミや情報が見られます。</p>
   <p>※メッセージはラウンド画面でしか投稿できません。</p>
-  <ul>
-    <% @every_course_name.sort_by do|name|%>
-      <li class="message-index-block__list">
-        <%= link_to name.golfcoursename, messages_index_course_path(golfcourse_id: name.id) %> 
-        <p> <%= name.address %></p>
-      </li>
-    <% end %>
-  </ul>
-  <%= paginate @every_course_name, theme: 'twitter-bootstrap-4' %>
+  <div class="message-index-block__wrap">
+    <ul>
+      <% @every_course_name.sort_by do|name|%>
+        <li class="message-index-block__list">
+          <%= link_to name.golfcoursename, messages_index_course_path(golfcourse_id: name.id) %> 
+          <p> <%= name.address %></p>
+        </li>
+      <% end %>
+    </ul>
+    <%= paginate @every_course_name, theme: 'twitter-bootstrap-4' %>
+  </div>
 </div>

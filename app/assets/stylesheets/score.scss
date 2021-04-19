@@ -12,6 +12,9 @@
         .score-card {
             width: 320px;
             margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 18px;
+            padding-top: 10px;
         }
         .score-card__table {
             width: 320px;
@@ -21,6 +24,9 @@
             width: 320px;
             margin: 0 auto;
             margin-left: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 18px;
+            padding-top: 10px;
         }
         .score-block__delete_button {
             display: block;
@@ -109,13 +115,13 @@
                 font-size: 12px;
             }
             .leader-board__rank {
-                min-width: 50px;
+                min-width: 60px;
             }
             .leader-board__player {
-                min-width: 100px;
+                min-width: 108px;
             }
             .leader-board__score {
-                min-width: 60px;
+                min-width: 72px;
             }
             .leader-board__thru {
                 min-width: 55px;

@@ -59,6 +59,7 @@
         }
         .archive-block__round__table {
             margin: 20px auto;
+            background-color: white;
         }
         .archive-block__round__tr {
             height: 50px;
@@ -85,6 +86,9 @@
         .score-card {
             width: 320px;
             margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 18px;
+            padding-top: 10px;
         }
         .score-card__table {
             width: 98%;
@@ -94,6 +98,9 @@
         .leader-board {
             width: 320px;
             margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 18px;
+            padding-top: 10px;
         }
         .archiveShow-block__linkGroup {
             a {
@@ -162,13 +169,13 @@
                 width: 95%;
             }
             .leader-board__rank {
-                min-width: 50px;
+                min-width: 60px;
             }
             .leader-board__player {
-                min-width: 100px;
+                min-width: 108px;
             }
             .leader-board__score {
-                min-width: 60px;
+                min-width: 72px;
             }
             .leader-board__thru {
                 min-width: 55px;
