@@ -7,14 +7,14 @@
   <span id='total_score'><%= @score.total_score %></span>  
 </p>
 <% if @score.status == 0 %>
-  <p class="score-block__returnScoreinput"><i class="fas fa-golf-ball"></i><%= link_to "スコア入力に戻る", plays_edit_path(score_id: @score.id, hole_number: @score.thru.to_i + 1)%></p>
+  <p class="score-block__returnScoreinput"><i class="fas fa-golf-ball"></i><%= link_to "スコア入力に戻る", plays_edit_path(score_id: @score.id, golfcourse_id: @score.golfcourse_id, hole_number: @score.thru.to_i + 1)%></p>
 <% end %>
 <div class="card-borad_block">
   <%= render 'score_card' %>
   <%= render 'leader_board' %>
 </div>
 <% if @score.status == 0 %>
-  <p class="score-block__returnScoreinput"><i class="fas fa-golf-ball"></i><%= link_to "スコア入力に戻る", plays_edit_path(score_id: @score.id, hole_number: @score.thru.to_i + 1)%></p>
+  <p class="score-block__returnScoreinput"><i class="fas fa-golf-ball"></i><%= link_to "スコア入力に戻る", plays_edit_path(score_id: @score.id, golfcourse_id: @score.golfcourse_id, hole_number: @score.thru.to_i + 1)%></p>
 <% end %>
 
 <h1><%= @score.golfcourse.golfcourseabbr %>のメッセージボード</h1>

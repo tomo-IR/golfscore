@@ -14,10 +14,12 @@ Rails.application.routes.draw do
   
   get 'score/index'
   resources :scores, only: [:show]
+  get '/scores/show/:score_id/:golfcourse_id', :to => 'scores#show'
+
 
   get 'plays/update'
   
-  get '/plays/:score_id/:hole_number', :to => 'plays#edit' ,:as => 'plays_edit'
+  get '/plays/:score_id/:golfcourse_id/:hole_number', :to => 'plays#edit' ,:as => 'plays_edit'
   resources :plays, only: [:update]
   
   resources :publisheds, only: [:update]

@@ -20,9 +20,7 @@ class MessagesController < ApplicationController
 
 	def create
 		@message = Message.new(message_params)
-		playing_course = Score.find(params[:score_id])
-    golfcourse_id = playing_course.golfcourse_id
-    @message.golfcourse_id = golfcourse_id
+    @message.golfcourse_id = params[:golfcourse_id]
 		@message.user_id = current_user.id
 		@message.save
 	end
@@ -41,7 +39,7 @@ class MessagesController < ApplicationController
 	private
 
   def message_params
-    params.require(:message).permit(:content, :score_id, :image)
+    params.require(:message).permit(:content, :image, :golfcourse_id)
   end
 
 end

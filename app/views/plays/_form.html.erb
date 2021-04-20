@@ -1,4 +1,4 @@
-<%= form_with url: play_path(id: @score.id), method: :patch, class: "play-edit__buttonGroup" do|f| %>
+<%= form_with url: play_path(id: @score.id, golfcourse_id: params[:golfcourse_id]), method: :patch, class: "play-edit__buttonGroup" do|f| %>
   
   <% last_hole = params[:hole_number].to_i - 1 %>
   <% if @score.start_hole.to_i == 1 && params[:hole_number].to_i == 1 %>
@@ -6,9 +6,9 @@
   <% elsif @score.start_hole.to_i == 10 && params[:hole_number].to_i == 10 %>
     <a class="play-edit__airButton"></a>
   <% elsif @score.start_hole.to_i == 10 && params[:hole_number].to_i == 1 %>
-    <%= link_to "前のホールへ", plays_edit_path(score_id: @score.id, hole_number: 18), class: "play-edit__holeButton"  %>
+    <%= link_to "前のホールへ", plays_edit_path(score_id: @score.id, golfcourse_id: params[:golfcourse_id], hole_number: 18), class: "play-edit__holeButton"  %>
   <% else %>
-    <%=  link_to "前のホールへ", plays_edit_path(score_id: @score.id, hole_number: last_hole), class: "play-edit__holeButton"  %>
+    <%=  link_to "前のホールへ", plays_edit_path(score_id: @score.id, golfcourse_id: params[:golfcourse_id], hole_number: last_hole), class: "play-edit__holeButton"  %>
   <% end %>
 
   <% if @score.send("hole#{params[:hole_number]}_score") == nil %>
@@ -16,7 +16,7 @@
   <% else %>
     <%= f.number_field :hole_score, value: @score.send("hole#{params[:hole_number]}_score"), id: "form_score",class: "play-edit_form" %>
   <% end %>
-  <%= hidden_field_tag :hole_number, params[:hole_number] %>
+  <%= hidden_field_tag :hole_number, params[:hole_number], golfcourse_id: params[:golfcourse_id] %>
   <% if @score.start_hole == 1 && params[:hole_number].to_i == 18 %>
     <%= f.submit "ラウンドを完了する", class: "play-edit__holeButton"  %>
   <% elsif @score.start_hole == 10 && params[:hole_number].to_i == 9 %>

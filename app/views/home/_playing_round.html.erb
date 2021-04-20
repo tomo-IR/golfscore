@@ -22,7 +22,7 @@
           <% @unfinished_score.each do|score| %>
             <tr>
               <td><%= score.played_date.strftime('%-m月%d日(%a)')%></td>
-              <td><%= link_to score.golfcourse.golfcourseabbr, score_path(id: score.id)%></td>
+              <td><%= link_to score.golfcourse.golfcourseabbr, score_path(id: score.id, golfcourse_id: score.golfcourse.id)%></td>
               <% if score.thru == nil%>
                 <td><span>-</span></td>
                 <td><span>スタート前</span></td>

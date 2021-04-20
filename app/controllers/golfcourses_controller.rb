@@ -16,7 +16,7 @@ class GolfcoursesController < ApplicationController
     @score.status = 0
     if @score.save
       flash[:success] = 'ラウンド開始！！'
-      redirect_to plays_edit_path(score_id: @score.id, hole_number: params[:start_hole])  
+      redirect_to plays_edit_path(score_id: @score.id, hole_number: params[:start_hole], golfcourse_id: params[:golfcourse_id])  
     end
   end
 
