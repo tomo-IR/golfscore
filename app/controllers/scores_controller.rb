@@ -34,7 +34,7 @@ class ScoresController < ApplicationController
 
     # メッセージボード関係
 		@message = Message.new
-    @messages = Message.where(golfcourse_id: playing_course.golfcourse_id)
+    @messages = Message.where(golfcourse_id: params[:golfcourse_id])
                         .order(created_at: "DESC")
                         .includes([:user])
                         .page(params[:page]).per(10)

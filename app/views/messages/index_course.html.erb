@@ -1,26 +1,12 @@
 
 <div class="messageCourse-block">
-	<h1> <%= @course_name.golfcourse.golfcoursename %>の掲示板</h1>
-	<% @messages.each do |message| %>
-  	<p class="messageCourse-message">
-			<% if message.user.avatar? %>
-				<%= image_tag asset_path(message.user.avatar.url), class: "messageCourse-block__img"%>
-			<% else %>
-				<%= image_tag asset_path("ball.svg"), class: "messageCourse-block__img"%>
-			<% end %>
+	<h1> <%= @golfcoursename.golfcourseabbr %>の掲示板</h1>
 
-			<span><%= link_to message.user.name, users_show_path(id: message.user.id) %></span>
+	<%= render 'messages/form', message: Message.new, value: '投稿' %>
+	<div id="messages" class="score-block__message">
+  <%= render @messages %>
+</div>
+<%= paginate @messages %>
 
-			<% if message.image != nil %>
-				<%= image_tag asset_path("#{message.image}"), class: "thmb" %>
-			<% end %>
-
-			<span class="messageCourse-block__date-content"><%= message.content %></span>
-			<span class="messageCourse-block__date-like">
-				<span><%= message.created_at %></span><br>いいねの数:<span><%= message.likes.count %></span>
-			</span>	
-		</p>
-	<% end %>
-	<%= paginate @messages %>
 	<%= link_to "メッセージ一覧にもどる", messages_path, class: "messageCourse-block__backIndex" %>
 </div>

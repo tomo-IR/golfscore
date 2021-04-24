@@ -8,10 +8,12 @@ class MessagesController < ApplicationController
 	end
 
 	def index_course
-		@message_course = params[:golfcourse_id]
-		@course_name = Message.find_by(golfcourse_id: params[:golfcourse_id])
-		@messages = Message.where(:golfcourse_id => params[:golfcourse_id]).order(created_at: :desc).includes(:user).page(params[:page]).per(20)
-		@like = Like.new
+		@golfcoursename = Golfcourse.find(params[:golfcourse_id])
+		@message = Message.new
+    @messages = Message.where(golfcourse_id: params[:golfcourse_id])
+                        .order(created_at: "DESC")
+                        .includes([:user])
+                        .page(params[:page]).per(10)
 	end
 
 	def show
