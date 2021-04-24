@@ -13,5 +13,5 @@
     <button id="double_boggy" class="play-edit__scoreButton score_over">Double<br>Boggy</button>
     <button id="triple_boggy" class="play-edit__scoreButton score_over">Triple<br>Boggy</button>
   </div>
-  <p class="play-edit__showScorecard"><i class="fas fa-golf-ball"></i><%= link_to "スコアカード、リーダーボードを見る", score_path(id: @score.id) ,hole_number: params[:hole_number] %></p>
+  <p class="play-edit__showScorecard"><i class="fas fa-golf-ball"></i><%= link_to "スコアカード、リーダーボードを見る", score_path(id: @score.id, golfcourse_id: params[:golfcourse_id]) ,hole_number: params[:hole_number], golfcourse_id: params[:golfcourse_id] %></p>
 </div>

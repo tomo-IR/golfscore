@@ -5,6 +5,11 @@
     width: 700px;
     margin: 0 auto;
     padding: 20px;
+    .message-index-block__wrap {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 18px;
+        padding-top: 10px;
+    }
     .message-index-block__list {
         height: 60px;
         margin-bottom: 15px;
@@ -80,6 +85,37 @@
     width: 700px;
     margin: 0 auto;
     padding: 20px;
+    .messageForm-block__label {
+        display: block;
+        margin-top: 15px;
+        font-size: 20px;
+    }
+    .messageForm-block__textfield {
+        border: none;
+        border-radius: 20px;
+        height: 60px;
+        width: 100%;
+        margin-bottom: 10px;
+        /* line-height: 20px; */
+        font-size: 20px;
+    }
+    .messageForm-block__submit {
+        border-radius: 25px;
+        height: 40px;
+        width: 90%;
+        border: none;
+        display: block;
+        margin: 15px auto;
+        font-size: 20px;
+        line-height: 40px;
+        background-color: darkseagreen;
+    }
+    .messageForm-block__submit:hover {
+        cursor: pointer;
+    }
+    .messageForm-block__filefield {
+        font-size: 18px;
+    }
     .messageCourse-message {
         padding: 10px;
         // background-color: aliceblue;
@@ -111,6 +147,10 @@
         border-radius: 15px;
         // opacity: 0.9;
     }
+    .score-block__delete_button {
+        display: block;
+        text-align: right;
+    }
 }
 
 .likeUser-block {
@@ -119,7 +159,9 @@
     margin: 0 auto;
     .likeUser__ul {
         margin: 10px auto;
-        padding: 0;
+        padding: 17px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 18px;
     }
     .likeUser__list {
         display: flex;

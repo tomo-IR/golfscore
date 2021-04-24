@@ -69,15 +69,15 @@
     }
     
     .leader-board__player {
-        min-width: 155px;
+        min-width: 108px;
     }
     
     .leader-board__score {
-        min-width: 75px;
+        min-width: 72px;
     }
     
     .leader-board__thru {
-        min-width: 57px;
+        min-width: 55px;
     }
     
     .headerBlock {
@@ -127,8 +127,11 @@
     body {
         font-family: 'Kosugi Maru', sans-serif;
         color: #222222;
-        background-image: image-url('bg-golf.jpg');
+        background-image: image-url('shiba_bg.jpg');
+        // background-color: yellowgreen;
         background-size: cover;
+        background-repeat: repeat;
+        background-size: 50px 50px;
         display: flex;
         flex-flow: column;
         min-height: 100vh;

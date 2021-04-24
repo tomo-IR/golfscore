@@ -29,7 +29,7 @@
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
-    <%#= debug(params) if Rails.env.development? %>
+    <%= debug(params) if Rails.env.development? %>
     <%#= session.to_hash %>
   </body>
 </html>

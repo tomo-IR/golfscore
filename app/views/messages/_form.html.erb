@@ -1,7 +1,8 @@
 <%= form_with model: message, class: "messageForm-block" do |f| %>
 	<%= f.label :content, "メッセージ", class: "messageForm-block__label" %>
 	<%= f.text_field :content, class: "messageForm-block__textfield" %>
-  <%= hidden_field_tag :score_id, @score.id %>
+  <%#= hidden_field_tag :score_id, @score.id %>
+  <%= hidden_field_tag :golfcourse_id, params[:golfcourse_id] %>
 	<%= f.label :image, "画像", class: "messageForm-block__label"  %>
 	<%= f.file_field :image, class: "messageForm-block__filefield" %>
 	<%= f.submit 'メッセージを送信する', class: "messageForm-block__submit" %>

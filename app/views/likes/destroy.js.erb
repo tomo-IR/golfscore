@@ -8,7 +8,7 @@ document.getElementById("change-unlike-" + "<%= params[:message_id] %>").innerTe
 var change_button = document.getElementById("change-unlike-" + "<%= params[:message_id] %>");
 change_button.id = "change-like-" + "<%= params[:message_id] %>";
 change_button.setAttribute('data-method', 'post');
-change_button.setAttribute('href', '/likes?message_id=' + '<%= params[:message_id] %>' + '&score_id=' + '<%= params[:score_id] %>'  + '&user_id=' + '<%= params[:user_id] %>' );
+change_button.setAttribute('href', '/likes?message_id=' + '<%= params[:message_id] %>' + '&user_id=' + '<%= params[:user_id] %>' );
 
 // document.getElementById("heart-" + "<%#= params[:message_id] %>").innerText = "♡";
 // document.getElementById("heart-" + "<%#= params[:message_id] %>").id = "notheart-" + "<%#= params[:message_id] %>"

@@ -8,10 +8,12 @@ class MessagesController < ApplicationController
 	end
 
 	def index_course
-		@message_course = params[:golfcourse_id]
-		@course_name = Message.find_by(golfcourse_id: params[:golfcourse_id])
-		@messages = Message.where(:golfcourse_id => params[:golfcourse_id]).order(created_at: :desc).includes(:user).page(params[:page]).per(20)
-		@like = Like.new
+		@golfcoursename = Golfcourse.find(params[:golfcourse_id])
+		@message = Message.new
+    @messages = Message.where(golfcourse_id: params[:golfcourse_id])
+                        .order(created_at: "DESC")
+                        .includes([:user])
+                        .page(params[:page]).per(10)
 	end
 
 	def show
@@ -20,9 +22,7 @@ class MessagesController < ApplicationController
 
 	def create
 		@message = Message.new(message_params)
-		playing_course = Score.find(params[:score_id])
-    golfcourse_id = playing_course.golfcourse_id
-    @message.golfcourse_id = golfcourse_id
+    @message.golfcourse_id = params[:golfcourse_id]
 		@message.user_id = current_user.id
 		@message.save
 	end
@@ -41,7 +41,7 @@ class MessagesController < ApplicationController
 	private
 
   def message_params
-    params.require(:message).permit(:content, :score_id, :image)
+    params.require(:message).permit(:content, :image, :golfcourse_id)
   end
 
 end
