@@ -18,17 +18,17 @@
 	<%# 文章 %>
 	<span class="score-block__date-content"><%= message.content %></span>
 	<% if message.user.id == current_user.id %>
-		<%= link_to "削除",{controller: "messages", action: "destroy", message_id: message.id, user_id: current_user.id, score_id: @score.id }, method: :delete, remote: true, data: {confirm: "削除しますか？"}, class: "score-block__delete_button" %>
+		<%= link_to "削除",{controller: "messages", action: "destroy", message_id: message.id, user_id: current_user.id}, method: :delete, remote: true, data: {confirm: "削除しますか？"}, class: "score-block__delete_button" %>
 	<% end %>
 	<%# 日付といいね %>	
 	<span class="score-block__date-like">
 		<span><%= message.created_at %></span>
 		<% if current_user.already_liked?(message) %>
 			<%= link_to message.likes.count, {controller: "messages", action: "show", message_id: message.id}, method: :get, id: "like-" + message.id.to_s %>
-			<%= link_to '❤️', {controller: "likes", action: "destroy", message_id: message.id, user_id: current_user.id, score_id: @score.id }, method: :delete, remote: true, id: "change-unlike-" + message.id.to_s %>
+			<%= link_to '❤️', {controller: "likes", action: "destroy", message_id: message.id, user_id: current_user.id}, method: :delete, remote: true, id: "change-unlike-" + message.id.to_s %>
 		<% else %>   
 			<%= link_to message.likes.count, {controller: "messages", action: "show", message_id: message.id}, method: :get, id: "unlike-" + message.id.to_s %>
-			<%= link_to '♡', {controller: "likes", action: "create", message_id: message.id, user_id: current_user.id, score_id: @score.id }, method: :post, remote: true, id: "change-like-" + message.id.to_s %>
+			<%= link_to '♡', {controller: "likes", action: "create", message_id: message.id, user_id: current_user.id}, method: :post, remote: true, id: "change-like-" + message.id.to_s %>
 			<% end %>
 	</span>
 
