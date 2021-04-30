@@ -7,8 +7,15 @@ class Message < ApplicationRecord
 	mount_uploader :image, ImageUploader
 	validates :content_or_image, presence: true
 
+
+	def self.search(search)
+		return Golfcourse.all unless search
+		Golfcourse.where(['golfcoursename LIKE ?', "%#{search}%"])
+	end
+
 	private
     def content_or_image
       content.presence or image.presence
     end
+
 end
