@@ -28,7 +28,7 @@
         <%= link_to "掲示板を見る", messages_path, class: "dropdown-item" %>
         <%= link_to "スコア解析", '/archives?played_year=0&commit=%E6%A4%9C%E7%B4%A2', played_year: '0', commit: '検索', class: "dropdown-item" %>
         <%= link_to "プレイヤー検索", user_index_path, class: "dropdown-item" %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "dropdown-item" %><br>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "dropdown-item" %>
       </div>
     <% elsif user_signed_in? && current_user.name == "ゲストプレイヤー" %>
       <% if current_user.avatar? %>  <!-- アップロード画像がある場合に実行する -->
@@ -51,8 +51,10 @@
                                                               id: "dropdown1" %>    
       <% end %>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown1">
-        <p class="dropdown-item"><%= current_user.name %></p>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "dropdown-item" %><br>
+        <%= link_to "ラウンドする", new_golfcourse_path, class: "dropdown-item" %>
+        <%= link_to "掲示板を見る", messages_path, class: "dropdown-item" %>
+        <%= link_to "プレイヤー検索", user_index_path, class: "dropdown-item" %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "dropdown-item" %>
       </div>
     <% else %>
       <div class="dropdown">

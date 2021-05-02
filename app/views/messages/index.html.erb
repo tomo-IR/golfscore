@@ -1,14 +1,19 @@
 <div class="message-index-block">
   <h1>各ゴルフ場の掲示板</h1>
+  <%= form_tag(messages_path,:method => 'get', class: "golfcourse-Search__form") do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag 'ゴルフ場を検索', :golfcoursename => nil %>
+  <% end %>
+
   <div class="message-index-block__wrap">
     <ul>
-      <% @every_course_name.sort_by do|name|%>
+      <% @golfcourses.each do|name|%>
         <li class="message-index-block__list">
           <%= link_to name.golfcoursename, messages_index_course_path(golfcourse_id: name.id) %> 
-          <p> <%= name.address %></p>
+          <p><%= name.address %></p>
         </li>
       <% end %>
     </ul>
-    <%= paginate @every_course_name, theme: 'twitter-bootstrap-4' %>
+    <%= paginate @golfcourses, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>
