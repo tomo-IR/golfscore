@@ -2,13 +2,9 @@ class MessagesController < ApplicationController
 	before_action :authenticate_user!
 	def index
 		@golfcourses = Golfcourse.search(params[:search])
-		.page(params[:page]).per(5) #ページネーション
+															.page(params[:page])
+															.per(10) #ページネーション
 
-
-		# @messages = Message.all.includes(:user).includes(:golfcourse)
-		# @every_course_id = Message.distinct.pluck(:golfcourse_id)
-		# @golfcoursename = Golfcourse.all
-		# @every_course_name = Golfcourse.where(id: @every_course_id).page(params[:page]).per(5).order(created_at: :desc)
 	end
 
 	def index_course
