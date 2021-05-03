@@ -1,0 +1,28 @@
+<div class="loginmae">
+<%= image_tag asset_path('logo-01.svg'), class: "loginmae__logo" %>
+<p class="loginmae__p">お一人様ゴルフは「SOLOGOL」でもっと楽しく</p>
+  <div class="loginmae_button-wrap">
+    <%= link_to "ログイン", new_user_session_path, class: 'loginmae__button buton_green' %>
+    <%= link_to "新規登録", new_user_registration_path, class: 'loginmae__button buton_yellow' %>
+    <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'loginmae__button buton_blue' %>
+  </div>
+</div>
+
+<h2>「SOLOGOL」で出来ること</h2>
+<div class="dekirukoto-index">
+  <div class="dekirukoto-index__group">
+    <h4>リーダーボード(スコア対戦)機能</h4>
+    <%= image_tag asset_path('leaderboard.png'), class: "dekirukoto-index__image", id: "test" %>
+    <p>同一プレイ日、同一ゴルフ場でプレイしているプレイヤー同士で、リアルタイムで自分の暫定順位を知ることができます。</p>
+  </div>
+  <div class="dekirukoto-index__group">
+    <h4>各ゴルフ場の掲示板</h4>
+    <%= image_tag asset_path('messageboard.png'), class: "dekirukoto-index__image", id: "test" %>
+    <p>各ゴルフ場の口コミ等、生の声を投稿、閲覧が出来ます。</p>
+  </div>
+  <div class="dekirukoto-index__group">
+    <h4>フォロー機能</h4>
+    <%= image_tag asset_path('playerfollow.png'), class: "dekirukoto-index__image", id: "test" %>
+    <p>プレイヤー同士でフォローしあって、ゴルフ仲間を作ることが出来ます。</p>
+  </div>
+</div>
